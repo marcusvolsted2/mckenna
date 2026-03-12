@@ -365,37 +365,73 @@
             <p class="text-sm font-medium" style="color:#8b8b96;">Almost there. Where should we send your mockup?</p>
           </div>
 
-          <form onsubmit="event.preventDefault(); this.querySelector('.submit-btn').textContent='Sent! We\'ll be in touch soon.'; this.querySelector('.submit-btn').style.background='rgba(40,96,224,0.15)'; this.querySelector('.submit-btn').style.color='#7ba3f0';">
+          <form id="websiteForm">
             <div class="space-y-4">
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label class="form-label">Name *</label>
-                  <input type="text" class="form-input" placeholder="Your name" required />
+                  <input id="wf-name" type="text" class="form-input" placeholder="Your name" required />
                 </div>
                 <div>
                   <label class="form-label">Business *</label>
-                  <input type="text" class="form-input" placeholder="Business name" required />
+                  <input id="wf-business" type="text" class="form-input" placeholder="Business name" required />
                 </div>
               </div>
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label class="form-label">Email *</label>
-                  <input type="email" class="form-input" placeholder="you@company.com" required />
+                  <input id="wf-email" type="email" class="form-input" placeholder="you@company.com" required />
                 </div>
                 <div>
                   <label class="form-label">Phone <span style="color:#5c5c66;">(optional)</span></label>
-                  <input type="tel" class="form-input" placeholder="+45 00 00 00 00" />
+                  <input id="wf-phone" type="tel" class="form-input" placeholder="+45 00 00 00 00" />
                 </div>
               </div>
               <div>
                 <label class="form-label">Current Website <span style="color:#5c5c66;">(if any)</span></label>
-                <input type="url" class="form-input" placeholder="https://yoursite.com" />
+                <input id="wf-website" type="url" class="form-input" placeholder="https://yoursite.com" />
               </div>
-              <button type="submit" class="submit-btn w-full py-3.5 rounded-xl font-semibold text-sm text-white transition-all duration-200" style="background:#2860E0; box-shadow: 0 4px 14px rgba(40,96,224,0.3);" onmouseover="this.style.transform='translateY(-1px)'; this.style.boxShadow='0 8px 24px rgba(40,96,224,0.45)'" onmouseout="this.style.transform='none'; this.style.boxShadow='0 4px 14px rgba(40,96,224,0.3)'">
+              <button id="wf-btn" type="submit" class="submit-btn w-full py-3.5 rounded-xl font-semibold text-sm text-white" style="background:#2860E0; box-shadow: 0 4px 14px rgba(40,96,224,0.3); transition: transform 0.2s cubic-bezier(.4,0,.2,1), box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-1px)'; this.style.boxShadow='0 8px 24px rgba(40,96,224,0.45)'" onmouseout="this.style.transform='none'; this.style.boxShadow='0 4px 14px rgba(40,96,224,0.3)'">
                 Get My Free Mockup →
               </button>
+              <p id="wf-msg" class="text-xs text-center mt-2" style="display:none;"></p>
             </div>
           </form>
+          <script>
+            document.getElementById('websiteForm').addEventListener('submit', async function(e) {
+              e.preventDefault();
+              const btn = document.getElementById('wf-btn');
+              const msg = document.getElementById('wf-msg');
+              btn.textContent = 'Sending...';
+              btn.disabled = true;
+              try {
+                const res = await fetch('/api/contact', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                    name: document.getElementById('wf-name').value,
+                    email: document.getElementById('wf-email').value,
+                    phone: document.getElementById('wf-phone').value,
+                    business: document.getElementById('wf-business').value,
+                    website: document.getElementById('wf-website').value,
+                    source: 'Websites page'
+                  })
+                });
+                if (res.ok) {
+                  btn.textContent = 'Sent! We\'ll be in touch soon.';
+                  btn.style.background = 'rgba(40,96,224,0.15)';
+                  btn.style.color = '#7ba3f0';
+                  this.reset();
+                } else { throw new Error(); }
+              } catch {
+                btn.textContent = 'Get My Free Mockup →';
+                btn.disabled = false;
+                msg.textContent = 'Something went wrong. Please try again.';
+                msg.style.color = '#f87171';
+                msg.style.display = 'block';
+              }
+            });
+          </script>
         </div>
       </div>
     </div>
