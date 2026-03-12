@@ -384,7 +384,21 @@
                 </div>
                 <div>
                   <label class="form-label">Phone <span style="color:#5c5c66;">(optional)</span></label>
-                  <input id="wf-phone" type="tel" class="form-input" placeholder="+45 00 00 00 00" />
+                  <div class="flex gap-2">
+                    <select id="wf-dial" class="form-input flex-shrink-0" style="width:100px; padding-left:8px; padding-right:8px;">
+                      <option value="+45">🇩🇰 +45</option>
+                      <option value="+46">🇸🇪 +46</option>
+                      <option value="+47">🇳🇴 +47</option>
+                      <option value="+358">🇫🇮 +358</option>
+                      <option value="+49">🇩🇪 +49</option>
+                      <option value="+44">🇬🇧 +44</option>
+                      <option value="+1">🇺🇸 +1</option>
+                      <option value="+31">🇳🇱 +31</option>
+                      <option value="+33">🇫🇷 +33</option>
+                      <option value="+34">🇪🇸 +34</option>
+                    </select>
+                    <input id="wf-phone" type="tel" class="form-input flex-1" placeholder="00 00 00 00" />
+                  </div>
                 </div>
               </div>
               <div>
@@ -411,7 +425,7 @@
                   body: JSON.stringify({
                     name: document.getElementById('wf-name').value,
                     email: document.getElementById('wf-email').value,
-                    phone: document.getElementById('wf-phone').value,
+                    phone: document.getElementById('wf-dial').value + ' ' + document.getElementById('wf-phone').value,
                     business: document.getElementById('wf-business').value,
                     website: document.getElementById('wf-website').value,
                     source: 'Websites page'
