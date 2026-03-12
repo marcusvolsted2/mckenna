@@ -131,22 +131,15 @@
     </div>
   </nav>
 
-  <!-- ========== HERO ========== -->
-  <section class="pt-40 pb-12 md:pt-52 md:pb-16">
-    <div class="max-w-6xl mx-auto px-6">
-      <p class="text-xs font-semibold tracking-widest text-accent uppercase mb-4">Get in touch</p>
-      <h1 class="text-4xl md:text-5xl text-white mb-4">Contact Us</h1>
-      <p class="text-txt-muted max-w-xl" style="line-height:1.7;">We'd love to hear from you. Fill out the form and we'll get back to you shortly — or reach out directly.</p>
-    </div>
-  </section>
-
   <!-- ========== CONTACT CONTENT ========== -->
-  <section class="pb-28 section-border pt-12">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+  <section style="min-height:100vh; display:flex; align-items:center; padding-top:80px;">
+    <div class="max-w-6xl mx-auto px-6 w-full py-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
 
         <!-- Contact Info -->
         <div>
+          <p class="text-xs font-semibold tracking-widest text-accent uppercase mb-3">Get in touch</p>
+          <h1 class="text-3xl md:text-4xl text-white mb-6">Contact Us</h1>
           <div class="contact-info-item">
             <div class="icon">
               <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="2"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -184,16 +177,12 @@
             </div>
           </div>
 
-          <div class="mt-8 p-6 rounded-2xl" style="background:rgba(40,96,224,0.07); border:1px solid rgba(40,96,224,0.2);">
-            <p class="text-sm font-semibold text-white mb-1">100% Satisfaction Guarantee</p>
-            <p class="text-txt-muted text-sm" style="line-height:1.7;">If you don't profit from marketing driven by us, you don't pay. It doesn't get simpler than that.</p>
-          </div>
         </div>
 
         <!-- Contact Form -->
-        <div class="card p-8">
-          <h2 class="text-xl mb-6">Send us a message</h2>
-          <form id="contactPageForm" class="space-y-4">
+        <div class="card p-6">
+          <h2 class="text-xl mb-4">Send us a message</h2>
+          <form id="contactPageForm" class="space-y-3">
             <div>
               <label class="block text-sm font-medium text-txt-muted mb-1">Name *</label>
               <input id="cp-name" type="text" placeholder="Your name" required class="form-input" />
@@ -222,7 +211,7 @@
             </div>
             <div>
               <label class="block text-sm font-medium text-txt-muted mb-1">Message</label>
-              <textarea id="cp-message" rows="4" placeholder="How can we help?" class="form-input" style="resize:none;"></textarea>
+              <textarea id="cp-message" rows="3" placeholder="How can we help?" class="form-input" style="resize:none;"></textarea>
             </div>
             <button id="cp-btn" type="submit" class="btn-primary w-full text-center" style="padding:14px 24px;">Send Message</button>
             <p id="cp-msg" class="text-xs text-center mt-2" style="display:none;"></p>
