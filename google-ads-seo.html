@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Ads & SEO - McKenna Marketing</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: { DEFAULT: '#151518', card: '#1c1c20', elevated: '#242428', border: '#2a2a2f' },
+            txt: { DEFAULT: '#e8e8ec', muted: '#8b8b96', dim: '#5c5c66' },
+            accent: '#2860E0',
+          },
+          fontFamily: {
+            display: ['Outfit', 'system-ui', 'sans-serif'],
+            body: ['Inter', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: #151518; color: #e8e8ec; line-height: 1.7; }
+    h1, h2, h3 { font-family: 'Outfit', system-ui, sans-serif; letter-spacing: -0.03em; line-height: 1.1; font-weight: 700; }
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1); }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .hero-gradient-text {
+      background: linear-gradient(to right, #c4b5fd, #ddb4d0, #f0c4b8, #c4b5fd);
+      background-size: 200% 100%;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      animation: gradientBloom 6s ease-in-out infinite;
+    }
+    @keyframes gradientBloom { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+    .elegant-shape {
+      position: absolute; border-radius: 9999px;
+      background: linear-gradient(135deg, rgba(40,96,224,0.12), transparent);
+      border: 2px solid rgba(255,255,255,0.06); backdrop-filter: blur(2px);
+      box-shadow: 0 8px 32px rgba(40,96,224,0.08);
+      opacity: 0; transform: translateY(-80px);
+      animation: shapeEntry 2s cubic-bezier(.23,.86,.39,.96) forwards;
+    }
+    .shape-1 { width: 450px; height: 110px; left: -5%; top: 20%; rotate: 12deg; animation-delay: 0.3s; }
+    .shape-2 { width: 350px; height: 90px; right: -2%; top: 68%; rotate: -15deg; animation-delay: 0.5s; }
+    .shape-3 { width: 200px; height: 55px; left: 10%; bottom: 10%; rotate: -8deg; animation-delay: 0.4s; }
+    @keyframes shapeEntry { 0% { opacity: 0; transform: translateY(-80px); } 100% { opacity: 1; transform: translateY(0); } }
+    .hero-bg-gradient { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(40,96,224,0.08) 0%, transparent 60%); }
+    .hero-vignette { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 50%, transparent 40%, #151518 100%); }
+    .section-border { border-top: 1px solid #2a2a2f; }
+    .mobile-menu { display: none; }
+    .mobile-menu.open { display: flex; }
+    .lang-dropdown.open .lang-menu { display: block !important; }
+    .btn-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.9rem; font-weight: 600; padding: 14px 32px; border-radius: 9999px;
+      background: #2860E0; color: #fff; text-decoration: none;
+      box-shadow: 0 4px 14px rgba(40,96,224,0.3);
+      transition: transform 0.2s cubic-bezier(.4,0,.2,1), box-shadow 0.2s ease;
+    }
+    .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(40,96,224,0.45); }
+    .btn-cta:active { transform: translateY(0); }
+
+    /* Scroll animation card */
+    .scroll-container {
+      height: 140vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      position: relative;
+      padding: 0 20px;
+    }
+    .scroll-inner {
+      position: sticky;
+      top: 10vh;
+      width: 100%;
+      max-width: 1000px;
+      perspective: 1200px;
+    }
+    .scroll-card {
+      transform: rotateX(var(--rx, 20deg)) scale(var(--s, 0.9));
+      transition: transform 0.1s linear;
+      border-radius: 24px;
+      border: 3px solid #3a3a40;
+      background: #1c1c20;
+      padding: 6px;
+      box-shadow: 0 0 #0000004d, 0 9px 20px #0000004a, 0 37px 37px #00000042, 0 84px 50px #00000026;
+    }
+    .scroll-card-inner {
+      border-radius: 18px;
+      background: #0f0f12;
+      overflow: hidden;
+      padding: 24px;
+    }
+    /* Dashboard mockup styles */
+    .dash-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+    .dash-logo { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.1rem; color: #fff; display: flex; align-items: center; gap: 8px; }
+    .dash-tabs { display: flex; gap: 4px; }
+    .dash-tab { padding: 6px 14px; border-radius: 8px; font-size: 0.75rem; color: #8b8b96; cursor: default; }
+    .dash-tab.active { background: rgba(40,96,224,0.15); color: #2860E0; }
+    .dash-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
+    .dash-stat { background: #1c1c20; border-radius: 12px; padding: 16px; border: 1px solid #2a2a2f; }
+    .dash-stat-label { font-size: 0.7rem; color: #5c5c66; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .dash-stat-value { font-family: 'Outfit', sans-serif; font-size: 1.5rem; font-weight: 700; color: #fff; }
+    .dash-stat-change { font-size: 0.7rem; margin-top: 4px; }
+    .dash-stat-change.up { color: #34d399; }
+    .dash-chart { background: #1c1c20; border-radius: 12px; padding: 16px; border: 1px solid #2a2a2f; margin-bottom: 12px; }
+    .dash-chart-title { font-size: 0.8rem; color: #8b8b96; margin-bottom: 12px; }
+    .dash-bars { display: flex; align-items: flex-end; gap: 6px; height: 120px; }
+    .dash-bar { flex: 1; border-radius: 4px 4px 0 0; background: linear-gradient(to top, #2860E0, #5a8ff0); opacity: 0.85; }
+    .dash-table { background: #1c1c20; border-radius: 12px; padding: 16px; border: 1px solid #2a2a2f; }
+    .dash-table-title { font-size: 0.8rem; color: #8b8b96; margin-bottom: 12px; }
+    .dash-row { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 8px; padding: 8px 0; border-bottom: 1px solid #242428; font-size: 0.75rem; }
+    .dash-row.header { color: #5c5c66; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.65rem; }
+    .dash-row:last-child { border-bottom: none; }
+    .dash-row span { color: #e8e8ec; }
+    .dash-row .good { color: #34d399; }
+    @media (max-width: 640px) {
+      .dash-stats { grid-template-columns: repeat(2, 1fr); }
+      .dash-row { grid-template-columns: 1.5fr 1fr 1fr; }
+      .dash-row span:nth-child(4), .dash-row span:nth-child(5) { display: none; }
+      .dash-row.header span:nth-child(4), .dash-row.header span:nth-child(5) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="fixed top-0 left-0 right-0 z-50 flex justify-center pt-4 px-6">
+    <div class="flex items-center justify-between gap-8 w-full max-w-6xl px-4 py-2 rounded-full" style="backdrop-filter:blur(20px); background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 24px rgba(0,0,0,0.25);">
+      <a href="index.html" class="flex items-center pl-2">
+        <img src="Assets/Mc-Marketing-Logo.png" alt="Mc Marketing" class="h-6" />
+      </a>
+      <div class="hidden lg:flex items-center gap-1">
+        <a href="index.html#about" class="text-sm text-white/70 hover:text-white px-4 py-2 rounded-full hover:bg-white/5 transition-all duration-200">About Us</a>
+        <div class="relative" onmouseenter="this.querySelector('.services-menu').style.display='block'" onmouseleave="this.querySelector('.services-menu').style.display='none'">
+          <button class="text-sm text-white/70 hover:text-white px-4 py-2 rounded-full hover:bg-white/5 transition-all duration-200 inline-flex items-center gap-1.5">
+            Services
+            <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="services-menu absolute left-1/2 -translate-x-1/2 top-full pt-2 z-50" style="display:none; min-width:220px;">
+            <div class="rounded-xl py-2 px-1" style="background:rgba(28,28,32,0.95); border:1px solid rgba(255,255,255,0.08); backdrop-filter:blur(20px); box-shadow:0 12px 40px rgba(0,0,0,0.4);">
+              <a href="google-ads-seo.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-white/70 hover:text-white hover:bg-white/5 transition-all duration-200">
+                <span class="flex items-center justify-center w-8 h-8 rounded-lg" style="background:rgba(40,96,224,0.1);"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="2"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                Google Ads & SEO
+              </a>
+              <a href="websites.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-white/70 hover:text-white hover:bg-white/5 transition-all duration-200">
+                <span class="flex items-center justify-center w-8 h-8 rounded-lg" style="background:rgba(40,96,224,0.1);"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="2"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                Website Design
+              </a>
+              <a href="paid-social.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-white/70 hover:text-white hover:bg-white/5 transition-all duration-200">
+                <span class="flex items-center justify-center w-8 h-8 rounded-lg" style="background:rgba(40,96,224,0.1);"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="2"><path d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                Paid Social
+              </a>
+            </div>
+          </div>
+        </div>
+        <a href="index.html#contact" class="text-sm text-white/70 hover:text-white px-4 py-2 rounded-full hover:bg-white/5 transition-all duration-200">Contact</a>
+      </div>
+      <div class="hidden lg:flex items-center gap-2">
+        <a href="index.html#book" class="inline-flex items-center gap-2 text-sm font-medium px-5 py-2.5 rounded-full text-white transition-all duration-200" style="background:#2860E0; box-shadow: 0 2px 10px rgba(40,96,224,0.3);" onmouseover="this.style.boxShadow='0 4px 16px rgba(40,96,224,0.5)'" onmouseout="this.style.boxShadow='0 2px 10px rgba(40,96,224,0.3)'">
+          Book Meeting
+        </a>
+        <div class="relative lang-dropdown">
+          <button onclick="this.closest('.lang-dropdown').classList.toggle('open')" class="flex items-center justify-center w-9 h-9 rounded-full hover:bg-white/10 transition-all duration-200" title="Language" style="font-size:17px;">
+            <span id="activeLangFlag">&#127468;&#127463;</span>
+          </button>
+          <div class="lang-menu absolute right-0 top-full mt-2 rounded-xl py-2 min-w-[130px] z-50" style="background:rgba(28,28,32,0.95); border:1px solid rgba(255,255,255,0.08); backdrop-filter:blur(20px); display:none;">
+            <button onclick="document.getElementById('activeLangFlag').innerHTML='&#127468;&#127463;'; this.closest('.lang-dropdown').classList.remove('open');" class="flex items-center gap-2.5 w-full px-4 py-2 text-sm text-white hover:bg-white/5 transition-colors duration-200">
+              <span style="font-size:15px;">&#127468;&#127463;</span> English
+            </button>
+            <button onclick="document.getElementById('activeLangFlag').innerHTML='&#127465;&#127472;'; this.closest('.lang-dropdown').classList.remove('open');" class="flex items-center gap-2.5 w-full px-4 py-2 text-sm text-white/60 hover:bg-white/5 transition-colors duration-200">
+              <span style="font-size:15px;">&#127465;&#127472;</span> Dansk
+            </button>
+          </div>
+        </div>
+      </div>
+      <button class="lg:hidden flex flex-col gap-1.5 p-2 pr-3" onclick="document.getElementById('mobileMenu').classList.toggle('open')" aria-label="Menu">
+        <span class="block w-5 h-0.5 bg-white rounded-full"></span>
+        <span class="block w-5 h-0.5 bg-white rounded-full"></span>
+        <span class="block w-5 h-0.5 bg-white rounded-full"></span>
+      </button>
+    </div>
+    <div id="mobileMenu" class="mobile-menu flex-col gap-4 px-6 py-5 absolute top-full left-4 right-4 mt-2 rounded-2xl" style="background:rgba(28,28,32,0.95); border:1px solid rgba(255,255,255,0.08); backdrop-filter:blur(20px); display:none;">
+      <a href="index.html#about" class="text-sm" style="color:#8b8b96;">About Us</a>
+      <a href="google-ads-seo.html" class="text-sm" style="color:#8b8b96;">Google Ads & SEO</a>
+      <a href="websites.html" class="text-sm" style="color:#8b8b96;">Website Design</a>
+      <a href="paid-social.html" class="text-sm" style="color:#8b8b96;">Paid Social</a>
+      <a href="index.html#contact" class="text-sm" style="color:#8b8b96;">Contact</a>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section class="pt-36 pb-10 md:pt-48 md:pb-14 relative overflow-hidden" style="min-height:auto;">
+    <div class="hero-bg-gradient"></div>
+    <div class="elegant-shape shape-1"></div>
+    <div class="elegant-shape shape-2"></div>
+    <div class="elegant-shape shape-3"></div>
+    <div class="hero-vignette"></div>
+
+    <div class="max-w-6xl mx-auto px-6 text-center relative z-10">
+      <div class="reveal inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8 text-sm" style="background:rgba(40,96,224,0.08); border:1px solid rgba(40,96,224,0.2); color:#7ba3f0;">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke="#2860E0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Google Ads & SEO
+      </div>
+
+      <h1 class="reveal reveal-delay-1 text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-0 max-w-4xl mx-auto" style="font-weight:600; letter-spacing:-0.03em; line-height:1.1; background: linear-gradient(180deg, #FFF 0%, rgba(255,255,255,0.45) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+        We don't get paid unless <span class="hero-gradient-text">you get results</span>
+      </h1>
+    </div>
+  </section>
+
+  <!-- ========== SCROLL DASHBOARD ========== -->
+  <section class="scroll-container" style="margin-top:-80px;">
+    <div class="scroll-inner">
+      <div class="scroll-card" id="scrollCard">
+        <div class="scroll-card-inner">
+          <div class="dash-header">
+            <div class="dash-logo">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18A10.96 10.96 0 001 12c0 1.77.42 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+              Google Ads Dashboard
+            </div>
+            <div class="dash-tabs">
+              <div class="dash-tab active">Overview</div>
+              <div class="dash-tab">Campaigns</div>
+              <div class="dash-tab">Keywords</div>
+            </div>
+          </div>
+          <div class="dash-stats">
+            <div class="dash-stat">
+              <div class="dash-stat-label">Conversions</div>
+              <div class="dash-stat-value">847</div>
+              <div class="dash-stat-change up">+34.2% vs last month</div>
+            </div>
+            <div class="dash-stat">
+              <div class="dash-stat-label">Cost / Conv.</div>
+              <div class="dash-stat-value">kr 42</div>
+              <div class="dash-stat-change up">-18.6% vs last month</div>
+            </div>
+            <div class="dash-stat">
+              <div class="dash-stat-label">ROAS</div>
+              <div class="dash-stat-value">14.2x</div>
+              <div class="dash-stat-change up">+22.4% vs last month</div>
+            </div>
+            <div class="dash-stat">
+              <div class="dash-stat-label">CTR</div>
+              <div class="dash-stat-value">8.7%</div>
+              <div class="dash-stat-change up">+2.1% vs last month</div>
+            </div>
+          </div>
+          <div class="dash-chart">
+            <div class="dash-chart-title">Conversions - Last 30 Days</div>
+            <div class="dash-bars">
+              <div class="dash-bar" style="height:45%"></div>
+              <div class="dash-bar" style="height:52%"></div>
+              <div class="dash-bar" style="height:48%"></div>
+              <div class="dash-bar" style="height:60%"></div>
+              <div class="dash-bar" style="height:55%"></div>
+              <div class="dash-bar" style="height:63%"></div>
+              <div class="dash-bar" style="height:58%"></div>
+              <div class="dash-bar" style="height:70%"></div>
+              <div class="dash-bar" style="height:65%"></div>
+              <div class="dash-bar" style="height:72%"></div>
+              <div class="dash-bar" style="height:68%"></div>
+              <div class="dash-bar" style="height:75%"></div>
+              <div class="dash-bar" style="height:78%"></div>
+              <div class="dash-bar" style="height:73%"></div>
+              <div class="dash-bar" style="height:80%"></div>
+              <div class="dash-bar" style="height:76%"></div>
+              <div class="dash-bar" style="height:82%"></div>
+              <div class="dash-bar" style="height:85%"></div>
+              <div class="dash-bar" style="height:79%"></div>
+              <div class="dash-bar" style="height:88%"></div>
+              <div class="dash-bar" style="height:84%"></div>
+              <div class="dash-bar" style="height:90%"></div>
+              <div class="dash-bar" style="height:86%"></div>
+              <div class="dash-bar" style="height:92%"></div>
+              <div class="dash-bar" style="height:88%"></div>
+              <div class="dash-bar" style="height:94%"></div>
+              <div class="dash-bar" style="height:90%"></div>
+              <div class="dash-bar" style="height:96%"></div>
+              <div class="dash-bar" style="height:93%"></div>
+              <div class="dash-bar" style="height:100%"></div>
+            </div>
+          </div>
+          <div class="dash-table">
+            <div class="dash-table-title">Top Campaigns</div>
+            <div class="dash-row header">
+              <span>Campaign</span>
+              <span>Conversions</span>
+              <span>ROAS</span>
+              <span>CPA</span>
+              <span>Budget</span>
+            </div>
+            <div class="dash-row">
+              <span>Brand Search</span>
+              <span>312</span>
+              <span class="good">18.4x</span>
+              <span>kr 28</span>
+              <span>kr 8,700</span>
+            </div>
+            <div class="dash-row">
+              <span>Non-Brand Shopping</span>
+              <span>284</span>
+              <span class="good">12.1x</span>
+              <span>kr 45</span>
+              <span>kr 12,800</span>
+            </div>
+            <div class="dash-row">
+              <span>Performance Max</span>
+              <span>189</span>
+              <span class="good">11.8x</span>
+              <span>kr 52</span>
+              <span>kr 9,800</span>
+            </div>
+            <div class="dash-row">
+              <span>DSA Category</span>
+              <span>62</span>
+              <span class="good">9.6x</span>
+              <span>kr 61</span>
+              <span>kr 3,800</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Text + CTA below tablet -->
+      <div class="text-center mt-10">
+        <p class="text-base md:text-lg max-w-2xl mx-auto mb-8" style="color:#a1a1aa; line-height:1.8;">
+          Performance-based Google Ads management from a certified Google Partner. We put our money where our mouth is - if your campaigns don't deliver measurable ROI, you don't pay.
+        </p>
+        <a href="#cta" class="btn-cta">
+          Start Your Growth Journey
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== THE DEAL ========== -->
+  <section class="py-20 md:py-28 section-border">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="reveal text-center mb-6">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl mb-4">The Performance Promise</h2>
+        <p class="text-base max-w-2xl mx-auto mb-16" style="color:#8b8b96; line-height:1.8;">
+          Most agencies charge you regardless of results. We don't. Our entire model is built on one principle: your success is our success. If we can't grow your business, we don't deserve your money.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div class="reveal rounded-2xl p-8" style="background:#1c1c20; border:1px solid #2a2a2f;">
+          <div class="text-3xl mb-4" style="font-family:'Outfit',sans-serif; color:#2860E0; font-weight:800;">100%</div>
+          <h3 class="text-lg font-semibold text-white mb-3">ROAS Guarantee</h3>
+          <p class="text-sm" style="color:#8b8b96; line-height:1.7;">
+            If the marketing we run doesn't generate a positive return on your ad spend, you don't pay our management fee. We carry the risk so you don't have to.
+          </p>
+        </div>
+
+        <div class="reveal reveal-delay-1 rounded-2xl p-8" style="background:#1c1c20; border:1px solid #2a2a2f;">
+          <div class="text-3xl mb-4" style="font-family:'Outfit',sans-serif; color:#2860E0; font-weight:800;">12x+</div>
+          <h3 class="text-lg font-semibold text-white mb-3">Average Client ROAS</h3>
+          <p class="text-sm" style="color:#8b8b96; line-height:1.7;">
+            Our clients average a 12x return on ad spend. That's not a best-case scenario -it's our track record across 100+ accounts, month after month.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== GOOGLE PARTNER ========== -->
+  <section class="py-20 md:py-28 section-border">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="reveal flex flex-col md:flex-row items-center gap-10 md:gap-16 max-w-4xl mx-auto mb-16">
+        <img src="Assets/google-partner.png" alt="Google Partner" style="width:140px; height:140px; border-radius:16px; flex-shrink:0;" />
+        <div>
+          <h2 class="text-2xl sm:text-3xl md:text-4xl mb-4">Certified Google Partner</h2>
+          <p class="text-base" style="color:#8b8b96; line-height:1.8;">
+            We're one of the few agencies in Denmark with official Google Partner status. That means Google has verified our expertise, ad spend management, and client results. You get direct access to Google support channels, beta features, and a team that's held to Google's own performance standards.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="reveal rounded-2xl p-8" style="background:#1c1c20; border:1px solid #2a2a2f;">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(40,96,224,0.1);">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="1.8"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="text-lg font-semibold text-white mb-3">Google Ads Management</h3>
+          <p class="text-sm" style="color:#8b8b96; line-height:1.7;">
+            Search, Shopping, Display, Performance Max - we build, optimize, and scale campaigns that turn clicks into paying customers. Daily monitoring, weekly optimization, monthly reporting.
+          </p>
+        </div>
+
+        <div class="reveal reveal-delay-1 rounded-2xl p-8" style="background:#1c1c20; border:1px solid #2a2a2f;">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(40,96,224,0.1);">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="1.8"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="text-lg font-semibold text-white mb-3">Conversion Tracking & Analytics</h3>
+          <p class="text-sm" style="color:#8b8b96; line-height:1.7;">
+            Proper GA4 setup, conversion tracking, attribution modeling, and custom dashboards. You'll always know exactly where your ad budget goes and what it brings back.
+          </p>
+        </div>
+
+        <div class="reveal reveal-delay-2 rounded-2xl p-8" style="background:#1c1c20; border:1px solid #2a2a2f;">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(40,96,224,0.1);">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="1.8"><path d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="text-lg font-semibold text-white mb-3">SEO That Supports Ads</h3>
+          <p class="text-sm" style="color:#8b8b96; line-height:1.7;">
+            We complement your paid campaigns with targeted SEO so you capture organic traffic too. Better landing pages, stronger Quality Scores, and lower cost per click across the board.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== HOW WE WORK ========== -->
+  <section class="py-20 md:py-28 section-border">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="reveal text-center mb-16">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl mb-4">How We Work</h2>
+        <p class="text-base max-w-2xl mx-auto" style="color:#8b8b96; line-height:1.8;">
+          We treat your ad budget like it's our own money. Every krone is tracked, every campaign is optimized daily.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="reveal text-center">
+          <div class="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-5 text-lg font-bold" style="background:rgba(40,96,224,0.1); color:#2860E0; border:1.5px solid rgba(40,96,224,0.25);">1</div>
+          <h3 class="text-base font-semibold text-white mb-2">Free Account Audit</h3>
+          <p class="text-sm" style="color:#8b8b96; line-height:1.7;">We analyze your current Google Ads setup, competitors, and market opportunities. You get actionable insights before spending a single krone.</p>
+        </div>
+        <div class="reveal reveal-delay-1 text-center">
+          <div class="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-5 text-lg font-bold" style="background:rgba(40,96,224,0.1); color:#2860E0; border:1.5px solid rgba(40,96,224,0.25);">2</div>
+          <h3 class="text-base font-semibold text-white mb-2">Campaign Build</h3>
+          <p class="text-sm" style="color:#8b8b96; line-height:1.7;">We build your campaigns from scratch with proper structure, targeting, and tracking. Full transparency on everything we do.</p>
+        </div>
+        <div class="reveal reveal-delay-2 text-center">
+          <div class="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-5 text-lg font-bold" style="background:rgba(40,96,224,0.1); color:#2860E0; border:1.5px solid rgba(40,96,224,0.25);">3</div>
+          <h3 class="text-base font-semibold text-white mb-2">Daily Optimization</h3>
+          <p class="text-sm" style="color:#8b8b96; line-height:1.7;">We're inside your Google Ads account every single day. Adjusting bids, testing ads, cutting waste, scaling winners.</p>
+        </div>
+        <div class="reveal reveal-delay-3 text-center">
+          <div class="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-5 text-lg font-bold" style="background:rgba(40,96,224,0.1); color:#2860E0; border:1.5px solid rgba(40,96,224,0.25);">4</div>
+          <h3 class="text-base font-semibold text-white mb-2">Report & Scale</h3>
+          <p class="text-sm" style="color:#8b8b96; line-height:1.7;">Monthly performance reviews with clear numbers. When something works, we scale it. When it doesn't, we kill it fast.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SATISFACTION GUARANTEE ========== -->
+  <section class="py-20 md:py-28 section-border">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="reveal rounded-2xl p-10 md:p-14 text-center" style="background:#1c1c20; border:1px solid #2a2a2f;">
+        <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6" style="background:rgba(40,96,224,0.1); border:2px solid rgba(40,96,224,0.25);">
+          <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="1.8"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl mb-4">Satisfaction Guarantee</h2>
+        <p class="text-base max-w-2xl mx-auto mb-8" style="color:#8b8b96; line-height:1.8;">
+          We're so confident in our Google Ads management that we offer a full satisfaction guarantee. If you're not happy with our work within the first 30 days, you get your management fee back. No questions asked. We carry the risk so you don't have to.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+          <div class="text-center">
+            <div class="text-3xl mb-1" style="font-family:'Outfit',sans-serif; color:#2860E0; font-weight:800;">100%</div>
+            <p class="text-sm" style="color:#8b8b96;">Money-back guarantee</p>
+          </div>
+          <div class="hidden sm:block w-px h-12" style="background:#2a2a2f;"></div>
+          <div class="text-center">
+            <div class="text-3xl mb-1" style="font-family:'Outfit',sans-serif; color:#2860E0; font-weight:800;">0 kr</div>
+            <p class="text-sm" style="color:#8b8b96;">If we don't deliver results</p>
+          </div>
+          <div class="hidden sm:block w-px h-12" style="background:#2a2a2f;"></div>
+          <div class="text-center">
+            <div class="text-3xl mb-1" style="font-family:'Outfit',sans-serif; color:#2860E0; font-weight:800;">30 days</div>
+            <p class="text-sm" style="color:#8b8b96;">Risk-free trial period</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA ========== -->
+  <section class="py-20 md:py-28 section-border" id="cta">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="reveal rounded-2xl px-8 py-14 md:px-16 md:py-16 text-center relative overflow-hidden" style="background: linear-gradient(135deg, #2860E0 0%, #1a4dbf 50%, #2860E0 100%);">
+        <div class="absolute top-0 right-0 w-64 h-64 rounded-full opacity-10" style="background:radial-gradient(circle, #fff 0%, transparent 70%); transform: translate(30%, -30%);"></div>
+        <div class="absolute bottom-0 left-0 w-48 h-48 rounded-full opacity-10" style="background:radial-gradient(circle, #fff 0%, transparent 70%); transform: translate(-30%, 30%);"></div>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl text-white mb-4 relative z-10">
+          Ready to grow with zero risk?
+        </h2>
+        <p class="text-white/80 max-w-xl mx-auto mb-8 relative z-10" style="line-height:1.7;">
+          If we don't deliver results, you don't pay. Book a free strategy call and let's see what we can do for your business.
+        </p>
+        <a href="index.html#book" class="relative z-10 inline-flex items-center gap-3 pl-7 pr-2 py-2 rounded-full font-semibold text-sm group" style="background:#fff; color:#2860E0; box-shadow: 0 4px 14px rgba(0,0,0,0.15); transition: transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
+          Book a Free Strategy Call
+          <span class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-[#2860E0] text-white">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="py-12 section-border">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+      <a href="index.html" class="flex items-center">
+        <img src="Assets/Mc-Marketing-Logo.png" alt="Mc Marketing" class="h-6" />
+      </a>
+      <p class="text-sm" style="color:#5c5c66;">&copy; 2026 McKenna Marketing. All rights reserved.</p>
+      <a href="index.html" class="text-sm hover:text-white transition-colors duration-200" style="color:#8b8b96;">Back to Home</a>
+    </div>
+  </footer>
+
+  <!-- Fixed bottom-right badges -->
+  <div style="position:fixed; bottom:24px; right:24px; z-index:40; display:flex; flex-direction:column; align-items:center; gap:10px;">
+    <a href="#guarantee" class="inline-flex items-center gap-1.5 text-xs font-medium px-3.5 py-2 rounded-full transition-all duration-200 hover:border-white/20" style="background:rgba(21,21,24,0.9); border:1px solid rgba(255,255,255,0.1); backdrop-filter:blur(12px); color:#7ba3f0; box-shadow: 0 4px 20px rgba(0,0,0,0.4);">
+      <svg width="13" height="13" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke="#2860E0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Satisfaction Guarantee
+    </a>
+    <img src="Assets/google-partner.png" alt="Google Partner" style="width:80px; height:80px; border-radius:12px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);" />
+  </div>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.05, rootMargin: '0px 0px 80px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    setTimeout(() => { document.querySelectorAll('.reveal:not(.visible)').forEach(el => el.classList.add('visible')); }, 3000);
+
+    // Scroll-driven 3D card animation
+    const scrollCard = document.getElementById('scrollCard');
+    if (scrollCard) {
+      const container = scrollCard.closest('.scroll-container');
+      window.addEventListener('scroll', () => {
+        const rect = container.getBoundingClientRect();
+        const vh = window.innerHeight;
+        const progress = Math.max(0, Math.min(1, (vh - rect.top) / (rect.height)));
+        const rx = 20 - (progress * 20);
+        const s = 0.9 + (progress * 0.1);
+        scrollCard.style.setProperty('--rx', rx + 'deg');
+        scrollCard.style.setProperty('--s', s);
+      }, { passive: true });
+    }
+  </script>
+</body>
+</html>
