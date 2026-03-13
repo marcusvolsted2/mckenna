@@ -13,9 +13,9 @@
       theme: {
         extend: {
           colors: {
-            bg: { DEFAULT: '#151518', card: '#1c1c20', elevated: '#242428', border: '#2a2a2f' },
-            txt: { DEFAULT: '#e8e8ec', muted: '#8b8b96', dim: '#5c5c66' },
-            accent: '#2860E0',
+            bg: { DEFAULT: '#0d0d0d', card: '#171717', elevated: '#1e1e1e', border: '#2a2a2a' },
+            txt: { DEFAULT: '#dedede', muted: '#9a9a9a', dim: '#8a8a8a' },
+            brand: '#2860E0',
           },
           fontFamily: {
             display: ['Outfit', 'system-ui', 'sans-serif'],
@@ -29,212 +29,82 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', system-ui, sans-serif; background: #151518; color: #e8e8ec; line-height: 1.7; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: #0d0d0d; color: #dedede; line-height: 1.7; }
     h1, h2, h3 { font-family: 'Outfit', system-ui, sans-serif; letter-spacing: -0.03em; line-height: 1.1; font-weight: 700; }
 
     /* Reveal animations */
-    .reveal {
-      opacity: 0; transform: translateY(30px);
-      transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
-    }
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s cubic-bezier(.4,0,.2,1), transform 0.65s cubic-bezier(.4,0,.2,1); }
     .reveal.visible { opacity: 1; transform: none; }
     .reveal-delay-1 { transition-delay: 0.1s; }
     .reveal-delay-2 { transition-delay: 0.2s; }
     .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
 
-    /* Hero gradient text */
-    .hero-gradient-text {
-      background: linear-gradient(to right, #c4b5fd, #ddb4d0, #f0c4b8, #c4b5fd);
-      background-size: 200% 100%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: gradientBloom 6s ease-in-out infinite;
-    }
-    @keyframes gradientBloom {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-    }
-
-    /* Elegant floating shapes */
-    .elegant-shape {
-      position: absolute; border-radius: 9999px;
-      background: linear-gradient(135deg, rgba(40,96,224,0.12), transparent);
-      border: 2px solid rgba(255,255,255,0.06);
-      backdrop-filter: blur(2px);
-      box-shadow: 0 8px 32px rgba(40,96,224,0.08);
-      opacity: 0; transform: translateY(-80px);
-      animation: shapeEntry 2s cubic-bezier(.23,.86,.39,.96) forwards;
-    }
-    .elegant-shape::after {
-      content: ''; position: absolute; inset: 0; border-radius: 9999px;
-      background: linear-gradient(135deg, rgba(255,255,255,0.04), transparent);
-    }
-    .shape-1 { width: 450px; height: 110px; left: -5%; top: 20%; rotate: 12deg; animation-delay: 0.3s; }
-    .shape-2 { width: 350px; height: 90px; right: -2%; top: 68%; rotate: -15deg; animation-delay: 0.5s; }
-    .shape-3 { width: 200px; height: 55px; left: 10%; bottom: 10%; rotate: -8deg; animation-delay: 0.4s; }
-    @keyframes shapeEntry {
-      0% { opacity: 0; transform: translateY(-80px); }
-      100% { opacity: 1; transform: translateY(0); animation: shapeEntry 2s forwards, shapeFloat var(--float-dur, 12s) ease-in-out infinite; }
-    }
-    .shape-1 { --float-dur: 14s; }
-    .shape-2 { --float-dur: 16s; }
-    .shape-3 { --float-dur: 12s; }
-    @keyframes shapeFloat {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-15px) rotate(2deg); }
-    }
-    .hero-bg-gradient {
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(40,96,224,0.08) 0%, transparent 60%);
-    }
-    .hero-vignette {
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse 80% 60% at 50% 50%, transparent 40%, #151518 100%);
-    }
-
-    /* Form input styles */
-    .form-input {
-      width: 100%;
-      padding: 14px 18px;
-      border-radius: 12px;
-      background: #1c1c20;
-      border: 1px solid #2a2a2f;
-      color: #e8e8ec;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.9rem;
-      outline: none;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    }
-    .form-input::placeholder { color: #5c5c66; }
-    .form-input:focus {
-      border-color: #2860E0;
-      box-shadow: 0 0 0 3px rgba(40,96,224,0.12);
-    }
-    .form-label {
-      display: block;
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: #8b8b96;
-      margin-bottom: 6px;
-      letter-spacing: 0.02em;
-    }
-
-    /* Moving border CTA */
-    .moving-border-btn {
-      position: relative;
-      padding: 1.5px;
-      border-radius: 12px;
-      overflow: hidden;
-      background: transparent;
-      display: inline-block;
-      width: 100%;
-    }
-    .moving-border-btn::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 12px;
-      background: conic-gradient(from 0deg, transparent 0%, transparent 70%, #2860E0 80%, #5a8ff0 90%, transparent 100%);
-      animation: borderSpin 3s linear infinite;
-    }
-    @keyframes borderSpin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    .moving-border-btn::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 12px;
-      background: conic-gradient(from 180deg, transparent 0%, transparent 70%, rgba(40,96,224,0.5) 80%, rgba(90,143,240,0.5) 90%, transparent 100%);
-      animation: borderSpin 3s linear infinite;
-    }
-    .moving-border-inner {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 16px 28px;
-      border-radius: 11px;
-      background: rgba(15,15,20,0.9);
-      border: 1px solid rgba(255,255,255,0.06);
-      backdrop-filter: blur(16px);
-      color: #fff;
-      font-weight: 600;
-      font-size: 0.95rem;
-      cursor: pointer;
-      transition: transform 0.2s cubic-bezier(.4,0,.2,1);
-    }
-    .moving-border-btn:hover .moving-border-inner {
-      transform: translateY(-1px);
-    }
-
-    /* Check items */
-    .check-item {
-      display: flex; align-items: center; gap: 12px;
-      color: #8b8b96; font-size: 0.95rem;
-    }
-    .check-icon {
-      flex-shrink: 0; width: 22px; height: 22px;
-      display: flex; align-items: center; justify-content: center;
-      border-radius: 50%;
-      background: rgba(40,96,224,0.1);
-      color: #2860E0;
-    }
+    /* Navbar */
     .mobile-menu { display: none; }
     .mobile-menu.open { display: flex; }
     .lang-dropdown.open .lang-menu { display: block !important; }
+    .section-border { border-top: 1px solid #2a2a2a; }
 
-    /* Editorial styles */
-    .editorial-huge {
-      font-family: 'Outfit', system-ui, sans-serif;
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      line-height: 0.95;
+    /* Word rotate */
+    #rotateWord { display: inline-block; transition: opacity 0.3s ease, transform 0.3s ease; }
+    #rotateWord.fade-out { opacity: 0; transform: translateY(-8px); }
+    #rotateWord.fade-in { opacity: 1; transform: translateY(0); }
+
+    /* Trust bar marquee */
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .marquee-track { display: flex; animation: marquee 40s linear infinite; width: max-content; }
+
+    /* Logo scroll */
+    @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* Card hover */
+    .card-hover { transition: transform 0.2s cubic-bezier(.4,0,.2,1), border-color 0.2s ease, box-shadow 0.2s ease; }
+    .card-hover:hover { transform: translateY(-2px); }
+
+    /* Primary button */
+    .btn-primary {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 14px 32px; border-radius: 12px; font-size: 0.9rem; font-weight: 600;
+      background: #2860E0; color: #fff; text-decoration: none;
+      transition: transform 0.2s cubic-bezier(.34,1.56,.64,1), box-shadow 0.2s ease;
     }
-    .mono-label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 0 30px rgba(40,96,224,0.4); }
+    .btn-primary:active { transform: scale(0.97); }
+
+    /* Secondary button */
+    .btn-secondary {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 14px 32px; border-radius: 12px; font-size: 0.9rem; font-weight: 600;
+      background: #1e1e1e; color: #dedede; text-decoration: none;
+      border: 1px solid #2a2a2a;
+      transition: transform 0.2s cubic-bezier(.34,1.56,.64,1), border-color 0.2s ease;
     }
-    .grain-overlay {
-      position: relative;
+    .btn-secondary:hover { border-color: rgba(40,96,224,0.3); transform: translateY(-1px); }
+
+    /* Gradient orb */
+    .orb {
+      position: absolute; border-radius: 9999px;
+      pointer-events: none; filter: blur(80px);
     }
-    .grain-overlay::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      opacity: 0.03;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-      background-size: 128px;
-      pointer-events: none;
-      z-index: 1;
+
+    /* FAQ */
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .faq-answer.open { max-height: 300px; }
+
+    /* Pricing highlight glow */
+    .pricing-highlight { position: relative; border-color: rgba(40,96,224,0.3) !important; }
+    .pricing-highlight::before {
+      content: ''; position: absolute; inset: -1px; border-radius: 24px;
+      background: linear-gradient(180deg, rgba(40,96,224,0.15) 0%, transparent 60%);
+      pointer-events: none; z-index: 0;
     }
-    .strikethrough {
-      text-decoration: line-through;
-      text-decoration-color: #ef4444;
-      text-decoration-thickness: 3px;
-    }
-    .stat-huge {
-      font-family: 'Outfit', system-ui, sans-serif;
-      font-weight: 900;
-      letter-spacing: -0.05em;
-      line-height: 1;
-    }
-    .marquee-track {
-      display: flex;
-      animation: marquee 25s linear infinite;
-      width: max-content;
-    }
-    @keyframes marquee {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
+
+    /* Step active */
+    .step-card { transition: border-color 0.4s ease, background 0.4s ease, transform 0.4s ease; }
+    .step-card.active { border-color: rgba(40,96,224,0.25) !important; background: rgba(40,96,224,0.04) !important; transform: scale(1.02); }
+    .step-icon-wrap { transition: border-color 0.4s ease, background 0.4s ease; }
+    .step-card.active .step-icon-wrap { border-color: rgba(40,96,224,0.3) !important; background: rgba(40,96,224,0.1) !important; }
   </style>
 </head>
 <body>
@@ -246,7 +116,6 @@
         <img src="Assets/Mc-Marketing-Logo.png" alt="Mc Marketing" class="h-6" />
       </a>
       <div class="hidden lg:flex items-center gap-1">
-        
         <div class="relative" onmouseenter="this.querySelector('.services-menu').style.display='block'" onmouseleave="this.querySelector('.services-menu').style.display='none'">
           <button class="text-sm text-white/70 hover:text-white px-4 py-2 rounded-full hover:bg-white/5 transition-all duration-200 inline-flex items-center gap-1.5">
             Services
@@ -258,7 +127,7 @@
                 <span class="flex items-center justify-center w-8 h-8 rounded-lg" style="background:rgba(40,96,224,0.1);"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="2"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                 Google Ads & SEO
               </a>
-              <a href="websites.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-white/70 hover:text-white hover:bg-white/5 transition-all duration-200">
+              <a href="websites.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-white hover:bg-white/5 transition-all duration-200">
                 <span class="flex items-center justify-center w-8 h-8 rounded-lg" style="background:rgba(40,96,224,0.1);"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="2"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                 Website Design
               </a>
@@ -272,8 +141,8 @@
         <a href="contact.html" class="text-sm text-white/70 hover:text-white px-4 py-2 rounded-full hover:bg-white/5 transition-all duration-200">Contact</a>
       </div>
       <div class="hidden lg:flex items-center gap-2">
-        <a href="index.html#book" class="inline-flex items-center gap-2 text-sm font-medium px-5 py-2.5 rounded-full text-white transition-all duration-200" style="background:#2860E0; box-shadow: 0 2px 10px rgba(40,96,224,0.3);" onmouseover="this.style.boxShadow='0 4px 16px rgba(40,96,224,0.5)'" onmouseout="this.style.boxShadow='0 2px 10px rgba(40,96,224,0.3)'">
-          Book Meeting
+        <a href="https://mckenna-git-main-marcus-4100s-projects.vercel.app" target="_blank" class="inline-flex items-center gap-2 text-sm font-medium px-5 py-2.5 rounded-full text-white transition-all duration-200" style="background:#2860E0; box-shadow: 0 2px 10px rgba(40,96,224,0.3);" onmouseover="this.style.boxShadow='0 4px 16px rgba(40,96,224,0.5)'" onmouseout="this.style.boxShadow='0 2px 10px rgba(40,96,224,0.3)'">
+          Get Started Free
         </a>
         <div class="relative lang-dropdown">
           <button onclick="this.closest('.lang-dropdown').classList.toggle('open')" class="flex items-center justify-center w-9 h-9 rounded-full hover:bg-white/10 transition-all duration-200" title="Language" style="font-size:17px;">
@@ -296,436 +165,198 @@
       </button>
     </div>
     <div id="mobileMenu" class="mobile-menu flex-col gap-4 px-6 py-5 absolute top-full left-4 right-4 mt-2 rounded-2xl" style="background:rgba(28,28,32,0.95); border:1px solid rgba(255,255,255,0.08); backdrop-filter:blur(20px); display:none;">
-      
-      <a href="google-ads-seo.html" class="text-sm" style="color:#8b8b96;">Google Ads & SEO</a>
-      <a href="websites.html" class="text-sm" style="color:#8b8b96;">Website Design</a>
-      <a href="paid-social.html" class="text-sm" style="color:#8b8b96;">Paid Social</a>
-      <a href="contact.html" class="text-sm" style="color:#8b8b96;">Contact</a>
+      <a href="google-ads-seo.html" class="text-sm" style="color:#9a9a9a;">Google Ads & SEO</a>
+      <a href="websites.html" class="text-sm text-white">Website Design</a>
+      <a href="paid-social.html" class="text-sm" style="color:#9a9a9a;">Paid Social</a>
+      <a href="contact.html" class="text-sm" style="color:#9a9a9a;">Contact</a>
     </div>
   </nav>
 
   <!-- ========== HERO ========== -->
-  <section class="pt-40 pb-20 md:pt-52 md:pb-28 relative overflow-hidden" style="min-height:85vh;">
-    <div class="hero-bg-gradient"></div>
-    <div class="elegant-shape shape-1"></div>
-    <div class="elegant-shape shape-2"></div>
-    <div class="elegant-shape shape-3"></div>
-    <div class="hero-vignette"></div>
+  <section class="relative flex flex-col items-center overflow-hidden pt-40 sm:pt-44 pb-24">
+    <div class="orb" style="width:900px; height:900px; top:-300px; left:50%; transform:translateX(-50%); background:radial-gradient(circle, rgba(40,96,224,0.07) 0%, transparent 70%);"></div>
+    <div class="orb" style="width:600px; height:600px; top:30%; right:-200px; background:radial-gradient(circle, rgba(40,96,224,0.03) 0%, transparent 70%);"></div>
 
-    <div class="max-w-3xl mx-auto px-6 relative z-10 text-center" id="lead-form">
-      <h1 class="reveal text-3xl sm:text-4xl md:text-5xl lg:text-[3.6rem] mb-5" style="font-weight:700; letter-spacing:-0.03em; line-height:1.1;">
-        <span class="hero-gradient-text">"Let's build your website."</span>
+    <div class="relative z-10 max-w-4xl mx-auto text-center px-6">
+      <div class="reveal mb-6">
+        <span class="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-medium tracking-wide" style="border:1px solid rgba(255,255,255,0.08); background:rgba(255,255,255,0.04); color:#9a9a9a; backdrop-filter:blur(8px);">
+          <span class="h-1.5 w-1.5 rounded-full bg-emerald-500" style="animation: pulse 2s infinite;"></span>
+          1-3 day delivery guarantee
+        </span>
+      </div>
+
+      <h1 class="reveal reveal-delay-1 text-4xl sm:text-5xl md:text-7xl font-bold mb-6" style="letter-spacing:-0.03em; line-height:1.05;">
+        Your <span id="rotateWord" style="color:#2860E0;">brand</span> deserves<br>
+        <span style="color:#9a9a9a;">a stunning website.</span>
       </h1>
 
-      <p class="reveal reveal-delay-1 text-base md:text-lg mb-10" style="color:#a1a1aa; line-height:1.7; max-width:520px; margin:0 auto;">
-        Tell us about your business and we'll deliver a free design mockup within a few days. No commitment required.
+      <p class="reveal reveal-delay-2 text-base sm:text-lg max-w-2xl mx-auto mb-10" style="color:#9a9a9a; line-height:1.7;">
+        We create a free custom design for your website. Love it? We build and launch it. No setup fees, just one flat monthly subscription with 1-3 day turnaround on any change.
       </p>
 
-      <!-- Step 1: Conversational textarea -->
-      <div id="heroStep1" class="reveal reveal-delay-2">
-        <div class="rounded-2xl p-1.5" style="background:#1c1c20; border:1px solid #2a2a2f; box-shadow: 0 24px 64px rgba(0,0,0,0.4);">
-          <textarea id="heroTextarea" rows="4" placeholder="Describe your business and what you need your website to do..." style="width:100%; background:transparent; border:none; color:#e8e8ec; font-family:'Inter',sans-serif; font-size:0.95rem; padding:16px 18px; resize:none; outline:none; line-height:1.7;"></textarea>
-          <div class="flex items-center justify-between px-3 pb-3 pt-1">
-            <div class="flex items-center gap-3">
-              <button type="button" class="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg transition-colors duration-200" style="color:#5c5c66; background:rgba(255,255,255,0.03); border:1px solid #2a2a2f;" onmouseover="this.style.borderColor='#3a3a40'; this.style.color='#8b8b96'" onmouseout="this.style.borderColor='#2a2a2f'; this.style.color='#5c5c66'">
-                <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                Upload logos & files
-              </button>
-            </div>
-            <button type="button" onclick="document.getElementById('heroStep1').style.display='none'; document.getElementById('heroStep2').style.display='block';" class="flex items-center gap-2 text-sm font-medium px-5 py-2.5 rounded-xl text-white transition-all duration-200" style="background:#2860E0; box-shadow: 0 2px 10px rgba(40,96,224,0.3);" onmouseover="this.style.transform='translateY(-1px)'; this.style.boxShadow='0 4px 16px rgba(40,96,224,0.5)'" onmouseout="this.style.transform='none'; this.style.boxShadow='0 2px 10px rgba(40,96,224,0.3)'">
-              Continue
-              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </button>
-          </div>
-        </div>
-
-        <div class="flex items-center justify-center gap-5 mt-5">
-          <span class="flex items-center gap-1.5 text-xs" style="color:#5c5c66;">
-            <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            ~2 min
-          </span>
-          <span class="flex items-center gap-1.5 text-xs" style="color:#5c5c66;">
-            <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            No sign-up needed
-          </span>
-          <span class="flex items-center gap-1.5 text-xs" style="color:#5c5c66;">
-            <span class="w-1.5 h-1.5 rounded-full" style="background:#34d399;"></span>
-            100% free
-          </span>
-        </div>
-      </div>
-
-      <!-- Step 2: Contact details -->
-      <div id="heroStep2" style="display:none;">
-        <div class="rounded-2xl p-6 md:p-8 text-left" style="background:#1c1c20; border:1px solid #2a2a2f; box-shadow: 0 24px 64px rgba(0,0,0,0.4);">
-          <div class="flex items-center gap-3 mb-6">
-            <button type="button" onclick="document.getElementById('heroStep2').style.display='none'; document.getElementById('heroStep1').style.display='block';" class="flex items-center justify-center w-8 h-8 rounded-lg transition-colors duration-200" style="background:rgba(255,255,255,0.05); border:1px solid #2a2a2f;" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">
-              <svg width="14" height="14" fill="none" stroke="#8b8b96" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-            <p class="text-sm font-medium" style="color:#8b8b96;">Almost there. Where should we send your mockup?</p>
-          </div>
-
-          <form id="websiteForm">
-            <div class="space-y-4">
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label class="form-label">Name *</label>
-                  <input id="wf-name" type="text" class="form-input" placeholder="Your name" required />
-                </div>
-                <div>
-                  <label class="form-label">Business *</label>
-                  <input id="wf-business" type="text" class="form-input" placeholder="Business name" required />
-                </div>
-              </div>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label class="form-label">Email *</label>
-                  <input id="wf-email" type="email" class="form-input" placeholder="you@company.com" required />
-                </div>
-                <div>
-                  <label class="form-label">Phone <span style="color:#5c5c66;">(optional)</span></label>
-                  <div class="flex gap-2">
-                    <select id="wf-dial" class="form-input flex-shrink-0" style="width:100px; padding-left:8px; padding-right:8px;">
-                      <option value="+45">🇩🇰 +45</option>
-                      <option value="+46">🇸🇪 +46</option>
-                      <option value="+47">🇳🇴 +47</option>
-                      <option value="+358">🇫🇮 +358</option>
-                      <option value="+49">🇩🇪 +49</option>
-                      <option value="+44">🇬🇧 +44</option>
-                      <option value="+1">🇺🇸 +1</option>
-                      <option value="+31">🇳🇱 +31</option>
-                      <option value="+33">🇫🇷 +33</option>
-                      <option value="+34">🇪🇸 +34</option>
-                    </select>
-                    <input id="wf-phone" type="tel" class="form-input flex-1" placeholder="00 00 00 00" />
-                  </div>
-                </div>
-              </div>
-              <div>
-                <label class="form-label">Current Website <span style="color:#5c5c66;">(if any)</span></label>
-                <input id="wf-website" type="url" class="form-input" placeholder="https://yoursite.com" />
-              </div>
-              <button id="wf-btn" type="submit" class="submit-btn w-full py-3.5 rounded-xl font-semibold text-sm text-white" style="background:#2860E0; box-shadow: 0 4px 14px rgba(40,96,224,0.3); transition: transform 0.2s cubic-bezier(.4,0,.2,1), box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-1px)'; this.style.boxShadow='0 8px 24px rgba(40,96,224,0.45)'" onmouseout="this.style.transform='none'; this.style.boxShadow='0 4px 14px rgba(40,96,224,0.3)'">
-                Get My Free Mockup →
-              </button>
-              <p id="wf-msg" class="text-xs text-center mt-2" style="display:none;"></p>
-            </div>
-          </form>
-          <script>
-            document.getElementById('websiteForm').addEventListener('submit', async function(e) {
-              e.preventDefault();
-              const btn = document.getElementById('wf-btn');
-              const msg = document.getElementById('wf-msg');
-              btn.textContent = 'Sending...';
-              btn.disabled = true;
-              try {
-                const res = await fetch('/api/contact', {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({
-                    name: document.getElementById('wf-name').value,
-                    email: document.getElementById('wf-email').value,
-                    phone: document.getElementById('wf-dial').value + ' ' + document.getElementById('wf-phone').value,
-                    business: document.getElementById('wf-business').value,
-                    website: document.getElementById('wf-website').value,
-                    source: 'Websites page'
-                  })
-                });
-                if (res.ok) {
-                  btn.textContent = 'Sent! We\'ll be in touch soon.';
-                  btn.style.background = 'rgba(40,96,224,0.15)';
-                  btn.style.color = '#7ba3f0';
-                  this.reset();
-                } else { throw new Error(); }
-              } catch {
-                btn.textContent = 'Get My Free Mockup →';
-                btn.disabled = false;
-                msg.textContent = 'Something went wrong. Please try again.';
-                msg.style.color = '#f87171';
-                msg.style.display = 'block';
-              }
-            });
-          </script>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== SCROLLING MARQUEE ========== -->
-  <section class="py-6 overflow-hidden" style="border-top:1px solid #2a2a2f; border-bottom:1px solid #2a2a2f;">
-    <div class="marquee-track">
-      <span class="flex items-center gap-12 px-6">
-        <span class="stat-huge text-5xl md:text-6xl text-white">50+</span>
-        <span class="mono-label" style="color:#5c5c66;">Websites Delivered</span>
-        <span style="color:#2a2a2f;">///</span>
-        <span class="stat-huge text-5xl md:text-6xl text-white">100%</span>
-        <span class="mono-label" style="color:#5c5c66;">Client Satisfaction</span>
-        <span style="color:#2a2a2f;">///</span>
-        <span class="stat-huge text-5xl md:text-6xl" style="color:#2860E0;">&lt;3s</span>
-        <span class="mono-label" style="color:#5c5c66;">Average Load Time</span>
-        <span style="color:#2a2a2f;">///</span>
-        <span class="stat-huge text-5xl md:text-6xl text-white">24/7</span>
-        <span class="mono-label" style="color:#5c5c66;">Ongoing Support</span>
-        <span style="color:#2a2a2f;">///</span>
-      </span>
-      <span class="flex items-center gap-12 px-6" aria-hidden="true">
-        <span class="stat-huge text-5xl md:text-6xl text-white">50+</span>
-        <span class="mono-label" style="color:#5c5c66;">Websites Delivered</span>
-        <span style="color:#2a2a2f;">///</span>
-        <span class="stat-huge text-5xl md:text-6xl text-white">100%</span>
-        <span class="mono-label" style="color:#5c5c66;">Client Satisfaction</span>
-        <span style="color:#2a2a2f;">///</span>
-        <span class="stat-huge text-5xl md:text-6xl" style="color:#2860E0;">&lt;3s</span>
-        <span class="mono-label" style="color:#5c5c66;">Average Load Time</span>
-        <span style="color:#2a2a2f;">///</span>
-        <span class="stat-huge text-5xl md:text-6xl text-white">24/7</span>
-        <span class="mono-label" style="color:#5c5c66;">Ongoing Support</span>
-        <span style="color:#2a2a2f;">///</span>
-      </span>
-    </div>
-  </section>
-
-  <!-- ========== THE PROBLEM: BOLD EDITORIAL ========== -->
-  <section class="py-28 md:py-40 relative grain-overlay">
-    <div class="max-w-7xl mx-auto px-6 relative z-10">
-      <div class="reveal mb-20">
-        <span class="mono-label block mb-6" style="color:#5c5c66;">[ The old way ]</span>
-        <h2 class="editorial-huge text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white mb-8">
-          You hired an<br>agency. <span class="strikethrough" style="color:#5c5c66;">It was fine.</span>
-        </h2>
-        <p class="text-lg md:text-xl max-w-2xl" style="color:#8b8b96; line-height:1.6;">
-          Months of waiting. Templates disguised as custom work. Developers who vanish. Invoices for every small change. A site that never quite feels done.
-        </p>
-      </div>
-
-      <div class="reveal grid grid-cols-1 md:grid-cols-3 gap-0" style="border:1px solid #2a2a2f; border-radius:16px; overflow:hidden;">
-        <div class="p-8 md:p-10" style="border-bottom:1px solid #2a2a2f; border-right:1px solid transparent; md:border-right:1px solid #2a2a2f;">
-          <span class="mono-label block mb-4" style="color:#ef4444;">01</span>
-          <h3 class="text-lg font-bold text-white mb-2">Endless timelines</h3>
-          <p class="text-sm" style="color:#5c5c66; line-height:1.7;">4 weeks becomes 4 months. You're chasing updates. They're "almost done." Sound familiar?</p>
-        </div>
-        <div class="p-8 md:p-10" style="border-bottom:1px solid #2a2a2f; border-right:1px solid transparent; md:border-right:1px solid #2a2a2f;">
-          <span class="mono-label block mb-4" style="color:#ef4444;">02</span>
-          <h3 class="text-lg font-bold text-white mb-2">Hidden costs</h3>
-          <p class="text-sm" style="color:#5c5c66; line-height:1.7;">Want to change a headline? That'll be an invoice. You end up afraid to touch your own website.</p>
-        </div>
-        <div class="p-8 md:p-10" style="border-bottom:1px solid #2a2a2f;">
-          <span class="mono-label block mb-4" style="color:#ef4444;">03</span>
-          <h3 class="text-lg font-bold text-white mb-2">Template work</h3>
-          <p class="text-sm" style="color:#5c5c66; line-height:1.7;">You paid for bespoke and got a $49 WordPress theme with your logo dropped in.</p>
-        </div>
-        <div class="p-8 md:p-10" style="border-bottom:1px solid #2a2a2f; md:border-bottom:none; border-right:1px solid transparent; md:border-right:1px solid #2a2a2f;">
-          <span class="mono-label block mb-4" style="color:#ef4444;">04</span>
-          <h3 class="text-lg font-bold text-white mb-2">Ghost developers</h3>
-          <p class="text-sm" style="color:#5c5c66; line-height:1.7;">Your project gets bounced between juniors. Nobody owns it. Emails go unanswered.</p>
-        </div>
-        <div class="p-8 md:p-10" style="border-bottom:1px solid #2a2a2f; md:border-bottom:none; border-right:1px solid transparent; md:border-right:1px solid #2a2a2f;">
-          <span class="mono-label block mb-4" style="color:#ef4444;">05</span>
-          <h3 class="text-lg font-bold text-white mb-2">Doesn't convert</h3>
-          <p class="text-sm" style="color:#5c5c66; line-height:1.7;">Looks nice in a portfolio. Does nothing for your business. No strategy, no results.</p>
-        </div>
-        <div class="p-8 md:p-10">
-          <span class="mono-label block mb-4" style="color:#ef4444;">06</span>
-          <h3 class="text-lg font-bold text-white mb-2">Locked in</h3>
-          <p class="text-sm" style="color:#5c5c66; line-height:1.7;">You don't truly own your site. Leave, and they make it difficult. Your work, held hostage.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== THE BETTER WAY: DRAMATIC STATEMENT ========== -->
-  <section class="py-28 md:py-40 relative overflow-hidden" style="background:linear-gradient(180deg, #0d0d10 0%, #151518 100%);">
-    <div class="absolute inset-0" style="background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(40,96,224,0.06) 0%, transparent 60%);"></div>
-    <div class="max-w-7xl mx-auto px-6 relative z-10">
-      <div class="reveal text-center">
-        <span class="mono-label inline-block mb-8 px-4 py-2 rounded-full" style="color:#2860E0; background:rgba(40,96,224,0.08); border:1px solid rgba(40,96,224,0.15);">A new standard</span>
-        <h2 class="editorial-huge text-5xl sm:text-6xl md:text-7xl lg:text-[6rem] text-white mb-10">
-          Websites built<br>with <span style="color:#2860E0;">purpose.</span>
-        </h2>
-        <p class="text-lg md:text-xl max-w-2xl mx-auto mb-16" style="color:#8b8b96; line-height:1.6;">
-          Every project is done with intention. If it's worth doing, it's worth doing right. We're all in, every time.
-        </p>
-      </div>
-
-      <div class="reveal grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-        <div class="text-center">
-          <div class="stat-huge text-6xl md:text-7xl mb-4" style="color:#2860E0;">Fast</div>
-          <p class="mono-label mb-3" style="color:#8b8b96;">Not rushed</p>
-          <p class="text-sm" style="color:#5c5c66; line-height:1.7;">Weeks, not months. Our process is built for speed without cutting corners.</p>
-        </div>
-        <div class="text-center">
-          <div class="stat-huge text-6xl md:text-7xl mb-4 text-white">Clear</div>
-          <p class="mono-label mb-3" style="color:#8b8b96;">Not confusing</p>
-          <p class="text-sm" style="color:#5c5c66; line-height:1.7;">Fixed pricing, clear timelines. You'll never wonder what's happening or what it costs.</p>
-        </div>
-        <div class="text-center">
-          <div class="stat-huge text-6xl md:text-7xl mb-4 text-white">Yours</div>
-          <p class="mono-label mb-3" style="color:#8b8b96;">Not ours</p>
-          <p class="text-sm" style="color:#5c5c66; line-height:1.7;">You own everything. All code, all design, all content. Leave anytime, take it all.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== WHAT YOU GET: BENTO GRID ========== -->
-  <section class="py-28 md:py-40">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="reveal flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
-        <div>
-          <span class="mono-label block mb-4" style="color:#5c5c66;">[ What's included ]</span>
-          <h2 class="editorial-huge text-4xl sm:text-5xl md:text-6xl text-white">Every site<br>ships with</h2>
-        </div>
-        <p class="text-base max-w-sm" style="color:#5c5c66; line-height:1.7;">
-          No add-ons, no upsells. This is the baseline for every project we take on.
-        </p>
-      </div>
-
-      <div class="reveal grid grid-cols-1 md:grid-cols-4 gap-4">
-        <!-- Large card -->
-        <div class="md:col-span-2 md:row-span-2 rounded-2xl p-8 md:p-10 relative overflow-hidden" style="background:#1c1c20; border:1px solid #2a2a2f; min-height:320px;">
-          <div class="absolute bottom-0 right-0 w-48 h-48 rounded-full opacity-[0.07]" style="background:radial-gradient(circle, #2860E0, transparent); transform: translate(25%, 25%);"></div>
-          <span class="mono-label block mb-6" style="color:#2860E0;">Custom design</span>
-          <h3 class="text-2xl md:text-3xl font-bold text-white mb-4" style="letter-spacing:-0.02em; line-height:1.15;">Designed for your brand. Not from a template.</h3>
-          <p class="text-sm max-w-sm" style="color:#8b8b96; line-height:1.7;">Every pixel is intentional. Your site will look and feel uniquely yours - because it is.</p>
-        </div>
-        <div class="rounded-2xl p-7" style="background:#1c1c20; border:1px solid #2a2a2f;">
-          <span class="mono-label block mb-4" style="color:#2860E0;">Mobile-first</span>
-          <h3 class="text-base font-bold text-white mb-2">Built for phones, scaled up</h3>
-          <p class="text-xs" style="color:#5c5c66; line-height:1.6;">60%+ of traffic is mobile. We design for that reality first.</p>
-        </div>
-        <div class="rounded-2xl p-7" style="background:#1c1c20; border:1px solid #2a2a2f;">
-          <span class="mono-label block mb-4" style="color:#2860E0;">Sub-3s loads</span>
-          <h3 class="text-base font-bold text-white mb-2">Clean code, zero bloat</h3>
-          <p class="text-xs" style="color:#5c5c66; line-height:1.6;">Fast loading = better UX, better SEO, higher conversions.</p>
-        </div>
-        <div class="rounded-2xl p-7" style="background:#1c1c20; border:1px solid #2a2a2f;">
-          <span class="mono-label block mb-4" style="color:#2860E0;">SEO-ready</span>
-          <h3 class="text-base font-bold text-white mb-2">Built to be found</h3>
-          <p class="text-xs" style="color:#5c5c66; line-height:1.6;">Proper structure, meta tags, schema markup, fast page speed.</p>
-        </div>
-        <div class="rounded-2xl p-7" style="background:#1c1c20; border:1px solid #2a2a2f;">
-          <span class="mono-label block mb-4" style="color:#2860E0;">Conversions</span>
-          <h3 class="text-base font-bold text-white mb-2">Designed to drive results</h3>
-          <p class="text-xs" style="color:#5c5c66; line-height:1.6;">Strategic CTAs and layouts that turn visitors into customers.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== HOW IT WORKS: CLEAN STEPS ========== -->
-  <section class="py-24 md:py-32 relative" style="border-top:1px solid #2a2a2f;">
-    <div class="max-w-7xl mx-auto px-6 relative z-10">
-      <div class="reveal flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
-        <div>
-          <span class="mono-label block mb-4" style="color:#5c5c66;">[ The process ]</span>
-          <h2 class="font-display text-3xl sm:text-4xl font-bold text-white" style="letter-spacing:-0.03em; line-height:1.1;">Four steps. Zero confusion.</h2>
-        </div>
-        <p class="text-sm max-w-xs" style="color:#5c5c66; line-height:1.7;">
-          From first contact to live website. Clear steps, upfront costs.
-        </p>
-      </div>
-
-      <div class="reveal grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0" style="border:1px solid #2a2a2f; border-radius:12px; overflow:hidden;">
-        <div class="p-6 md:p-8 relative" style="border-bottom:1px solid #2a2a2f; sm:border-right:1px solid #2a2a2f;">
-          <span class="font-mono text-xs font-semibold block mb-3" style="color:#2860E0;">01</span>
-          <h3 class="text-base font-bold text-white mb-2" style="letter-spacing:-0.02em;">Submit your brief</h3>
-          <p class="text-xs" style="color:#5c5c66; line-height:1.7;">Fill out the form. Takes 2 minutes. No account, no call.</p>
-        </div>
-        <div class="p-6 md:p-8 relative" style="border-bottom:1px solid #2a2a2f;">
-          <span class="font-mono text-xs font-semibold block mb-3" style="color:#2860E0;">02</span>
-          <h3 class="text-base font-bold text-white mb-2" style="letter-spacing:-0.02em;">Get a free mockup</h3>
-          <p class="text-xs" style="color:#5c5c66; line-height:1.7;">Within days, a custom design preview. Free, yours to keep.</p>
-        </div>
-        <div class="p-6 md:p-8 relative" style="border-bottom:1px solid transparent; lg:border-bottom:none; sm:border-right:1px solid #2a2a2f;">
-          <span class="font-mono text-xs font-semibold block mb-3" style="color:#2860E0;">03</span>
-          <h3 class="text-base font-bold text-white mb-2" style="letter-spacing:-0.02em;">Transparent quote</h3>
-          <p class="text-xs" style="color:#5c5c66; line-height:1.7;">Every page and feature priced clearly. No surprises.</p>
-        </div>
-        <div class="p-6 md:p-8 relative">
-          <span class="font-mono text-xs font-semibold block mb-3" style="color:#2860E0;">04</span>
-          <h3 class="text-base font-bold text-white mb-2" style="letter-spacing:-0.02em;">Build, refine, launch</h3>
-          <p class="text-xs" style="color:#5c5c66; line-height:1.7;">Revisions until you're happy. Then we go live.</p>
-        </div>
-      </div>
-
-      <div class="reveal mt-12 text-center">
-        <a href="#lead-form" class="inline-flex items-center gap-3 font-medium px-7 py-3.5 rounded-full text-white text-sm" style="background:#2860E0; box-shadow: 0 4px 20px rgba(40,96,224,0.3); transition: transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 32px rgba(40,96,224,0.45)'" onmouseout="this.style.transform='none'; this.style.boxShadow='0 4px 20px rgba(40,96,224,0.3)'">
-          Start with your free preview
-          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      <div class="reveal reveal-delay-3">
+        <a href="https://mckenna-git-main-marcus-4100s-projects.vercel.app" target="_blank" class="btn-primary">
+          Get a free website design
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- ========== COMPARISON: EDITORIAL TWO-COLUMN ========== -->
-  <section class="py-24 md:py-32" style="border-top:1px solid #2a2a2f;">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="reveal mb-14">
-        <span class="mono-label block mb-4" style="color:#5c5c66;">[ Why businesses switch ]</span>
-        <h2 class="font-display text-3xl sm:text-4xl font-bold text-white" style="letter-spacing:-0.03em; line-height:1.1;">The agency model is <span style="color:#ef4444; text-decoration:line-through; text-decoration-thickness:2px;">broken</span>.</h2>
+  <!-- ========== SHOWCASE SLIDER ========== -->
+  <section class="pb-24 px-6">
+    <div class="max-w-5xl mx-auto">
+      <!-- 3D Carousel -->
+      <div class="relative w-full" style="perspective:1200px;">
+        <div class="relative w-full" style="aspect-ratio:16/9;">
+          <!-- Slides injected by JS -->
+          <div id="showcaseTrack" class="absolute inset-0"></div>
+        </div>
+      </div>
+      <!-- Controls -->
+      <div class="mt-8 flex items-center justify-center gap-8">
+        <button onclick="showcaseNav(-1)" class="flex h-10 w-10 items-center justify-center rounded-full transition-all duration-200" style="border:1px solid #2a2a2a; background:rgba(255,255,255,0.03); color:#9a9a9a;" onmouseover="this.style.borderColor='rgba(40,96,224,0.3)'; this.style.color='#fff'" onmouseout="this.style.borderColor='#2a2a2a'; this.style.color='#9a9a9a'">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="text-center min-w-[160px]">
+          <p id="showcaseTitle" class="text-sm font-semibold" style="font-family:'Outfit',sans-serif;"></p>
+          <p id="showcaseCategory" class="text-xs mt-0.5" style="color:#8a8a8a;"></p>
+        </div>
+        <button onclick="showcaseNav(1)" class="flex h-10 w-10 items-center justify-center rounded-full transition-all duration-200" style="border:1px solid #2a2a2a; background:rgba(255,255,255,0.03); color:#9a9a9a;" onmouseover="this.style.borderColor='rgba(40,96,224,0.3)'; this.style.color='#fff'" onmouseout="this.style.borderColor='#2a2a2a'; this.style.color='#9a9a9a'">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <!-- Dots -->
+      <div id="showcaseDots" class="mt-4 flex items-center justify-center gap-1.5"></div>
+    </div>
+  </section>
+
+  <!-- ========== AI INTAKE CHAT ========== -->
+  <section id="get-started" class="py-20 px-6">
+    <div class="max-w-3xl mx-auto">
+      <div class="reveal text-center mb-10">
+        <span class="text-xs uppercase tracking-widest font-medium" style="color:#2860E0; letter-spacing:0.2em;">Free — no credit card required</span>
+        <h2 class="text-3xl sm:text-4xl font-bold mt-4" style="letter-spacing:-0.03em;">Tell us about your project</h2>
+        <p class="mt-4 max-w-lg mx-auto" style="color:#9a9a9a;">Our AI takes 5 minutes to collect everything needed for your free design mockup.</p>
+      </div>
+      <div class="reveal rounded-2xl overflow-hidden" style="border:1px solid rgba(255,255,255,0.08); background:#111; height:680px;">
+        <iframe
+          src="https://mckenna-git-main-marcus-4100s-projects.vercel.app/intake"
+          style="width:100%; height:100%; border:none; display:block;"
+          title="Free website design intake"
+          loading="lazy"
+        ></iframe>
+      </div>
+      <p class="text-center text-xs mt-4" style="color:#8a8a8a;">Free mockup in 1-3 days &nbsp;·&nbsp; No commitment required</p>
+    </div>
+  </section>
+
+  <!-- ========== PAIN POINTS ========== -->
+  <section class="py-32 px-6">
+    <div class="max-w-4xl mx-auto">
+      <div class="reveal text-center mb-16">
+        <span class="text-xs uppercase tracking-widest font-medium" style="color:#2860E0; letter-spacing:0.2em;">Sound familiar?</span>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mt-4" style="letter-spacing:-0.03em;">
+          Tired of agencies<br>
+          <span style="color:#9a9a9a;">that overpromise and underdeliver?</span>
+        </h2>
       </div>
 
-      <div class="reveal grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Traditional agencies -->
-        <div class="rounded-xl p-7 md:p-8" style="background:#1c1c20; border:1px solid #2a2a2f;">
-          <div class="flex items-center gap-3 mb-6 pb-5" style="border-bottom:1px solid #2a2a2f;">
-            <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.2);">
-              <svg width="14" height="14" fill="none" stroke="#ef4444" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      <div class="hidden sm:grid grid-cols-2 gap-8 mb-4 px-6">
+        <span class="text-xs uppercase tracking-widest font-medium" style="color:rgba(239,68,68,0.8); letter-spacing:0.15em;">Traditional agencies</span>
+        <span class="text-xs uppercase tracking-widest font-medium" style="color:rgba(52,211,153,0.8); letter-spacing:0.15em;">With us</span>
+      </div>
+
+      <div class="space-y-4">
+        <!-- Row 1 -->
+        <div class="reveal rounded-2xl p-5 sm:p-6 card-hover" style="border:1px solid rgba(255,255,255,0.06); background:rgba(255,255,255,0.02);">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8">
+            <div>
+              <span class="sm:hidden text-xs uppercase tracking-widest font-medium mb-2 block" style="color:rgba(239,68,68,0.8);">Traditional agencies</span>
+              <div class="flex gap-3">
+                <div class="shrink-0 mt-0.5 flex h-5 w-5 items-center justify-center rounded-full" style="background:rgba(239,68,68,0.1);">
+                  <svg width="10" height="10" fill="none" stroke="#ef4444" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12" stroke-linecap="round"/></svg>
+                </div>
+                <p class="text-sm leading-relaxed" style="color:#9a9a9a;">Paid thousands upfront for a site that looked nothing like what you were promised.</p>
+              </div>
             </div>
-            <span class="font-mono text-xs font-medium tracking-wider uppercase" style="color:#8b8b96;">Traditional agencies</span>
-          </div>
-          <div class="space-y-4">
-            <div class="flex items-start gap-3">
-              <span class="text-xs mt-0.5" style="color:#5c5c66;">&#x2715;</span>
-              <div><span class="text-sm text-white font-medium">2-6 month timelines</span><p class="text-xs mt-0.5" style="color:#5c5c66;">Endless discovery phases and scope creep</p></div>
-            </div>
-            <div class="flex items-start gap-3">
-              <span class="text-xs mt-0.5" style="color:#5c5c66;">&#x2715;</span>
-              <div><span class="text-sm text-white font-medium">Vague pricing + extras</span><p class="text-xs mt-0.5" style="color:#5c5c66;">Final invoice always higher than the quote</p></div>
-            </div>
-            <div class="flex items-start gap-3">
-              <span class="text-xs mt-0.5" style="color:#5c5c66;">&#x2715;</span>
-              <div><span class="text-sm text-white font-medium">Template designs</span><p class="text-xs mt-0.5" style="color:#5c5c66;">Cookie-cutter themes with your logo slapped on</p></div>
-            </div>
-            <div class="flex items-start gap-3">
-              <span class="text-xs mt-0.5" style="color:#5c5c66;">&#x2715;</span>
-              <div><span class="text-sm text-white font-medium">Locked-in ownership</span><p class="text-xs mt-0.5" style="color:#5c5c66;">Leave and you lose your site</p></div>
-            </div>
-            <div class="flex items-start gap-3">
-              <span class="text-xs mt-0.5" style="color:#5c5c66;">&#x2715;</span>
-              <div><span class="text-sm text-white font-medium">Nothing before you pay</span><p class="text-xs mt-0.5" style="color:#5c5c66;">Commit thousands before seeing a single design</p></div>
+            <div>
+              <span class="sm:hidden text-xs uppercase tracking-widest font-medium mb-2 block" style="color:rgba(52,211,153,0.8);">With us</span>
+              <div class="flex gap-3">
+                <div class="shrink-0 mt-0.5 flex h-5 w-5 items-center justify-center rounded-full" style="background:rgba(52,211,153,0.1);">
+                  <svg width="10" height="10" fill="none" stroke="#34d399" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <p class="text-sm leading-relaxed font-medium" style="color:#dedede;">Free mockup first. You see exactly what you get before spending a cent.</p>
+              </div>
             </div>
           </div>
         </div>
-
-        <!-- McKenna -->
-        <div class="rounded-xl p-7 md:p-8" style="background:#1c1c20; border:1px solid #2860E0; box-shadow: 0 0 40px rgba(40,96,224,0.08);">
-          <div class="flex items-center gap-3 mb-6 pb-5" style="border-bottom:1px solid #2a2a2f;">
-            <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background:rgba(40,96,224,0.1); border:1px solid rgba(40,96,224,0.3);">
-              <svg width="14" height="14" fill="none" stroke="#2860E0" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>
+        <!-- Row 2 -->
+        <div class="reveal reveal-delay-1 rounded-2xl p-5 sm:p-6 card-hover" style="border:1px solid rgba(255,255,255,0.06); background:rgba(255,255,255,0.02);">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8">
+            <div>
+              <span class="sm:hidden text-xs uppercase tracking-widest font-medium mb-2 block" style="color:rgba(239,68,68,0.8);">Traditional agencies</span>
+              <div class="flex gap-3">
+                <div class="shrink-0 mt-0.5 flex h-5 w-5 items-center justify-center rounded-full" style="background:rgba(239,68,68,0.1);">
+                  <svg width="10" height="10" fill="none" stroke="#ef4444" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12" stroke-linecap="round"/></svg>
+                </div>
+                <p class="text-sm leading-relaxed" style="color:#9a9a9a;">Every small text change or image swap came with a surprise invoice.</p>
+              </div>
             </div>
-            <span class="font-mono text-xs font-medium tracking-wider uppercase" style="color:#2860E0;">McKenna</span>
+            <div>
+              <span class="sm:hidden text-xs uppercase tracking-widest font-medium mb-2 block" style="color:rgba(52,211,153,0.8);">With us</span>
+              <div class="flex gap-3">
+                <div class="shrink-0 mt-0.5 flex h-5 w-5 items-center justify-center rounded-full" style="background:rgba(52,211,153,0.1);">
+                  <svg width="10" height="10" fill="none" stroke="#34d399" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <p class="text-sm leading-relaxed font-medium" style="color:#dedede;">Unlimited revisions included. Change anything, anytime. No extra fees.</p>
+              </div>
+            </div>
           </div>
-          <div class="space-y-4">
-            <div class="flex items-start gap-3">
-              <span class="text-xs mt-0.5" style="color:#2860E0;">&#x2713;</span>
-              <div><span class="text-sm text-white font-medium">Done in weeks</span><p class="text-xs mt-0.5" style="color:#8b8b96;">Fast, focused builds without the bloat</p></div>
+        </div>
+        <!-- Row 3 -->
+        <div class="reveal reveal-delay-2 rounded-2xl p-5 sm:p-6 card-hover" style="border:1px solid rgba(255,255,255,0.06); background:rgba(255,255,255,0.02);">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8">
+            <div>
+              <span class="sm:hidden text-xs uppercase tracking-widest font-medium mb-2 block" style="color:rgba(239,68,68,0.8);">Traditional agencies</span>
+              <div class="flex gap-3">
+                <div class="shrink-0 mt-0.5 flex h-5 w-5 items-center justify-center rounded-full" style="background:rgba(239,68,68,0.1);">
+                  <svg width="10" height="10" fill="none" stroke="#ef4444" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12" stroke-linecap="round"/></svg>
+                </div>
+                <p class="text-sm leading-relaxed" style="color:#9a9a9a;">Locked into a multi-year contract with an agency that stopped responding.</p>
+              </div>
             </div>
-            <div class="flex items-start gap-3">
-              <span class="text-xs mt-0.5" style="color:#2860E0;">&#x2713;</span>
-              <div><span class="text-sm text-white font-medium">Fixed, upfront pricing</span><p class="text-xs mt-0.5" style="color:#8b8b96;">Know the cost before you commit</p></div>
+            <div>
+              <span class="sm:hidden text-xs uppercase tracking-widest font-medium mb-2 block" style="color:rgba(52,211,153,0.8);">With us</span>
+              <div class="flex gap-3">
+                <div class="shrink-0 mt-0.5 flex h-5 w-5 items-center justify-center rounded-full" style="background:rgba(52,211,153,0.1);">
+                  <svg width="10" height="10" fill="none" stroke="#34d399" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <p class="text-sm leading-relaxed font-medium" style="color:#dedede;">6-month commitment, then month-to-month. We respond within 24 hours.</p>
+              </div>
             </div>
-            <div class="flex items-start gap-3">
-              <span class="text-xs mt-0.5" style="color:#2860E0;">&#x2713;</span>
-              <div><span class="text-sm text-white font-medium">100% custom design</span><p class="text-xs mt-0.5" style="color:#8b8b96;">Built from scratch around your brand</p></div>
+          </div>
+        </div>
+        <!-- Row 4 -->
+        <div class="reveal reveal-delay-3 rounded-2xl p-5 sm:p-6 card-hover" style="border:1px solid rgba(255,255,255,0.06); background:rgba(255,255,255,0.02);">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8">
+            <div>
+              <span class="sm:hidden text-xs uppercase tracking-widest font-medium mb-2 block" style="color:rgba(239,68,68,0.8);">Traditional agencies</span>
+              <div class="flex gap-3">
+                <div class="shrink-0 mt-0.5 flex h-5 w-5 items-center justify-center rounded-full" style="background:rgba(239,68,68,0.1);">
+                  <svg width="10" height="10" fill="none" stroke="#ef4444" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12" stroke-linecap="round"/></svg>
+                </div>
+                <p class="text-sm leading-relaxed" style="color:#9a9a9a;">The "final" website took 3-6 months and still needed work.</p>
+              </div>
             </div>
-            <div class="flex items-start gap-3">
-              <span class="text-xs mt-0.5" style="color:#2860E0;">&#x2713;</span>
-              <div><span class="text-sm text-white font-medium">You own everything</span><p class="text-xs mt-0.5" style="color:#8b8b96;">Code, domain, content - all yours</p></div>
-            </div>
-            <div class="flex items-start gap-3">
-              <span class="text-xs mt-0.5" style="color:#2860E0;">&#x2713;</span>
-              <div><span class="text-sm text-white font-medium">Free preview first</span><p class="text-xs mt-0.5" style="color:#8b8b96;">See a real mockup before spending a krone</p></div>
+            <div>
+              <span class="sm:hidden text-xs uppercase tracking-widest font-medium mb-2 block" style="color:rgba(52,211,153,0.8);">With us</span>
+              <div class="flex gap-3">
+                <div class="shrink-0 mt-0.5 flex h-5 w-5 items-center justify-center rounded-full" style="background:rgba(52,211,153,0.1);">
+                  <svg width="10" height="10" fill="none" stroke="#34d399" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <p class="text-sm leading-relaxed font-medium" style="color:#dedede;">Your first mockup is ready in 1-3 days. Build and launch within a week.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -733,50 +364,161 @@
     </div>
   </section>
 
-  <!-- ========== PRICING: BOLD ========== -->
-  <section class="py-28 md:py-40" style="border-top:1px solid #2a2a2f;">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="reveal mb-16">
-        <span class="mono-label block mb-4" style="color:#5c5c66;">[ Pricing ]</span>
-        <h2 class="editorial-huge text-4xl sm:text-5xl md:text-6xl text-white">One build fee.<br>One <span style="color:#2860E0;">optional</span> plan.</h2>
+  <!-- ========== WHAT WE DO ========== -->
+  <section class="py-32 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="reveal text-center mb-20">
+        <span class="text-xs uppercase tracking-widest font-medium" style="color:#2860E0; letter-spacing:0.2em;">What we do</span>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mt-4" style="letter-spacing:-0.03em;">
+          Your website, always current.<br>
+          <span style="color:#9a9a9a;">Always converting.</span>
+        </h2>
+        <p class="mt-5 max-w-2xl mx-auto" style="color:#9a9a9a;">
+          We handle design, development, and ongoing updates so your site never goes stale. Instead of one delivery and a goodbye, you get a team that keeps your online presence sharp, relevant, and performing.
+        </p>
       </div>
 
-      <div class="reveal grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl">
-        <!-- Build -->
-        <div class="rounded-2xl p-8 md:p-10" style="background:#1c1c20; border:1px solid #2a2a2f;">
-          <span class="mono-label block mb-6" style="color:#8b8b96;">The build</span>
-          <h3 class="text-2xl font-bold text-white mb-4" style="letter-spacing:-0.02em;">Custom Website</h3>
-          <p class="text-sm mb-8" style="color:#5c5c66; line-height:1.7;">
-            Designed and built from scratch. You're involved at every step. Revisions included until you're 100% happy.
-          </p>
-          <div class="space-y-3">
-            <div class="flex items-center gap-3"><span class="mono-label" style="color:#2860E0;">+</span><span class="text-sm" style="color:#8b8b96;">100% custom, no templates</span></div>
-            <div class="flex items-center gap-3"><span class="mono-label" style="color:#2860E0;">+</span><span class="text-sm" style="color:#8b8b96;">Fixed-price quote upfront</span></div>
-            <div class="flex items-center gap-3"><span class="mono-label" style="color:#2860E0;">+</span><span class="text-sm" style="color:#8b8b96;">Revisions until launch</span></div>
-            <div class="flex items-center gap-3"><span class="mono-label" style="color:#2860E0;">+</span><span class="text-sm" style="color:#8b8b96;">SEO-ready, mobile-first, fast</span></div>
-            <div class="flex items-center gap-3"><span class="mono-label" style="color:#2860E0;">+</span><span class="text-sm" style="color:#8b8b96;">You own everything</span></div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="reveal rounded-2xl p-8 card-hover" style="border:1px solid rgba(255,255,255,0.07); background:rgba(255,255,255,0.02);">
+          <div class="mb-5 inline-flex items-center justify-center rounded-xl p-3" style="background:rgba(40,96,224,0.1);">
+            <svg width="20" height="20" fill="none" stroke="#2860E0" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="text-lg font-semibold mb-3" style="letter-spacing:-0.02em;">Designed from scratch</h3>
+          <p class="text-sm leading-relaxed" style="color:#9a9a9a;">No templates. Every site is custom-built to match your brand, your audience, and your goals. You get a site that feels like yours.</p>
+        </div>
+        <div class="reveal reveal-delay-1 rounded-2xl p-8 card-hover" style="border:1px solid rgba(255,255,255,0.07); background:rgba(255,255,255,0.02);">
+          <div class="mb-5 inline-flex items-center justify-center rounded-xl p-3" style="background:rgba(40,96,224,0.1);">
+            <svg width="20" height="20" fill="none" stroke="#2860E0" stroke-width="1.8" viewBox="0 0 24 24"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="text-lg font-semibold mb-3" style="letter-spacing:-0.02em;">Built for performance</h3>
+          <p class="text-sm leading-relaxed" style="color:#9a9a9a;">Lightning-fast load times, fully responsive, and SEO-optimized out of the box. Your site works as hard as you do.</p>
+        </div>
+        <div class="reveal reveal-delay-2 rounded-2xl p-8 card-hover" style="border:1px solid rgba(255,255,255,0.07); background:rgba(255,255,255,0.02);">
+          <div class="mb-5 inline-flex items-center justify-center rounded-xl p-3" style="background:rgba(40,96,224,0.1);">
+            <svg width="20" height="20" fill="none" stroke="#2860E0" stroke-width="1.8" viewBox="0 0 24 24"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="text-lg font-semibold mb-3" style="letter-spacing:-0.02em;">Optimized to convert</h3>
+          <p class="text-sm leading-relaxed" style="color:#9a9a9a;">Strategic layouts, compelling copy placement, and clear calls to action. We build sites that turn visitors into paying customers.</p>
+        </div>
+        <div class="reveal reveal-delay-3 rounded-2xl p-8 card-hover" style="border:1px solid rgba(255,255,255,0.07); background:rgba(255,255,255,0.02);">
+          <div class="mb-5 inline-flex items-center justify-center rounded-xl p-3" style="background:rgba(40,96,224,0.1);">
+            <svg width="20" height="20" fill="none" stroke="#2860E0" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="text-lg font-semibold mb-3" style="letter-spacing:-0.02em;">Endlessly flexible</h3>
+          <p class="text-sm leading-relaxed" style="color:#9a9a9a;">New season, new offer, new direction? Queue up a revision and we'll have it live in 1-3 days. Your site never falls behind your business.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== HOW IT WORKS ========== -->
+  <section id="how-it-works" class="py-32 px-6">
+    <div class="max-w-5xl mx-auto">
+      <div class="reveal text-center mb-20">
+        <span class="text-xs uppercase tracking-widest font-medium" style="color:#2860E0; letter-spacing:0.2em;">How it works</span>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mt-4" style="letter-spacing:-0.03em;">
+          Four simple steps.<br>
+          <span style="color:#9a9a9a;">That is it.</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
+        <div class="step-card reveal text-center rounded-2xl p-6 border border-transparent" data-step="0">
+          <div class="step-icon-wrap mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-2xl" style="border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.03);">
+            <svg width="20" height="20" fill="none" stroke="#2860E0" stroke-width="1.8" viewBox="0 0 24 24" style="opacity:0.6;"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="flex items-center justify-center gap-2 mb-2">
+            <span class="text-xs font-mono tracking-wider" style="color:#8a8a8a;">01</span>
+          </div>
+          <h3 class="text-lg font-semibold mb-3" style="letter-spacing:-0.02em;">Tell us your vision</h3>
+          <p class="text-sm leading-relaxed max-w-xs mx-auto" style="color:#9a9a9a;">Fill out our quick intake form. Share your brand, your goals, and the vibe you are going for. Takes about 5 minutes.</p>
+        </div>
+        <div class="step-card reveal reveal-delay-1 text-center rounded-2xl p-6 border border-transparent" data-step="1">
+          <div class="step-icon-wrap mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-2xl" style="border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.03);">
+            <svg width="20" height="20" fill="none" stroke="#2860E0" stroke-width="1.8" viewBox="0 0 24 24" style="opacity:0.6;"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="flex items-center justify-center gap-2 mb-2">
+            <span class="text-xs font-mono tracking-wider" style="color:#8a8a8a;">02</span>
+            <span class="text-xs uppercase tracking-wider font-medium" style="color:rgba(40,96,224,0.7);">Optional</span>
+          </div>
+          <h3 class="text-lg font-semibold mb-3" style="letter-spacing:-0.02em;">Optional strategy call</h3>
+          <p class="text-sm leading-relaxed max-w-xs mx-auto" style="color:#9a9a9a;">Want to talk it through? Book a free call with our team. Not required, but always available if you want a more personal touch.</p>
+        </div>
+        <div class="step-card reveal reveal-delay-2 text-center rounded-2xl p-6 border border-transparent" data-step="2">
+          <div class="step-icon-wrap mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-2xl" style="border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.03);">
+            <svg width="20" height="20" fill="none" stroke="#2860E0" stroke-width="1.8" viewBox="0 0 24 24" style="opacity:0.6;"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="flex items-center justify-center gap-2 mb-2">
+            <span class="text-xs font-mono tracking-wider" style="color:#8a8a8a;">03</span>
+          </div>
+          <h3 class="text-lg font-semibold mb-3" style="letter-spacing:-0.02em;">We design and build</h3>
+          <p class="text-sm leading-relaxed max-w-xs mx-auto" style="color:#9a9a9a;">We create a free design mockup tailored to your brand. No commitment until you love it. Once approved, we build it and your subscription begins.</p>
+        </div>
+        <div class="step-card reveal reveal-delay-3 text-center rounded-2xl p-6 border border-transparent" data-step="3">
+          <div class="step-icon-wrap mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-2xl" style="border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.03);">
+            <svg width="20" height="20" fill="none" stroke="#2860E0" stroke-width="1.8" viewBox="0 0 24 24" style="opacity:0.6;"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="flex items-center justify-center gap-2 mb-2">
+            <span class="text-xs font-mono tracking-wider" style="color:#8a8a8a;">04</span>
+          </div>
+          <h3 class="text-lg font-semibold mb-3" style="letter-spacing:-0.02em;">Launch and iterate</h3>
+          <p class="text-sm leading-relaxed max-w-xs mx-auto" style="color:#9a9a9a;">Your site goes live. Need changes? Queue up a revision anytime. Your website evolves with your business.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== WHY US ========== -->
+  <section class="py-32 px-6">
+    <div class="max-w-5xl mx-auto">
+      <div class="reveal text-center mb-20">
+        <span class="text-xs uppercase tracking-widest font-medium" style="color:#2860E0; letter-spacing:0.2em;">Why subscription</span>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mt-4" style="letter-spacing:-0.03em;">
+          Stop switching agencies.<br>
+          <span style="color:#9a9a9a;">Start actually growing.</span>
+        </h2>
+        <p class="mt-5 max-w-2xl mx-auto" style="color:#9a9a9a;">
+          Traditional agencies charge thousands upfront, take months to deliver, then disappear. Every small change becomes a new invoice. So you switch to the next one, and the cycle repeats. With us, you get a dedicated team that keeps your site fresh, optimized, and working for you. Same people, flat fee, no surprises.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <!-- Guarantee card (highlighted) -->
+        <div class="reveal relative flex gap-4 rounded-2xl p-6 card-hover" style="border:1px solid rgba(40,96,224,0.2); background:rgba(40,96,224,0.04);">
+          <div class="absolute -top-2.5 left-6 px-2 py-0.5 rounded-md text-xs font-semibold text-white uppercase tracking-wider" style="background:#2860E0;">Guarantee</div>
+          <div class="shrink-0 mt-0.5">
+            <svg width="20" height="20" fill="none" stroke="#2860E0" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <h3 class="text-sm font-semibold mb-1.5" style="letter-spacing:-0.01em;">1-3 day turnaround</h3>
+            <p class="text-sm leading-relaxed" style="color:#9a9a9a;">Your first design draft is ready within days, not months. Once you are a client, every revision request is turned around in 1-3 business days. Guaranteed.</p>
           </div>
         </div>
-
-        <!-- Care plan -->
-        <div class="rounded-2xl p-8 md:p-10 relative overflow-hidden" style="background:#1c1c20; border:1px solid rgba(40,96,224,0.3);">
-          <div class="absolute top-0 right-0 w-64 h-64 rounded-full opacity-[0.06]" style="background:radial-gradient(circle, #2860E0 0%, transparent 70%); transform: translate(30%, -30%);"></div>
-          <div class="relative z-10">
-            <span class="mono-label block mb-6" style="color:#2860E0;">After launch</span>
-            <h3 class="text-2xl font-bold text-white mb-1" style="letter-spacing:-0.02em;">Ongoing Care</h3>
-            <div class="flex items-baseline gap-1.5 mb-4">
-              <span class="stat-huge text-5xl" style="color:#2860E0;">1.500</span>
-              <span class="text-sm" style="color:#5c5c66;">kr/month</span>
-            </div>
-            <p class="text-sm mb-8" style="color:#5c5c66; line-height:1.7;">
-              Unlimited changes, fast turnaround, hosting included. Your site never stagnates.
-            </p>
-            <div class="space-y-3">
-              <div class="flex items-center gap-3"><span class="mono-label" style="color:#2860E0;">+</span><span class="text-sm" style="color:#8b8b96;">Unlimited revisions</span></div>
-              <div class="flex items-center gap-3"><span class="mono-label" style="color:#2860E0;">+</span><span class="text-sm" style="color:#8b8b96;">Fast turnaround</span></div>
-              <div class="flex items-center gap-3"><span class="mono-label" style="color:#2860E0;">+</span><span class="text-sm" style="color:#8b8b96;">Hosting, security & performance</span></div>
-              <div class="flex items-center gap-3"><span class="mono-label" style="color:#2860E0;">+</span><span class="text-sm" style="color:#8b8b96;">Cancel anytime</span></div>
-            </div>
+        <div class="reveal reveal-delay-1 flex gap-4 rounded-2xl p-6 card-hover" style="border:1px solid rgba(255,255,255,0.06); background:rgba(255,255,255,0.02);">
+          <div class="shrink-0 mt-0.5">
+            <svg width="20" height="20" fill="none" stroke="#2860E0" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <h3 class="text-sm font-semibold mb-1.5" style="letter-spacing:-0.01em;">Unlimited revisions</h3>
+            <p class="text-sm leading-relaxed" style="color:#9a9a9a;">Need a new banner? Updated copy? A seasonal redesign? Queue it up. One request at a time, as many as you need. Your site evolves with your business.</p>
+          </div>
+        </div>
+        <div class="reveal reveal-delay-2 flex gap-4 rounded-2xl p-6 card-hover" style="border:1px solid rgba(255,255,255,0.06); background:rgba(255,255,255,0.02);">
+          <div class="shrink-0 mt-0.5">
+            <svg width="20" height="20" fill="none" stroke="#2860E0" stroke-width="1.8" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <h3 class="text-sm font-semibold mb-1.5" style="letter-spacing:-0.01em;">Simple 6-month commitment</h3>
+            <p class="text-sm leading-relaxed" style="color:#9a9a9a;">Commit to 6 months and let us prove the value. After that, continue month-to-month or walk away with all your site files. No hidden fees.</p>
+          </div>
+        </div>
+        <div class="reveal reveal-delay-3 flex gap-4 rounded-2xl p-6 card-hover" style="border:1px solid rgba(255,255,255,0.06); background:rgba(255,255,255,0.02);">
+          <div class="shrink-0 mt-0.5">
+            <svg width="20" height="20" fill="none" stroke="#2860E0" stroke-width="1.8" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <h3 class="text-sm font-semibold mb-1.5" style="letter-spacing:-0.01em;">Built for your business</h3>
+            <p class="text-sm leading-relaxed" style="color:#9a9a9a;">From landing pages to full multi-page sites with animations, forms, and integrations. We handle the design and the technical details so you can focus on what you do best.</p>
           </div>
         </div>
       </div>
@@ -784,115 +526,66 @@
   </section>
 
   <!-- ========== FAQ ========== -->
-  <section class="py-28 md:py-40" style="border-top:1px solid #2a2a2f;">
-    <div class="max-w-3xl mx-auto px-6">
-      <div class="reveal mb-16">
-        <span class="mono-label block mb-4" style="color:#5c5c66;">[ FAQ ]</span>
-        <h2 class="editorial-huge text-4xl sm:text-5xl md:text-6xl text-white">Common<br>questions</h2>
-      </div>
+  <section id="faq" class="py-24 px-6">
+    <div class="max-w-2xl mx-auto">
+      <button type="button" onclick="toggleFAQ()" class="w-full flex flex-col items-center gap-2 py-6 rounded-2xl border transition-all duration-200" id="faqToggle" style="border-color:rgba(255,255,255,0.08); background:rgba(255,255,255,0.02);">
+        <svg id="faqChevron" width="16" height="16" fill="none" stroke="#8a8a8a" stroke-width="2" viewBox="0 0 24 24" style="transition:transform 0.2s ease;"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="text-lg font-bold" style="font-family:'Outfit',sans-serif; letter-spacing:-0.02em;">FAQ</span>
+        <span class="text-xs" id="faqLabel" style="color:#8a8a8a;">Frequently asked questions</span>
+        <svg width="16" height="16" fill="none" stroke="#8a8a8a" stroke-width="2" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
 
-      <div class="reveal space-y-3">
-        <!-- FAQ Item 1 -->
-        <div class="faq-item rounded-xl overflow-hidden" style="background:#1c1c20; border:1px solid #2a2a2f;">
-          <button onclick="this.parentElement.classList.toggle('faq-open'); this.querySelector('.faq-chevron').style.transform = this.parentElement.classList.contains('faq-open') ? 'rotate(180deg)' : 'rotate(0)'; this.nextElementSibling.style.maxHeight = this.parentElement.classList.contains('faq-open') ? this.nextElementSibling.scrollHeight + 'px' : '0';" class="w-full flex items-center justify-between px-6 py-5 text-left cursor-pointer" style="color:#e8e8ec;">
-            <span class="text-sm font-medium pr-4">Do I own my website after it's built?</span>
-            <svg class="faq-chevron flex-shrink-0 transition-transform duration-200" width="16" height="16" fill="none" stroke="#5c5c66" stroke-width="2" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-          <div class="overflow-hidden transition-all duration-300" style="max-height:0;">
-            <div class="px-6 pb-5">
-              <p class="text-sm" style="color:#8b8b96; line-height:1.7;">Yes, 100%. The website is yours. All code, all designs, all content. If you ever want to leave, you take everything with you. No strings, no export fees, no lock-in.</p>
-            </div>
+      <div id="faqList" style="display:none; margin-top:24px;">
+        <div class="rounded-2xl px-6" style="border:1px solid rgba(255,255,255,0.07); background:rgba(255,255,255,0.02);">
+          <!-- FAQ items -->
+          <div class="faq-item border-b" style="border-color:rgba(255,255,255,0.06);">
+            <button class="w-full flex items-center justify-between gap-4 py-5 text-left" onclick="toggleFaqItem(this)">
+              <span class="text-sm font-semibold" style="font-family:'Outfit',sans-serif; letter-spacing:-0.01em;">How long do I have to stay subscribed?</span>
+              <svg class="faq-chevron h-4 w-4 shrink-0" fill="none" stroke="#8a8a8a" stroke-width="2" viewBox="0 0 24 24" style="transition:transform 0.2s ease;"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="faq-answer"><p class="text-sm leading-relaxed pb-5" style="color:#9a9a9a;">The subscription starts with a 6-month commitment. This gives us enough time to design, build, and refine your website properly. After those 6 months, you continue month-to-month and can cancel whenever you like.</p></div>
           </div>
-        </div>
-
-        <!-- FAQ Item 2 -->
-        <div class="faq-item rounded-xl overflow-hidden" style="background:#1c1c20; border:1px solid #2a2a2f;">
-          <button onclick="this.parentElement.classList.toggle('faq-open'); this.querySelector('.faq-chevron').style.transform = this.parentElement.classList.contains('faq-open') ? 'rotate(180deg)' : 'rotate(0)'; this.nextElementSibling.style.maxHeight = this.parentElement.classList.contains('faq-open') ? this.nextElementSibling.scrollHeight + 'px' : '0';" class="w-full flex items-center justify-between px-6 py-5 text-left cursor-pointer" style="color:#e8e8ec;">
-            <span class="text-sm font-medium pr-4">What platform do you build on?</span>
-            <svg class="faq-chevron flex-shrink-0 transition-transform duration-200" width="16" height="16" fill="none" stroke="#5c5c66" stroke-width="2" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-          <div class="overflow-hidden transition-all duration-300" style="max-height:0;">
-            <div class="px-6 pb-5">
-              <p class="text-sm" style="color:#8b8b96; line-height:1.7;">We choose the right tool for your project. For most businesses, we build with modern, lightweight frameworks that prioritize speed and simplicity. No bloated page builders, no unnecessary plugins. We'll recommend what's best for your specific needs.</p>
-            </div>
+          <div class="faq-item border-b" style="border-color:rgba(255,255,255,0.06);">
+            <button class="w-full flex items-center justify-between gap-4 py-5 text-left" onclick="toggleFaqItem(this)">
+              <span class="text-sm font-semibold" style="font-family:'Outfit',sans-serif; letter-spacing:-0.01em;">What happens to my website if I cancel?</span>
+              <svg class="faq-chevron h-4 w-4 shrink-0" fill="none" stroke="#8a8a8a" stroke-width="2" viewBox="0 0 24 24" style="transition:transform 0.2s ease;"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="faq-answer"><p class="text-sm leading-relaxed pb-5" style="color:#9a9a9a;">After your commitment period, you can cancel at any time. Your website stays live until the end of your billing period, and we will provide you with all your site files so you can host it elsewhere. You own your content.</p></div>
           </div>
-        </div>
-
-        <!-- FAQ Item 3 -->
-        <div class="faq-item rounded-xl overflow-hidden" style="background:#1c1c20; border:1px solid #2a2a2f;">
-          <button onclick="this.parentElement.classList.toggle('faq-open'); this.querySelector('.faq-chevron').style.transform = this.parentElement.classList.contains('faq-open') ? 'rotate(180deg)' : 'rotate(0)'; this.nextElementSibling.style.maxHeight = this.parentElement.classList.contains('faq-open') ? this.nextElementSibling.scrollHeight + 'px' : '0';" class="w-full flex items-center justify-between px-6 py-5 text-left cursor-pointer" style="color:#e8e8ec;">
-            <span class="text-sm font-medium pr-4">Can I edit the website myself?</span>
-            <svg class="faq-chevron flex-shrink-0 transition-transform duration-200" width="16" height="16" fill="none" stroke="#5c5c66" stroke-width="2" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-          <div class="overflow-hidden transition-all duration-300" style="max-height:0;">
-            <div class="px-6 pb-5">
-              <p class="text-sm" style="color:#8b8b96; line-height:1.7;">Depends on the setup. If you want a CMS where you can edit text and images yourself, we'll build it that way. Most clients prefer our care plan where we handle all updates for them - it's faster and you never have to learn a new tool.</p>
-            </div>
+          <div class="faq-item border-b" style="border-color:rgba(255,255,255,0.06);">
+            <button class="w-full flex items-center justify-between gap-4 py-5 text-left" onclick="toggleFaqItem(this)">
+              <span class="text-sm font-semibold" style="font-family:'Outfit',sans-serif; letter-spacing:-0.01em;">What counts as a revision?</span>
+              <svg class="faq-chevron h-4 w-4 shrink-0" fill="none" stroke="#8a8a8a" stroke-width="2" viewBox="0 0 24 24" style="transition:transform 0.2s ease;"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="faq-answer"><p class="text-sm leading-relaxed pb-5" style="color:#9a9a9a;">A revision is any design or content change to your website: new pages, copy updates, image swaps, layout changes, adding sections, or style adjustments. Functional elements like contact forms and newsletter sign-ups are also included.</p></div>
           </div>
-        </div>
-
-        <!-- FAQ Item 4 -->
-        <div class="faq-item rounded-xl overflow-hidden" style="background:#1c1c20; border:1px solid #2a2a2f;">
-          <button onclick="this.parentElement.classList.toggle('faq-open'); this.querySelector('.faq-chevron').style.transform = this.parentElement.classList.contains('faq-open') ? 'rotate(180deg)' : 'rotate(0)'; this.nextElementSibling.style.maxHeight = this.parentElement.classList.contains('faq-open') ? this.nextElementSibling.scrollHeight + 'px' : '0';" class="w-full flex items-center justify-between px-6 py-5 text-left cursor-pointer" style="color:#e8e8ec;">
-            <span class="text-sm font-medium pr-4">What if I need changes after launch?</span>
-            <svg class="faq-chevron flex-shrink-0 transition-transform duration-200" width="16" height="16" fill="none" stroke="#5c5c66" stroke-width="2" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-          <div class="overflow-hidden transition-all duration-300" style="max-height:0;">
-            <div class="px-6 pb-5">
-              <p class="text-sm" style="color:#8b8b96; line-height:1.7;">That's exactly what our 1.500 kr/month care plan is for. Unlimited changes - text updates, new sections, design tweaks, new pages. No per-change invoices. If you're not on the plan, we can still help on a project basis.</p>
-            </div>
+          <div class="faq-item border-b" style="border-color:rgba(255,255,255,0.06);">
+            <button class="w-full flex items-center justify-between gap-4 py-5 text-left" onclick="toggleFaqItem(this)">
+              <span class="text-sm font-semibold" style="font-family:'Outfit',sans-serif; letter-spacing:-0.01em;">How fast do I get my website?</span>
+              <svg class="faq-chevron h-4 w-4 shrink-0" fill="none" stroke="#8a8a8a" stroke-width="2" viewBox="0 0 24 24" style="transition:transform 0.2s ease;"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="faq-answer"><p class="text-sm leading-relaxed pb-5" style="color:#9a9a9a;">You will receive a free design mockup within 1-3 days after we have all the information we need. There is no cost or commitment at this stage. Once you approve the design, we build and launch it, and your subscription starts.</p></div>
           </div>
-        </div>
-
-        <!-- FAQ Item 5 -->
-        <div class="faq-item rounded-xl overflow-hidden" style="background:#1c1c20; border:1px solid #2a2a2f;">
-          <button onclick="this.parentElement.classList.toggle('faq-open'); this.querySelector('.faq-chevron').style.transform = this.parentElement.classList.contains('faq-open') ? 'rotate(180deg)' : 'rotate(0)'; this.nextElementSibling.style.maxHeight = this.parentElement.classList.contains('faq-open') ? this.nextElementSibling.scrollHeight + 'px' : '0';" class="w-full flex items-center justify-between px-6 py-5 text-left cursor-pointer" style="color:#e8e8ec;">
-            <span class="text-sm font-medium pr-4">How long does the whole process take?</span>
-            <svg class="faq-chevron flex-shrink-0 transition-transform duration-200" width="16" height="16" fill="none" stroke="#5c5c66" stroke-width="2" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-          <div class="overflow-hidden transition-all duration-300" style="max-height:0;">
-            <div class="px-6 pb-5">
-              <p class="text-sm" style="color:#8b8b96; line-height:1.7;">Most projects go from kickoff to launch in 2-4 weeks, depending on complexity. Simple sites can be faster. Larger projects with custom functionality may take a bit longer. You'll always know the timeline upfront.</p>
-            </div>
+          <div class="faq-item border-b" style="border-color:rgba(255,255,255,0.06);">
+            <button class="w-full flex items-center justify-between gap-4 py-5 text-left" onclick="toggleFaqItem(this)">
+              <span class="text-sm font-semibold" style="font-family:'Outfit',sans-serif; letter-spacing:-0.01em;">Who owns the website?</span>
+              <svg class="faq-chevron h-4 w-4 shrink-0" fill="none" stroke="#8a8a8a" stroke-width="2" viewBox="0 0 24 24" style="transition:transform 0.2s ease;"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="faq-answer"><p class="text-sm leading-relaxed pb-5" style="color:#9a9a9a;">You own all your content, copy, and media. The website code and design are maintained by us as part of your subscription. If you cancel, you receive all source files to use however you like.</p></div>
           </div>
-        </div>
-
-        <!-- FAQ Item 6 -->
-        <div class="faq-item rounded-xl overflow-hidden" style="background:#1c1c20; border:1px solid #2a2a2f;">
-          <button onclick="this.parentElement.classList.toggle('faq-open'); this.querySelector('.faq-chevron').style.transform = this.parentElement.classList.contains('faq-open') ? 'rotate(180deg)' : 'rotate(0)'; this.nextElementSibling.style.maxHeight = this.parentElement.classList.contains('faq-open') ? this.nextElementSibling.scrollHeight + 'px' : '0';" class="w-full flex items-center justify-between px-6 py-5 text-left cursor-pointer" style="color:#e8e8ec;">
-            <span class="text-sm font-medium pr-4">Is hosting included?</span>
-            <svg class="faq-chevron flex-shrink-0 transition-transform duration-200" width="16" height="16" fill="none" stroke="#5c5c66" stroke-width="2" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-          <div class="overflow-hidden transition-all duration-300" style="max-height:0;">
-            <div class="px-6 pb-5">
-              <p class="text-sm" style="color:#8b8b96; line-height:1.7;">Yes, hosting is included in the care plan along with security monitoring and performance optimization. If you're not on the plan, we'll help you set up reliable hosting separately.</p>
-            </div>
+          <div class="faq-item border-b" style="border-color:rgba(255,255,255,0.06);">
+            <button class="w-full flex items-center justify-between gap-4 py-5 text-left" onclick="toggleFaqItem(this)">
+              <span class="text-sm font-semibold" style="font-family:'Outfit',sans-serif; letter-spacing:-0.01em;">What about my domain?</span>
+              <svg class="faq-chevron h-4 w-4 shrink-0" fill="none" stroke="#8a8a8a" stroke-width="2" viewBox="0 0 24 24" style="transition:transform 0.2s ease;"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="faq-answer"><p class="text-sm leading-relaxed pb-5" style="color:#9a9a9a;">If you already own a domain, we will connect it to your new site. If we set up and manage your domain for you, it is still yours. Should you ever cancel, we will help you move it to any third-party provider at no extra charge.</p></div>
           </div>
-        </div>
-
-        <!-- FAQ Item 7 -->
-        <div class="faq-item rounded-xl overflow-hidden" style="background:#1c1c20; border:1px solid #2a2a2f;">
-          <button onclick="this.parentElement.classList.toggle('faq-open'); this.querySelector('.faq-chevron').style.transform = this.parentElement.classList.contains('faq-open') ? 'rotate(180deg)' : 'rotate(0)'; this.nextElementSibling.style.maxHeight = this.parentElement.classList.contains('faq-open') ? this.nextElementSibling.scrollHeight + 'px' : '0';" class="w-full flex items-center justify-between px-6 py-5 text-left cursor-pointer" style="color:#e8e8ec;">
-            <span class="text-sm font-medium pr-4">I already have a website. Can you redesign it?</span>
-            <svg class="faq-chevron flex-shrink-0 transition-transform duration-200" width="16" height="16" fill="none" stroke="#5c5c66" stroke-width="2" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-          <div class="overflow-hidden transition-all duration-300" style="max-height:0;">
-            <div class="px-6 pb-5">
-              <p class="text-sm" style="color:#8b8b96; line-height:1.7;">Absolutely. Many of our clients come to us with an existing site that isn't performing. We'll rebuild it from scratch with modern design, clean code, and a focus on conversions. Just mention your current URL in the form.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- FAQ Item 8 -->
-        <div class="faq-item rounded-xl overflow-hidden" style="background:#1c1c20; border:1px solid #2a2a2f;">
-          <button onclick="this.parentElement.classList.toggle('faq-open'); this.querySelector('.faq-chevron').style.transform = this.parentElement.classList.contains('faq-open') ? 'rotate(180deg)' : 'rotate(0)'; this.nextElementSibling.style.maxHeight = this.parentElement.classList.contains('faq-open') ? this.nextElementSibling.scrollHeight + 'px' : '0';" class="w-full flex items-center justify-between px-6 py-5 text-left cursor-pointer" style="color:#e8e8ec;">
-            <span class="text-sm font-medium pr-4">What's the catch with the free design preview?</span>
-            <svg class="faq-chevron flex-shrink-0 transition-transform duration-200" width="16" height="16" fill="none" stroke="#5c5c66" stroke-width="2" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-          <div class="overflow-hidden transition-all duration-300" style="max-height:0;">
-            <div class="px-6 pb-5">
-              <p class="text-sm" style="color:#8b8b96; line-height:1.7;">No catch. We create a custom mockup of your site so you can see our quality before committing. If you love it, we'll build it. If you don't, no hard feelings. It's our way of letting our work speak for itself.</p>
-            </div>
+          <div class="faq-item">
+            <button class="w-full flex items-center justify-between gap-4 py-5 text-left" onclick="toggleFaqItem(this)">
+              <span class="text-sm font-semibold" style="font-family:'Outfit',sans-serif; letter-spacing:-0.01em;">Can I pause my subscription instead of cancelling?</span>
+              <svg class="faq-chevron h-4 w-4 shrink-0" fill="none" stroke="#8a8a8a" stroke-width="2" viewBox="0 0 24 24" style="transition:transform 0.2s ease;"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="faq-answer"><p class="text-sm leading-relaxed pb-5" style="color:#9a9a9a;">Not during the initial 6-month period. After that, you can cancel and re-subscribe whenever you are ready. Your site files will be kept on hand for easy reactivation.</p></div>
           </div>
         </div>
       </div>
@@ -900,20 +593,18 @@
   </section>
 
   <!-- ========== FINAL CTA ========== -->
-  <section class="py-28 md:py-40 relative overflow-hidden" style="background:linear-gradient(180deg, #151518 0%, #0d0d10 50%, #151518 100%);">
-    <div class="absolute inset-0" style="background: radial-gradient(ellipse 70% 50% at 50% 50%, rgba(40,96,224,0.05) 0%, transparent 60%);"></div>
-    <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+  <section class="py-32 px-6 relative overflow-hidden">
+    <div class="orb" style="width:800px; height:800px; top:50%; left:50%; transform:translate(-50%,-50%); background:radial-gradient(circle, rgba(40,96,224,0.05) 0%, transparent 70%);"></div>
+    <div class="relative z-10 max-w-2xl mx-auto text-center">
       <div class="reveal">
-        <span class="mono-label block mb-8" style="color:#5c5c66;">[ Get started ]</span>
-        <h2 class="editorial-huge text-5xl sm:text-6xl md:text-7xl text-white mb-8">
-          Let's build<br>something <span style="color:#2860E0;">real.</span>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-5" style="letter-spacing:-0.03em;">
+          Ready to launch<br>
+          <span style="color:#9a9a9a;">your next website?</span>
         </h2>
-        <p class="text-lg max-w-lg mx-auto mb-12" style="color:#5c5c66; line-height:1.6;">
-          Fill out the form. Get a free design mockup within days. No commitment, no cost. If you like it, we'll build it.
-        </p>
-        <a href="#lead-form" class="inline-flex items-center gap-3 font-semibold px-10 py-5 rounded-full text-white transition-all duration-200" style="background:#2860E0; box-shadow: 0 4px 20px rgba(40,96,224,0.3); font-size:1rem;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 32px rgba(40,96,224,0.45)'" onmouseout="this.style.transform='none'; this.style.boxShadow='0 4px 20px rgba(40,96,224,0.3)'">
-          Get Your Free Design Preview
-          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        <p class="max-w-lg mx-auto mb-10" style="color:#9a9a9a;">It takes 5 minutes to get started. Tell us about your brand and we will handle the rest.</p>
+        <a href="https://mckenna-git-main-marcus-4100s-projects.vercel.app" target="_blank" class="btn-primary" style="font-size:1rem; padding:16px 40px;">
+          Start your project
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
     </div>
@@ -927,35 +618,33 @@
           <a href="index.html" class="block mb-4">
             <img src="Assets/Mc-Marketing-Logo.png" alt="Mc Marketing" class="h-7" />
           </a>
-          <p class="text-txt-muted text-sm" style="line-height:1.7;">
+          <p class="text-sm" style="color:#9a9a9a; line-height:1.7;">
             McKenna Marketing has over 9 years of experience in online marketing. We specialize in Google Ads and SEO.
           </p>
           <div class="flex gap-3 mt-5">
-            <a href="#" class="social-icon" aria-label="LinkedIn">
+            <a href="#" class="flex items-center justify-center w-9 h-9 rounded-full transition-all duration-200" style="background:rgba(255,255,255,0.05); color:#9a9a9a;" onmouseover="this.style.background='rgba(255,255,255,0.1)'; this.style.color='#fff'" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='#9a9a9a'" aria-label="LinkedIn">
               <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
             </a>
-            <a href="#" class="social-icon" aria-label="Facebook">
+            <a href="#" class="flex items-center justify-center w-9 h-9 rounded-full transition-all duration-200" style="background:rgba(255,255,255,0.05); color:#9a9a9a;" onmouseover="this.style.background='rgba(255,255,255,0.1)'; this.style.color='#fff'" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='#9a9a9a'" aria-label="Facebook">
               <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
             </a>
-            <a href="#" class="social-icon" aria-label="Instagram">
+            <a href="#" class="flex items-center justify-center w-9 h-9 rounded-full transition-all duration-200" style="background:rgba(255,255,255,0.05); color:#9a9a9a;" onmouseover="this.style.background='rgba(255,255,255,0.1)'; this.style.color='#fff'" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='#9a9a9a'" aria-label="Instagram">
               <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
             </a>
           </div>
         </div>
-
         <div>
           <h4 class="text-white font-semibold mb-4 text-sm">Quick Links</h4>
-          <ul class="space-y-2 text-sm text-txt-muted">
+          <ul class="space-y-2 text-sm" style="color:#9a9a9a;">
             <li><a href="index.html" class="hover:text-white transition-colors duration-200">Home</a></li>
             <li><a href="contact.html" class="hover:text-white transition-colors duration-200">Contact</a></li>
             <li><a href="cookie-policy.html" class="hover:text-white transition-colors duration-200">Cookie Policy</a></li>
             <li><a href="conditions.html" class="hover:text-white transition-colors duration-200">Terms &amp; Conditions</a></li>
           </ul>
         </div>
-
         <div>
           <h4 class="text-white font-semibold mb-4 text-sm">Contact</h4>
-          <ul class="space-y-2 text-sm text-txt-muted">
+          <ul class="space-y-2 text-sm" style="color:#9a9a9a;">
             <li><a href="mailto:info@mcmarketing.dk" class="hover:text-white transition-colors duration-200">info@mcmarketing.dk</a></li>
             <li><a href="tel:+4528252184" class="hover:text-white transition-colors duration-200">+45 28 25 21 84</a></li>
             <li>Paradisaeblevej 4, 2500 Valby</li>
@@ -963,8 +652,7 @@
           </ul>
         </div>
       </div>
-
-      <div class="border-t pt-8 text-center text-xs text-txt-dim" style="border-color:#2a2a2f;">
+      <div class="border-t pt-8 text-center text-xs" style="border-color:#2a2a2a; color:#8a8a8a;">
         &copy; All Rights Reserved.
       </div>
     </div>
@@ -972,7 +660,7 @@
 
   <!-- Fixed bottom-right badges -->
   <div style="position:fixed; bottom:24px; right:24px; z-index:40; display:flex; flex-direction:column; align-items:center; gap:10px;">
-    <a href="#guarantee" class="inline-flex items-center gap-1.5 text-xs font-medium px-3.5 py-2 rounded-full transition-all duration-200 hover:border-white/20" style="background:rgba(21,21,24,0.9); border:1px solid rgba(255,255,255,0.1); backdrop-filter:blur(12px); color:#7ba3f0; box-shadow: 0 4px 20px rgba(0,0,0,0.4);">
+    <a href="#pricing" class="inline-flex items-center gap-1.5 text-xs font-medium px-3.5 py-2 rounded-full transition-all duration-200" style="background:rgba(13,13,13,0.9); border:1px solid rgba(255,255,255,0.1); backdrop-filter:blur(12px); color:rgba(40,96,224,0.9); box-shadow: 0 4px 20px rgba(0,0,0,0.4);" onmouseover="this.style.borderColor='rgba(40,96,224,0.3)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.1)'">
       <svg width="13" height="13" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke="#2860E0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       Satisfaction Guarantee
     </a>
@@ -980,11 +668,146 @@
   </div>
 
   <script>
+    // Showcase slider
+    const showcaseItems = [
+      { title: "Warberg", category: "Cosmetic Clinic", image: "Assets/websites/warberg.png" },
+      { title: "VillaVie", category: "Cruise Lifestyle", image: "Assets/websites/villavie.png" },
+      { title: "Nordic Refrigeration", category: "B2B / HVAC", image: "Assets/websites/nordic.png" },
+      { title: "Cult Fitness", category: "Fitness Studio", image: "Assets/websites/cult.png" },
+      { title: "GMKA", category: "Healthcare", image: "Assets/websites/gmka.png" },
+      { title: "Formuepleje", category: "Real Estate", image: "Assets/websites/formuepleje.png" },
+      { title: "Fabled Voyages", category: "Residential Cruise", image: "Assets/websites/fabled.png" },
+      { title: "Mc Marketing", category: "Marketing Agency", image: "Assets/websites/mcmarketing.png" },
+      { title: "Nonsense", category: "Streetwear", image: "Assets/websites/nonsense.png" },
+    ];
+    let showcaseIndex = 0;
+    const track = document.getElementById('showcaseTrack');
+    const dotsEl = document.getElementById('showcaseDots');
+
+    function buildShowcase() {
+      track.innerHTML = '';
+      dotsEl.innerHTML = '';
+      showcaseItems.forEach((item, i) => {
+        const el = document.createElement('div');
+        el.className = 'showcase-slide';
+        el.style.cssText = 'position:absolute;inset:0;transition:transform 0.6s cubic-bezier(.32,.72,0,1),opacity 0.6s,filter 0.6s;transform-style:preserve-3d;cursor:pointer;';
+        el.innerHTML = `<div style="width:100%;height:100%;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.06);background:#111;box-shadow:0 8px 40px rgba(0,0,0,0.4);">
+          <div style="display:flex;align-items:center;gap:6px;padding:8px 12px;background:#1a1a1a;border-bottom:1px solid rgba(255,255,255,0.06);">
+            <div style="display:flex;gap:5px;"><div style="width:8px;height:8px;border-radius:50%;background:#ff5f56;"></div><div style="width:8px;height:8px;border-radius:50%;background:#ffbd2e;"></div><div style="width:8px;height:8px;border-radius:50%;background:#27c93f;"></div></div>
+            <div style="margin-left:8px;flex:1;height:18px;border-radius:6px;background:#0d0d0d;display:flex;align-items:center;padding:0 8px;"><span style="font-size:8px;color:#555;">${item.title.toLowerCase().replace(/\s+/g,'')}.com</span></div>
+          </div>
+          <div style="position:relative;width:100%;overflow:hidden;aspect-ratio:16/9;">
+            <img src="${item.image}" alt="${item.title}" style="width:100%;height:100%;object-fit:cover;object-position:top;" draggable="false">
+            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.2),transparent);pointer-events:none;"></div>
+          </div>
+        </div>`;
+        el.onclick = () => { if (i !== showcaseIndex) { showcaseIndex = i; updateShowcase(); } };
+        track.appendChild(el);
+
+        const dot = document.createElement('button');
+        dot.style.cssText = 'height:6px;border-radius:9999px;border:none;cursor:pointer;transition:all 0.3s ease;background:#2a2a2a;';
+        dot.onclick = () => { showcaseIndex = i; updateShowcase(); };
+        dotsEl.appendChild(dot);
+      });
+      updateShowcase();
+    }
+
+    function updateShowcase() {
+      const slides = track.querySelectorAll('.showcase-slide');
+      const dots = dotsEl.querySelectorAll('button');
+      const total = showcaseItems.length;
+      slides.forEach((slide, i) => {
+        let diff = i - showcaseIndex;
+        if (diff > total / 2) diff -= total;
+        if (diff < -total / 2) diff += total;
+        const abs = Math.abs(diff);
+        if (abs > 2) { slide.style.opacity = '0'; slide.style.pointerEvents = 'none'; return; }
+        const scale = diff === 0 ? 1 : 0.82 - (abs - 1) * 0.04;
+        const x = diff * 30;
+        const ry = diff * -10;
+        const brightness = diff === 0 ? 1 : 0.35 - (abs - 1) * 0.1;
+        slide.style.opacity = '1';
+        slide.style.pointerEvents = diff === 0 ? 'none' : 'auto';
+        slide.style.zIndex = 10 - abs;
+        slide.style.transform = `translateX(${x}%) scale(${scale}) rotateY(${ry}deg)`;
+        slide.style.filter = `brightness(${brightness})`;
+      });
+      dots.forEach((dot, i) => {
+        dot.style.width = i === showcaseIndex ? '24px' : '6px';
+        dot.style.background = i === showcaseIndex ? '#2860E0' : '#2a2a2a';
+      });
+      document.getElementById('showcaseTitle').textContent = showcaseItems[showcaseIndex].title;
+      document.getElementById('showcaseCategory').textContent = showcaseItems[showcaseIndex].category;
+    }
+
+    function showcaseNav(dir) {
+      showcaseIndex = (showcaseIndex + dir + showcaseItems.length) % showcaseItems.length;
+      updateShowcase();
+    }
+
+    buildShowcase();
+    setInterval(() => showcaseNav(1), 4000);
+
+    // Reveal on scroll
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
     }, { threshold: 0.05, rootMargin: '0px 0px 80px 0px' });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     setTimeout(() => { document.querySelectorAll('.reveal:not(.visible)').forEach(el => el.classList.add('visible')); }, 3000);
+
+    // Word rotate
+    const words = ['brand', 'team', 'company', 'customers'];
+    let wordIndex = 0;
+    const wordEl = document.getElementById('rotateWord');
+    setInterval(() => {
+      wordEl.classList.add('fade-out');
+      setTimeout(() => {
+        wordIndex = (wordIndex + 1) % words.length;
+        wordEl.textContent = words[wordIndex];
+        wordEl.classList.remove('fade-out');
+      }, 300);
+    }, 2500);
+
+    // Step cards cycling
+    const stepCards = document.querySelectorAll('.step-card');
+    let activeStep = 0;
+    function setActiveStep(i) {
+      stepCards.forEach(c => c.classList.remove('active'));
+      stepCards[i].classList.add('active');
+    }
+    setActiveStep(0);
+    setInterval(() => {
+      activeStep = (activeStep + 1) % stepCards.length;
+      setActiveStep(activeStep);
+    }, 3000);
+
+    // FAQ toggle (main expand)
+    let faqOpen = false;
+    function toggleFAQ() {
+      faqOpen = !faqOpen;
+      const list = document.getElementById('faqList');
+      const label = document.getElementById('faqLabel');
+      const chevron = document.getElementById('faqChevron');
+      const toggle = document.getElementById('faqToggle');
+      list.style.display = faqOpen ? 'block' : 'none';
+      label.textContent = faqOpen ? 'Hide questions' : 'Frequently asked questions';
+      chevron.style.transform = faqOpen ? 'rotate(180deg)' : '';
+      toggle.style.borderColor = faqOpen ? 'rgba(40,96,224,0.2)' : 'rgba(255,255,255,0.08)';
+      toggle.style.background = faqOpen ? 'rgba(40,96,224,0.04)' : 'rgba(255,255,255,0.02)';
+    }
+
+    // FAQ item toggle
+    function toggleFaqItem(btn) {
+      const answer = btn.nextElementSibling;
+      const chevron = btn.querySelector('.faq-chevron');
+      const isOpen = answer.classList.contains('open');
+      document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+      document.querySelectorAll('.faq-chevron').forEach(c => c.style.transform = '');
+      if (!isOpen) {
+        answer.classList.add('open');
+        chevron.style.transform = 'rotate(180deg)';
+      }
+    }
   </script>
 </body>
 </html>
