@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="da">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -148,47 +148,75 @@
       50% { transform: translateY(-6px); }
     }
 
-    /* Floating platform icons */
-    .floating-icon {
+    /* Orbiting icons ring */
+    .orbit-container {
+      position: absolute; top: 50%; left: 50%;
+      width: 680px; height: 680px;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      animation: orbitSpin 60s linear infinite;
+    }
+    @media (max-width: 768px) { .orbit-container { width: 420px; height: 420px; } }
+    @keyframes orbitSpin { 0% { rotate: 0deg; } 100% { rotate: 360deg; } }
+    .orbit-icon {
       position: absolute;
+      width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      backdrop-filter: blur(4px);
+      animation: orbitCounterSpin 60s linear infinite;
       opacity: 0;
-      animation: iconEntry 1.5s cubic-bezier(.23,.86,.39,.96) forwards,
-                 iconFloat var(--float-dur, 14s) ease-in-out infinite,
-                 iconRotate var(--rotate-dur, 30s) linear infinite;
-      animation-delay: var(--entry-delay, 0.5s), var(--float-delay, 2s), var(--rotate-delay, 0s);
+      animation: orbitCounterSpin 60s linear infinite, orbitFadeIn 1s ease forwards;
+      animation-delay: 0s, var(--fade-delay, 0s);
     }
-    .floating-icon svg {
-      width: 100%; height: 100%;
-      stroke: rgba(255,255,255,0.06);
-      fill: none;
-      stroke-width: 1.2;
-      filter: drop-shadow(0 0 12px rgba(40,96,224,0.1));
-    }
-    @keyframes iconEntry {
-      to { opacity: 1; }
-    }
-    @keyframes iconFloat {
-      0%, 100% { translate: 0 0; }
-      50% { translate: 0 18px; }
-    }
-    @keyframes iconRotate {
-      0% { rotate: 0deg; }
-      100% { rotate: 360deg; }
-    }
-    .hero-icon-1 { width: 56px; height: 56px; left: 8%; top: 22%; --entry-delay: 0.4s; --float-dur: 12s; --float-delay: 2s; --rotate-dur: 35s; --rotate-delay: 0s; }
-    .hero-icon-2 { width: 44px; height: 44px; right: 10%; top: 18%; --entry-delay: 0.6s; --float-dur: 15s; --float-delay: 2.5s; --rotate-dur: 28s; --rotate-delay: 5s; }
-    .hero-icon-3 { width: 48px; height: 48px; left: 15%; bottom: 18%; --entry-delay: 0.5s; --float-dur: 13s; --float-delay: 3s; --rotate-dur: 40s; --rotate-delay: 2s; }
-    .hero-icon-4 { width: 40px; height: 40px; right: 15%; bottom: 25%; --entry-delay: 0.7s; --float-dur: 16s; --float-delay: 2.8s; --rotate-dur: 32s; --rotate-delay: 8s; }
-    .hero-icon-5 { width: 36px; height: 36px; left: 28%; top: 12%; --entry-delay: 0.8s; --float-dur: 11s; --float-delay: 3.2s; --rotate-dur: 45s; --rotate-delay: 3s; }
-    .hero-icon-6 { width: 42px; height: 42px; right: 25%; top: 65%; --entry-delay: 0.9s; --float-dur: 14s; --float-delay: 2.2s; --rotate-dur: 38s; --rotate-delay: 6s; }
+    @keyframes orbitCounterSpin { 0% { rotate: 0deg; } 100% { rotate: -360deg; } }
+    @keyframes orbitFadeIn { to { opacity: 1; } }
+    .orbit-icon svg { width: 22px; height: 22px; stroke: rgba(255,255,255,0.15); fill: none; stroke-width: 1.5; }
+    .orbit-icon.filled svg { stroke: none; fill: rgba(255,255,255,0.12); }
+    /* Position 8 icons evenly around the circle (every 45deg) */
+    .orbit-icon:nth-child(1) { top: 0; left: 50%; transform: translate(-50%, -50%); --fade-delay: 0.2s; }
+    .orbit-icon:nth-child(2) { top: 14.6%; right: 14.6%; transform: translate(50%, -50%); --fade-delay: 0.4s; }
+    .orbit-icon:nth-child(3) { top: 50%; right: 0; transform: translate(50%, -50%); --fade-delay: 0.6s; }
+    .orbit-icon:nth-child(4) { bottom: 14.6%; right: 14.6%; transform: translate(50%, 50%); --fade-delay: 0.8s; }
+    .orbit-icon:nth-child(5) { bottom: 0; left: 50%; transform: translate(-50%, 50%); --fade-delay: 1.0s; }
+    .orbit-icon:nth-child(6) { bottom: 14.6%; left: 14.6%; transform: translate(-50%, 50%); --fade-delay: 1.2s; }
+    .orbit-icon:nth-child(7) { top: 50%; left: 0; transform: translate(-50%, -50%); --fade-delay: 1.4s; }
+    .orbit-icon:nth-child(8) { top: 14.6%; left: 14.6%; transform: translate(-50%, -50%); --fade-delay: 1.6s; }
 
     /* Hero radial glow */
     .hero-radial-glow {
       position: absolute;
-      width: 600px; height: 600px;
+      width: 700px; height: 700px;
       top: 50%; left: 50%; transform: translate(-50%, -50%);
-      background: radial-gradient(circle, rgba(40,96,224,0.06) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(40,96,224,0.05) 0%, transparent 65%);
       pointer-events: none;
+    }
+
+    /* Rotating headline word */
+    .rotate-word {
+      display: inline-block;
+      position: relative;
+      color: #2860E0;
+    }
+    .rotate-word span {
+      display: inline-block;
+      opacity: 0;
+      position: absolute;
+      left: 0; top: 0;
+      white-space: nowrap;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      transform: translateY(20px);
+    }
+    .rotate-word span.active {
+      opacity: 1;
+      position: relative;
+      transform: translateY(0);
+    }
+    .rotate-word span.exit {
+      opacity: 0;
+      transform: translateY(-20px);
     }
 
     /* Services horizontal scroll */
@@ -444,30 +472,40 @@
     <div class="hero-radial-glow"></div>
     <div class="hero-vignette"></div>
 
-    <!-- Floating platform icons -->
-    <!-- Google "G" -->
-    <div class="floating-icon hero-icon-1 hidden md:block">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" stroke="rgba(255,255,255,0.06)" fill="none" stroke-width="0.8"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" stroke="rgba(255,255,255,0.06)" fill="none" stroke-width="0.8"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" stroke="rgba(255,255,255,0.06)" fill="none" stroke-width="0.8"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" stroke="rgba(255,255,255,0.06)" fill="none" stroke-width="0.8"/></svg>
-    </div>
-    <!-- Meta / Facebook -->
-    <div class="floating-icon hero-icon-2 hidden md:block">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.879V14.89h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.989C18.343 21.129 22 16.99 22 12c0-5.523-4.477-10-10-10z"/></svg>
-    </div>
-    <!-- Shopify bag -->
-    <div class="floating-icon hero-icon-3 hidden md:block">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15.34 3.27c-.07 0-.13.04-.15.1-.02.05-.44 1.01-.93 2.12-.27-.83-.75-1.79-1.58-2.37-.14-.1-.29-.19-.45-.26A2.15 2.15 0 0011.01 2c-1.56.06-3.11 1.82-3.88 4.46-.94.29-1.61.5-1.63.5-.48.15-.5.17-.56.62C4.88 8.09 3 22 3 22l12.1 2.12V3.3c-.06-.02-.12-.03-.18-.03h-.58zm-2.16 1.6c-.42 1-.89 2.27-.89 2.27s-.87.27-1.83.55c.49-1.89 1.42-2.8 2.25-2.94.17-.02.33.02.47.12zm-1.63-.78c.09 0 .18.02.27.06-.96.45-2 1.59-2.44 3.87L7.5 8.5c.56-1.9 1.66-4.45 4.05-4.41zM13 8.77V9.2c0 .03 0 .05-.01.08L10.3 10c.28-1.06.8-2.14 1.62-2.6.36.34.7.83 1.08 1.37z"/><path d="M15.56 3.24s-.3-.06-.68-.06V24.12L21 22.85S17.12 5.53 17.1 5.43a.26.26 0 00-.22-.18c-.09-.01-1.06-.04-1.32-2.01z"/></svg>
-    </div>
-    <!-- Analytics chart -->
-    <div class="floating-icon hero-icon-4 hidden md:block">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 3v18h18"/><path d="M7 16l4-4 4 4 6-6"/><circle cx="21" cy="6" r="1.5"/></svg>
-    </div>
-    <!-- Search / magnifier -->
-    <div class="floating-icon hero-icon-5 hidden md:block">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-    </div>
-    <!-- TikTok music note -->
-    <div class="floating-icon hero-icon-6 hidden md:block">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 12V3.5A1.5 1.5 0 0110.5 2h.21a5.22 5.22 0 004.79 4v3a8.5 8.5 0 01-4 1.5"/><circle cx="7.5" cy="17.5" r="4.5"/><path d="M15.5 9V2"/></svg>
+    <!-- Orbiting platform icons -->
+    <div class="orbit-container hidden md:block">
+      <!-- Google Ads -->
+      <div class="orbit-icon">
+        <svg viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18A10.96 10.96 0 001 12c0 1.77.42 3.45 1.18 4.93l3.66-2.84z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+      </div>
+      <!-- SEO / Search -->
+      <div class="orbit-icon">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35" stroke-linecap="round"/></svg>
+      </div>
+      <!-- Meta / Facebook -->
+      <div class="orbit-icon filled">
+        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </div>
+      <!-- Shopify -->
+      <div class="orbit-icon">
+        <svg viewBox="0 0 24 24"><path d="M15.5 2.1a.5.5 0 00-.4.1c-.1.1-1.5 1.5-1.5 1.5s-1-1.3-2.7-1.3c-3.5 0-5.2 4.4-5.7 6.6l-2 .6c-.6.2-.6.2-.7.8L1 21l14.3 2.5V2.1zM11.4 5.3c0 .1-1.6.5-1.6.5C10.3 4 11 3.2 11.4 3v2.3z"/><path d="M15.7 2.1V24.1l6.3-1.4S18.2 4.7 18.1 4.6a.5.5 0 00-.4-.3c-.1 0-1.7 0-2-2.2z"/></svg>
+      </div>
+      <!-- Analytics -->
+      <div class="orbit-icon">
+        <svg viewBox="0 0 24 24"><path d="M3 3v18h18" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 16l4-4 4 4 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <!-- Instagram -->
+      <div class="orbit-icon">
+        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
+      </div>
+      <!-- AI / GEO -->
+      <div class="orbit-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 17l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <!-- TikTok -->
+      <div class="orbit-icon">
+        <svg viewBox="0 0 24 24"><path d="M9 12V3.5A1.5 1.5 0 0110.5 2h.21a5.22 5.22 0 004.79 4v3a8.5 8.5 0 01-4 1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7.5" cy="17.5" r="4.5"/><path d="M15.5 9V2" stroke-linecap="round"/></svg>
+      </div>
     </div>
 
     <div class="max-w-6xl mx-auto px-6 text-center relative z-10">
@@ -477,14 +515,22 @@
         Google Partner - Certificeret Bureau
       </div>
 
-      <!-- Headline -->
+      <!-- Headline with rotating word -->
       <h1 class="reveal reveal-delay-1 text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-7 max-w-4xl mx-auto text-white" style="font-weight:700; letter-spacing:-0.03em; line-height:1.08;">
-        Profitbaseret marketing for ambitiose e-commerce brands
+        Vi maksimerer dit<br>
+        <span class="rotate-word" id="heroRotate">
+          <span class="active">Google Ads</span>
+          <span>SEO</span>
+          <span>e-commerce</span>
+          <span>POAS</span>
+          <span>Paid Social</span>
+        </span>
+        <br>resultat
       </h1>
 
       <!-- Subtitle -->
       <p class="reveal reveal-delay-2 text-base md:text-lg max-w-xl mx-auto mb-14" style="line-height:1.8; color: #7a7a86;">
-        Vi skalerer e-commerce brands med Google Ads, SEO og profitdrevet strategi.
+        Profitbaseret marketing for ambitiose e-commerce brands. Google Ads, SEO, Paid Social og mere.
       </p>
 
       <!-- CTA -->
@@ -1312,6 +1358,21 @@
       document.querySelectorAll('.hero-stat-value[data-counter]').forEach(el => {
         counterObserver.observe(el);
       });
+    })();
+
+    // Rotating headline word
+    (function() {
+      const container = document.getElementById('heroRotate');
+      if (!container) return;
+      const words = container.querySelectorAll('span');
+      let current = 0;
+      setInterval(() => {
+        words[current].classList.remove('active');
+        words[current].classList.add('exit');
+        setTimeout(() => words[current === 0 ? words.length - 1 : current - 1].classList.remove('exit'), 500);
+        current = (current + 1) % words.length;
+        words[current].classList.add('active');
+      }, 2500);
     })();
   </script>
 
