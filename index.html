@@ -148,60 +148,87 @@
       50% { transform: translateY(-6px); }
     }
 
-    /* Elegant floating shapes */
-    .elegant-shape {
-      position: absolute; border-radius: 9999px;
-      background: linear-gradient(135deg, rgba(40,96,224,0.12), transparent);
-      border: 2px solid rgba(255,255,255,0.06);
-      backdrop-filter: blur(2px);
-      box-shadow: 0 8px 32px rgba(40,96,224,0.08);
-      opacity: 0; transform: translateY(-80px);
-      animation: shapeEntry 2s cubic-bezier(.23,.86,.39,.96) forwards;
+    /* Floating platform icons */
+    .floating-icon {
+      position: absolute;
+      opacity: 0;
+      animation: iconEntry 1.5s cubic-bezier(.23,.86,.39,.96) forwards,
+                 iconFloat var(--float-dur, 14s) ease-in-out infinite,
+                 iconRotate var(--rotate-dur, 30s) linear infinite;
+      animation-delay: var(--entry-delay, 0.5s), var(--float-delay, 2s), var(--rotate-delay, 0s);
     }
-    .elegant-shape::after {
-      content: ''; position: absolute; inset: 0; border-radius: 9999px;
-      background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1), transparent 70%);
+    .floating-icon svg {
+      width: 100%; height: 100%;
+      stroke: rgba(255,255,255,0.06);
+      fill: none;
+      stroke-width: 1.2;
+      filter: drop-shadow(0 0 12px rgba(40,96,224,0.1));
     }
-    .shape-1 {
-      width: 550px; height: 130px; left: -8%; top: 18%; rotate: 12deg;
-      animation-delay: 0.3s;
+    @keyframes iconEntry {
+      to { opacity: 1; }
     }
-    .shape-2 {
-      width: 450px; height: 110px; right: -3%; top: 72%; rotate: -15deg;
-      background: linear-gradient(135deg, rgba(90,143,240,0.1), transparent);
-      animation-delay: 0.5s;
-    }
-    .shape-3 {
-      width: 280px; height: 70px; left: 8%; bottom: 8%; rotate: -8deg;
-      background: linear-gradient(135deg, rgba(100,60,224,0.1), transparent);
-      animation-delay: 0.4s;
-    }
-    .shape-4 {
-      width: 180px; height: 50px; right: 18%; top: 12%; rotate: 20deg;
-      background: linear-gradient(135deg, rgba(40,96,224,0.08), transparent);
-      animation-delay: 0.6s;
-    }
-    .shape-5 {
-      width: 140px; height: 38px; left: 22%; top: 6%; rotate: -25deg;
-      background: linear-gradient(135deg, rgba(90,143,240,0.08), transparent);
-      animation-delay: 0.7s;
-    }
-    @keyframes shapeEntry {
-      to { opacity: 1; transform: translateY(0); }
-    }
-    /* Gentle float after entry */
-    .shape-1, .shape-2, .shape-3, .shape-4, .shape-5 {
-      animation: shapeEntry 2s cubic-bezier(.23,.86,.39,.96) forwards, shapeFloat var(--float-dur, 12s) ease-in-out infinite;
-      animation-delay: var(--entry-delay, 0.3s), var(--float-delay, 2.5s);
-    }
-    .shape-1 { --entry-delay: 0.3s; --float-dur: 12s; --float-delay: 2.5s; }
-    .shape-2 { --entry-delay: 0.5s; --float-dur: 14s; --float-delay: 2.7s; }
-    .shape-3 { --entry-delay: 0.4s; --float-dur: 10s; --float-delay: 2.6s; }
-    .shape-4 { --entry-delay: 0.6s; --float-dur: 16s; --float-delay: 2.8s; }
-    .shape-5 { --entry-delay: 0.7s; --float-dur: 11s; --float-delay: 2.9s; }
-    @keyframes shapeFloat {
+    @keyframes iconFloat {
       0%, 100% { translate: 0 0; }
-      50% { translate: 0 15px; }
+      50% { translate: 0 18px; }
+    }
+    @keyframes iconRotate {
+      0% { rotate: 0deg; }
+      100% { rotate: 360deg; }
+    }
+    .hero-icon-1 { width: 56px; height: 56px; left: 8%; top: 22%; --entry-delay: 0.4s; --float-dur: 12s; --float-delay: 2s; --rotate-dur: 35s; --rotate-delay: 0s; }
+    .hero-icon-2 { width: 44px; height: 44px; right: 10%; top: 18%; --entry-delay: 0.6s; --float-dur: 15s; --float-delay: 2.5s; --rotate-dur: 28s; --rotate-delay: 5s; }
+    .hero-icon-3 { width: 48px; height: 48px; left: 15%; bottom: 18%; --entry-delay: 0.5s; --float-dur: 13s; --float-delay: 3s; --rotate-dur: 40s; --rotate-delay: 2s; }
+    .hero-icon-4 { width: 40px; height: 40px; right: 15%; bottom: 25%; --entry-delay: 0.7s; --float-dur: 16s; --float-delay: 2.8s; --rotate-dur: 32s; --rotate-delay: 8s; }
+    .hero-icon-5 { width: 36px; height: 36px; left: 28%; top: 12%; --entry-delay: 0.8s; --float-dur: 11s; --float-delay: 3.2s; --rotate-dur: 45s; --rotate-delay: 3s; }
+    .hero-icon-6 { width: 42px; height: 42px; right: 25%; top: 65%; --entry-delay: 0.9s; --float-dur: 14s; --float-delay: 2.2s; --rotate-dur: 38s; --rotate-delay: 6s; }
+
+    /* Hero radial glow */
+    .hero-radial-glow {
+      position: absolute;
+      width: 600px; height: 600px;
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      background: radial-gradient(circle, rgba(40,96,224,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Services horizontal scroll */
+    .services-scroll {
+      display: flex; gap: 20px;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none; padding-bottom: 8px;
+    }
+    .services-scroll::-webkit-scrollbar { display: none; }
+    .service-card {
+      flex: 0 0 280px; scroll-snap-align: start;
+      background: #1c1c20; border: 1px solid #2a2a2f; border-radius: 20px;
+      padding: 28px 24px; display: flex; flex-direction: column; gap: 16px;
+      transition: transform 0.35s cubic-bezier(.4,0,.2,1), border-color 0.3s ease, box-shadow 0.3s ease;
+      position: relative; overflow: hidden;
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255,255,255,0.1);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.35);
+    }
+    .service-card-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .service-card-arrow {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 0.2s cubic-bezier(.4,0,.2,1), background 0.2s ease;
+      margin-top: auto;
+    }
+    .service-card:hover .service-card-arrow {
+      transform: translateX(3px);
+      background: rgba(255,255,255,0.08);
+    }
+    @media (min-width: 1024px) {
+      .services-scroll { overflow-x: visible; justify-content: center; }
+      .service-card { flex: 0 1 220px; }
     }
 
     /* Hero background gradient */
@@ -361,22 +388,22 @@
           </button>
           <div class="services-menu absolute left-1/2 -translate-x-1/2 top-full pt-2 z-50" style="display:none; min-width:220px;">
             <div class="rounded-xl py-2 px-1" style="background:rgba(28,28,32,0.95); border:1px solid rgba(255,255,255,0.08); backdrop-filter:blur(20px); box-shadow:0 12px 40px rgba(0,0,0,0.4);">
-              <a href="google-ads-seo.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-white/70 hover:text-white hover:bg-white/5 transition-all duration-200">
+              <a href="/google-ads-seo" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-white/70 hover:text-white hover:bg-white/5 transition-all duration-200">
                 <span class="flex items-center justify-center w-8 h-8 rounded-lg" style="background:rgba(40,96,224,0.1);"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="2"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                 Google Ads & SEO
               </a>
-              <a href="websites.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-white/70 hover:text-white hover:bg-white/5 transition-all duration-200">
+              <a href="/websites" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-white/70 hover:text-white hover:bg-white/5 transition-all duration-200">
                 <span class="flex items-center justify-center w-8 h-8 rounded-lg" style="background:rgba(40,96,224,0.1);"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="2"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                 Website Design
               </a>
-              <a href="paid-social.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-white/70 hover:text-white hover:bg-white/5 transition-all duration-200">
+              <a href="/paid-social" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-white/70 hover:text-white hover:bg-white/5 transition-all duration-200">
                 <span class="flex items-center justify-center w-8 h-8 rounded-lg" style="background:rgba(40,96,224,0.1);"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="2"><path d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                 Paid Social
               </a>
             </div>
           </div>
         </div>
-        <a href="contact.html" class="text-sm text-white/70 hover:text-white px-4 py-2 rounded-full hover:bg-white/5 transition-all duration-200">Contact</a>
+        <a href="/contact" class="text-sm text-white/70 hover:text-white px-4 py-2 rounded-full hover:bg-white/5 transition-all duration-200">Contact</a>
       </div>
       <div class="hidden lg:flex items-center gap-2">
         <a href="#book" class="inline-flex items-center gap-2 text-sm font-medium px-5 py-2.5 rounded-full text-white transition-all duration-200" style="background:#2860E0; box-shadow: 0 2px 10px rgba(40,96,224,0.3);" onmouseover="this.style.boxShadow='0 4px 16px rgba(40,96,224,0.5)'" onmouseout="this.style.boxShadow='0 2px 10px rgba(40,96,224,0.3)'">
@@ -404,38 +431,67 @@
       </button>
     </div>
     <div id="mobileMenu" class="mobile-menu flex-col gap-4 px-6 py-5 absolute top-full left-4 right-4 mt-2 rounded-2xl" style="background:rgba(28,28,32,0.95); border:1px solid rgba(255,255,255,0.08); backdrop-filter:blur(20px);">
-      <a href="contact.html" class="text-sm text-txt-muted">Contact</a>
+      <a href="/contact" class="text-sm text-txt-muted">Contact</a>
       <a href="#book" class="text-sm text-txt-muted">Book Meeting</a>
       <a href="#guarantee" class="text-sm text-txt-muted">Satisfaction Guarantee</a>
     </div>
   </nav>
 
   <!-- ========== HERO ========== -->
-  <section class="pt-36 pb-8 md:pt-48 md:pb-12 relative overflow-hidden" style="min-height:90vh;">
-    <!-- Elegant floating shapes -->
+  <section class="pt-36 pb-2 md:pt-48 md:pb-4 relative overflow-hidden" style="min-height:90vh;">
+    <!-- Background elements -->
     <div class="hero-bg-gradient"></div>
-    <div class="elegant-shape shape-1"></div>
-    <div class="elegant-shape shape-2"></div>
-    <div class="elegant-shape shape-3"></div>
-    <div class="elegant-shape shape-4"></div>
-    <div class="elegant-shape shape-5"></div>
+    <div class="hero-radial-glow"></div>
     <div class="hero-vignette"></div>
 
+    <!-- Floating platform icons -->
+    <!-- Google "G" -->
+    <div class="floating-icon hero-icon-1 hidden md:block">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" stroke="rgba(255,255,255,0.06)" fill="none" stroke-width="0.8"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" stroke="rgba(255,255,255,0.06)" fill="none" stroke-width="0.8"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" stroke="rgba(255,255,255,0.06)" fill="none" stroke-width="0.8"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" stroke="rgba(255,255,255,0.06)" fill="none" stroke-width="0.8"/></svg>
+    </div>
+    <!-- Meta / Facebook -->
+    <div class="floating-icon hero-icon-2 hidden md:block">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.879V14.89h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.989C18.343 21.129 22 16.99 22 12c0-5.523-4.477-10-10-10z"/></svg>
+    </div>
+    <!-- Shopify bag -->
+    <div class="floating-icon hero-icon-3 hidden md:block">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15.34 3.27c-.07 0-.13.04-.15.1-.02.05-.44 1.01-.93 2.12-.27-.83-.75-1.79-1.58-2.37-.14-.1-.29-.19-.45-.26A2.15 2.15 0 0011.01 2c-1.56.06-3.11 1.82-3.88 4.46-.94.29-1.61.5-1.63.5-.48.15-.5.17-.56.62C4.88 8.09 3 22 3 22l12.1 2.12V3.3c-.06-.02-.12-.03-.18-.03h-.58zm-2.16 1.6c-.42 1-.89 2.27-.89 2.27s-.87.27-1.83.55c.49-1.89 1.42-2.8 2.25-2.94.17-.02.33.02.47.12zm-1.63-.78c.09 0 .18.02.27.06-.96.45-2 1.59-2.44 3.87L7.5 8.5c.56-1.9 1.66-4.45 4.05-4.41zM13 8.77V9.2c0 .03 0 .05-.01.08L10.3 10c.28-1.06.8-2.14 1.62-2.6.36.34.7.83 1.08 1.37z"/><path d="M15.56 3.24s-.3-.06-.68-.06V24.12L21 22.85S17.12 5.53 17.1 5.43a.26.26 0 00-.22-.18c-.09-.01-1.06-.04-1.32-2.01z"/></svg>
+    </div>
+    <!-- Analytics chart -->
+    <div class="floating-icon hero-icon-4 hidden md:block">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 3v18h18"/><path d="M7 16l4-4 4 4 6-6"/><circle cx="21" cy="6" r="1.5"/></svg>
+    </div>
+    <!-- Search / magnifier -->
+    <div class="floating-icon hero-icon-5 hidden md:block">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    </div>
+    <!-- TikTok music note -->
+    <div class="floating-icon hero-icon-6 hidden md:block">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 12V3.5A1.5 1.5 0 0110.5 2h.21a5.22 5.22 0 004.79 4v3a8.5 8.5 0 01-4 1.5"/><circle cx="7.5" cy="17.5" r="4.5"/><path d="M15.5 9V2"/></svg>
+    </div>
+
     <div class="max-w-6xl mx-auto px-6 text-center relative z-10">
-      <div class="reveal inline-flex items-center gap-2 px-5 py-2.5 rounded-full mb-8 text-sm" style="background:rgba(40,96,224,0.08); border:1px solid rgba(40,96,224,0.2); color:#7ba3f0;">
+      <!-- Badge -->
+      <div class="reveal inline-flex items-center gap-2 px-5 py-2.5 rounded-full mb-10 text-sm" style="background:rgba(40,96,224,0.08); border:1px solid rgba(40,96,224,0.2); color:#7ba3f0;">
         <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#2860E0"/></svg>
-        Google Partner - 9+ Years of Experience
+        Google Partner - Certificeret Bureau
       </div>
-      <h2 class="reveal reveal-delay-1 text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-6 tracking-tighter max-w-4xl mx-auto" style="font-weight:600; letter-spacing:-0.03em; line-height:1.1; background: linear-gradient(180deg, #FFF 0%, rgba(255,255,255,0.45) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
-        Profit-based marketing for ambitious <span class="hero-gradient-text">e-commerce brands</span>
-      </h2>
-      <p class="reveal reveal-delay-2 text-base md:text-lg max-w-2xl mx-auto mb-12" style="line-height:1.8; color: #a1a1aa;">
-        We help e-commerce businesses scale profitably with Google Ads, SEO, and profit-driven strategies. We also partner with lead generation businesses looking for measurable growth.
+
+      <!-- Headline -->
+      <h1 class="reveal reveal-delay-1 text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-7 max-w-4xl mx-auto text-white" style="font-weight:700; letter-spacing:-0.03em; line-height:1.08;">
+        Profitbaseret marketing for ambitiose e-commerce brands
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="reveal reveal-delay-2 text-base md:text-lg max-w-xl mx-auto mb-14" style="line-height:1.8; color: #7a7a86;">
+        Vi skalerer e-commerce brands med Google Ads, SEO og profitdrevet strategi.
       </p>
-      <div class="reveal reveal-delay-3 flex flex-col sm:flex-row gap-4 justify-center mb-16">
+
+      <!-- CTA -->
+      <div class="reveal reveal-delay-3 flex justify-center mb-20">
         <a href="#book" class="moving-border-btn group">
           <span class="moving-border-inner">
-            Your Free Marketing Plan
+            Din gratis marketingplan
             <span class="inline-flex items-center justify-center w-10 h-10 rounded-full transition-transform duration-200 group-hover:translate-x-0.5" style="background:rgba(40,96,224,0.35);">
               <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </span>
@@ -469,7 +525,7 @@
   </section>
 
   <!-- ========== CLIENT LOGOS ========== -->
-  <section class="py-6 section-border">
+  <section class="py-4 section-border">
     <div class="max-w-6xl mx-auto px-6 mb-6">
       <p class="logo-label text-center">Trusted by leading brands</p>
     </div>
@@ -520,94 +576,90 @@
         </div>
       </div>
 
-      <!-- Services bento grid -->
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-4" style="grid-auto-rows: minmax(14rem, auto);">
-        <!-- Google Ads - spans 7 cols -->
-        <div class="reveal md:col-span-7 bento-card">
-          <div class="bento-inner p-7">
-            <div class="bento-glow"></div>
-            <div>
-              <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-5" style="background:#242428; border:1px solid #2a2a2f;">
-                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35" stroke-linecap="round"/></svg>
-              </div>
+    </div>
+  </section>
+
+  <!-- ========== SERVICES ========== -->
+  <section class="py-20 md:py-28 section-border">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="reveal text-center mb-12">
+        <p class="text-xs font-semibold tracking-widest uppercase mb-4" style="color:#2860E0; letter-spacing:0.15em;">Our Services</p>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl">What we do</h2>
+      </div>
+      <div class="reveal services-scroll">
+        <!-- Google Ads -->
+        <a href="google-ads-seo.html" class="service-card group" style="text-decoration:none; color:inherit;">
+          <div class="service-card-icon" style="background: linear-gradient(135deg, #1e40af, #3b82f6);">
+            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#fff" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-white mb-1">Google Ads</h3>
+            <p class="text-txt-muted text-sm" style="line-height:1.6;">Search, Shopping, Performance Max</p>
+          </div>
+          <div class="service-card-arrow">
+            <svg width="14" height="14" fill="none" stroke="#8b8b96" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </div>
+        </a>
+
+        <!-- SEO -->
+        <a href="google-ads-seo.html" class="service-card group" style="text-decoration:none; color:inherit;">
+          <div class="service-card-icon" style="background: linear-gradient(135deg, #166534, #22c55e);">
+            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#fff" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-white mb-1">SEO</h3>
+            <p class="text-txt-muted text-sm" style="line-height:1.6;">Organisk vaekst i Google</p>
+          </div>
+          <div class="service-card-arrow">
+            <svg width="14" height="14" fill="none" stroke="#8b8b96" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </div>
+        </a>
+
+        <!-- GEO / AI SEO -->
+        <div class="service-card group" style="cursor:default;">
+          <div class="flex items-start justify-between">
+            <div class="service-card-icon" style="background: linear-gradient(135deg, #581c87, #a855f7);">
+              <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#fff" stroke-width="2"><path d="M12 2a4 4 0 014 4c0 2-2 3-2 5h-4c0-2-2-3-2-5a4 4 0 014-4zM10 17h4M11 21h2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <div>
-              <h3 class="text-xl md:text-2xl mb-2">Google Ads</h3>
-              <p class="text-txt-muted text-sm" style="line-height:1.7;">We are specialists in Google Ads. With over 9 years of industry experience, we know every trick to grow your business.</p>
-            </div>
+            <span class="text-[0.65rem] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider" style="background:rgba(168,85,247,0.15); color:#c084fc; border:1px solid rgba(168,85,247,0.3);">NY</span>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-white mb-1">GEO / AI SEO</h3>
+            <p class="text-txt-muted text-sm" style="line-height:1.6;">Bliv synlig i ChatGPT &amp; AI</p>
+          </div>
+          <div class="service-card-arrow">
+            <svg width="14" height="14" fill="none" stroke="#8b8b96" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </div>
         </div>
 
-        <!-- SEO - spans 5 cols -->
-        <div class="reveal reveal-delay-1 md:col-span-5 bento-card">
-          <div class="bento-inner p-7">
-            <div class="bento-glow"></div>
-            <div>
-              <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-5" style="background:#242428; border:1px solid #2a2a2f;">
-                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </div>
-            </div>
-            <div>
-              <h3 class="text-xl md:text-2xl mb-2">SEO</h3>
-              <p class="text-txt-muted text-sm" style="line-height:1.7;">Get your business website higher in Google search results. Reach out to learn more about our SEO services.</p>
-            </div>
+        <!-- Paid Social -->
+        <a href="paid-social.html" class="service-card group" style="text-decoration:none; color:inherit;">
+          <div class="service-card-icon" style="background: linear-gradient(135deg, #9d174d, #ec4899);">
+            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#fff" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.73 21a2 2 0 01-3.46 0" stroke-linecap="round"/></svg>
           </div>
-        </div>
-
-        <!-- FB & IG Ads - spans 5 cols -->
-        <div class="reveal reveal-delay-2 md:col-span-5 bento-card">
-          <div class="bento-inner p-7">
-            <div class="bento-glow"></div>
-            <div>
-              <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-5" style="background:#242428; border:1px solid #2a2a2f;">
-                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.73 21a2 2 0 0 1-3.46 0" stroke-linecap="round"/></svg>
-              </div>
-            </div>
-            <div>
-              <h3 class="text-xl md:text-2xl mb-2">FB &amp; IG Ads</h3>
-              <p class="text-txt-muted text-sm" style="line-height:1.7;">As a supplementary service, we also offer advertising across all Meta platforms.</p>
-            </div>
+          <div>
+            <h3 class="text-lg font-semibold text-white mb-1">Paid Social</h3>
+            <p class="text-txt-muted text-sm" style="line-height:1.6;">Meta, Instagram &amp; TikTok</p>
           </div>
-        </div>
-
-        <!-- Strategy - spans 7 cols -->
-        <div class="reveal reveal-delay-3 md:col-span-7 bento-card">
-          <div class="bento-inner p-7">
-            <div class="bento-glow"></div>
-            <div>
-              <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-5" style="background:#242428; border:1px solid #2a2a2f;">
-                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </div>
-            </div>
-            <div>
-              <h3 class="text-xl md:text-2xl mb-2">Strategy</h3>
-              <p class="text-txt-muted text-sm" style="line-height:1.7;">We offer to create a 100% free, no-obligation marketing strategy for your brand.</p>
-            </div>
+          <div class="service-card-arrow">
+            <svg width="14" height="14" fill="none" stroke="#8b8b96" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </div>
-        </div>
+        </a>
 
-        <!-- Website Design - full width -->
-        <a href="websites.html" class="reveal md:col-span-12 bento-card block" style="text-decoration:none; border:none; outline:none;">
-          <div class="bento-inner p-7 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-            <div class="bento-glow"></div>
-            <div class="flex items-start gap-5">
-              <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:#242428; border:1px solid #2a2a2f;">
-                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </div>
-              <div>
-                <div class="flex items-center gap-2.5 mb-2">
-                  <h3 class="text-xl md:text-2xl">Website Design</h3>
-                  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full" style="background:rgba(40,96,224,0.15); color:#7ba3f0; border:1px solid rgba(40,96,224,0.25); letter-spacing:0.05em;">NEW</span>
-                </div>
-                <p class="text-txt-muted text-sm" style="line-height:1.7; max-width:560px;">We now build high-converting websites for our clients. Fast, modern, and designed to turn visitors into customers - get a free mockup today.</p>
-              </div>
+        <!-- Website Design -->
+        <a href="websites.html" class="service-card group" style="text-decoration:none; color:inherit;">
+          <div class="flex items-start justify-between">
+            <div class="service-card-icon" style="background: linear-gradient(135deg, #155e75, #06b6d4);">
+              <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#fff" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <div class="flex-shrink-0">
-              <span class="inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-full" style="background:#2860E0; color:#fff; box-shadow: 0 4px 14px rgba(40,96,224,0.35);">
-                Get Free Mockup
-                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-              </span>
-            </div>
+            <span class="text-[0.65rem] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider" style="background:rgba(6,182,212,0.15); color:#22d3ee; border:1px solid rgba(6,182,212,0.3);">NY</span>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-white mb-1">Website Design</h3>
+            <p class="text-txt-muted text-sm" style="line-height:1.6;">Shopify &amp; custom websites</p>
+          </div>
+          <div class="service-card-arrow">
+            <svg width="14" height="14" fill="none" stroke="#8b8b96" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </div>
         </a>
       </div>
@@ -1003,7 +1055,7 @@
           </div>
         </div>
         <div class="mt-4">
-          <a href="poas.html" class="inline-flex items-center gap-2 text-sm font-medium px-6 py-3 rounded-full transition-all duration-200 hover:gap-3" style="background:rgba(40,96,224,0.1); border:1px solid rgba(40,96,224,0.25); color:#7ba3f0;">
+          <a href="/poas" class="inline-flex items-center gap-2 text-sm font-medium px-6 py-3 rounded-full transition-all duration-200 hover:gap-3" style="background:rgba(40,96,224,0.1); border:1px solid rgba(40,96,224,0.25); color:#7ba3f0;">
             Learn more about POAS
             <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
@@ -1146,10 +1198,10 @@
         <div>
           <h4 class="text-white font-semibold mb-4 text-sm">Quick Links</h4>
           <ul class="space-y-2 text-sm text-txt-muted">
-            <li><a href="index.html" class="hover:text-white transition-colors duration-200 inline-flex items-center gap-2"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1h-2z" stroke-linecap="round" stroke-linejoin="round"/></svg>Home</a></li>
-            <li><a href="contact.html" class="hover:text-white transition-colors duration-200 inline-flex items-center gap-2"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>Contact</a></li>
-            <li><a href="cookie-policy.html" class="hover:text-white transition-colors duration-200 inline-flex items-center gap-2"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>Cookie Policy</a></li>
-            <li><a href="conditions.html" class="hover:text-white transition-colors duration-200 inline-flex items-center gap-2"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke-linecap="round" stroke-linejoin="round"/></svg>Terms &amp; Conditions</a></li>
+            <li><a href="/" class="hover:text-white transition-colors duration-200 inline-flex items-center gap-2"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1h-2z" stroke-linecap="round" stroke-linejoin="round"/></svg>Home</a></li>
+            <li><a href="/contact" class="hover:text-white transition-colors duration-200 inline-flex items-center gap-2"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>Contact</a></li>
+            <li><a href="/cookie-policy" class="hover:text-white transition-colors duration-200 inline-flex items-center gap-2"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>Cookie Policy</a></li>
+            <li><a href="/conditions" class="hover:text-white transition-colors duration-200 inline-flex items-center gap-2"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke-linecap="round" stroke-linejoin="round"/></svg>Terms &amp; Conditions</a></li>
           </ul>
         </div>
 

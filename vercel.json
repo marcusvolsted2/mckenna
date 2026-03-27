@@ -1,0 +1,16 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/en/google-ads", "destination": "/en/google-ads-seo.html" },
+    { "source": "/en/poas", "destination": "/en/poas.html" },
+    { "source": "/en", "destination": "/en/index.html" },
+    { "source": "/google-ads", "destination": "/google-ads-seo.html" },
+    { "source": "/poas", "destination": "/poas.html" },
+    { "source": "/kontakt", "destination": "/contact.html" },
+    { "source": "/hjemmesider", "destination": "/websites.html" },
+    { "source": "/betingelser", "destination": "/conditions.html" },
+    { "source": "/cookiepolitik", "destination": "/cookie-policy.html" },
+    { "source": "/paid-social", "destination": "/paid-social.html" }
+  ]
+}
