@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>POAS vs ROAS - McKenna Marketing</title>
+  <link rel="icon" type="image/svg+xml" href="Assets/mc-fav.svg">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: { DEFAULT: '#151518', card: '#1c1c20', elevated: '#242428', border: '#2a2a2f' },
+            txt: { DEFAULT: '#e8e8ec', muted: '#8b8b96', dim: '#5c5c66' },
+            accent: '#2860E0',
+          },
+          fontFamily: {
+            display: ['Outfit', 'system-ui', 'sans-serif'],
+            body: ['Inter', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: #151518; color: #e8e8ec; line-height: 1.7; }
+    h1, h2, h3 { font-family: 'Outfit', system-ui, sans-serif; letter-spacing: -0.03em; line-height: 1.1; font-weight: 700; }
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1); }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .section-border { border-top: 1px solid #2a2a2f; }
+    .card { background: #1c1c20; border: 1px solid #2a2a2f; border-radius: 16px; }
+    .btn-primary {
+      background: #2860E0; color: #fff; padding: 12px 28px; border-radius: 8px;
+      font-weight: 600; font-size: 0.9rem; display: inline-block; text-decoration: none;
+      transition: transform 0.2s cubic-bezier(.4,0,.2,1), box-shadow 0.2s ease; cursor: pointer; border: none;
+      box-shadow: 0 4px 14px rgba(40,96,224,0.3);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(40,96,224,0.45); }
+    .btn-primary:focus-visible { outline: 2px solid #2860E0; outline-offset: 3px; }
+    .btn-primary:active { transform: translateY(0); }
+    .social-icon {
+      width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center;
+      border-radius: 50%; background: #242428; border: 1px solid #2a2a2f; color: #8b8b96;
+      transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease; text-decoration: none;
+    }
+    .social-icon:hover { background: #2a2a2f; color: #e8e8ec; transform: translateY(-2px); }
+    .social-icon:focus-visible { outline: 2px solid #2860E0; outline-offset: 2px; }
+    .social-icon:active { transform: translateY(0); }
+    .elegant-shape {
+      position: absolute; border-radius: 9999px;
+      background: linear-gradient(135deg, rgba(40,96,224,0.12), transparent);
+      border: 2px solid rgba(255,255,255,0.06); backdrop-filter: blur(2px);
+      box-shadow: 0 8px 32px rgba(40,96,224,0.08);
+      opacity: 0; transform: translateY(-80px);
+      animation: shapeEntry 2s cubic-bezier(.23,.86,.39,.96) forwards;
+    }
+    .shape-1 { width: 550px; height: 130px; left: -8%; top: 18%; rotate: 12deg; animation-delay: 0.3s; }
+    .shape-2 { width: 450px; height: 110px; right: -3%; top: 72%; rotate: -15deg; background: linear-gradient(135deg, rgba(90,143,240,0.1), transparent); animation-delay: 0.5s; }
+    .shape-3 { width: 280px; height: 70px; left: 8%; bottom: 8%; rotate: -8deg; background: linear-gradient(135deg, rgba(100,60,224,0.1), transparent); animation-delay: 0.4s; }
+    @keyframes shapeEntry { to { opacity: 1; transform: translateY(0); } }
+    .hero-bg-gradient {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(40,96,224,0.04) 0%, transparent 40%, rgba(90,143,240,0.03) 100%);
+      filter: blur(60px);
+    }
+    .hero-vignette {
+      position: absolute; inset: 0; pointer-events: none;
+      background: linear-gradient(to bottom, rgba(21,21,24,0.7) 0%, transparent 20%, transparent 80%, rgba(21,21,24,0.9) 100%);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="fixed top-0 left-0 right-0 z-50 flex justify-center pt-4 px-6">
+    <div class="flex items-center justify-between gap-8 w-full max-w-6xl px-4 py-2 rounded-full" style="backdrop-filter:blur(20px); background:rgba(21,21,24,0.85); border:1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 24px rgba(0,0,0,0.25);">
+      <a href="index.html" class="flex items-center pl-2">
+        <img src="Assets/Mc-Marketing-Logo.png" alt="Mc Marketing" class="h-6" />
+      </a>
+      <div class="hidden lg:flex items-center gap-1">
+        <a href="index.html" class="text-sm text-white/70 hover:text-white px-4 py-2 rounded-full hover:bg-white/5 transition-all duration-200">Home</a>
+        <a href="contact.html" class="text-sm text-white/70 hover:text-white px-4 py-2 rounded-full hover:bg-white/5 transition-all duration-200">Contact</a>
+      </div>
+      <div class="hidden lg:flex items-center gap-2">
+        <a href="index.html#book" class="inline-flex items-center gap-2 text-sm font-medium px-5 py-2.5 rounded-full text-white transition-all duration-200" style="background:#2860E0; box-shadow: 0 2px 10px rgba(40,96,224,0.3);" onmouseover="this.style.boxShadow='0 4px 16px rgba(40,96,224,0.5)'" onmouseout="this.style.boxShadow='0 2px 10px rgba(40,96,224,0.3)'">
+          Book Meeting
+        </a>
+      </div>
+      <button class="lg:hidden flex flex-col gap-1.5 p-2 pr-3" onclick="document.getElementById('mobileMenu').classList.toggle('open')" aria-label="Menu">
+        <span class="block w-5 h-0.5 bg-white rounded-full"></span>
+        <span class="block w-5 h-0.5 bg-white rounded-full"></span>
+        <span class="block w-5 h-0.5 bg-white rounded-full"></span>
+      </button>
+    </div>
+    <div id="mobileMenu" class="mobile-menu flex-col gap-4 px-6 py-5 absolute top-full left-4 right-4 mt-2 rounded-2xl" style="display:none; background:rgba(28,28,32,0.95); border:1px solid rgba(255,255,255,0.08); backdrop-filter:blur(20px);">
+      <a href="index.html" class="text-sm text-txt-muted">Home</a>
+      <a href="contact.html" class="text-sm text-txt-muted">Contact</a>
+      <a href="index.html#book" class="text-sm text-txt-muted">Book Meeting</a>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section class="pt-36 pb-12 md:pt-48 md:pb-20 relative overflow-hidden">
+    <div class="hero-bg-gradient"></div>
+    <div class="elegant-shape shape-1"></div>
+    <div class="elegant-shape shape-2"></div>
+    <div class="elegant-shape shape-3"></div>
+    <div class="hero-vignette"></div>
+
+    <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+      <div class="reveal inline-flex items-center gap-2 px-5 py-2.5 rounded-full mb-8 text-sm" style="background:rgba(40,96,224,0.08); border:1px solid rgba(40,96,224,0.2); color:#7ba3f0;">
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="2"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Profit-Driven Marketing
+      </div>
+      <h1 class="reveal reveal-delay-1 text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-6" style="font-weight:600; letter-spacing:-0.03em; line-height:1.1; background: linear-gradient(180deg, #FFF 0%, rgba(255,255,255,0.45) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+        POAS vs ROAS: Why Profit Beats Revenue
+      </h1>
+      <p class="reveal reveal-delay-2 text-base md:text-lg max-w-2xl mx-auto mb-10" style="line-height:1.8; color: #a1a1aa;">
+        ROAS tells you how much revenue your ads generate. POAS tells you how much money you actually make. Here's why that difference matters more than you think.
+      </p>
+    </div>
+  </section>
+
+  <!-- ========== THE PROBLEM WITH ROAS ========== -->
+  <section class="py-20 md:py-28 section-border">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="reveal mb-14">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl mb-6">The Problem With ROAS</h2>
+        <p class="text-txt-muted text-base" style="line-height:1.8;">
+          ROAS - Return on Ad Spend - was originally meant to show profit returns from advertising. But in practice, it became "Revenue on Ad Spend" because that was the data readily available to platforms like Google and Meta.
+        </p>
+      </div>
+
+      <div class="reveal reveal-delay-1 card p-7 mb-8">
+        <h3 class="text-lg mb-4">What ROAS misses</h3>
+        <p class="text-txt-muted text-sm mb-5" style="line-height:1.7;">
+          When you optimize for ROAS, you're optimizing for top-line revenue. But revenue is not profit. A campaign can show a ROAS of 10x and still lose you money if the products sold have thin margins, high shipping costs, or were sold at a discount.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="flex items-start gap-3 p-4 rounded-xl" style="background:#242428;">
+            <svg class="w-5 h-5 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="#ef4444" stroke-width="2"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div>
+              <div class="text-sm font-medium text-white mb-1">Cost of goods</div>
+              <div class="text-xs text-txt-muted">Product costs are invisible to ROAS</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-3 p-4 rounded-xl" style="background:#242428;">
+            <svg class="w-5 h-5 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="#ef4444" stroke-width="2"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div>
+              <div class="text-sm font-medium text-white mb-1">Shipping costs</div>
+              <div class="text-xs text-txt-muted">Free shipping eats into margins silently</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-3 p-4 rounded-xl" style="background:#242428;">
+            <svg class="w-5 h-5 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="#ef4444" stroke-width="2"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div>
+              <div class="text-sm font-medium text-white mb-1">Discounts &amp; promotions</div>
+              <div class="text-xs text-txt-muted">Sale prices lower actual return per order</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-3 p-4 rounded-xl" style="background:#242428;">
+            <svg class="w-5 h-5 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="#ef4444" stroke-width="2"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div>
+              <div class="text-sm font-medium text-white mb-1">Payment fees</div>
+              <div class="text-xs text-txt-muted">Transaction costs reduce real profit</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Real-world example -->
+      <div class="reveal reveal-delay-2 card p-7">
+        <h3 class="text-lg mb-4">A real-world example</h3>
+        <p class="text-txt-muted text-sm mb-5" style="line-height:1.7;">
+          Consider two products in the same catalog:
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
+          <div class="p-4 rounded-xl" style="background:#242428;">
+            <div class="text-sm font-medium text-white mb-2">Frying Pan</div>
+            <div class="text-xs text-txt-muted mb-1">Break-even ROAS: <span class="text-white font-medium">2.12</span></div>
+            <div class="text-xs text-txt-muted">High margin, low price</div>
+          </div>
+          <div class="p-4 rounded-xl" style="background:#242428;">
+            <div class="text-sm font-medium text-white mb-2">Kitchen Mixer</div>
+            <div class="text-xs text-txt-muted mb-1">Break-even ROAS: <span class="text-white font-medium">8.88</span></div>
+            <div class="text-xs text-txt-muted">Low margin, high price</div>
+          </div>
+        </div>
+        <p class="text-txt-muted text-sm" style="line-height:1.7;">
+          If you set a single ROAS target of 10, the frying pan campaign gets shut down - even though it's highly profitable. With POAS, every order above 1.0 is confirmed profitable, regardless of product price. The three campaigns that ROAS would have killed were actually the most profitable ones.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== WHAT IS POAS ========== -->
+  <section class="py-20 md:py-28 section-border">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="reveal mb-14">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl mb-6">What Is POAS?</h2>
+        <p class="text-txt-muted text-base" style="line-height:1.8;">
+          POAS - Profit on Ad Spend - is a metric that divides gross profit attributable to a marketing channel by the ad spend on that channel. It's simple: if your POAS is above 1.0, you're making money. Below 1.0, you're losing money.
+        </p>
+      </div>
+
+      <div class="reveal reveal-delay-1 grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div class="card p-6 text-center" style="border-color: rgba(40,96,224,0.3);">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4" style="background:rgba(40,96,224,0.1); border:1px solid rgba(40,96,224,0.2);">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="2"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="text-base font-semibold mb-2">True Profit Visibility</h3>
+          <p class="text-txt-muted text-sm" style="line-height:1.6;">See exactly which campaigns, ads, and keywords generate real profit - not just revenue.</p>
+        </div>
+        <div class="card p-6 text-center" style="border-color: rgba(40,96,224,0.3);">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4" style="background:rgba(40,96,224,0.1); border:1px solid rgba(40,96,224,0.2);">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="2"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="text-base font-semibold mb-2">Smarter Bidding</h3>
+          <p class="text-txt-muted text-sm" style="line-height:1.6;">Profit data integrates directly into Google Ads and Meta for automated profit-based bid strategies.</p>
+        </div>
+        <div class="card p-6 text-center" style="border-color: rgba(40,96,224,0.3);">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4" style="background:rgba(40,96,224,0.1); border:1px solid rgba(40,96,224,0.2);">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="2"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="text-base font-semibold mb-2">Better Budget Allocation</h3>
+          <p class="text-txt-muted text-sm" style="line-height:1.6;">Direct your spend toward the products and campaigns that actually grow your bottom line.</p>
+        </div>
+      </div>
+
+      <!-- The one rule -->
+      <div class="reveal reveal-delay-2 text-center p-8 rounded-2xl" style="background: linear-gradient(135deg, rgba(40,96,224,0.08), rgba(90,143,240,0.04)); border: 1px solid rgba(40,96,224,0.2);">
+        <div class="font-display text-3xl md:text-4xl font-bold text-white mb-3">POAS &gt; 1.0 = Profit</div>
+        <p class="text-txt-muted text-sm max-w-lg mx-auto" style="line-height:1.7;">
+          One simple rule. No guesswork, no complex calculations, no hidden losses. Every order, every campaign, every channel - if it's above 1.0, it's making you money.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== THREE ROAS PITFALLS ========== -->
+  <section class="py-20 md:py-28 section-border">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="reveal mb-14">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl mb-6">The Three Traditional ROAS Tactics (and Why They Fail)</h2>
+        <p class="text-txt-muted text-base" style="line-height:1.8;">
+          Agencies have developed workarounds to compensate for ROAS's limitations. But each one introduces new risks.
+        </p>
+      </div>
+
+      <div class="space-y-6">
+        <div class="reveal card p-7">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1" style="background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.2);">
+              <span class="font-display font-bold text-sm" style="color:#ef4444;">1</span>
+            </div>
+            <div>
+              <h3 class="text-lg mb-2">Average ROAS Target</h3>
+              <p class="text-txt-muted text-sm mb-3" style="line-height:1.7;">
+                Uses average product margins across a year of history to set one ROAS target for everything.
+              </p>
+              <div class="flex items-start gap-2 p-3 rounded-lg" style="background:#242428;">
+                <svg class="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="#ef4444" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4.5c-.77-.833-2.694-.833-3.464 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <p class="text-xs text-txt-muted"><strong class="text-white">Pitfall:</strong> Accepts unavoidable losses on low-margin products. Risks shutting down profitable low-price, high-margin products. Requires continuous validation that never happens.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal reveal-delay-1 card p-7">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1" style="background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.2);">
+              <span class="font-display font-bold text-sm" style="color:#ef4444;">2</span>
+            </div>
+            <div>
+              <h3 class="text-lg mb-2">Differentiated ROAS Strategy</h3>
+              <p class="text-txt-muted text-sm mb-3" style="line-height:1.7;">
+                Divides products into multiple groups with different ROAS targets (typically three tiers).
+              </p>
+              <div class="flex items-start gap-2 p-3 rounded-lg" style="background:#242428;">
+                <svg class="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="#ef4444" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4.5c-.77-.833-2.694-.833-3.464 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <p class="text-xs text-txt-muted"><strong class="text-white">Pitfall:</strong> People don't always buy the product they clicked on. A low-ROAS ad can drive a high-margin sale that goes undetected, creating attribution blindness.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal reveal-delay-2 card p-7">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1" style="background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.2);">
+              <span class="font-display font-bold text-sm" style="color:#ef4444;">3</span>
+            </div>
+            <div>
+              <h3 class="text-lg mb-2">Highest Break-Even ROAS</h3>
+              <p class="text-txt-muted text-sm mb-3" style="line-height:1.7;">
+                Sets the target at the highest break-even ROAS in the catalog to ensure no product loses money.
+              </p>
+              <div class="flex items-start gap-2 p-3 rounded-lg" style="background:#242428;">
+                <svg class="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="#ef4444" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4.5c-.77-.833-2.694-.833-3.464 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <p class="text-xs text-txt-muted"><strong class="text-white">Pitfall:</strong> Unnecessarily suppresses order volume for products with lower break-even requirements. You leave profitable sales on the table.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SIDE BY SIDE COMPARISON ========== -->
+  <section class="py-20 md:py-28 section-border">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="reveal mb-14">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl mb-6">ROAS vs POAS at a Glance</h2>
+      </div>
+
+      <div class="reveal reveal-delay-1 overflow-x-auto">
+        <table class="w-full text-sm" style="border-collapse: separate; border-spacing: 0;">
+          <thead>
+            <tr>
+              <th class="text-left py-4 px-5 text-txt-muted font-medium text-xs uppercase tracking-wider" style="background:#1c1c20; border-bottom:1px solid #2a2a2f; border-radius: 12px 0 0 0;"></th>
+              <th class="text-left py-4 px-5 font-medium text-xs uppercase tracking-wider" style="background:#1c1c20; border-bottom:1px solid #2a2a2f; color:#ef4444;">ROAS</th>
+              <th class="text-left py-4 px-5 font-medium text-xs uppercase tracking-wider" style="background:#1c1c20; border-bottom:1px solid #2a2a2f; border-radius: 0 12px 0 0; color:#2860E0;">POAS</th>
+            </tr>
+          </thead>
+          <tbody class="text-txt-muted">
+            <tr style="border-bottom:1px solid #2a2a2f;">
+              <td class="py-3.5 px-5 font-medium text-white" style="border-bottom:1px solid #242428;">Measures</td>
+              <td class="py-3.5 px-5" style="border-bottom:1px solid #242428;">Revenue (top-line)</td>
+              <td class="py-3.5 px-5" style="border-bottom:1px solid #242428;">Actual profit (bottom-line)</td>
+            </tr>
+            <tr>
+              <td class="py-3.5 px-5 font-medium text-white" style="border-bottom:1px solid #242428;">Transparency</td>
+              <td class="py-3.5 px-5" style="border-bottom:1px solid #242428;">Obscures true profitability</td>
+              <td class="py-3.5 px-5" style="border-bottom:1px solid #242428;">Clear profitability indicator</td>
+            </tr>
+            <tr>
+              <td class="py-3.5 px-5 font-medium text-white" style="border-bottom:1px solid #242428;">Product focus</td>
+              <td class="py-3.5 px-5" style="border-bottom:1px solid #242428;">Favors highest-priced items</td>
+              <td class="py-3.5 px-5" style="border-bottom:1px solid #242428;">Favors highest-margin items</td>
+            </tr>
+            <tr>
+              <td class="py-3.5 px-5 font-medium text-white" style="border-bottom:1px solid #242428;">Costs</td>
+              <td class="py-3.5 px-5" style="border-bottom:1px solid #242428;">Ignores operational costs</td>
+              <td class="py-3.5 px-5" style="border-bottom:1px solid #242428;">Accounts for all costs</td>
+            </tr>
+            <tr>
+              <td class="py-3.5 px-5 font-medium text-white" style="border-bottom:1px solid #242428;">Promotions</td>
+              <td class="py-3.5 px-5" style="border-bottom:1px solid #242428;">Requires manual target adjustments</td>
+              <td class="py-3.5 px-5" style="border-bottom:1px solid #242428;">Automatically captured</td>
+            </tr>
+            <tr>
+              <td class="py-3.5 px-5 font-medium text-white" style="border-radius: 0 0 0 12px;">Profitability rule</td>
+              <td class="py-3.5 px-5">Varies per product, needs constant recalculation</td>
+              <td class="py-3.5 px-5" style="border-radius: 0 0 12px 0;">Simple: above 1.0 = profitable</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== RESULTS ========== -->
+  <section class="py-20 md:py-28 section-border">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="reveal text-center mb-14">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl mb-6">Real Results With POAS</h2>
+        <p class="text-txt-muted text-base max-w-2xl mx-auto" style="line-height:1.8;">
+          When you stop optimizing for revenue and start optimizing for profit, the numbers speak for themselves.
+        </p>
+      </div>
+
+      <div class="reveal reveal-delay-1 grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
+        <div class="card p-6 text-center" style="border-color: rgba(40,96,224,0.3);">
+          <div class="font-display text-3xl md:text-4xl font-bold text-white mb-2">+154%</div>
+          <div class="text-sm text-txt-muted">Contribution Margin Increase</div>
+        </div>
+        <div class="card p-6 text-center" style="border-color: rgba(40,96,224,0.3);">
+          <div class="font-display text-3xl md:text-4xl font-bold text-white mb-2">60%</div>
+          <div class="text-sm text-txt-muted">Ad Spend Savings</div>
+        </div>
+        <div class="card p-6 text-center" style="border-color: rgba(40,96,224,0.3);">
+          <div class="font-display text-3xl md:text-4xl font-bold text-white mb-2">0.95 &rarr; 1.1</div>
+          <div class="text-sm text-txt-muted">POAS Improvement</div>
+        </div>
+      </div>
+
+      <div class="reveal reveal-delay-2 text-center">
+        <p class="text-txt-muted text-sm mb-6" style="line-height:1.7;">
+          As a certified ProfitMetrics partner, we integrate profit data directly into Google Ads and Meta - enabling automated bidding strategies that optimize for your actual bottom line.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="index.html#book" class="btn-primary">Book a Meeting</a>
+          <a href="Assets/certificate-profitmetrics-agency-certification-6614e53e203e00d8660021e6 (1).pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-medium px-6 py-3 rounded-lg transition-all duration-200" style="background:rgba(40,96,224,0.1); border:1px solid rgba(40,96,224,0.25); color:#7ba3f0;">
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            View Our ProfitMetrics Certificate
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="py-16 section-border">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+        <div>
+          <a href="index.html" class="block mb-4">
+            <img src="Assets/Mc-Marketing-Logo.png" alt="Mc Marketing" class="h-7" />
+          </a>
+          <p class="text-txt-muted text-sm" style="line-height:1.7;">
+            McKenna Marketing has over 9 years of experience in online marketing. We specialize in Google Ads and SEO.
+          </p>
+          <div class="flex gap-3 mt-5">
+            <a href="#" class="social-icon" aria-label="LinkedIn">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Facebook">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Instagram">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-white font-semibold mb-4 text-sm">Quick Links</h4>
+          <ul class="space-y-2 text-sm text-txt-muted">
+            <li><a href="index.html" class="hover:text-white transition-colors duration-200">Home</a></li>
+            <li><a href="contact.html" class="hover:text-white transition-colors duration-200">Contact</a></li>
+            <li><a href="cookie-policy.html" class="hover:text-white transition-colors duration-200">Cookie Policy</a></li>
+            <li><a href="conditions.html" class="hover:text-white transition-colors duration-200">Terms &amp; Conditions</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-white font-semibold mb-4 text-sm">Contact</h4>
+          <ul class="space-y-2 text-sm text-txt-muted">
+            <li><a href="mailto:info@mcmarketing.dk" class="hover:text-white transition-colors duration-200">info@mcmarketing.dk</a></li>
+            <li><a href="tel:+4528252184" class="hover:text-white transition-colors duration-200">+45 28 25 21 84</a></li>
+            <li>Paradisaeblevej 4, 2500 Valby</li>
+            <li>CVR: 44808390</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Certifications -->
+      <div class="flex flex-wrap items-center justify-center gap-6 mb-10 pt-8 border-t" style="border-color:#2a2a2f;">
+        <div class="flex flex-col items-center gap-2">
+          <!-- START ProfitMetrics -  Certified Partner Badge (v1) -->
+          <a href="http://link.profitmetrics.io/certified" target="_blank" rel="noopener noreferrer">
+            <img
+              decoding="async"
+              src="https://link.profitmetrics.io/hubfs/Certified%20Agency%20Partner/pm_certified_neg.svg"
+              alt="ProfitMetrics Certified Partner Badge"
+              style="width: 100%; height: auto; max-width: auto; max-height: 40px;"
+            >
+          </a>
+          <!-- END ProfitMetrics -  Certified Partner Badge (v1) -->
+          <a href="Assets/certificate-profitmetrics-agency-certification-6614e53e203e00d8660021e6 (1).pdf" target="_blank" rel="noopener noreferrer" class="text-xs text-txt-dim hover:text-white transition-colors duration-200" style="text-decoration: underline;">
+            View Certificate
+          </a>
+        </div>
+      </div>
+
+      <div class="border-t pt-8 text-center text-xs text-txt-dim" style="border-color:#2a2a2f;">
+        &copy; All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll reveal script -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.05, rootMargin: '0px 0px 120px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    setTimeout(() => {
+      document.querySelectorAll('.reveal:not(.visible)').forEach(el => el.classList.add('visible'));
+    }, 3000);
+  </script>
+
+</body>
+</html>
