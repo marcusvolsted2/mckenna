@@ -1,9 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="da">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact - McKenna Marketing</title>
+  <title>Kontakt - McKenna Marketing</title>
+  <meta name="description" content="Kontakt McKenna Marketing - Book et gratis strategimode eller send os en besked. Vi svarer inden for 2 timer. Tlf: +45 28 25 21 84.">
+  <link rel="canonical" href="https://mckenna.vercel.app/contact">
+  <meta property="og:title" content="Kontakt - McKenna Marketing">
+  <meta property="og:description" content="Kontakt McKenna Marketing - Book et gratis strategimode eller send os en besked. Vi svarer inden for 2 timer. Tlf: +45 28 25 21 84.">
+  <meta property="og:url" content="https://mckenna.vercel.app/contact">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://mckenna.vercel.app/Assets/Mc-Marketing-Logo.png">
   <link rel="icon" type="image/svg+xml" href="Assets/mc-fav.svg">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,6 +49,16 @@
     .btn-primary:focus-visible { outline: 2px solid #2860E0; outline-offset: 3px; }
     .btn-primary:active { transform: translateY(0); }
 
+    .btn-outline {
+      display: inline-block; padding: 12px 28px; border-radius: 8px;
+      font-weight: 600; font-size: 0.9rem; text-decoration: none; cursor: pointer;
+      background: transparent; color: #7ba3f0; border: 1px solid rgba(40,96,224,0.3);
+      transition: transform 0.2s cubic-bezier(.4,0,.2,1), background 0.2s ease, border-color 0.2s ease;
+    }
+    .btn-outline:hover { transform: translateY(-2px); background: rgba(40,96,224,0.08); border-color: rgba(40,96,224,0.5); }
+    .btn-outline:focus-visible { outline: 2px solid #2860E0; outline-offset: 3px; }
+    .btn-outline:active { transform: translateY(0); }
+
     .card { background: #1c1c20; border: 1px solid #2a2a2f; border-radius: 16px; }
     .section-border { border-top: 1px solid #2a2a2f; }
 
@@ -73,14 +90,14 @@
 
   <!-- ========== NAVBAR ========== -->
   <nav class="fixed top-0 left-0 right-0 z-50 flex justify-center pt-4 px-6">
-    <div class="flex items-center justify-between gap-8 w-full max-w-6xl px-4 py-2 rounded-full" style="backdrop-filter:blur(20px); background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 24px rgba(0,0,0,0.25);">
+    <div class="flex items-center justify-between gap-8 w-full max-w-6xl px-4 py-2 rounded-full" style="backdrop-filter:blur(20px); background:rgba(21,21,24,0.85); border:1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 24px rgba(0,0,0,0.25);">
       <a href="/" class="flex items-center pl-2">
         <img src="Assets/Mc-Marketing-Logo.png" alt="Mc Marketing" class="h-6" />
       </a>
       <div class="hidden lg:flex items-center gap-1">
         <div class="relative" onmouseenter="this.querySelector('.services-menu').style.display='block'" onmouseleave="this.querySelector('.services-menu').style.display='none'">
           <button class="text-sm text-white/70 hover:text-white px-4 py-2 rounded-full hover:bg-white/5 transition-all duration-200 inline-flex items-center gap-1.5">
-            Services
+            Ydelser
             <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
           <div class="services-menu absolute left-1/2 -translate-x-1/2 top-full pt-2 z-50" style="display:none; min-width:220px;">
@@ -100,21 +117,21 @@
             </div>
           </div>
         </div>
-        <a href="/contact" class="text-sm text-white px-4 py-2 rounded-full bg-white/5 transition-all duration-200">Contact</a>
+        <a href="/contact" class="text-sm text-white px-4 py-2 rounded-full bg-white/5 transition-all duration-200">Kontakt</a>
       </div>
       <div class="hidden lg:flex items-center gap-2">
         <a href="/#book" class="inline-flex items-center gap-2 text-sm font-medium px-5 py-2.5 rounded-full text-white transition-all duration-200" style="background:#2860E0; box-shadow: 0 2px 10px rgba(40,96,224,0.3);" onmouseover="this.style.boxShadow='0 4px 16px rgba(40,96,224,0.5)'" onmouseout="this.style.boxShadow='0 2px 10px rgba(40,96,224,0.3)'">
-          Book Meeting
+          Book mode
         </a>
         <div class="relative lang-dropdown">
-          <button onclick="this.closest('.lang-dropdown').classList.toggle('open')" class="flex items-center justify-center w-9 h-9 rounded-full hover:bg-white/10 transition-all duration-200" title="Language" style="font-size:17px;">
-            <span id="activeLangFlag">&#127468;&#127463;</span>
+          <button onclick="this.closest('.lang-dropdown').classList.toggle('open')" class="flex items-center justify-center w-9 h-9 rounded-full hover:bg-white/10 transition-all duration-200" title="Sprog" style="font-size:17px;">
+            <span id="activeLangFlag">&#127465;&#127472;</span>
           </button>
           <div class="lang-menu absolute right-0 top-full mt-2 rounded-xl py-2 min-w-[130px] z-50" style="background:rgba(28,28,32,0.95); border:1px solid rgba(255,255,255,0.08); backdrop-filter:blur(20px); display:none;">
-            <button onclick="document.getElementById('activeLangFlag').innerHTML='&#127468;&#127463;'; this.closest('.lang-dropdown').classList.remove('open');" class="flex items-center gap-2.5 w-full px-4 py-2 text-sm text-white hover:bg-white/5 transition-colors duration-200">
+            <button onclick="document.getElementById('activeLangFlag').innerHTML='&#127468;&#127463;'; this.closest('.lang-dropdown').classList.remove('open');" class="flex items-center gap-2.5 w-full px-4 py-2 text-sm text-txt-muted hover:bg-white/5 transition-colors duration-200">
               <span style="font-size:15px;">&#127468;&#127463;</span> English
             </button>
-            <button onclick="document.getElementById('activeLangFlag').innerHTML='&#127465;&#127472;'; this.closest('.lang-dropdown').classList.remove('open');" class="flex items-center gap-2.5 w-full px-4 py-2 text-sm text-txt-muted hover:bg-white/5 transition-colors duration-200">
+            <button onclick="document.getElementById('activeLangFlag').innerHTML='&#127465;&#127472;'; this.closest('.lang-dropdown').classList.remove('open');" class="flex items-center gap-2.5 w-full px-4 py-2 text-sm text-white hover:bg-white/5 transition-colors duration-200">
               <span style="font-size:15px;">&#127465;&#127472;</span> Dansk
             </button>
           </div>
@@ -127,10 +144,15 @@
       </button>
     </div>
     <div id="mobileMenu" class="mobile-menu flex-col gap-4 px-6 py-5 absolute top-full left-4 right-4 mt-2 rounded-2xl" style="background:rgba(28,28,32,0.95); border:1px solid rgba(255,255,255,0.08); backdrop-filter:blur(20px);">
-      <a href="/contact" class="text-sm text-txt-muted">Contact</a>
-      <a href="/#book" class="text-sm text-txt-muted">Book Meeting</a>
+      <a href="/google-ads-seo" class="text-sm text-txt-muted">Google Ads & SEO</a>
+      <a href="/websites" class="text-sm text-txt-muted">Website Design</a>
+      <a href="/paid-social" class="text-sm text-txt-muted">Paid Social</a>
+      <a href="/contact" class="text-sm text-txt-muted">Kontakt</a>
+      <a href="/#book" class="text-sm text-txt-muted">Book mode</a>
     </div>
   </nav>
+
+  <main>
 
   <!-- ========== CONTACT CONTENT ========== -->
   <section style="padding-top:120px; padding-bottom:60px;">
@@ -139,15 +161,15 @@
 
         <!-- Contact Info -->
         <div>
-          <p class="text-xs font-semibold tracking-widest text-accent uppercase mb-3">Get in touch</p>
-          <h1 class="text-3xl md:text-4xl text-white mb-6">Contact Us</h1>
+          <p class="text-xs font-semibold tracking-widest text-accent uppercase mb-3">Tag kontakt</p>
+          <h1 class="text-3xl md:text-4xl text-white mb-6">Lad os tale om din vaekst</h1>
           <div class="contact-info-item">
             <div class="icon">
               <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="2"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
             <div>
               <p class="text-xs text-txt-dim mb-0.5 font-medium uppercase tracking-wider">Email</p>
-              <a href="mailto:sammy@mcmarketing.dk" class="text-txt-muted hover:text-white transition-colors duration-200 text-sm">sammy@mcmarketing.dk</a>
+              <a href="mailto:info@mcmarketing.dk" class="text-txt-muted hover:text-white transition-colors duration-200 text-sm">info@mcmarketing.dk</a>
             </div>
           </div>
           <div class="contact-info-item">
@@ -155,7 +177,7 @@
               <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="2"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
             <div>
-              <p class="text-xs text-txt-dim mb-0.5 font-medium uppercase tracking-wider">Phone</p>
+              <p class="text-xs text-txt-dim mb-0.5 font-medium uppercase tracking-wider">Telefon</p>
               <a href="tel:+4528252184" class="text-txt-muted hover:text-white transition-colors duration-200 text-sm">+45 28 25 21 84</a>
             </div>
           </div>
@@ -164,7 +186,7 @@
               <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
             <div>
-              <p class="text-xs text-txt-dim mb-0.5 font-medium uppercase tracking-wider">Address</p>
+              <p class="text-xs text-txt-dim mb-0.5 font-medium uppercase tracking-wider">Adresse</p>
               <p class="text-txt-muted text-sm">Paradisaeblevej 4, 2500 Valby</p>
             </div>
           </div>
@@ -182,48 +204,75 @@
 
         <!-- Contact Form -->
         <div class="card p-6">
-          <h2 class="text-xl mb-4">Send us a message</h2>
+          <!-- Trust signals -->
+          <div class="flex flex-wrap items-center gap-5 mb-5 pb-5" style="border-bottom:1px solid #2a2a2f;">
+            <div class="flex items-center gap-2">
+              <img src="Assets/google-partner.png" alt="Google Partner" class="h-8 w-8 rounded" loading="lazy" />
+              <span class="text-xs text-txt-muted font-medium">Google Partner</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="2"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="text-xs text-txt-muted font-medium">9+ ars erfaring</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="2"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="text-xs text-txt-muted font-medium">100+ tilfredse kunder</span>
+            </div>
+          </div>
+
+          <h2 class="text-xl mb-4">Send os en besked</h2>
           <form id="contactPageForm" class="space-y-3">
             <div>
-              <label class="block text-sm font-medium text-txt-muted mb-1">Name *</label>
-              <input id="cp-name" type="text" placeholder="Your name" required class="form-input" />
+              <label for="cp-name" class="block text-sm font-medium text-txt-muted mb-1">Navn *</label>
+              <input id="cp-name" type="text" placeholder="Dit navn" required class="form-input" />
             </div>
             <div>
-              <label class="block text-sm font-medium text-txt-muted mb-1">Email *</label>
-              <input id="cp-email" type="email" placeholder="your@email.com" required class="form-input" />
+              <label for="cp-email" class="block text-sm font-medium text-txt-muted mb-1">Email *</label>
+              <input id="cp-email" type="email" placeholder="din@email.dk" required class="form-input" />
             </div>
             <div>
-              <label class="block text-sm font-medium text-txt-muted mb-1">Phone</label>
+              <label for="cp-phone" class="block text-sm font-medium text-txt-muted mb-1">Telefon</label>
               <div class="flex gap-2">
                 <select id="cp-dial" class="form-input flex-shrink-0" style="width:100px; padding-left:8px; padding-right:8px;">
-                  <option value="+45">🇩🇰 +45</option>
-                  <option value="+46">🇸🇪 +46</option>
-                  <option value="+47">🇳🇴 +47</option>
-                  <option value="+358">🇫🇮 +358</option>
-                  <option value="+49">🇩🇪 +49</option>
-                  <option value="+44">🇬🇧 +44</option>
-                  <option value="+1">🇺🇸 +1</option>
-                  <option value="+31">🇳🇱 +31</option>
-                  <option value="+33">🇫🇷 +33</option>
-                  <option value="+34">🇪🇸 +34</option>
+                  <option value="+45">+45</option>
+                  <option value="+46">+46</option>
+                  <option value="+47">+47</option>
+                  <option value="+358">+358</option>
+                  <option value="+49">+49</option>
+                  <option value="+44">+44</option>
+                  <option value="+1">+1</option>
+                  <option value="+31">+31</option>
+                  <option value="+33">+33</option>
+                  <option value="+34">+34</option>
                 </select>
                 <input id="cp-phone" type="tel" placeholder="00 00 00 00" class="form-input flex-1" />
               </div>
             </div>
             <div>
-              <label class="block text-sm font-medium text-txt-muted mb-1">Message</label>
-              <textarea id="cp-message" rows="3" placeholder="How can we help?" class="form-input" style="resize:none;"></textarea>
+              <label for="cp-message" class="block text-sm font-medium text-txt-muted mb-1">Besked</label>
+              <textarea id="cp-message" rows="3" placeholder="Hvordan kan vi hjaelpe?" class="form-input" style="resize:none;"></textarea>
             </div>
-            <button id="cp-btn" type="submit" class="btn-primary w-full text-center" style="padding:14px 24px;">Send Message</button>
+            <button id="cp-btn" type="submit" class="btn-primary w-full text-center" style="padding:14px 24px;">Send besked</button>
+            <p class="text-xs text-center mt-1" style="color:#7ba3f0;">
+              <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="#7ba3f0" stroke-width="2" class="inline-block mr-1" style="vertical-align: -2px;"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Vi svarer typisk inden for 2 timer
+            </p>
             <p id="cp-msg" class="text-xs text-center mt-2" style="display:none;"></p>
-            <p class="text-xs text-txt-dim text-center mt-2">By submitting your information you accept our <a href="/conditions" class="underline text-txt-muted">Terms &amp; Conditions</a></p>
+            <p class="text-xs text-txt-dim text-center mt-2">Ved at indsende dine oplysninger accepterer du vores <a href="/conditions" class="underline text-txt-muted">vilkar og betingelser</a></p>
           </form>
+
+          <!-- Direct meeting CTA -->
+          <div class="mt-6 pt-6" style="border-top:1px solid #2a2a2f;">
+            <p class="text-sm text-txt-muted text-center mb-3">Foretraekker du et direkte mode?</p>
+            <a href="/#book" class="btn-outline w-full text-center block">Book et gratis mode</a>
+          </div>
+
           <script>
             document.getElementById('contactPageForm').addEventListener('submit', async function(e) {
               e.preventDefault();
               const btn = document.getElementById('cp-btn');
               const msg = document.getElementById('cp-msg');
-              btn.textContent = 'Sending...';
+              btn.textContent = 'Sender...';
               btn.disabled = true;
               try {
                 const res = await fetch('/api/contact', {
@@ -238,17 +287,17 @@
                   })
                 });
                 if (res.ok) {
-                  btn.textContent = 'Sent!';
+                  btn.textContent = 'Sendt!';
                   btn.style.background = 'rgba(40,96,224,0.15)';
-                  msg.textContent = "We'll be in touch soon.";
+                  msg.textContent = "Vi vender tilbage hurtigst muligt.";
                   msg.style.color = '#7ba3f0';
                   msg.style.display = 'block';
                   this.reset();
                 } else { throw new Error(); }
               } catch {
-                btn.textContent = 'Send Message';
+                btn.textContent = 'Send besked';
                 btn.disabled = false;
-                msg.textContent = 'Something went wrong. Please try again.';
+                msg.textContent = 'Noget gik galt. Proev venligst igen.';
                 msg.style.color = '#f87171';
                 msg.style.display = 'block';
               }
@@ -260,6 +309,8 @@
     </div>
   </section>
 
+  </main>
+
   <!-- ========== FOOTER ========== -->
   <footer class="py-16 section-border">
     <div class="max-w-6xl mx-auto px-6">
@@ -268,7 +319,7 @@
           <a href="/" class="block mb-4">
             <img src="Assets/Mc-Marketing-Logo.png" alt="Mc Marketing" class="h-7" />
           </a>
-          <p class="text-txt-muted text-sm" style="line-height:1.7;">McKenna Marketing has over 9 years of experience in online marketing. We specialize in Google Ads and SEO.</p>
+          <p class="text-txt-muted text-sm" style="line-height:1.7;">McKenna Marketing har over 9 ars erfaring med online marketing. Vi er specialiseret i Google Ads og SEO.</p>
           <div class="flex gap-3 mt-5">
             <a href="#" class="social-icon" aria-label="LinkedIn">
               <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -282,18 +333,18 @@
           </div>
         </div>
         <div>
-          <h4 class="text-white font-semibold mb-4 text-sm">Quick Links</h4>
+          <h4 class="text-white font-semibold mb-4 text-sm">Hurtige links</h4>
           <ul class="space-y-2 text-sm text-txt-muted">
-            <li><a href="/" class="hover:text-white transition-colors duration-200">Home</a></li>
-            <li><a href="/contact" class="hover:text-white transition-colors duration-200" style="color:#e8e8ec;">Contact</a></li>
-            <li><a href="/cookie-policy" class="hover:text-white transition-colors duration-200">Cookie Policy</a></li>
-            <li><a href="/conditions" class="hover:text-white transition-colors duration-200">Terms &amp; Conditions</a></li>
+            <li><a href="/" class="hover:text-white transition-colors duration-200">Hjem</a></li>
+            <li><a href="/contact" class="hover:text-white transition-colors duration-200" style="color:#e8e8ec;">Kontakt</a></li>
+            <li><a href="/cookie-policy" class="hover:text-white transition-colors duration-200">Cookie politik</a></li>
+            <li><a href="/conditions" class="hover:text-white transition-colors duration-200">Vilkar og betingelser</a></li>
           </ul>
         </div>
         <div>
-          <h4 class="text-white font-semibold mb-4 text-sm">Contact</h4>
+          <h4 class="text-white font-semibold mb-4 text-sm">Kontakt</h4>
           <ul class="space-y-2 text-sm text-txt-muted">
-            <li><a href="mailto:sammy@mcmarketing.dk" class="hover:text-white transition-colors duration-200">sammy@mcmarketing.dk</a></li>
+            <li><a href="mailto:info@mcmarketing.dk" class="hover:text-white transition-colors duration-200">info@mcmarketing.dk</a></li>
             <li><a href="tel:+4528252184" class="hover:text-white transition-colors duration-200">+45 28 25 21 84</a></li>
             <li>Paradisaeblevej 4, 2500 Valby</li>
             <li>CVR: 44808390</li>
@@ -301,7 +352,7 @@
         </div>
       </div>
       <div class="border-t pt-8 text-center text-xs text-txt-dim" style="border-color:#2a2a2f;">
-        &copy; All Rights Reserved.
+        &copy; Alle rettigheder forbeholdes.
       </div>
     </div>
   </footer>
