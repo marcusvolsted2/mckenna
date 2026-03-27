@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="da">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,9 +54,19 @@
     .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(40,96,224,0.45); }
     .btn-primary:focus-visible { outline: 2px solid #2860E0; outline-offset: 3px; }
     .btn-primary:active { transform: translateY(0); }
+    .btn-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.9rem; font-weight: 600; padding: 14px 32px; border-radius: 9999px;
+      background: #2860E0; color: #fff; text-decoration: none;
+      box-shadow: 0 4px 14px rgba(40,96,224,0.3);
+      transition: transform 0.2s cubic-bezier(.4,0,.2,1), box-shadow 0.2s ease;
+    }
+    .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(40,96,224,0.45); }
+    .btn-cta:active { transform: translateY(0); }
+    .btn-cta:focus-visible { outline: 2px solid #2860E0; outline-offset: 3px; }
     .social-icon {
       width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center;
-      border-radius: 50%; background: #242428; border: 1px solid #2a2a2f; color: #8b8b96;
+      border-radius: 8px; background: #1c1c20; border: 1px solid #2a2a2f; color: #8b8b96;
       transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease; text-decoration: none;
     }
     .social-icon:hover { background: #2a2a2f; color: #e8e8ec; transform: translateY(-2px); }
@@ -83,6 +93,18 @@
       position: absolute; inset: 0; pointer-events: none;
       background: linear-gradient(to bottom, rgba(21,21,24,0.7) 0%, transparent 20%, transparent 80%, rgba(21,21,24,0.9) 100%);
     }
+    .lang-dropdown.open .lang-menu { display: block !important; }
+    .mobile-menu { display: none; }
+    .mobile-menu.open { display: flex; }
+
+    /* Infinite logo scroll */
+    .logo-track {
+      display: flex; gap: 64px; align-items: center;
+      animation: logoScroll 30s linear infinite;
+      width: max-content;
+    }
+    .logo-track:hover { animation-play-state: paused; }
+    @keyframes logoScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-33.333%); } }
   </style>
 </head>
 <body>
@@ -94,13 +116,47 @@
         <img src="Assets/Mc-Marketing-Logo.png" alt="Mc Marketing" class="h-6" />
       </a>
       <div class="hidden lg:flex items-center gap-1">
-        <a href="/" class="text-sm text-white/70 hover:text-white px-4 py-2 rounded-full hover:bg-white/5 transition-all duration-200">Home</a>
-        <a href="/contact" class="text-sm text-white/70 hover:text-white px-4 py-2 rounded-full hover:bg-white/5 transition-all duration-200">Contact</a>
+        <div class="relative" onmouseenter="this.querySelector('.services-menu').style.display='block'" onmouseleave="this.querySelector('.services-menu').style.display='none'">
+          <button class="text-sm text-white/70 hover:text-white px-4 py-2 rounded-full hover:bg-white/5 transition-all duration-200 inline-flex items-center gap-1.5">
+            Ydelser
+            <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="services-menu absolute left-1/2 -translate-x-1/2 top-full pt-2 z-50" style="display:none; min-width:220px;">
+            <div class="rounded-xl py-2 px-1" style="background:rgba(28,28,32,0.95); border:1px solid rgba(255,255,255,0.08); backdrop-filter:blur(20px); box-shadow:0 12px 40px rgba(0,0,0,0.4);">
+              <a href="/google-ads-seo" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-white/70 hover:text-white hover:bg-white/5 transition-all duration-200">
+                <span class="flex items-center justify-center w-8 h-8 rounded-lg" style="background:rgba(40,96,224,0.1);"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="2"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                Google Ads & SEO
+              </a>
+              <a href="/websites" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-white/70 hover:text-white hover:bg-white/5 transition-all duration-200">
+                <span class="flex items-center justify-center w-8 h-8 rounded-lg" style="background:rgba(40,96,224,0.1);"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="2"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                Website Design
+              </a>
+              <a href="/paid-social" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-white/70 hover:text-white hover:bg-white/5 transition-all duration-200">
+                <span class="flex items-center justify-center w-8 h-8 rounded-lg" style="background:rgba(40,96,224,0.1);"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="2"><path d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                Paid Social
+              </a>
+            </div>
+          </div>
+        </div>
+        <a href="/contact" class="text-sm text-white/70 hover:text-white px-4 py-2 rounded-full hover:bg-white/5 transition-all duration-200">Kontakt</a>
       </div>
       <div class="hidden lg:flex items-center gap-2">
         <a href="/#book" class="inline-flex items-center gap-2 text-sm font-medium px-5 py-2.5 rounded-full text-white transition-all duration-200" style="background:#2860E0; box-shadow: 0 2px 10px rgba(40,96,224,0.3);" onmouseover="this.style.boxShadow='0 4px 16px rgba(40,96,224,0.5)'" onmouseout="this.style.boxShadow='0 2px 10px rgba(40,96,224,0.3)'">
-          Book Meeting
+          Book mode
         </a>
+        <div class="relative lang-dropdown">
+          <button onclick="this.closest('.lang-dropdown').classList.toggle('open')" class="flex items-center justify-center w-9 h-9 rounded-full hover:bg-white/10 transition-all duration-200" title="Sprog" style="font-size:17px;">
+            <span id="activeLangFlag">&#127465;&#127472;</span>
+          </button>
+          <div class="lang-menu absolute right-0 top-full mt-2 rounded-xl py-2 min-w-[130px] z-50" style="background:rgba(28,28,32,0.95); border:1px solid rgba(255,255,255,0.08); backdrop-filter:blur(20px); display:none;">
+            <button onclick="document.getElementById('activeLangFlag').innerHTML='&#127468;&#127463;'; this.closest('.lang-dropdown').classList.remove('open');" class="flex items-center gap-2.5 w-full px-4 py-2 text-sm text-txt-muted hover:bg-white/5 transition-colors duration-200">
+              <span style="font-size:15px;">&#127468;&#127463;</span> English
+            </button>
+            <button onclick="document.getElementById('activeLangFlag').innerHTML='&#127465;&#127472;'; this.closest('.lang-dropdown').classList.remove('open');" class="flex items-center gap-2.5 w-full px-4 py-2 text-sm text-white hover:bg-white/5 transition-colors duration-200">
+              <span style="font-size:15px;">&#127465;&#127472;</span> Dansk
+            </button>
+          </div>
+        </div>
       </div>
       <button class="lg:hidden flex flex-col gap-1.5 p-2 pr-3" onclick="document.getElementById('mobileMenu').classList.toggle('open')" aria-label="Menu">
         <span class="block w-5 h-0.5 bg-white rounded-full"></span>
@@ -109,11 +165,15 @@
       </button>
     </div>
     <div id="mobileMenu" class="mobile-menu flex-col gap-4 px-6 py-5 absolute top-full left-4 right-4 mt-2 rounded-2xl" style="display:none; background:rgba(28,28,32,0.95); border:1px solid rgba(255,255,255,0.08); backdrop-filter:blur(20px);">
-      <a href="/" class="text-sm text-txt-muted">Home</a>
-      <a href="/contact" class="text-sm text-txt-muted">Contact</a>
-      <a href="/#book" class="text-sm text-txt-muted">Book Meeting</a>
+      <a href="/google-ads-seo" class="text-sm text-txt-muted">Google Ads & SEO</a>
+      <a href="/websites" class="text-sm text-txt-muted">Website Design</a>
+      <a href="/paid-social" class="text-sm text-txt-muted">Paid Social</a>
+      <a href="/contact" class="text-sm text-txt-muted">Kontakt</a>
+      <a href="/#book" class="text-sm text-txt-muted">Book mode</a>
     </div>
   </nav>
+
+  <main>
 
   <!-- ========== HERO ========== -->
   <section class="pt-36 pb-12 md:pt-48 md:pb-20 relative overflow-hidden">
@@ -126,14 +186,52 @@
     <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
       <div class="reveal inline-flex items-center gap-2 px-5 py-2.5 rounded-full mb-8 text-sm" style="background:rgba(40,96,224,0.08); border:1px solid rgba(40,96,224,0.2); color:#7ba3f0;">
         <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="2"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Profit-Driven Marketing
+        Profitdrevet markedsforing
       </div>
       <h1 class="reveal reveal-delay-1 text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-6" style="font-weight:600; letter-spacing:-0.03em; line-height:1.1; background: linear-gradient(180deg, #FFF 0%, rgba(255,255,255,0.45) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
-        POAS vs ROAS: Why Profit Beats Revenue
+        POAS vs ROAS: Hvorfor profit slar omsaetning
       </h1>
       <p class="reveal reveal-delay-2 text-base md:text-lg max-w-2xl mx-auto mb-10" style="line-height:1.8; color: #a1a1aa;">
-        ROAS tells you how much revenue your ads generate. POAS tells you how much money you actually make. Here's why that difference matters more than you think.
+        ROAS fortaeller dig hvor meget omsaetning dine annoncer genererer. POAS fortaeller dig hvor mange penge du rent faktisk tjener. Her er hvorfor den forskel betyder mere end du tror.
       </p>
+      <div class="reveal reveal-delay-3">
+        <a href="#book-call" class="btn-cta">
+          Se hvordan POAS kan arbejde for dig
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TRUST BADGES ========== -->
+  <section class="py-6 section-border">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="flex flex-wrap items-center justify-center gap-8">
+        <img src="Assets/google-partner.png" alt="Google Partner" class="h-16 w-16 rounded-xl" loading="lazy" style="box-shadow: 0 4px 20px rgba(0,0,0,0.3);" />
+        <div class="overflow-hidden flex-1 min-w-0" style="mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);">
+          <div class="logo-track" style="gap: 60px;">
+            <img src="Assets/clientlogos/peech-Kopi-150x150.webp" alt="Peech" class="h-20 w-auto opacity-70 brightness-125 grayscale" loading="lazy">
+            <img src="Assets/clientlogos/burstcreators-Kopi-150x150.webp" alt="Burstcreators" class="h-20 w-auto opacity-70 brightness-125 grayscale" loading="lazy">
+            <img src="Assets/clientlogos/elektronikse-logo-Kopi-150x150.webp" alt="Elektronikse" class="h-20 w-auto opacity-70 brightness-125 grayscale" loading="lazy">
+            <img src="Assets/clientlogos/logo_skibutikken-Kopi-150x150.webp" alt="Skibutikken" class="h-20 w-auto opacity-70 brightness-125 grayscale" loading="lazy">
+            <img src="Assets/clientlogos/Protein-Coorperation-Kopi-150x150.webp" alt="Protein" class="h-20 w-auto opacity-70 brightness-125 grayscale" loading="lazy">
+            <img src="Assets/clientlogos/soleplus-1-150x150.webp" alt="Soleplus" class="h-20 w-auto opacity-70 brightness-125 grayscale" loading="lazy">
+            <!-- Duplicate sets -->
+            <img src="Assets/clientlogos/peech-Kopi-150x150.webp" alt="Peech" class="h-20 w-auto opacity-70 brightness-125 grayscale" loading="lazy">
+            <img src="Assets/clientlogos/burstcreators-Kopi-150x150.webp" alt="Burstcreators" class="h-20 w-auto opacity-70 brightness-125 grayscale" loading="lazy">
+            <img src="Assets/clientlogos/elektronikse-logo-Kopi-150x150.webp" alt="Elektronikse" class="h-20 w-auto opacity-70 brightness-125 grayscale" loading="lazy">
+            <img src="Assets/clientlogos/logo_skibutikken-Kopi-150x150.webp" alt="Skibutikken" class="h-20 w-auto opacity-70 brightness-125 grayscale" loading="lazy">
+            <img src="Assets/clientlogos/Protein-Coorperation-Kopi-150x150.webp" alt="Protein" class="h-20 w-auto opacity-70 brightness-125 grayscale" loading="lazy">
+            <img src="Assets/clientlogos/soleplus-1-150x150.webp" alt="Soleplus" class="h-20 w-auto opacity-70 brightness-125 grayscale" loading="lazy">
+            <img src="Assets/clientlogos/peech-Kopi-150x150.webp" alt="Peech" class="h-20 w-auto opacity-70 brightness-125 grayscale" loading="lazy">
+            <img src="Assets/clientlogos/burstcreators-Kopi-150x150.webp" alt="Burstcreators" class="h-20 w-auto opacity-70 brightness-125 grayscale" loading="lazy">
+            <img src="Assets/clientlogos/elektronikse-logo-Kopi-150x150.webp" alt="Elektronikse" class="h-20 w-auto opacity-70 brightness-125 grayscale" loading="lazy">
+            <img src="Assets/clientlogos/logo_skibutikken-Kopi-150x150.webp" alt="Skibutikken" class="h-20 w-auto opacity-70 brightness-125 grayscale" loading="lazy">
+            <img src="Assets/clientlogos/Protein-Coorperation-Kopi-150x150.webp" alt="Protein" class="h-20 w-auto opacity-70 brightness-125 grayscale" loading="lazy">
+            <img src="Assets/clientlogos/soleplus-1-150x150.webp" alt="Soleplus" class="h-20 w-auto opacity-70 brightness-125 grayscale" loading="lazy">
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -141,44 +239,44 @@
   <section class="py-20 md:py-28 section-border">
     <div class="max-w-4xl mx-auto px-6">
       <div class="reveal mb-14">
-        <h2 class="text-2xl sm:text-3xl md:text-4xl mb-6">The Problem With ROAS</h2>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl mb-6">Problemet med ROAS</h2>
         <p class="text-txt-muted text-base" style="line-height:1.8;">
-          ROAS - Return on Ad Spend - was originally meant to show profit returns from advertising. But in practice, it became "Revenue on Ad Spend" because that was the data readily available to platforms like Google and Meta.
+          ROAS - Return on Ad Spend - var oprindeligt ment til at vise profitafkast fra annoncering. Men i praksis blev det "Revenue on Ad Spend" fordi det var den data der var tilgaengelig for platforme som Google og Meta.
         </p>
       </div>
 
       <div class="reveal reveal-delay-1 card p-7 mb-8">
-        <h3 class="text-lg mb-4">What ROAS misses</h3>
+        <h3 class="text-lg mb-4">Hvad ROAS overser</h3>
         <p class="text-txt-muted text-sm mb-5" style="line-height:1.7;">
-          When you optimize for ROAS, you're optimizing for top-line revenue. But revenue is not profit. A campaign can show a ROAS of 10x and still lose you money if the products sold have thin margins, high shipping costs, or were sold at a discount.
+          Nar du optimerer for ROAS, optimerer du for top-line omsaetning. Men omsaetning er ikke profit. En kampagne kan vise en ROAS pa 10x og stadig tabe penge hvis produkterne har tynde marginer, hoje forsendelsesomkostninger, eller blev solgt med rabat.
         </p>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div class="flex items-start gap-3 p-4 rounded-xl" style="background:#242428;">
             <svg class="w-5 h-5 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="#ef4444" stroke-width="2"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <div>
-              <div class="text-sm font-medium text-white mb-1">Cost of goods</div>
-              <div class="text-xs text-txt-muted">Product costs are invisible to ROAS</div>
+              <div class="text-sm font-medium text-white mb-1">Vareomkostninger</div>
+              <div class="text-xs text-txt-muted">Produktomkostninger er usynlige for ROAS</div>
             </div>
           </div>
           <div class="flex items-start gap-3 p-4 rounded-xl" style="background:#242428;">
             <svg class="w-5 h-5 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="#ef4444" stroke-width="2"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <div>
-              <div class="text-sm font-medium text-white mb-1">Shipping costs</div>
-              <div class="text-xs text-txt-muted">Free shipping eats into margins silently</div>
+              <div class="text-sm font-medium text-white mb-1">Forsendelsesomkostninger</div>
+              <div class="text-xs text-txt-muted">Gratis fragt aeder marginen stille</div>
             </div>
           </div>
           <div class="flex items-start gap-3 p-4 rounded-xl" style="background:#242428;">
             <svg class="w-5 h-5 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="#ef4444" stroke-width="2"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <div>
-              <div class="text-sm font-medium text-white mb-1">Discounts &amp; promotions</div>
-              <div class="text-xs text-txt-muted">Sale prices lower actual return per order</div>
+              <div class="text-sm font-medium text-white mb-1">Rabatter og kampagner</div>
+              <div class="text-xs text-txt-muted">Udsalgspriser saenker det faktiske afkast per ordre</div>
             </div>
           </div>
           <div class="flex items-start gap-3 p-4 rounded-xl" style="background:#242428;">
             <svg class="w-5 h-5 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="#ef4444" stroke-width="2"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <div>
-              <div class="text-sm font-medium text-white mb-1">Payment fees</div>
-              <div class="text-xs text-txt-muted">Transaction costs reduce real profit</div>
+              <div class="text-sm font-medium text-white mb-1">Betalingsgebyrer</div>
+              <div class="text-xs text-txt-muted">Transaktionsomkostninger reducerer reel profit</div>
             </div>
           </div>
         </div>
@@ -186,25 +284,36 @@
 
       <!-- Real-world example -->
       <div class="reveal reveal-delay-2 card p-7">
-        <h3 class="text-lg mb-4">A real-world example</h3>
+        <h3 class="text-lg mb-4">Et eksempel fra virkeligheden</h3>
         <p class="text-txt-muted text-sm mb-5" style="line-height:1.7;">
-          Consider two products in the same catalog:
+          Overvej to produkter i det samme katalog:
         </p>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
           <div class="p-4 rounded-xl" style="background:#242428;">
-            <div class="text-sm font-medium text-white mb-2">Frying Pan</div>
-            <div class="text-xs text-txt-muted mb-1">Break-even ROAS: <span class="text-white font-medium">2.12</span></div>
-            <div class="text-xs text-txt-muted">High margin, low price</div>
+            <div class="text-sm font-medium text-white mb-2">Stegepande</div>
+            <div class="text-xs text-txt-muted mb-1">Break-even ROAS: <span class="text-white font-medium">2,12</span></div>
+            <div class="text-xs text-txt-muted">Hoj margin, lav pris</div>
           </div>
           <div class="p-4 rounded-xl" style="background:#242428;">
-            <div class="text-sm font-medium text-white mb-2">Kitchen Mixer</div>
-            <div class="text-xs text-txt-muted mb-1">Break-even ROAS: <span class="text-white font-medium">8.88</span></div>
-            <div class="text-xs text-txt-muted">Low margin, high price</div>
+            <div class="text-sm font-medium text-white mb-2">Kokkenmaskine</div>
+            <div class="text-xs text-txt-muted mb-1">Break-even ROAS: <span class="text-white font-medium">8,88</span></div>
+            <div class="text-xs text-txt-muted">Lav margin, hoj pris</div>
           </div>
         </div>
         <p class="text-txt-muted text-sm" style="line-height:1.7;">
-          If you set a single ROAS target of 10, the frying pan campaign gets shut down - even though it's highly profitable. With POAS, every order above 1.0 is confirmed profitable, regardless of product price. The three campaigns that ROAS would have killed were actually the most profitable ones.
+          Hvis du saetter et enkelt ROAS-mal pa 10, bliver stegepande-kampagnen lukket ned - selvom den er meget profitabel. Med POAS er enhver ordre over 1,0 bekraeftet profitabel, uanset produktpris. De tre kampagner som ROAS ville have lukket var faktisk de mest profitable.
         </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== MID-PAGE CTA ========== -->
+  <section class="py-16 md:py-20 section-border">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <div class="reveal rounded-2xl px-8 py-12 md:px-16 md:py-14" style="background: linear-gradient(135deg, rgba(40,96,224,0.08), rgba(90,143,240,0.04)); border: 1px solid rgba(40,96,224,0.2);">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl text-white mb-4">Klar til profitbaseret marketing?</h2>
+        <p class="text-txt-muted max-w-xl mx-auto mb-8" style="line-height:1.7;">Stop med at gaette pa om dine annoncer er profitable. Fa en gratis gennemgang og se forskellen.</p>
+        <a href="#book-call" class="btn-primary">Book et gratis mode</a>
       </div>
     </div>
   </section>
@@ -213,9 +322,9 @@
   <section class="py-20 md:py-28 section-border">
     <div class="max-w-4xl mx-auto px-6">
       <div class="reveal mb-14">
-        <h2 class="text-2xl sm:text-3xl md:text-4xl mb-6">What Is POAS?</h2>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl mb-6">Hvad er POAS?</h2>
         <p class="text-txt-muted text-base" style="line-height:1.8;">
-          POAS - Profit on Ad Spend - is a metric that divides gross profit attributable to a marketing channel by the ad spend on that channel. It's simple: if your POAS is above 1.0, you're making money. Below 1.0, you're losing money.
+          POAS - Profit on Ad Spend - er en metrik der dividerer bruttoprofitten tilskrevet en marketingkanal med annonceudgiften pa den kanal. Det er simpelt: hvis din POAS er over 1,0, tjener du penge. Under 1,0, taber du penge.
         </p>
       </div>
 
@@ -224,30 +333,30 @@
           <div class="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4" style="background:rgba(40,96,224,0.1); border:1px solid rgba(40,96,224,0.2);">
             <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="2"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <h3 class="text-base font-semibold mb-2">True Profit Visibility</h3>
-          <p class="text-txt-muted text-sm" style="line-height:1.6;">See exactly which campaigns, ads, and keywords generate real profit - not just revenue.</p>
+          <h3 class="text-base font-semibold mb-2">Agte profit-synlighed</h3>
+          <p class="text-txt-muted text-sm" style="line-height:1.6;">Se praecis hvilke kampagner, annoncer og sogeord der genererer reel profit - ikke bare omsaetning.</p>
         </div>
         <div class="card p-6 text-center" style="border-color: rgba(40,96,224,0.3);">
           <div class="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4" style="background:rgba(40,96,224,0.1); border:1px solid rgba(40,96,224,0.2);">
             <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="2"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <h3 class="text-base font-semibold mb-2">Smarter Bidding</h3>
-          <p class="text-txt-muted text-sm" style="line-height:1.6;">Profit data integrates directly into Google Ads and Meta for automated profit-based bid strategies.</p>
+          <h3 class="text-base font-semibold mb-2">Smartere budgivning</h3>
+          <p class="text-txt-muted text-sm" style="line-height:1.6;">Profitdata integreres direkte i Google Ads og Meta til automatiserede profitbaserede budstrategier.</p>
         </div>
         <div class="card p-6 text-center" style="border-color: rgba(40,96,224,0.3);">
           <div class="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4" style="background:rgba(40,96,224,0.1); border:1px solid rgba(40,96,224,0.2);">
             <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="2"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <h3 class="text-base font-semibold mb-2">Better Budget Allocation</h3>
-          <p class="text-txt-muted text-sm" style="line-height:1.6;">Direct your spend toward the products and campaigns that actually grow your bottom line.</p>
+          <h3 class="text-base font-semibold mb-2">Bedre budgetallokering</h3>
+          <p class="text-txt-muted text-sm" style="line-height:1.6;">Ret dit forbrug mod de produkter og kampagner der faktisk goer din bundlinje stoerre.</p>
         </div>
       </div>
 
       <!-- The one rule -->
       <div class="reveal reveal-delay-2 text-center p-8 rounded-2xl" style="background: linear-gradient(135deg, rgba(40,96,224,0.08), rgba(90,143,240,0.04)); border: 1px solid rgba(40,96,224,0.2);">
-        <div class="font-display text-3xl md:text-4xl font-bold text-white mb-3">POAS &gt; 1.0 = Profit</div>
+        <div class="font-display text-3xl md:text-4xl font-bold text-white mb-3">POAS &gt; 1,0 = Profit</div>
         <p class="text-txt-muted text-sm max-w-lg mx-auto" style="line-height:1.7;">
-          One simple rule. No guesswork, no complex calculations, no hidden losses. Every order, every campaign, every channel - if it's above 1.0, it's making you money.
+          En simpel regel. Ingen gaetvaerk, ingen komplekse beregninger, ingen skjulte tab. Hver ordre, hver kampagne, hver kanal - hvis den er over 1,0, tjener den penge.
         </p>
       </div>
     </div>
@@ -257,9 +366,9 @@
   <section class="py-20 md:py-28 section-border">
     <div class="max-w-4xl mx-auto px-6">
       <div class="reveal mb-14">
-        <h2 class="text-2xl sm:text-3xl md:text-4xl mb-6">The Three Traditional ROAS Tactics (and Why They Fail)</h2>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl mb-6">De tre traditionelle ROAS-taktikker (og hvorfor de fejler)</h2>
         <p class="text-txt-muted text-base" style="line-height:1.8;">
-          Agencies have developed workarounds to compensate for ROAS's limitations. But each one introduces new risks.
+          Bureauer har udviklet workarounds for at kompensere for ROAS's begraensninger. Men hver enkelt introducerer nye risici.
         </p>
       </div>
 
@@ -270,13 +379,13 @@
               <span class="font-display font-bold text-sm" style="color:#ef4444;">1</span>
             </div>
             <div>
-              <h3 class="text-lg mb-2">Average ROAS Target</h3>
+              <h3 class="text-lg mb-2">Gennemsnitligt ROAS-mal</h3>
               <p class="text-txt-muted text-sm mb-3" style="line-height:1.7;">
-                Uses average product margins across a year of history to set one ROAS target for everything.
+                Bruger gennemsnitlige produktmarginer over et ars historik til at saette et ROAS-mal for alt.
               </p>
               <div class="flex items-start gap-2 p-3 rounded-lg" style="background:#242428;">
                 <svg class="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="#ef4444" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4.5c-.77-.833-2.694-.833-3.464 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <p class="text-xs text-txt-muted"><strong class="text-white">Pitfall:</strong> Accepts unavoidable losses on low-margin products. Risks shutting down profitable low-price, high-margin products. Requires continuous validation that never happens.</p>
+                <p class="text-xs text-txt-muted"><strong class="text-white">Faldgrube:</strong> Accepterer uundgaelige tab pa lavmargin-produkter. Risikerer at lukke profitable lavpris, hojmargin-produkter. Kraever kontinuerlig validering der aldrig sker.</p>
               </div>
             </div>
           </div>
@@ -288,13 +397,13 @@
               <span class="font-display font-bold text-sm" style="color:#ef4444;">2</span>
             </div>
             <div>
-              <h3 class="text-lg mb-2">Differentiated ROAS Strategy</h3>
+              <h3 class="text-lg mb-2">Differentieret ROAS-strategi</h3>
               <p class="text-txt-muted text-sm mb-3" style="line-height:1.7;">
-                Divides products into multiple groups with different ROAS targets (typically three tiers).
+                Opdeler produkter i flere grupper med forskellige ROAS-mal (typisk tre niveauer).
               </p>
               <div class="flex items-start gap-2 p-3 rounded-lg" style="background:#242428;">
                 <svg class="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="#ef4444" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4.5c-.77-.833-2.694-.833-3.464 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <p class="text-xs text-txt-muted"><strong class="text-white">Pitfall:</strong> People don't always buy the product they clicked on. A low-ROAS ad can drive a high-margin sale that goes undetected, creating attribution blindness.</p>
+                <p class="text-xs text-txt-muted"><strong class="text-white">Faldgrube:</strong> Folk kober ikke altid det produkt de klikkede pa. En lav-ROAS annonce kan drive et hojmargin-salg der gar uopdaget og skaber attributionsblindhed.</p>
               </div>
             </div>
           </div>
@@ -306,13 +415,13 @@
               <span class="font-display font-bold text-sm" style="color:#ef4444;">3</span>
             </div>
             <div>
-              <h3 class="text-lg mb-2">Highest Break-Even ROAS</h3>
+              <h3 class="text-lg mb-2">Hojeste break-even ROAS</h3>
               <p class="text-txt-muted text-sm mb-3" style="line-height:1.7;">
-                Sets the target at the highest break-even ROAS in the catalog to ensure no product loses money.
+                Saetter malet ved den hojeste break-even ROAS i kataloget for at sikre at intet produkt taber penge.
               </p>
               <div class="flex items-start gap-2 p-3 rounded-lg" style="background:#242428;">
                 <svg class="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="#ef4444" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4.5c-.77-.833-2.694-.833-3.464 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <p class="text-xs text-txt-muted"><strong class="text-white">Pitfall:</strong> Unnecessarily suppresses order volume for products with lower break-even requirements. You leave profitable sales on the table.</p>
+                <p class="text-xs text-txt-muted"><strong class="text-white">Faldgrube:</strong> Undertykker unodvendigt ordrevolumen for produkter med lavere break-even-krav. Du efterlader profitable salg pa bordet.</p>
               </div>
             </div>
           </div>
@@ -325,7 +434,7 @@
   <section class="py-20 md:py-28 section-border">
     <div class="max-w-4xl mx-auto px-6">
       <div class="reveal mb-14">
-        <h2 class="text-2xl sm:text-3xl md:text-4xl mb-6">ROAS vs POAS at a Glance</h2>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl mb-6">ROAS vs POAS pa et overblik</h2>
       </div>
 
       <div class="reveal reveal-delay-1 overflow-x-auto">
@@ -339,34 +448,34 @@
           </thead>
           <tbody class="text-txt-muted">
             <tr style="border-bottom:1px solid #2a2a2f;">
-              <td class="py-3.5 px-5 font-medium text-white" style="border-bottom:1px solid #242428;">Measures</td>
-              <td class="py-3.5 px-5" style="border-bottom:1px solid #242428;">Revenue (top-line)</td>
-              <td class="py-3.5 px-5" style="border-bottom:1px solid #242428;">Actual profit (bottom-line)</td>
+              <td class="py-3.5 px-5 font-medium text-white" style="border-bottom:1px solid #242428;">Maler</td>
+              <td class="py-3.5 px-5" style="border-bottom:1px solid #242428;">Omsaetning (top-line)</td>
+              <td class="py-3.5 px-5" style="border-bottom:1px solid #242428;">Faktisk profit (bundlinje)</td>
             </tr>
             <tr>
-              <td class="py-3.5 px-5 font-medium text-white" style="border-bottom:1px solid #242428;">Transparency</td>
-              <td class="py-3.5 px-5" style="border-bottom:1px solid #242428;">Obscures true profitability</td>
-              <td class="py-3.5 px-5" style="border-bottom:1px solid #242428;">Clear profitability indicator</td>
+              <td class="py-3.5 px-5 font-medium text-white" style="border-bottom:1px solid #242428;">Gennemsigtighed</td>
+              <td class="py-3.5 px-5" style="border-bottom:1px solid #242428;">Sloerer reel profitabilitet</td>
+              <td class="py-3.5 px-5" style="border-bottom:1px solid #242428;">Klar profitabilitetsindikator</td>
             </tr>
             <tr>
-              <td class="py-3.5 px-5 font-medium text-white" style="border-bottom:1px solid #242428;">Product focus</td>
-              <td class="py-3.5 px-5" style="border-bottom:1px solid #242428;">Favors highest-priced items</td>
-              <td class="py-3.5 px-5" style="border-bottom:1px solid #242428;">Favors highest-margin items</td>
+              <td class="py-3.5 px-5 font-medium text-white" style="border-bottom:1px solid #242428;">Produktfokus</td>
+              <td class="py-3.5 px-5" style="border-bottom:1px solid #242428;">Favoriserer dyreste produkter</td>
+              <td class="py-3.5 px-5" style="border-bottom:1px solid #242428;">Favoriserer hojest-margin produkter</td>
             </tr>
             <tr>
-              <td class="py-3.5 px-5 font-medium text-white" style="border-bottom:1px solid #242428;">Costs</td>
-              <td class="py-3.5 px-5" style="border-bottom:1px solid #242428;">Ignores operational costs</td>
-              <td class="py-3.5 px-5" style="border-bottom:1px solid #242428;">Accounts for all costs</td>
+              <td class="py-3.5 px-5 font-medium text-white" style="border-bottom:1px solid #242428;">Omkostninger</td>
+              <td class="py-3.5 px-5" style="border-bottom:1px solid #242428;">Ignorerer driftsomkostninger</td>
+              <td class="py-3.5 px-5" style="border-bottom:1px solid #242428;">Medregner alle omkostninger</td>
             </tr>
             <tr>
-              <td class="py-3.5 px-5 font-medium text-white" style="border-bottom:1px solid #242428;">Promotions</td>
-              <td class="py-3.5 px-5" style="border-bottom:1px solid #242428;">Requires manual target adjustments</td>
-              <td class="py-3.5 px-5" style="border-bottom:1px solid #242428;">Automatically captured</td>
+              <td class="py-3.5 px-5 font-medium text-white" style="border-bottom:1px solid #242428;">Kampagner</td>
+              <td class="py-3.5 px-5" style="border-bottom:1px solid #242428;">Kraever manuelle maljusteringer</td>
+              <td class="py-3.5 px-5" style="border-bottom:1px solid #242428;">Fanges automatisk</td>
             </tr>
             <tr>
-              <td class="py-3.5 px-5 font-medium text-white" style="border-radius: 0 0 0 12px;">Profitability rule</td>
-              <td class="py-3.5 px-5">Varies per product, needs constant recalculation</td>
-              <td class="py-3.5 px-5" style="border-radius: 0 0 12px 0;">Simple: above 1.0 = profitable</td>
+              <td class="py-3.5 px-5 font-medium text-white" style="border-radius: 0 0 0 12px;">Profitabilitetsregel</td>
+              <td class="py-3.5 px-5">Varierer per produkt, kraever konstant genberegning</td>
+              <td class="py-3.5 px-5" style="border-radius: 0 0 12px 0;">Simpelt: over 1,0 = profitabelt</td>
             </tr>
           </tbody>
         </table>
@@ -378,41 +487,57 @@
   <section class="py-20 md:py-28 section-border">
     <div class="max-w-4xl mx-auto px-6">
       <div class="reveal text-center mb-14">
-        <h2 class="text-2xl sm:text-3xl md:text-4xl mb-6">Real Results With POAS</h2>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl mb-6">Reelle resultater med POAS</h2>
         <p class="text-txt-muted text-base max-w-2xl mx-auto" style="line-height:1.8;">
-          When you stop optimizing for revenue and start optimizing for profit, the numbers speak for themselves.
+          Nar du stopper med at optimere for omsaetning og begynder at optimere for profit, taler tallene for sig selv.
         </p>
       </div>
 
       <div class="reveal reveal-delay-1 grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
         <div class="card p-6 text-center" style="border-color: rgba(40,96,224,0.3);">
           <div class="font-display text-3xl md:text-4xl font-bold text-white mb-2">+154%</div>
-          <div class="text-sm text-txt-muted">Contribution Margin Increase</div>
+          <div class="text-sm text-txt-muted">Stigning i daeknignsbidrag</div>
         </div>
         <div class="card p-6 text-center" style="border-color: rgba(40,96,224,0.3);">
           <div class="font-display text-3xl md:text-4xl font-bold text-white mb-2">60%</div>
-          <div class="text-sm text-txt-muted">Ad Spend Savings</div>
+          <div class="text-sm text-txt-muted">Besparelse pa annonceudgifter</div>
         </div>
         <div class="card p-6 text-center" style="border-color: rgba(40,96,224,0.3);">
-          <div class="font-display text-3xl md:text-4xl font-bold text-white mb-2">0.95 &rarr; 1.1</div>
-          <div class="text-sm text-txt-muted">POAS Improvement</div>
+          <div class="font-display text-3xl md:text-4xl font-bold text-white mb-2">0,95 &rarr; 1,1</div>
+          <div class="text-sm text-txt-muted">POAS-forbedring</div>
         </div>
       </div>
 
       <div class="reveal reveal-delay-2 text-center">
         <p class="text-txt-muted text-sm mb-6" style="line-height:1.7;">
-          As a certified ProfitMetrics partner, we integrate profit data directly into Google Ads and Meta - enabling automated bidding strategies that optimize for your actual bottom line.
+          Som certificeret ProfitMetrics-partner integrerer vi profitdata direkte i Google Ads og Meta - og muliggoer automatiserede budstrategier der optimerer for din faktiske bundlinje.
         </p>
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a href="/#book" class="btn-primary">Book a Meeting</a>
+          <a href="#book-call" class="btn-primary">Book et mode</a>
           <a href="Assets/certificate-profitmetrics-agency-certification-6614e53e203e00d8660021e6 (1).pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-medium px-6 py-3 rounded-lg transition-all duration-200" style="background:rgba(40,96,224,0.1); border:1px solid rgba(40,96,224,0.25); color:#7ba3f0;">
             <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            View Our ProfitMetrics Certificate
+            Se vores ProfitMetrics-certifikat
           </a>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- ========== CALENDLY BOOKING ========== -->
+  <section class="py-20 md:py-28 section-border" id="book-call">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <div class="reveal mb-10">
+        <p class="text-xs font-semibold tracking-widest uppercase mb-4" style="color:#2860E0;">Nul risiko</p>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl mb-4">Book et gratis strategimode</h2>
+        <p class="text-txt-muted max-w-xl mx-auto" style="line-height:1.7;">Vaelg en tid der passer dig. Vi gennemgar din nuvaerende opsaetning og giver dig en plan - uanset om du vaelger os.</p>
+      </div>
+      <div class="reveal rounded-2xl overflow-hidden" style="background:#1c1c20; border:1px solid #2a2a2f; min-height:680px;">
+        <iframe src="https://calendly.com/sammy-mckenna/google-ads-profit-review?embed_type=Inline&embed_domain=www.mcmarketing.dk&hide_gdpr_banner=1&background_color=1c1c20&text_color=e8e8ec&primary_color=2860E0" width="100%" height="680" frameborder="0" title="Book et mode" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  </main>
 
   <!-- ========== FOOTER ========== -->
   <footer class="py-16 section-border">
@@ -420,10 +545,10 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
         <div>
           <a href="/" class="block mb-4">
-            <img src="Assets/Mc-Marketing-Logo.png" alt="Mc Marketing" class="h-7" />
+            <img src="Assets/Mc-Marketing-Logo.png" alt="Mc Marketing" class="h-7" loading="lazy" />
           </a>
           <p class="text-txt-muted text-sm" style="line-height:1.7;">
-            McKenna Marketing has over 9 years of experience in online marketing. We specialize in Google Ads and SEO.
+            McKenna Marketing har over 9 ars erfaring med online marketing. Vi er specialiseret i Google Ads og SEO.
           </p>
           <div class="flex gap-3 mt-5">
             <a href="#" class="social-icon" aria-label="LinkedIn">
@@ -439,17 +564,17 @@
         </div>
 
         <div>
-          <h4 class="text-white font-semibold mb-4 text-sm">Quick Links</h4>
+          <h4 class="text-white font-semibold mb-4 text-sm">Hurtige links</h4>
           <ul class="space-y-2 text-sm text-txt-muted">
-            <li><a href="/" class="hover:text-white transition-colors duration-200">Home</a></li>
-            <li><a href="/contact" class="hover:text-white transition-colors duration-200">Contact</a></li>
-            <li><a href="/cookie-policy" class="hover:text-white transition-colors duration-200">Cookie Policy</a></li>
-            <li><a href="/conditions" class="hover:text-white transition-colors duration-200">Terms &amp; Conditions</a></li>
+            <li><a href="/" class="hover:text-white transition-colors duration-200">Hjem</a></li>
+            <li><a href="/contact" class="hover:text-white transition-colors duration-200">Kontakt</a></li>
+            <li><a href="/cookie-policy" class="hover:text-white transition-colors duration-200">Cookie politik</a></li>
+            <li><a href="/conditions" class="hover:text-white transition-colors duration-200">Vilkar og betingelser</a></li>
           </ul>
         </div>
 
         <div>
-          <h4 class="text-white font-semibold mb-4 text-sm">Contact</h4>
+          <h4 class="text-white font-semibold mb-4 text-sm">Kontakt</h4>
           <ul class="space-y-2 text-sm text-txt-muted">
             <li><a href="mailto:info@mcmarketing.dk" class="hover:text-white transition-colors duration-200">info@mcmarketing.dk</a></li>
             <li><a href="tel:+4528252184" class="hover:text-white transition-colors duration-200">+45 28 25 21 84</a></li>
@@ -463,23 +588,24 @@
       <div class="flex flex-wrap items-center justify-center gap-6 mb-10 pt-8 border-t" style="border-color:#2a2a2f;">
         <div class="flex flex-col items-center gap-2">
           <!-- START ProfitMetrics -  Certified Partner Badge (v1) -->
-          <a href="http://link.profitmetrics.io/certified" target="_blank" rel="noopener noreferrer">
+          <a href="https://link.profitmetrics.io/certified" target="_blank" rel="noopener noreferrer">
             <img
               decoding="async"
               src="https://link.profitmetrics.io/hubfs/Certified%20Agency%20Partner/pm_certified_neg.svg"
               alt="ProfitMetrics Certified Partner Badge"
               style="width: 100%; height: auto; max-width: auto; max-height: 40px;"
+              loading="lazy"
             >
           </a>
           <!-- END ProfitMetrics -  Certified Partner Badge (v1) -->
           <a href="Assets/certificate-profitmetrics-agency-certification-6614e53e203e00d8660021e6 (1).pdf" target="_blank" rel="noopener noreferrer" class="text-xs text-txt-dim hover:text-white transition-colors duration-200" style="text-decoration: underline;">
-            View Certificate
+            Se certifikat
           </a>
         </div>
       </div>
 
       <div class="border-t pt-8 text-center text-xs text-txt-dim" style="border-color:#2a2a2f;">
-        &copy; All Rights Reserved.
+        &copy; Alle rettigheder forbeholdes.
       </div>
     </div>
   </footer>
