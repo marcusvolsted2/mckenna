@@ -169,9 +169,9 @@
       border: 1.5px solid rgba(60,120,240,0.18);
       box-shadow: 0 0 20px rgba(60,120,240,0.06), inset 0 0 20px rgba(60,120,240,0.03);
     }
-    .orbit-ring-1 { width: 500px; height: 500px; }
-    .orbit-ring-2 { width: 820px; height: 820px; }
-    .orbit-ring-3 { width: 1140px; height: 1140px; }
+    .orbit-ring-1 { width: 650px; height: 650px; }
+    .orbit-ring-2 { width: 1050px; height: 1050px; }
+    .orbit-ring-3 { width: 1450px; height: 1450px; }
 
     /* Conic gradient highlight sweeping around ring */
     .orbit-ring::after {
@@ -186,11 +186,7 @@
     .orbit-ring-3::after { animation-duration: 16s; }
     @keyframes ringGlow { to { transform: rotate(360deg); } }
 
-    @media (max-width: 768px) {
-      .orbit-ring-1 { width: 300px; height: 300px; }
-      .orbit-ring-2 { width: 500px; height: 500px; }
-      .orbit-ring-3 { width: 700px; height: 700px; }
-    }
+    /* mobile ring sizes are in the mobile keyframes block below */
 
     /* Each icon is absolutely centered, then animated with rotate+translate+counter-rotate */
     .orbit-icon {
@@ -205,62 +201,65 @@
     }
     .orbit-icon svg, .orbit-icon img { width: 24px; height: 24px; }
 
-    /* Ring 1: radius 250px, 45s clockwise, 2 icons */
+    /* Ring 1: radius 325px, 45s clockwise, 2 icons */
     .orbit-r1-a { animation: orbitR1A 45s linear infinite; }
     .orbit-r1-b { animation: orbitR1B 45s linear infinite; }
     @keyframes orbitR1A {
-      from { transform: rotate(0deg)   translateX(250px) rotate(0deg); }
-      to   { transform: rotate(360deg) translateX(250px) rotate(-360deg); }
+      from { transform: rotate(0deg)   translateX(325px) rotate(0deg); }
+      to   { transform: rotate(360deg) translateX(325px) rotate(-360deg); }
     }
     @keyframes orbitR1B {
-      from { transform: rotate(180deg) translateX(250px) rotate(-180deg); }
-      to   { transform: rotate(540deg) translateX(250px) rotate(-540deg); }
+      from { transform: rotate(180deg) translateX(325px) rotate(-180deg); }
+      to   { transform: rotate(540deg) translateX(325px) rotate(-540deg); }
     }
 
-    /* Ring 2: radius 410px, 70s counter-clockwise, 3 icons */
+    /* Ring 2: radius 525px, 70s counter-clockwise, 3 icons */
     .orbit-r2-a { animation: orbitR2A 70s linear infinite; }
     .orbit-r2-b { animation: orbitR2B 70s linear infinite; }
     .orbit-r2-c { animation: orbitR2C 70s linear infinite; }
     @keyframes orbitR2A {
-      from { transform: rotate(0deg)    translateX(410px) rotate(0deg); }
-      to   { transform: rotate(-360deg) translateX(410px) rotate(360deg); }
+      from { transform: rotate(0deg)    translateX(525px) rotate(0deg); }
+      to   { transform: rotate(-360deg) translateX(525px) rotate(360deg); }
     }
     @keyframes orbitR2B {
-      from { transform: rotate(120deg)  translateX(410px) rotate(-120deg); }
-      to   { transform: rotate(-240deg) translateX(410px) rotate(240deg); }
+      from { transform: rotate(120deg)  translateX(525px) rotate(-120deg); }
+      to   { transform: rotate(-240deg) translateX(525px) rotate(240deg); }
     }
     @keyframes orbitR2C {
-      from { transform: rotate(240deg)  translateX(410px) rotate(-240deg); }
-      to   { transform: rotate(-120deg) translateX(410px) rotate(120deg); }
+      from { transform: rotate(240deg)  translateX(525px) rotate(-240deg); }
+      to   { transform: rotate(-120deg) translateX(525px) rotate(120deg); }
     }
 
-    /* Ring 3: radius 570px, 95s clockwise, 3 icons */
+    /* Ring 3: radius 725px, 95s clockwise, 3 icons */
     .orbit-r3-a { animation: orbitR3A 95s linear infinite; }
     .orbit-r3-b { animation: orbitR3B 95s linear infinite; }
     .orbit-r3-c { animation: orbitR3C 95s linear infinite; }
     @keyframes orbitR3A {
-      from { transform: rotate(0deg)   translateX(570px) rotate(0deg); }
-      to   { transform: rotate(360deg) translateX(570px) rotate(-360deg); }
+      from { transform: rotate(0deg)   translateX(725px) rotate(0deg); }
+      to   { transform: rotate(360deg) translateX(725px) rotate(-360deg); }
     }
     @keyframes orbitR3B {
-      from { transform: rotate(120deg) translateX(570px) rotate(-120deg); }
-      to   { transform: rotate(480deg) translateX(570px) rotate(-480deg); }
+      from { transform: rotate(120deg) translateX(725px) rotate(-120deg); }
+      to   { transform: rotate(480deg) translateX(725px) rotate(-480deg); }
     }
     @keyframes orbitR3C {
-      from { transform: rotate(240deg) translateX(570px) rotate(-240deg); }
-      to   { transform: rotate(600deg) translateX(570px) rotate(-600deg); }
+      from { transform: rotate(240deg) translateX(725px) rotate(-240deg); }
+      to   { transform: rotate(600deg) translateX(725px) rotate(-600deg); }
     }
 
     /* Mobile: smaller radii */
     @media (max-width: 768px) {
-      @keyframes orbitR1A { from { transform: rotate(0deg) translateX(150px) rotate(0deg); } to { transform: rotate(360deg) translateX(150px) rotate(-360deg); } }
-      @keyframes orbitR1B { from { transform: rotate(180deg) translateX(150px) rotate(-180deg); } to { transform: rotate(540deg) translateX(150px) rotate(-540deg); } }
-      @keyframes orbitR2A { from { transform: rotate(0deg) translateX(250px) rotate(0deg); } to { transform: rotate(-360deg) translateX(250px) rotate(360deg); } }
-      @keyframes orbitR2B { from { transform: rotate(120deg) translateX(250px) rotate(-120deg); } to { transform: rotate(-240deg) translateX(250px) rotate(240deg); } }
-      @keyframes orbitR2C { from { transform: rotate(240deg) translateX(250px) rotate(-240deg); } to { transform: rotate(-120deg) translateX(250px) rotate(120deg); } }
-      @keyframes orbitR3A { from { transform: rotate(0deg) translateX(350px) rotate(0deg); } to { transform: rotate(360deg) translateX(350px) rotate(-360deg); } }
-      @keyframes orbitR3B { from { transform: rotate(120deg) translateX(350px) rotate(-120deg); } to { transform: rotate(480deg) translateX(350px) rotate(-480deg); } }
-      @keyframes orbitR3C { from { transform: rotate(240deg) translateX(350px) rotate(-240deg); } to { transform: rotate(600deg) translateX(350px) rotate(-600deg); } }
+      .orbit-ring-1 { width: 350px; height: 350px; }
+      .orbit-ring-2 { width: 550px; height: 550px; }
+      .orbit-ring-3 { width: 750px; height: 750px; }
+      @keyframes orbitR1A { from { transform: rotate(0deg) translateX(175px) rotate(0deg); } to { transform: rotate(360deg) translateX(175px) rotate(-360deg); } }
+      @keyframes orbitR1B { from { transform: rotate(180deg) translateX(175px) rotate(-180deg); } to { transform: rotate(540deg) translateX(175px) rotate(-540deg); } }
+      @keyframes orbitR2A { from { transform: rotate(0deg) translateX(275px) rotate(0deg); } to { transform: rotate(-360deg) translateX(275px) rotate(360deg); } }
+      @keyframes orbitR2B { from { transform: rotate(120deg) translateX(275px) rotate(-120deg); } to { transform: rotate(-240deg) translateX(275px) rotate(240deg); } }
+      @keyframes orbitR2C { from { transform: rotate(240deg) translateX(275px) rotate(-240deg); } to { transform: rotate(-120deg) translateX(275px) rotate(120deg); } }
+      @keyframes orbitR3A { from { transform: rotate(0deg) translateX(375px) rotate(0deg); } to { transform: rotate(360deg) translateX(375px) rotate(-360deg); } }
+      @keyframes orbitR3B { from { transform: rotate(120deg) translateX(375px) rotate(-120deg); } to { transform: rotate(480deg) translateX(375px) rotate(-480deg); } }
+      @keyframes orbitR3C { from { transform: rotate(240deg) translateX(375px) rotate(-240deg); } to { transform: rotate(600deg) translateX(375px) rotate(-600deg); } }
       .orbit-icon { width: 40px; height: 40px; margin: -20px 0 0 -20px; }
       .orbit-icon svg, .orbit-icon img { width: 20px; height: 20px; }
     }
@@ -650,28 +649,6 @@
         </a>
       </div>
 
-      <!-- Stats bar -->
-      <div class="reveal reveal-delay-4 flex items-center justify-center gap-8 md:gap-12">
-        <div class="hero-stat">
-          <div class="hero-stat-value" data-counter="9" data-suffix="+">0</div>
-          <div class="hero-stat-label">Ars Erfaring</div>
-        </div>
-        <div class="hero-stat-divider"></div>
-        <div class="hero-stat">
-          <div class="hero-stat-value" data-counter="100" data-suffix="+">0</div>
-          <div class="hero-stat-label">Tilfredse Kunder</div>
-        </div>
-        <div class="hero-stat-divider"></div>
-        <div class="hero-stat">
-          <div class="hero-stat-value" data-counter="12" data-suffix="+">0</div>
-          <div class="hero-stat-label">Gennemsnitlig ROAS</div>
-        </div>
-        <div class="hero-stat-divider hidden sm:block"></div>
-        <div class="hero-stat hidden sm:block">
-          <div class="hero-stat-value" data-counter="100" data-suffix="%">0</div>
-          <div class="hero-stat-label">ROAS Garanti</div>
-        </div>
-      </div>
     </div>
   </section>
 
