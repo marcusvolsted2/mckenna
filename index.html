@@ -297,44 +297,29 @@
       transform: translateY(-20px);
     }
 
-    /* Services horizontal scroll */
+    /* Services grid cards (matching google-ads-seo subpage style) */
     .services-scroll {
-      display: flex; gap: 20px;
-      overflow-x: auto; scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none; padding-bottom: 8px;
+      display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px;
+      padding: 8px 0 24px 0;
     }
-    .services-scroll::-webkit-scrollbar { display: none; }
+    @media (max-width: 1024px) { .services-scroll { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 640px) { .services-scroll { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch; } .services-scroll::-webkit-scrollbar { display: none; } }
     .service-card {
-      flex: 0 0 280px; scroll-snap-align: start;
-      background: #1c1c20; border: 1px solid #2a2a2f; border-radius: 20px;
-      padding: 28px 24px; display: flex; flex-direction: column; gap: 16px;
-      transition: transform 0.35s cubic-bezier(.4,0,.2,1), border-color 0.3s ease, box-shadow 0.3s ease;
-      position: relative; overflow: hidden;
+      scroll-snap-align: start; border-radius: 20px;
+      background: #1c1c20; border: 1px solid #2a2a2f;
+      overflow: hidden; text-decoration: none; color: inherit;
+      transition: transform 0.3s cubic-bezier(.4,0,.2,1), box-shadow 0.3s ease;
+      display: block;
     }
+    @media (max-width: 640px) { .service-card { min-width: 260px; } }
     .service-card:hover {
       transform: translateY(-6px);
-      border-color: rgba(255,255,255,0.1);
-      box-shadow: 0 16px 48px rgba(0,0,0,0.35);
+      box-shadow: 0 16px 48px rgba(40,96,224,0.15);
     }
-    .service-card-icon {
-      width: 52px; height: 52px; border-radius: 14px;
+    .service-card-img {
+      height: 160px; width: 100%;
       display: flex; align-items: center; justify-content: center;
-    }
-    .service-card-arrow {
-      width: 36px; height: 36px; border-radius: 50%;
-      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
-      display: flex; align-items: center; justify-content: center;
-      transition: transform 0.2s cubic-bezier(.4,0,.2,1), background 0.2s ease;
-      margin-top: auto;
-    }
-    .service-card:hover .service-card-arrow {
-      transform: translateX(3px);
-      background: rgba(255,255,255,0.08);
-    }
-    @media (min-width: 1024px) {
-      .services-scroll { overflow-x: visible; justify-content: center; }
-      .service-card { flex: 0 1 220px; }
+      position: relative; overflow: hidden;
     }
 
     /* Hero background gradient */
@@ -536,18 +521,18 @@
         <a href="#book" class="inline-flex items-center gap-2 text-sm font-medium px-5 py-2.5 rounded-full text-white transition-all duration-200" style="background:#2860E0; box-shadow: 0 2px 10px rgba(40,96,224,0.3);" onmouseover="this.style.boxShadow='0 4px 16px rgba(40,96,224,0.5)'" onmouseout="this.style.boxShadow='0 2px 10px rgba(40,96,224,0.3)'">
           Book Mode
         </a>
-        <!-- Active language flag -->
+        <!-- Language switcher - Danish is default -->
         <div class="relative lang-dropdown">
           <button onclick="this.closest('.lang-dropdown').classList.toggle('open')" class="flex items-center justify-center w-9 h-9 rounded-full hover:bg-white/10 transition-all duration-200" title="Sprog" style="font-size:17px;">
-            <span id="activeLangFlag">&#127468;&#127463;</span>
+            <span>&#127465;&#127472;</span>
           </button>
           <div class="lang-menu absolute right-0 top-full mt-2 rounded-xl py-2 min-w-[130px] z-50" style="background:rgba(28,28,32,0.95); border:1px solid rgba(255,255,255,0.08); backdrop-filter:blur(20px); display:none;">
-            <button onclick="document.getElementById('activeLangFlag').innerHTML='&#127468;&#127463;'; this.closest('.lang-dropdown').classList.remove('open');" class="flex items-center gap-2.5 w-full px-4 py-2 text-sm text-white hover:bg-white/5 transition-colors duration-200">
-              <span style="font-size:15px;">&#127468;&#127463;</span> English
-            </button>
-            <button onclick="document.getElementById('activeLangFlag').innerHTML='&#127465;&#127472;'; this.closest('.lang-dropdown').classList.remove('open');" class="flex items-center gap-2.5 w-full px-4 py-2 text-sm text-txt-muted hover:bg-white/5 transition-colors duration-200">
+            <span class="flex items-center gap-2.5 w-full px-4 py-2 text-sm text-white" style="opacity:0.5; cursor:default;">
               <span style="font-size:15px;">&#127465;&#127472;</span> Dansk
-            </button>
+            </span>
+            <a href="/en/google-ads-seo.html" class="flex items-center gap-2.5 w-full px-4 py-2 text-sm text-txt-muted hover:text-white hover:bg-white/5 transition-colors duration-200" style="text-decoration:none;">
+              <span style="font-size:15px;">&#127468;&#127463;</span> English
+            </a>
           </div>
         </div>
       </div>
@@ -710,84 +695,81 @@
   <!-- ========== SERVICES ========== -->
   <section class="py-20 md:py-28 section-border">
     <div class="max-w-6xl mx-auto px-6">
-      <div class="reveal text-center mb-12">
+      <div class="reveal text-center mb-14">
         <p class="text-xs font-semibold tracking-widest uppercase mb-4" style="color:#2860E0; letter-spacing:0.15em;">Vores Ydelser</p>
-        <h2 class="text-2xl sm:text-3xl md:text-4xl">Det vi gor</h2>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl mb-4">Alt hvad du behover for at vokse online</h2>
+        <p class="text-base max-w-2xl mx-auto" style="color:#8b8b96; line-height:1.8;">Fra betalt annoncering til organisk synlighed - vi daekker hele rejsen fra klik til kunde.</p>
       </div>
-      <div class="reveal services-scroll">
+      <div class="services-scroll reveal">
         <!-- Google Ads -->
-        <a href="google-ads-seo.html" class="service-card group" style="text-decoration:none; color:inherit;">
-          <div class="service-card-icon" style="background: linear-gradient(135deg, #1e40af, #3b82f6);">
-            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#fff" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35" stroke-linecap="round"/></svg>
+        <a href="google-ads-seo.html" class="service-card">
+          <div class="service-card-img" style="background: linear-gradient(135deg, #1a2744 0%, #0f172a 100%);">
+            <div class="absolute inset-0" style="background: radial-gradient(circle at 30% 40%, rgba(40,96,224,0.2), transparent 60%);"></div>
+            <div class="relative z-10 flex flex-col items-center">
+              <svg width="56" height="56" viewBox="0 0 24 24" fill="none" style="filter: drop-shadow(0 4px 12px rgba(40,96,224,0.4));"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18A10.96 10.96 0 001 12c0 1.77.42 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            </div>
           </div>
-          <div>
-            <h3 class="text-lg font-semibold text-white mb-1">Google Ads</h3>
-            <p class="text-txt-muted text-sm" style="line-height:1.6;">Search, Shopping, Performance Max</p>
-          </div>
-          <div class="service-card-arrow">
-            <svg width="14" height="14" fill="none" stroke="#8b8b96" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          <div class="p-5">
+            <h3 class="text-lg font-semibold text-white mb-2">Google Ads</h3>
+            <p class="text-sm" style="color:#8b8b96; line-height:1.7;">Search, Shopping &amp; Performance Max kampagner der omsaetter klik til kunder.</p>
           </div>
         </a>
 
         <!-- SEO -->
-        <a href="google-ads-seo.html" class="service-card group" style="text-decoration:none; color:inherit;">
-          <div class="service-card-icon" style="background: linear-gradient(135deg, #166534, #22c55e);">
-            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#fff" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <a href="google-ads-seo.html" class="service-card">
+          <div class="service-card-img" style="background: linear-gradient(135deg, #1a3320 0%, #0f1f14 100%);">
+            <div class="absolute inset-0" style="background: radial-gradient(circle at 70% 30%, rgba(52,211,153,0.15), transparent 60%);"></div>
+            <div class="relative z-10 flex flex-col items-center">
+              <svg width="56" height="56" fill="none" viewBox="0 0 24 24" style="filter: drop-shadow(0 4px 12px rgba(52,211,153,0.3));"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke="#34d399" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 8v4l2 2" stroke="#34d399" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
           </div>
-          <div>
-            <h3 class="text-lg font-semibold text-white mb-1">SEO</h3>
-            <p class="text-txt-muted text-sm" style="line-height:1.6;">Organisk vaekst i Google</p>
-          </div>
-          <div class="service-card-arrow">
-            <svg width="14" height="14" fill="none" stroke="#8b8b96" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          <div class="p-5">
+            <h3 class="text-lg font-semibold text-white mb-2">SEO</h3>
+            <p class="text-sm" style="color:#8b8b96; line-height:1.7;">Organisk vaekst i Google med teknisk SEO, indhold og linkbuilding.</p>
           </div>
         </a>
 
         <!-- GEO / AI SEO -->
-        <div class="service-card group" style="cursor:default;">
-          <div class="flex items-start justify-between">
-            <div class="service-card-icon" style="background: linear-gradient(135deg, #581c87, #a855f7);">
-              <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#fff" stroke-width="2"><path d="M12 2a4 4 0 014 4c0 2-2 3-2 5h-4c0-2-2-3-2-5a4 4 0 014-4zM10 17h4M11 21h2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="service-card">
+          <div class="service-card-img" style="background: linear-gradient(135deg, #2d1a44 0%, #1a0f2e 100%);">
+            <div class="absolute inset-0" style="background: radial-gradient(circle at 50% 50%, rgba(168,85,247,0.15), transparent 60%);"></div>
+            <div class="relative z-10 flex flex-col items-center">
+              <svg width="56" height="56" fill="none" viewBox="0 0 24 24" style="filter: drop-shadow(0 4px 12px rgba(168,85,247,0.3));"><path d="M12 2L2 7l10 5 10-5-10-5z" stroke="#a855f7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 17l10 5 10-5" stroke="#a855f7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 12l10 5 10-5" stroke="#a855f7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="mt-2 text-xs font-semibold px-2.5 py-0.5 rounded-full" style="background:rgba(168,85,247,0.2); color:#c084fc; border:1px solid rgba(168,85,247,0.3);">NY</span>
             </div>
-            <span class="text-[0.65rem] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider" style="background:rgba(168,85,247,0.15); color:#c084fc; border:1px solid rgba(168,85,247,0.3);">NY</span>
           </div>
-          <div>
-            <h3 class="text-lg font-semibold text-white mb-1">GEO / AI SEO</h3>
-            <p class="text-txt-muted text-sm" style="line-height:1.6;">Bliv synlig i ChatGPT &amp; AI</p>
-          </div>
-          <div class="service-card-arrow">
-            <svg width="14" height="14" fill="none" stroke="#8b8b96" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          <div class="p-5">
+            <h3 class="text-lg font-semibold text-white mb-2">GEO / AI SEO</h3>
+            <p class="text-sm" style="color:#8b8b96; line-height:1.7;">Bliv synlig i ChatGPT, Perplexity og Google AI-sogeresultater.</p>
           </div>
         </div>
 
         <!-- Paid Social -->
-        <a href="paid-social.html" class="service-card group" style="text-decoration:none; color:inherit;">
-          <div class="service-card-icon" style="background: linear-gradient(135deg, #9d174d, #ec4899);">
-            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#fff" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.73 21a2 2 0 01-3.46 0" stroke-linecap="round"/></svg>
+        <a href="paid-social.html" class="service-card">
+          <div class="service-card-img" style="background: linear-gradient(135deg, #3d1226 0%, #1f0a15 100%);">
+            <div class="absolute inset-0" style="background: radial-gradient(circle at 40% 60%, rgba(236,72,153,0.15), transparent 60%);"></div>
+            <div class="relative z-10 flex flex-col items-center">
+              <svg width="56" height="56" fill="none" viewBox="0 0 24 24" style="filter: drop-shadow(0 4px 12px rgba(236,72,153,0.3));"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9" stroke="#ec4899" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.73 21a2 2 0 01-3.46 0" stroke="#ec4899" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
           </div>
-          <div>
-            <h3 class="text-lg font-semibold text-white mb-1">Paid Social</h3>
-            <p class="text-txt-muted text-sm" style="line-height:1.6;">Meta, Instagram &amp; TikTok</p>
-          </div>
-          <div class="service-card-arrow">
-            <svg width="14" height="14" fill="none" stroke="#8b8b96" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          <div class="p-5">
+            <h3 class="text-lg font-semibold text-white mb-2">Paid Social</h3>
+            <p class="text-sm" style="color:#8b8b96; line-height:1.7;">Meta, Instagram &amp; TikTok annoncering der driver trafik og konverteringer.</p>
           </div>
         </a>
 
-        <!-- Website Design -->
-        <a href="websites.html" class="service-card group" style="text-decoration:none; color:inherit;">
-          <div class="flex items-start justify-between">
-            <div class="service-card-icon" style="background: linear-gradient(135deg, #155e75, #06b6d4);">
-              <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#fff" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <!-- Hjemmesider -->
+        <a href="websites.html" class="service-card">
+          <div class="service-card-img" style="background: linear-gradient(135deg, #0f2d3d 0%, #091a24 100%);">
+            <div class="absolute inset-0" style="background: radial-gradient(circle at 60% 40%, rgba(6,182,212,0.15), transparent 60%);"></div>
+            <div class="relative z-10 flex flex-col items-center">
+              <svg width="56" height="56" fill="none" viewBox="0 0 24 24" style="filter: drop-shadow(0 4px 12px rgba(6,182,212,0.3));"><rect x="2" y="3" width="20" height="14" rx="2" stroke="#06b6d4" stroke-width="1.8"/><path d="M8 21h8M12 17v4" stroke="#06b6d4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="mt-2 text-xs font-semibold px-2.5 py-0.5 rounded-full" style="background:rgba(6,182,212,0.2); color:#22d3ee; border:1px solid rgba(6,182,212,0.3);">NY</span>
             </div>
-            <span class="text-[0.65rem] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider" style="background:rgba(6,182,212,0.15); color:#22d3ee; border:1px solid rgba(6,182,212,0.3);">NY</span>
           </div>
-          <div>
-            <h3 class="text-lg font-semibold text-white mb-1">Hjemmesider</h3>
-            <p class="text-txt-muted text-sm" style="line-height:1.6;">Shopify &amp; skraeddersyede hjemmesider</p>
-          </div>
-          <div class="service-card-arrow">
-            <svg width="14" height="14" fill="none" stroke="#8b8b96" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          <div class="p-5">
+            <h3 class="text-lg font-semibold text-white mb-2">Hjemmesider</h3>
+            <p class="text-sm" style="color:#8b8b96; line-height:1.7;">Shopify &amp; skraeddersyede hjemmesider der konverterer besoegende til kunder.</p>
           </div>
         </a>
       </div>
