@@ -768,7 +768,7 @@
     <div class="max-w-4xl mx-auto px-6 text-center">
       <div class="reveal mb-10">
         <p class="text-xs font-semibold tracking-widest text-accent uppercase mb-4">Zero risk</p>
-        <h2 class="text-2xl sm:text-3xl md:text-4xl mb-4">Book a free 25-min. strategy meeting</h2>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl mb-4">Book a free 30-min. strategy meeting</h2>
         <p class="text-txt-muted max-w-xl mx-auto" style="line-height:1.7;">Pick a time that works for you. We'll review your current setup, show you the opportunities and give you a plan - whether you choose to work with us or not.</p>
       </div>
       <!-- Calendly inline embed -->
@@ -893,5 +893,29 @@
       }, { passive: true });
     }
   </script>
+
+  <script>
+    // Close burger menu when clicking outside
+    document.addEventListener('click', (e) => {
+      const menu = document.getElementById('mobileMenu');
+      const burger = document.querySelector('button[aria-label="Menu"]');
+      if (!menu || !menu.classList.contains('open')) return;
+      if (menu.contains(e.target) || (burger && burger.contains(e.target))) return;
+      menu.classList.remove('open');
+    });
+    // Close burger menu when clicking on a menu link
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('mobileMenu').classList.remove('open');
+      });
+    });
+    // Close lang dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      document.querySelectorAll('.lang-dropdown.open').forEach(dd => {
+        if (!dd.contains(e.target)) dd.classList.remove('open');
+      });
+    });
+  </script>
+
 </body>
 </html>

@@ -273,6 +273,7 @@
       <a href="/google-ads-seo" class="text-sm text-white/80 hover:text-white py-1.5">Google Ads</a>
       <a href="/seo-aio-geo" class="text-sm text-white/80 hover:text-white py-1.5">SEO / AIO / GEO</a>
       <a href="/paid-social" class="text-sm text-white/80 hover:text-white py-1.5">Paid Social</a>
+      <a href="/websites" class="text-sm text-white/80 hover:text-white py-1.5">Hjemmesider</a>
       <a href="/contact" class="mt-2 inline-flex items-center justify-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-full text-white" style="background:#2860E0; box-shadow: 0 2px 10px rgba(40,96,224,0.3);">Kontakt</a>
     </div>
   </nav>
@@ -623,7 +624,7 @@
             <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="1.8"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
           <h3 class="text-base font-semibold text-white mb-2">100% ROAS-garanti</h3>
-          <p class="text-sm" style="color:#8b8b96; line-height:1.7;">Leverer vi ikke positivt afkast, betaler du ikke vores honorar. Sa simpelt er det.</p>
+          <p class="text-sm" style="color:#8b8b96; line-height:1.7;">Leverer vi ikke positivt afkast, betaler du ikke vores honorar. Så simpelt er det.</p>
         </div>
 
         <div class="reveal reveal-delay-1 rounded-2xl p-8" style="background:#1c1c20; border:1px solid #2a2a2f;">
@@ -831,7 +832,7 @@
           <div class="text-3xl mb-4" style="font-family:'Outfit',sans-serif; color:#2860E0; font-weight:800;">100%</div>
           <h3 class="text-lg font-semibold text-white mb-3">ROAS-garanti</h3>
           <p class="text-sm" style="color:#8b8b96; line-height:1.7;">
-            Genererer den marketing vi korer ikke et positivt afkast på dit annoncebudget, betaler du ikke vores honorar. Vi tager risikoen, sa du ikke skal.
+            Genererer den marketing vi korer ikke et positivt afkast på dit annoncebudget, betaler du ikke vores honorar. Vi tager risikoen, så du ikke skal.
           </p>
         </div>
 
@@ -855,7 +856,7 @@
         </div>
         <h2 class="text-2xl sm:text-3xl md:text-4xl mb-4">Tilfredshedsgaranti</h2>
         <p class="text-base max-w-2xl mx-auto mb-8" style="color:#8b8b96; line-height:1.8;">
-          Vi er sa sikre på vores Google Ads-styring at vi tilbyder fuld tilfredshedsgaranti. Er du ikke tilfreds med vores arbejde inden for de forste 30 dage, far du dit honorar tilbage. Ingen sporgsmal stillet. Vi tager risikoen, sa du ikke skal.
+          Vi er så sikre på vores Google Ads-styring at vi tilbyder fuld tilfredshedsgaranti. Er du ikke tilfreds med vores arbejde inden for de første 30 dage, får du dit honorar tilbage. Ingen spørgsmål stillet. Vi tager risikoen, så du ikke skal.
         </p>
         <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
           <div class="text-center">
@@ -882,7 +883,7 @@
     <div class="max-w-4xl mx-auto px-6 text-center">
       <div class="reveal mb-10">
         <p class="text-xs font-semibold tracking-widest text-accent uppercase mb-4">Nul risiko</p>
-        <h2 class="text-2xl sm:text-3xl md:text-4xl mb-4">Book et gratis 25-min. strategimide</h2>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl mb-4">Book et gratis 30-min. strategimøde</h2>
         <p class="text-txt-muted max-w-xl mx-auto" style="line-height:1.7;">Vælg et tidspunkt der passer dig. Vi gennemgår dit nuværende setup, viser dig mulighederne og giver dig en plan - uanset om du vælger at arbejde med os eller ej.</p>
       </div>
       <!-- Calendly inline embed -->
@@ -1025,6 +1026,30 @@
       </a>
     </div>
   </div>
+
+
+  <script>
+    // Close burger menu when clicking outside
+    document.addEventListener('click', (e) => {
+      const menu = document.getElementById('mobileMenu');
+      const burger = document.querySelector('button[aria-label="Menu"]');
+      if (!menu || !menu.classList.contains('open')) return;
+      if (menu.contains(e.target) || (burger && burger.contains(e.target))) return;
+      menu.classList.remove('open');
+    });
+    // Close burger menu when clicking on a menu link
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('mobileMenu').classList.remove('open');
+      });
+    });
+    // Close lang dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      document.querySelectorAll('.lang-dropdown.open').forEach(dd => {
+        if (!dd.contains(e.target)) dd.classList.remove('open');
+      });
+    });
+  </script>
 
 </body>
 </html>

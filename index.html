@@ -581,6 +581,7 @@
       <a href="/google-ads-seo" class="text-sm text-white/80 hover:text-white py-1.5">Google Ads</a>
       <a href="/seo-aio-geo" class="text-sm text-white/80 hover:text-white py-1.5">SEO / AIO / GEO</a>
       <a href="/paid-social" class="text-sm text-white/80 hover:text-white py-1.5">Paid Social</a>
+      <a href="/websites" class="text-sm text-white/80 hover:text-white py-1.5">Hjemmesider</a>
       <a href="/contact" class="mt-2 inline-flex items-center justify-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-full text-white" style="background:#2860E0; box-shadow: 0 2px 10px rgba(40,96,224,0.3);">Kontakt</a>
     </div>
   </nav>
@@ -1220,7 +1221,7 @@
       <div class="text-center mb-10 reveal">
         <h2 class="text-2xl sm:text-3xl md:text-4xl mb-4">Book et møde</h2>
         <p class="text-txt-muted max-w-xl mx-auto" style="line-height:1.7;">
-          Fa svar på dine sporgsmal og lær mere om vores ydelser i et 25-minutters infomode.
+          Få svar på dine spørgsmål og lær mere om vores ydelser i et 30-minutters infomøde.
         </p>
         <ul class="flex flex-wrap justify-center gap-6 mt-6 text-sm text-txt-muted">
           <li class="flex items-center gap-2">
@@ -1247,9 +1248,9 @@
   <section class="py-20 md:py-28 section-border">
     <div class="max-w-3xl mx-auto px-6">
       <div class="text-center mb-14 reveal">
-        <h2 class="text-2xl sm:text-3xl md:text-4xl mb-4">Ofte stillede sporgsmal</h2>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl mb-4">Ofte stillede spørgsmål</h2>
         <p class="text-txt-muted" style="line-height:1.7;">
-          Herunder finder du vores oftest stillede sporgsmal. Du er velkommen til at kontakte os på <a href="mailto:info@mcmarketing.dk" class="underline text-txt hover:text-white">info@mcmarketing.dk</a>
+          Herunder finder du vores oftest stillede spørgsmål. Du er velkommen til at kontakte os på <a href="mailto:info@mcmarketing.dk" class="underline text-txt hover:text-white">info@mcmarketing.dk</a>
         </p>
       </div>
 
@@ -1454,6 +1455,27 @@
     setTimeout(() => {
       document.querySelectorAll('.reveal:not(.visible)').forEach(el => el.classList.add('visible'));
     }, 3000);
+
+    // Close burger menu when clicking outside
+    document.addEventListener('click', (e) => {
+      const menu = document.getElementById('mobileMenu');
+      const burger = document.querySelector('button[aria-label="Menu"]');
+      if (!menu || !menu.classList.contains('open')) return;
+      if (menu.contains(e.target) || (burger && burger.contains(e.target))) return;
+      menu.classList.remove('open');
+    });
+    // Close burger menu when clicking on a menu link
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('mobileMenu').classList.remove('open');
+      });
+    });
+    // Close lang dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      document.querySelectorAll('.lang-dropdown.open').forEach(dd => {
+        if (!dd.contains(e.target)) dd.classList.remove('open');
+      });
+    });
   </script>
 
   <!-- Counter animation script -->
