@@ -20,18 +20,27 @@ const mimeTypes = {
 };
 
 const server = createServer(async (req, res) => {
-  const decoded = decodeURIComponent(req.url);
-  let filePath = join(__dirname, decoded === '/' ? 'index.html' : decoded);
-  const ext = extname(filePath);
-  const contentType = mimeTypes[ext] || 'application/octet-stream';
+  const decoded = decodeURIComponent(req.url.split('?')[0]);
+  // If URL ends with '/', serve index.html from that directory
+  let urlPath = decoded.endsWith('/') ? decoded + 'index.html' : decoded;
+  let filePath = join(__dirname, urlPath);
+  let ext = extname(filePath);
 
   try {
-    const data = await readFile(filePath);
-    res.writeHead(200, { 'Content-Type': contentType });
+    let data = await readFile(filePath);
+    res.writeHead(200, { 'Content-Type': mimeTypes[ext] || 'application/octet-stream' });
     res.end(data);
   } catch {
-    res.writeHead(404);
-    res.end('Not found');
+    // Try appending /index.html for extensionless routes (e.g. /en)
+    try {
+      const fallback = join(__dirname, decoded, 'index.html');
+      const data = await readFile(fallback);
+      res.writeHead(200, { 'Content-Type': 'text/html' });
+      res.end(data);
+    } catch {
+      res.writeHead(404);
+      res.end('Not found');
+    }
   }
 });
 
