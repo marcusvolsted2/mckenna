@@ -142,7 +142,7 @@
               </a>
               <a href="/websites" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-white/70 hover:text-white hover:bg-white/5 transition-all duration-200">
                 <span class="flex items-center justify-center w-8 h-8 rounded-lg" style="background:rgba(6,182,212,0.1);"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#06b6d4" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                Hjemmesider
+                Hjemmeside
               </a>
             </div>
           </div>
@@ -192,7 +192,7 @@
       <a href="/google-ads" class="text-sm text-white/80 hover:text-white py-1.5">Google Ads</a>
       <a href="/seo-aio-geo" class="text-sm text-white hover:text-white py-1.5">SEO / AIO / GEO</a>
       <a href="/paid-social" class="text-sm text-white/80 hover:text-white py-1.5">Paid Social</a>
-      <a href="/websites" class="text-sm text-white/80 hover:text-white py-1.5">Hjemmesider</a>
+      <a href="/websites" class="text-sm text-white/80 hover:text-white py-1.5">Hjemmeside</a>
       <a href="/contact" class="mt-2 inline-flex items-center justify-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-full text-white" style="background:#2860E0; box-shadow: 0 2px 10px rgba(40,96,224,0.3);">Kontakt</a>
     </div>
   </nav>
@@ -206,8 +206,8 @@
         <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke="#2860E0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         SEO · AIO · GEO
       </div>
-      <h1 class="reveal reveal-delay-1 text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-6 max-w-4xl mx-auto text-white" style="font-weight:700;">
-        Bliv fundet i <span style="color:#7ba3f0;">Google</span> og <span style="color:#7ba3f0;">AI</span>
+      <h1 class="reveal reveal-delay-1 text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-6 max-w-4xl mx-auto" style="font-weight:500; letter-spacing:-0.03em; line-height:1.08; background: linear-gradient(180deg, #FFF 0%, rgba(255,255,255,0.45) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+        Bliv fundet i <span style="-webkit-text-fill-color:#7ba3f0;">Google</span> og <span style="-webkit-text-fill-color:#7ba3f0;">AI</span>
       </h1>
       <p class="reveal reveal-delay-2 text-base md:text-lg max-w-2xl mx-auto mb-10" style="line-height:1.8; color:#8b8b96;">
         Klassisk SEO er ikke nok længere. Med AIO (AI Optimization) og GEO (Generative Engine Optimization) sikrer vi, at dit brand bliver nævnt når dine kunder spørger ChatGPT, Perplexity, Google AI Overviews og andre AI‑søgemaskiner.
@@ -549,6 +549,54 @@
     </div>
   </section>
 
+  <!-- ========== FAQ ========== -->
+  <style>.seo-faq-answer{max-height:0;overflow:hidden;transition:max-height 0.3s ease}.seo-faq-answer.open{max-height:300px}</style>
+  <section class="py-24 px-6">
+    <div class="max-w-2xl mx-auto">
+      <div class="reveal text-center mb-12">
+        <span class="text-xs uppercase tracking-widest font-medium" style="color:#2860E0; letter-spacing:0.2em;">FAQ</span>
+        <h2 class="text-2xl sm:text-3xl font-bold mt-4" style="letter-spacing:-0.03em;">Ofte stillede spørgsmål</h2>
+      </div>
+      <div class="rounded-2xl px-6" style="border:1px solid rgba(255,255,255,0.07); background:rgba(255,255,255,0.02);">
+        <div class="border-b" style="border-color:rgba(255,255,255,0.06);">
+          <button class="w-full flex items-center justify-between gap-4 py-5 text-left" onclick="var a=this.nextElementSibling;a.classList.toggle('open');this.querySelector('svg').style.transform=a.classList.contains('open')?'rotate(180deg)':''">
+            <span class="text-sm font-semibold" style="font-family:'Outfit',sans-serif;">Hvad er forskellen på SEO, AIO og GEO?</span>
+            <svg class="h-4 w-4 shrink-0" fill="none" stroke="#8a8a8a" stroke-width="2" viewBox="0 0 24 24" style="transition:transform 0.2s ease;"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="seo-faq-answer"><p class="text-sm leading-relaxed pb-5" style="color:#9a9a9a;">SEO optimerer til traditionelle søgemaskiner som Google. AIO (AI Optimization) sikrer, at AI-modeller som ChatGPT og Perplexity refererer til dit brand. GEO (Generative Engine Optimization) fokuserer specifikt på synlighed i AI-genererede søgeresultater.</p></div>
+        </div>
+        <div class="border-b" style="border-color:rgba(255,255,255,0.06);">
+          <button class="w-full flex items-center justify-between gap-4 py-5 text-left" onclick="var a=this.nextElementSibling;a.classList.toggle('open');this.querySelector('svg').style.transform=a.classList.contains('open')?'rotate(180deg)':''">
+            <span class="text-sm font-semibold" style="font-family:'Outfit',sans-serif;">Hvor lang tid tager SEO før det virker?</span>
+            <svg class="h-4 w-4 shrink-0" fill="none" stroke="#8a8a8a" stroke-width="2" viewBox="0 0 24 24" style="transition:transform 0.2s ease;"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="seo-faq-answer"><p class="text-sm leading-relaxed pb-5" style="color:#9a9a9a;">SEO er en langsigtet investering. Typisk ser du forbedringer inden for 3-6 måneder, men det afhænger af konkurrenceniveauet i din branche og dit domænes nuværende autoritet.</p></div>
+        </div>
+        <div class="border-b" style="border-color:rgba(255,255,255,0.06);">
+          <button class="w-full flex items-center justify-between gap-4 py-5 text-left" onclick="var a=this.nextElementSibling;a.classList.toggle('open');this.querySelector('svg').style.transform=a.classList.contains('open')?'rotate(180deg)':''">
+            <span class="text-sm font-semibold" style="font-family:'Outfit',sans-serif;">Kan I hjælpe med at blive nævnt i AI-søgninger?</span>
+            <svg class="h-4 w-4 shrink-0" fill="none" stroke="#8a8a8a" stroke-width="2" viewBox="0 0 24 24" style="transition:transform 0.2s ease;"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="seo-faq-answer"><p class="text-sm leading-relaxed pb-5" style="color:#9a9a9a;">Ja. Vi strukturerer dit indhold med schema markup, FAQ-sektioner og citérbare afsnit, så AI-modeller som ChatGPT, Google AI Overviews og Perplexity refererer til din hjemmeside.</p></div>
+        </div>
+        <div class="border-b" style="border-color:rgba(255,255,255,0.06);">
+          <button class="w-full flex items-center justify-between gap-4 py-5 text-left" onclick="var a=this.nextElementSibling;a.classList.toggle('open');this.querySelector('svg').style.transform=a.classList.contains('open')?'rotate(180deg)':''">
+            <span class="text-sm font-semibold" style="font-family:'Outfit',sans-serif;">Hvad inkluderer jeres SEO-pakke?</span>
+            <svg class="h-4 w-4 shrink-0" fill="none" stroke="#8a8a8a" stroke-width="2" viewBox="0 0 24 24" style="transition:transform 0.2s ease;"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="seo-faq-answer"><p class="text-sm leading-relaxed pb-5" style="color:#9a9a9a;">Teknisk SEO-audit, keyword research, on-page optimering, indholdsstrategi, linkbuilding og løbende rapportering. Vi tilpasser omfanget til dine mål og dit budget.</p></div>
+        </div>
+        <div>
+          <button class="w-full flex items-center justify-between gap-4 py-5 text-left" onclick="var a=this.nextElementSibling;a.classList.toggle('open');this.querySelector('svg').style.transform=a.classList.contains('open')?'rotate(180deg)':''">
+            <span class="text-sm font-semibold" style="font-family:'Outfit',sans-serif;">Er SEO stadig relevant med AI-søgning?</span>
+            <svg class="h-4 w-4 shrink-0" fill="none" stroke="#8a8a8a" stroke-width="2" viewBox="0 0 24 24" style="transition:transform 0.2s ease;"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="seo-faq-answer"><p class="text-sm leading-relaxed pb-5" style="color:#9a9a9a;">Absolut. AI-modeller trækker deres svar fra velstrukturerede, autoritative hjemmesider. God SEO er fundamentet for synlighed i både traditionelle og AI-drevne søgemaskiner.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ========== FOOTER ========== -->
   <footer class="py-16 section-border">
     <div class="max-w-6xl mx-auto px-6">
@@ -580,7 +628,7 @@
             <li><a href="/google-ads" class="hover:text-white transition-colors duration-200">Google Ads</a></li>
             <li><a href="/seo-aio-geo" class="hover:text-white transition-colors duration-200">SEO / AIO / GEO</a></li>
             <li><a href="/paid-social" class="hover:text-white transition-colors duration-200">Paid Social</a></li>
-            <li><a href="/websites" class="hover:text-white transition-colors duration-200">Hjemmesider</a></li>
+            <li><a href="/websites" class="hover:text-white transition-colors duration-200">Hjemmeside</a></li>
             <li><a href="/poas" class="hover:text-white transition-colors duration-200">POAS</a></li>
             <li><a href="/contact" class="hover:text-white transition-colors duration-200">Kontakt</a></li>
             <li><a href="/cookie-policy" class="hover:text-white transition-colors duration-200">Cookiepolitik</a></li>
@@ -666,6 +714,19 @@
     });
   </script>
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type": "Question", "name": "Hvad er forskellen på SEO, AIO og GEO?", "acceptedAnswer": {"@type": "Answer", "text": "SEO optimerer til traditionelle søgemaskiner som Google. AIO (AI Optimization) sikrer, at AI-modeller som ChatGPT og Perplexity refererer til dit brand. GEO (Generative Engine Optimization) fokuserer specifikt på synlighed i AI-genererede søgeresultater."}},
+      {"@type": "Question", "name": "Hvor lang tid tager SEO før det virker?", "acceptedAnswer": {"@type": "Answer", "text": "SEO er en langsigtet investering. Typisk ser du forbedringer inden for 3-6 måneder, men det afhænger af konkurrenceniveauet i din branche og dit domænes nuværende autoritet."}},
+      {"@type": "Question", "name": "Kan I hjælpe med at blive nævnt i AI-søgninger?", "acceptedAnswer": {"@type": "Answer", "text": "Ja. Vi strukturerer dit indhold med schema markup, FAQ-sektioner og citérbare afsnit, så AI-modeller som ChatGPT, Google AI Overviews og Perplexity refererer til din hjemmeside."}},
+      {"@type": "Question", "name": "Hvad inkluderer jeres SEO-pakke?", "acceptedAnswer": {"@type": "Answer", "text": "Teknisk SEO-audit, keyword research, on-page optimering, indholdsstrategi, linkbuilding og løbende rapportering. Vi tilpasser omfanget til dine mål og dit budget."}},
+      {"@type": "Question", "name": "Er SEO stadig relevant med AI-søgning?", "acceptedAnswer": {"@type": "Answer", "text": "Absolut. AI-modeller trækker deres svar fra velstrukturerede, autoritative hjemmesider. God SEO er fundamentet for synlighed i både traditionelle og AI-drevne søgemaskiner."}}
+    ]
+  }
+  </script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
