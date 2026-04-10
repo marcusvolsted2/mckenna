@@ -80,6 +80,7 @@
     /* Card hover */
     .card-hover { transition: transform 0.2s cubic-bezier(.4,0,.2,1), border-color 0.2s ease, box-shadow 0.2s ease; }
     .card-hover:hover { transform: translateY(-2px); }
+    @media (min-width: 640px) { .pain-row .pain-right { padding-left: 2rem; border-left: 1px solid rgba(255,255,255,0.06); } .pain-row .pain-left { padding-right: 2rem; } }
 
     /* Primary button */
     .btn-primary {
@@ -274,14 +275,15 @@
   </section>
 
   <!-- ========== AI INTAKE CHAT ========== -->
-  <section id="get-started" class="py-20 px-6">
+  <section id="get-started" class="py-20 px-6" style="background:transparent;">
     <div class="max-w-3xl mx-auto">
-      <div class="reveal overflow-hidden" style="background:transparent; height:750px;">
+      <div class="reveal overflow-hidden" style="background:none; height:750px; border:none; box-shadow:none;">
         <iframe
           src="https://mckenna-intake.vercel.app/intake"
-          style="width:100%; height:100%; border:none; display:block;"
+          style="width:100%; height:100%; border:none; display:block; background:transparent;"
           title="Free website design intake"
           loading="lazy"
+          allowtransparency="true"
         ></iframe>
       </div>
       <p class="text-center text-xs mt-4" style="color:#8a8a8a;">Free mockup in 1-3 days &nbsp;·&nbsp; No commitment required</p>
@@ -305,15 +307,15 @@
         </h2>
       </div>
 
-      <div class="hidden sm:grid grid-cols-2 gap-8 mb-4 px-6">
-        <span class="text-xs uppercase tracking-widest font-medium" style="color:rgba(239,68,68,0.8); letter-spacing:0.15em;">Traditional agencies</span>
-        <span class="text-xs uppercase tracking-widest font-medium" style="color:rgba(52,211,153,0.8); letter-spacing:0.15em;">With us</span>
+      <div class="hidden sm:grid grid-cols-2 gap-8 mb-6 px-6">
+        <span class="text-xs uppercase tracking-widest font-medium" style="color:rgba(239,68,68,0.7); letter-spacing:0.15em;">Traditional agencies</span>
+        <span class="text-xs uppercase tracking-widest font-medium" style="color:rgba(52,211,153,0.7); letter-spacing:0.15em;">With us</span>
       </div>
 
-      <div class="space-y-4">
+      <div class="space-y-5">
         <!-- Row 1 -->
         <div class="reveal rounded-2xl p-5 sm:p-6 card-hover" style="border:1px solid rgba(255,255,255,0.06); background:rgba(255,255,255,0.02);">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8">
+          <div class="grid pain-row grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-0">
             <div>
               <span class="sm:hidden text-xs uppercase tracking-widest font-medium mb-2 block" style="color:rgba(239,68,68,0.8);">Traditional agencies</span>
               <div class="flex gap-3">
@@ -336,7 +338,7 @@
         </div>
         <!-- Row 2 -->
         <div class="reveal reveal-delay-1 rounded-2xl p-5 sm:p-6 card-hover" style="border:1px solid rgba(255,255,255,0.06); background:rgba(255,255,255,0.02);">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8">
+          <div class="grid pain-row grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-0">
             <div>
               <span class="sm:hidden text-xs uppercase tracking-widest font-medium mb-2 block" style="color:rgba(239,68,68,0.8);">Traditional agencies</span>
               <div class="flex gap-3">
@@ -359,7 +361,7 @@
         </div>
         <!-- Row 3 -->
         <div class="reveal reveal-delay-2 rounded-2xl p-5 sm:p-6 card-hover" style="border:1px solid rgba(255,255,255,0.06); background:rgba(255,255,255,0.02);">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8">
+          <div class="grid pain-row grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-0">
             <div>
               <span class="sm:hidden text-xs uppercase tracking-widest font-medium mb-2 block" style="color:rgba(239,68,68,0.8);">Traditional agencies</span>
               <div class="flex gap-3">
@@ -382,7 +384,7 @@
         </div>
         <!-- Row 4 -->
         <div class="reveal reveal-delay-3 rounded-2xl p-5 sm:p-6 card-hover" style="border:1px solid rgba(255,255,255,0.06); background:rgba(255,255,255,0.02);">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8">
+          <div class="grid pain-row grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-0">
             <div>
               <span class="sm:hidden text-xs uppercase tracking-widest font-medium mb-2 block" style="color:rgba(239,68,68,0.8);">Traditional agencies</span>
               <div class="flex gap-3">
@@ -454,70 +456,6 @@
     </div>
   </section>
 
-  <!-- ========== WHY CHOOSE US ========== -->
-  <section class="py-32 px-6">
-    <div class="max-w-6xl mx-auto">
-      <div class="reveal text-center mb-20">
-        <span class="text-xs uppercase tracking-widest font-medium" style="color:#2860E0; letter-spacing:0.2em;">Why choose us</span>
-        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mt-4" style="letter-spacing:-0.03em;">
-          Built different.<br>
-          <span style="color:#9a9a9a;">Built better.</span>
-        </h2>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Custom Shopify Development -->
-        <div class="reveal rounded-2xl p-8 card-hover" style="border:1px solid rgba(255,255,255,0.07); background:rgba(255,255,255,0.02);">
-          <div class="mb-5 inline-flex items-center justify-center rounded-xl p-3" style="background:rgba(40,96,224,0.1);">
-            <svg width="20" height="20" fill="none" stroke="#2860E0" stroke-width="1.8" viewBox="0 0 24 24"><path d="M20.04 6.82l-1.17-.78-.38-1.36a.99.99 0 00-.67-.67l-1.36-.38-.78-1.17a1 1 0 00-.83-.44h-.01a1 1 0 00-.83.44L13.23 3.6l-1.36.38a1 1 0 00-.67.67l-.38 1.36-.78 1.17a1 1 0 000 1.1l.78 1.17.22.78H4a2 2 0 00-2 2v8a2 2 0 002 2h16a2 2 0 002-2v-8a2 2 0 00-2-2h-1.05l.22-.78.78-1.17a1 1 0 000-1.1z" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 21v-4a4 4 0 018 0v4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <h3 class="text-lg font-semibold mb-3" style="letter-spacing:-0.02em;">Custom Shopify Development</h3>
-          <p class="text-sm leading-relaxed" style="color:#9a9a9a;">We build on Shopify, the world's leading e-commerce platform. Reliable, scalable, and built to sell.</p>
-        </div>
-        <!-- Free Design Mockup -->
-        <div class="reveal reveal-delay-1 rounded-2xl p-8 card-hover" style="border:1px solid rgba(255,255,255,0.07); background:rgba(255,255,255,0.02);">
-          <div class="mb-5 inline-flex items-center justify-center rounded-xl p-3" style="background:rgba(40,96,224,0.1);">
-            <svg width="20" height="20" fill="none" stroke="#2860E0" stroke-width="1.8" viewBox="0 0 24 24"><path d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 12h3M12 2v3M4.93 4.93l2.12 2.12M19.07 4.93l-2.12 2.12" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <h3 class="text-lg font-semibold mb-3" style="letter-spacing:-0.02em;">Free Design Mockup</h3>
-          <p class="text-sm leading-relaxed" style="color:#9a9a9a;">See your website before committing. We design a free mockup so you know exactly what you are getting.</p>
-        </div>
-        <!-- 1-3 Day Turnaround -->
-        <div class="reveal reveal-delay-2 rounded-2xl p-8 card-hover" style="border:1px solid rgba(255,255,255,0.07); background:rgba(255,255,255,0.02);">
-          <div class="mb-5 inline-flex items-center justify-center rounded-xl p-3" style="background:rgba(40,96,224,0.1);">
-            <svg width="20" height="20" fill="none" stroke="#2860E0" stroke-width="1.8" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <h3 class="text-lg font-semibold mb-3" style="letter-spacing:-0.02em;">1-3 Day Turnaround</h3>
-          <p class="text-sm leading-relaxed" style="color:#9a9a9a;">Fastest in the industry. Your first mockup and every revision delivered in 1-3 business days.</p>
-        </div>
-        <!-- Ongoing Updates Included -->
-        <div class="reveal rounded-2xl p-8 card-hover" style="border:1px solid rgba(255,255,255,0.07); background:rgba(255,255,255,0.02);">
-          <div class="mb-5 inline-flex items-center justify-center rounded-xl p-3" style="background:rgba(40,96,224,0.1);">
-            <svg width="20" height="20" fill="none" stroke="#2860E0" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <h3 class="text-lg font-semibold mb-3" style="letter-spacing:-0.02em;">Ongoing Updates Included</h3>
-          <p class="text-sm leading-relaxed" style="color:#9a9a9a;">Unlimited revisions, no extra fees. Your website stays fresh and up to date without surprise invoices.</p>
-        </div>
-        <!-- SEO Optimized -->
-        <div class="reveal reveal-delay-1 rounded-2xl p-8 card-hover" style="border:1px solid rgba(255,255,255,0.07); background:rgba(255,255,255,0.02);">
-          <div class="mb-5 inline-flex items-center justify-center rounded-xl p-3" style="background:rgba(40,96,224,0.1);">
-            <svg width="20" height="20" fill="none" stroke="#2860E0" stroke-width="1.8" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <h3 class="text-lg font-semibold mb-3" style="letter-spacing:-0.02em;">SEO Optimized</h3>
-          <p class="text-sm leading-relaxed" style="color:#9a9a9a;">Built for Google from day one. Fast load times, clean code, and proper structure so customers can find you.</p>
-        </div>
-        <!-- Shopify Workshop Training -->
-        <div class="reveal reveal-delay-2 rounded-2xl p-8 card-hover" style="border:1px solid rgba(255,255,255,0.07); background:rgba(255,255,255,0.02);">
-          <div class="mb-5 inline-flex items-center justify-center rounded-xl p-3" style="background:rgba(40,96,224,0.1);">
-            <svg width="20" height="20" fill="none" stroke="#2860E0" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 14l9-5-9-5-9 5 9 5zm0 0v6.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <h3 class="text-lg font-semibold mb-3" style="letter-spacing:-0.02em;">Shopify Workshop Training</h3>
-          <p class="text-sm leading-relaxed" style="color:#9a9a9a;">We also offer hands-on Shopify workshops for your team. Learn to manage your store with confidence.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ========== HOW IT WORKS ========== -->
   <section id="how-it-works" class="py-32 px-6">
     <div class="max-w-5xl mx-auto">
@@ -529,47 +467,34 @@
         </h2>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
         <div class="step-card reveal text-center rounded-2xl p-6 border border-transparent" data-step="0">
-          <div class="step-icon-wrap mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-2xl" style="border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.03);">
+          <div class="step-icon-wrap mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl" style="border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.03);">
             <svg width="20" height="20" fill="none" stroke="#2860E0" stroke-width="1.8" viewBox="0 0 24 24" style="opacity:0.6;"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <div class="flex items-center justify-center gap-2 mb-2">
-            <span class="text-xs font-mono tracking-wider" style="color:#8a8a8a;">01</span>
-          </div>
-          <h3 class="text-lg font-semibold mb-3" style="letter-spacing:-0.02em;">Tell us your vision</h3>
-          <p class="text-sm leading-relaxed max-w-xs mx-auto" style="color:#9a9a9a;">Fill out our quick intake form. Share your brand, your goals, and the vibe you are going for. Takes about 5 minutes.</p>
+          <span class="text-xs font-mono tracking-wider" style="color:#8a8a8a;">01</span>
+          <h3 class="text-base font-semibold mt-1" style="letter-spacing:-0.02em;">Tell us your vision</h3>
         </div>
         <div class="step-card reveal reveal-delay-1 text-center rounded-2xl p-6 border border-transparent" data-step="1">
-          <div class="step-icon-wrap mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-2xl" style="border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.03);">
+          <div class="step-icon-wrap mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl" style="border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.03);">
             <svg width="20" height="20" fill="none" stroke="#2860E0" stroke-width="1.8" viewBox="0 0 24 24" style="opacity:0.6;"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <div class="flex items-center justify-center gap-2 mb-2">
-            <span class="text-xs font-mono tracking-wider" style="color:#8a8a8a;">02</span>
-            <span class="text-xs uppercase tracking-wider font-medium" style="color:rgba(40,96,224,0.7);">Optional</span>
-          </div>
-          <h3 class="text-lg font-semibold mb-3" style="letter-spacing:-0.02em;">Optional strategy call</h3>
-          <p class="text-sm leading-relaxed max-w-xs mx-auto" style="color:#9a9a9a;">Want to talk it through? Book a free call with our team. Not required, but always available if you want a more personal touch.</p>
+          <span class="text-xs font-mono tracking-wider" style="color:#8a8a8a;">02</span>
+          <h3 class="text-base font-semibold mt-1" style="letter-spacing:-0.02em;">Strategy call</h3>
         </div>
         <div class="step-card reveal reveal-delay-2 text-center rounded-2xl p-6 border border-transparent" data-step="2">
-          <div class="step-icon-wrap mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-2xl" style="border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.03);">
+          <div class="step-icon-wrap mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl" style="border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.03);">
             <svg width="20" height="20" fill="none" stroke="#2860E0" stroke-width="1.8" viewBox="0 0 24 24" style="opacity:0.6;"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <div class="flex items-center justify-center gap-2 mb-2">
-            <span class="text-xs font-mono tracking-wider" style="color:#8a8a8a;">03</span>
-          </div>
-          <h3 class="text-lg font-semibold mb-3" style="letter-spacing:-0.02em;">We design and build</h3>
-          <p class="text-sm leading-relaxed max-w-xs mx-auto" style="color:#9a9a9a;">We create a free design mockup tailored to your brand. No commitment until you love it. Once approved, we build it and your subscription begins.</p>
+          <span class="text-xs font-mono tracking-wider" style="color:#8a8a8a;">03</span>
+          <h3 class="text-base font-semibold mt-1" style="letter-spacing:-0.02em;">We design and build</h3>
         </div>
         <div class="step-card reveal reveal-delay-3 text-center rounded-2xl p-6 border border-transparent" data-step="3">
-          <div class="step-icon-wrap mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-2xl" style="border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.03);">
+          <div class="step-icon-wrap mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl" style="border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.03);">
             <svg width="20" height="20" fill="none" stroke="#2860E0" stroke-width="1.8" viewBox="0 0 24 24" style="opacity:0.6;"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <div class="flex items-center justify-center gap-2 mb-2">
-            <span class="text-xs font-mono tracking-wider" style="color:#8a8a8a;">04</span>
-          </div>
-          <h3 class="text-lg font-semibold mb-3" style="letter-spacing:-0.02em;">Launch and iterate</h3>
-          <p class="text-sm leading-relaxed max-w-xs mx-auto" style="color:#9a9a9a;">Your site goes live. Need changes? Queue up a revision anytime. Your website evolves with your business.</p>
+          <span class="text-xs font-mono tracking-wider" style="color:#8a8a8a;">04</span>
+          <h3 class="text-base font-semibold mt-1" style="letter-spacing:-0.02em;">Launch and iterate</h3>
         </div>
       </div>
     </div>
