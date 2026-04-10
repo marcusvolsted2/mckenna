@@ -6,7 +6,7 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://mckenna.vercel.app/google-ads-seo</loc>
+    <loc>https://mckenna.vercel.app/google-ads</loc>
     <lastmod>2026-03-27</lastmod>
     <priority>0.9</priority>
   </url>
@@ -31,7 +31,17 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mckenna.vercel.app/en/google-ads-seo</loc>
+    <loc>https://mckenna.vercel.app/seo-aio-geo</loc>
+    <lastmod>2026-04-10</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://mckenna.vercel.app/en/</loc>
+    <lastmod>2026-03-27</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://mckenna.vercel.app/en/google-ads</loc>
     <lastmod>2026-03-27</lastmod>
     <priority>0.8</priority>
   </url>

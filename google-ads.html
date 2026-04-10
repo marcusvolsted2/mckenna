@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Ads Bureau | Certificeret Google Partner | McKenna Marketing</title>
+  <meta name="description" content="Google Ads bureau og certificeret Google Partner. McKenna Marketing leverer performance-baseret Google Ads styring med 100% ROAS-garanti. Leverer vi ikke resultater, betaler du ikke. 9+ års erfaring, 100+ kunder.">
+  <meta name="keywords" content="Google Ads Bureau, Google Ads Agency, Google Ads Partner, Certificeret Google Partner, Google Ads Specialist, Google Ads Danmark, Google Ads København, performance marketing bureau">
+  <link rel="canonical" href="https://mckenna.vercel.app/google-ads">
+  <link rel="alternate" hreflang="da" href="https://mckenna.vercel.app/google-ads">
+  <link rel="alternate" hreflang="en" href="https://mckenna.vercel.app/en/google-ads">
+  <meta property="og:title" content="Google Ads Bureau | Certificeret Google Partner | McKenna Marketing">
+  <meta property="og:description" content="Google Ads bureau og certificeret Google Partner. Performance-baseret Google Ads styring med 100% ROAS-garanti. Leverer vi ikke resultater, betaler du ikke.">
+  <meta property="og:url" content="https://mckenna.vercel.app/google-ads">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://mckenna.vercel.app/Assets/Mc-Marketing-Logo.png">
+  <meta property="og:locale" content="da_DK">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Google Ads Bureau | Certificeret Google Partner | McKenna Marketing">
+  <meta name="twitter:description" content="Google Ads bureau og certificeret Google Partner. Performance-baseret Google Ads styring med 100% ROAS-garanti.">
+  <meta name="twitter:image" content="https://mckenna.vercel.app/Assets/Mc-Marketing-Logo.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" sizes="any">
+  <link rel="icon" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/favicon.svg">
+  <link rel="shortcut icon" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: { DEFAULT: '#151518', card: '#1c1c20', elevated: '#242428', border: '#2a2a2f' },
+            txt: { DEFAULT: '#e8e8ec', muted: '#8b8b96', dim: '#5c5c66' },
+            accent: '#2860E0',
+          },
+          fontFamily: {
+            display: ['Outfit', 'system-ui', 'sans-serif'],
+            body: ['Inter', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: #151518; color: #e8e8ec; line-height: 1.7; }
+    h1, h2, h3 { font-family: 'Outfit', system-ui, sans-serif; letter-spacing: -0.03em; line-height: 1.1; font-weight: 700; }
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1); }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .hero-gradient-text {
+      background: linear-gradient(to right, #c4b5fd, #ddb4d0, #f0c4b8, #c4b5fd);
+      background-size: 200% 100%;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      animation: gradientBloom 6s ease-in-out infinite;
+    }
+    @keyframes gradientBloom { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+    .elegant-shape {
+      position: absolute; border-radius: 9999px;
+      background: linear-gradient(135deg, rgba(40,96,224,0.12), transparent);
+      border: 2px solid rgba(255,255,255,0.06); backdrop-filter: blur(2px);
+      box-shadow: 0 8px 32px rgba(40,96,224,0.08);
+      opacity: 0; transform: translateY(-80px);
+      animation: shapeEntry 2s cubic-bezier(.23,.86,.39,.96) forwards;
+    }
+    .shape-1 { width: 450px; height: 110px; left: -5%; top: 20%; rotate: 12deg; animation-delay: 0.3s; }
+    .shape-2 { width: 350px; height: 90px; right: -2%; top: 68%; rotate: -15deg; animation-delay: 0.5s; }
+    .shape-3 { width: 200px; height: 55px; left: 10%; bottom: 10%; rotate: -8deg; animation-delay: 0.4s; }
+    @keyframes shapeEntry { 0% { opacity: 0; transform: translateY(-80px); } 100% { opacity: 1; transform: translateY(0); } }
+    .hero-bg-gradient { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(40,96,224,0.08) 0%, transparent 60%); }
+    .hero-vignette { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 50%, transparent 40%, #151518 100%); }
+    .section-border { border-top: 1px solid #2a2a2f; }
+    .mobile-menu { display: none; }
+    .mobile-menu.open { display: flex; }
+    .lang-dropdown.open .lang-menu { display: block !important; }
+    .btn-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.9rem; font-weight: 600; padding: 14px 32px; border-radius: 9999px;
+      background: #2860E0; color: #fff; text-decoration: none;
+      box-shadow: 0 4px 14px rgba(40,96,224,0.3);
+      transition: transform 0.2s cubic-bezier(.4,0,.2,1), box-shadow 0.2s ease;
+    }
+    .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(40,96,224,0.45); }
+    .btn-cta:active { transform: translateY(0); }
+    .btn-cta:focus-visible { outline: 2px solid #7ba3f0; outline-offset: 2px; }
+
+    /* Scroll animation card */
+    .scroll-container {
+      height: 140vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      position: relative;
+      padding: 0 20px;
+    }
+    .scroll-inner {
+      position: sticky;
+      top: 10vh;
+      width: 100%;
+      max-width: 1000px;
+      perspective: 1200px;
+    }
+    .scroll-card {
+      transform: rotateX(var(--rx, 20deg)) scale(var(--s, 0.9));
+      transition: transform 0.1s linear;
+      border-radius: 24px;
+      border: 3px solid #3a3a40;
+      background: #1c1c20;
+      padding: 6px;
+      box-shadow: 0 0 #0000004d, 0 9px 20px #0000004a, 0 37px 37px #00000042, 0 84px 50px #00000026;
+    }
+    .scroll-card-inner {
+      border-radius: 18px;
+      background: #0f0f12;
+      overflow: hidden;
+      padding: 24px;
+    }
+    /* Dashboard mockup styles */
+    .dash-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+    .dash-logo { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.1rem; color: #fff; display: flex; align-items: center; gap: 8px; }
+    .dash-tabs { display: flex; gap: 4px; }
+    .dash-tab { padding: 6px 14px; border-radius: 8px; font-size: 0.75rem; color: #8b8b96; cursor: default; }
+    .dash-tab.active { background: rgba(40,96,224,0.15); color: #2860E0; }
+    .dash-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
+    .dash-stat { background: #1c1c20; border-radius: 12px; padding: 16px; border: 1px solid #2a2a2f; }
+    .dash-stat-label { font-size: 0.7rem; color: #5c5c66; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .dash-stat-value { font-family: 'Outfit', sans-serif; font-size: 1.5rem; font-weight: 700; color: #fff; }
+    .dash-stat-change { font-size: 0.7rem; margin-top: 4px; }
+    .dash-stat-change.up { color: #34d399; }
+    .dash-chart { background: #1c1c20; border-radius: 12px; padding: 16px; border: 1px solid #2a2a2f; margin-bottom: 12px; }
+    .dash-chart-title { font-size: 0.8rem; color: #8b8b96; margin-bottom: 12px; }
+    .dash-bars { display: flex; align-items: flex-end; gap: 6px; height: 120px; }
+    .dash-bar { flex: 1; border-radius: 4px 4px 0 0; background: linear-gradient(to top, #2860E0, #5a8ff0); opacity: 0.85; }
+    .dash-table { background: #1c1c20; border-radius: 12px; padding: 16px; border: 1px solid #2a2a2f; }
+    .dash-table-title { font-size: 0.8rem; color: #8b8b96; margin-bottom: 12px; }
+    .dash-row { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 8px; padding: 8px 0; border-bottom: 1px solid #242428; font-size: 0.75rem; }
+    .dash-row.header { color: #5c5c66; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.65rem; }
+    .dash-row:last-child { border-bottom: none; }
+    .dash-row span { color: #e8e8ec; }
+    .dash-row .good { color: #34d399; }
+
+    /* Horizontal scroll cards */
+    .services-scroll { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding: 8px 0 24px 0; }
+    @media (max-width: 1024px) { .services-scroll { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 640px) { .services-scroll { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; } }
+    .services-scroll::-webkit-scrollbar { display: none; }
+    .service-card { scroll-snap-align: start; border-radius: 20px; background: #1c1c20; border: 1px solid #2a2a2f; overflow: hidden; transition: transform 0.3s cubic-bezier(.4,0,.2,1), box-shadow 0.3s ease; }
+    .service-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(40,96,224,0.15); }
+    .service-card:focus-visible { outline: 2px solid #7ba3f0; outline-offset: 2px; }
+    .service-card-img { height: 180px; width: 100%; object-fit: cover; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+
+    /* Social icon */
+    .social-icon {
+      display: flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px; border-radius: 10px;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06);
+      color: #8b8b96; transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+    }
+    .social-icon:hover { background: rgba(40,96,224,0.12); color: #7ba3f0; transform: translateY(-2px); }
+    .social-icon:focus-visible { outline: 2px solid #7ba3f0; outline-offset: 2px; }
+
+    @media (max-width: 640px) {
+      /* Simplified dashboard on mobile - only show 2 hero stats, hide chart/table */
+      .dashboard-card { padding: 16px !important; }
+      .dash-header { margin-bottom: 14px; flex-wrap: wrap; gap: 8px; }
+      .dash-logo { font-size: 0.95rem; }
+      .dash-tabs { display: none; }
+      .dash-stats { grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 0; }
+      .dash-stat { padding: 14px; }
+      .dash-stat:nth-child(3), .dash-stat:nth-child(4) { display: none; }
+      .dash-stat-value { font-size: 1.75rem; }
+      .dash-chart, .dash-table { display: none; }
+      /* Cards stack vertically on mobile with horizontal layout */
+      .services-scroll { display: flex; flex-direction: column; gap: 14px; overflow: visible; }
+      .service-card { display: flex; align-items: stretch; flex: none; min-width: 0; }
+      .service-card-img { width: 110px; height: auto; flex-shrink: 0; }
+      .service-card-img svg { width: 40px !important; height: 40px !important; }
+      .service-card > div.p-6 { padding: 14px !important; flex: 1; }
+      .service-card h3 { margin-bottom: 4px !important; }
+      .service-card p { font-size: 0.78rem !important; line-height: 1.5 !important; }
+      /* Case study images: shorter and more compact on mobile */
+      .case-study-img { height: 160px !important; }
+      /* Add bottom padding to body so fixed mobile CTA doesn't cover content */
+      body { padding-bottom: 80px; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "McKenna Marketing",
+    "alternateName": "McKenna Marketing Google Ads Bureau",
+    "description": "Google Ads bureau og certificeret Google Partner. Performance-baseret Google Ads styring med 100% ROAS-garanti.",
+    "url": "https://mckenna.vercel.app/google-ads",
+    "image": "https://mckenna.vercel.app/Assets/Mc-Marketing-Logo.png",
+    "priceRange": "$$",
+    "telephone": "+45 28 25 21 84",
+    "email": "mcc@mcmarketing.dk",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Paradisæblevej 4",
+      "addressLocality": "Valby",
+      "postalCode": "2500",
+      "addressCountry": "DK"
+    },
+    "areaServed": {"@type": "Country", "name": "Denmark"},
+    "serviceType": ["Google Ads Management", "Google Ads Bureau", "Performance Marketing", "PPC Management"],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Google Ads Services",
+      "itemListElement": [
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Google Ads Management"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Google Shopping"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Performance Max kampagner"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Conversion Tracking"}}
+      ]
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "100"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="fixed top-0 left-0 right-0 z-50 flex justify-center pt-4 px-6">
+    <div class="flex items-center justify-between gap-8 w-full max-w-6xl px-4 py-2 rounded-full" style="backdrop-filter:blur(20px); background:rgba(21,21,24,0.85); border:1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 24px rgba(0,0,0,0.25);">
+      <a href="/" class="flex items-center pl-2">
+        <img src="Assets/Mc-Marketing-Logo.png" alt="McKenna Marketing" class="h-6" />
+      </a>
+            <div class="hidden lg:flex items-center gap-1">
+        <!-- Services dropdown -->
+        <div class="relative" onmouseenter="this.querySelector('.services-menu').style.display='block'" onmouseleave="this.querySelector('.services-menu').style.display='none'">
+          <button class="text-sm text-white/70 hover:text-white px-4 py-2 rounded-full hover:bg-white/5 transition-all duration-200 inline-flex items-center gap-1.5">
+            Ydelser
+            <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="services-menu absolute left-1/2 -translate-x-1/2 top-full pt-2 z-50" style="display:none; min-width:240px;">
+            <div class="rounded-xl py-2 px-1" style="background:rgba(28,28,32,0.95); border:1px solid rgba(255,255,255,0.08); backdrop-filter:blur(20px); box-shadow:0 12px 40px rgba(0,0,0,0.4);">
+              <a href="/google-ads" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-white/70 hover:text-white hover:bg-white/5 transition-all duration-200">
+                <span class="flex items-center justify-center w-8 h-8 rounded-lg" style="background:rgba(40,96,224,0.1);"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18A10.96 10.96 0 001 12c0 1.77.42 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg></span>
+                Google Ads
+              </a>
+              <a href="/seo-aio-geo" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-white/70 hover:text-white hover:bg-white/5 transition-all duration-200">
+                <span class="flex items-center justify-center w-8 h-8 rounded-lg" style="background:rgba(52,211,153,0.1);"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#34d399" stroke-width="2"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round"/></svg></span>
+                SEO / AIO / GEO
+              </a>
+              <a href="/paid-social" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-white/70 hover:text-white hover:bg-white/5 transition-all duration-200">
+                <span class="flex items-center justify-center w-8 h-8 rounded-lg" style="background:rgba(236,72,153,0.1);"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#ec4899" stroke-width="2"><path d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                Paid Social
+              </a>
+              <a href="/websites" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-white/70 hover:text-white hover:bg-white/5 transition-all duration-200">
+                <span class="flex items-center justify-center w-8 h-8 rounded-lg" style="background:rgba(6,182,212,0.1);"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#06b6d4" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                Hjemmesider
+              </a>
+            </div>
+          </div>
+        </div>
+        <a href="/contact" class="text-sm text-white/70 hover:text-white px-4 py-2 rounded-full hover:bg-white/5 transition-all duration-200">Kontakt</a>
+      </div>
+      <div class="hidden lg:flex items-center gap-2">
+        <a href="#book" class="inline-flex items-center gap-2 text-sm font-medium px-5 py-2.5 rounded-full text-white transition-all duration-200" style="background:#2860E0; box-shadow: 0 2px 10px rgba(40,96,224,0.3);" onmouseover="this.style.boxShadow='0 4px 16px rgba(40,96,224,0.5)'" onmouseout="this.style.boxShadow='0 2px 10px rgba(40,96,224,0.3)'">
+          Book Møde
+        </a>
+        <div class="relative lang-dropdown">
+          <button onclick="this.closest('.lang-dropdown').classList.toggle('open')" class="flex items-center justify-center w-9 h-9 rounded-full hover:bg-white/10 transition-all duration-200" title="Sprog" style="font-size:17px;">
+            <span>&#127465;&#127472;</span>
+          </button>
+          <div class="lang-menu absolute right-0 top-full mt-2 rounded-xl py-2 min-w-[130px] z-50" style="background:rgba(28,28,32,0.95); border:1px solid rgba(255,255,255,0.08); backdrop-filter:blur(20px); display:none;">
+            <span class="flex items-center gap-2.5 w-full px-4 py-2 text-sm text-white" style="opacity:0.5; cursor:default;">
+              <span style="font-size:15px;">&#127465;&#127472;</span> Dansk
+            </span>
+            <a href="/en/" class="flex items-center gap-2.5 w-full px-4 py-2 text-sm text-txt-muted hover:text-white hover:bg-white/5 transition-colors duration-200" style="text-decoration:none;">
+              <span style="font-size:15px;">&#127468;&#127463;</span> English
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="lg:hidden flex items-center gap-1">
+        <div class="relative lang-dropdown">
+          <button onclick="this.closest('.lang-dropdown').classList.toggle('open')" class="flex items-center justify-center w-9 h-9 rounded-full hover:bg-white/10 transition-all duration-200" title="Sprog" style="font-size:17px;">
+            <span>&#127465;&#127472;</span>
+          </button>
+          <div class="lang-menu absolute right-12 top-full mt-2 rounded-xl py-2 min-w-[130px] z-50" style="background:rgba(28,28,32,0.95); border:1px solid rgba(255,255,255,0.08); backdrop-filter:blur(20px); display:none;">
+            <span class="flex items-center gap-2.5 w-full px-4 py-2 text-sm text-white" style="opacity:0.5; cursor:default;">
+              <span style="font-size:15px;">&#127465;&#127472;</span> Dansk
+            </span>
+            <a href="/en/" class="flex items-center gap-2.5 w-full px-4 py-2 text-sm text-txt-muted hover:text-white hover:bg-white/5 transition-colors duration-200" style="text-decoration:none;">
+              <span style="font-size:15px;">&#127468;&#127463;</span> English
+            </a>
+          </div>
+        </div>
+        <button class="flex flex-col gap-1.5 p-2 pr-3" onclick="document.getElementById('mobileMenu').classList.toggle('open')" aria-label="Menu">
+          <span class="block w-5 h-0.5 bg-white rounded-full"></span>
+          <span class="block w-5 h-0.5 bg-white rounded-full"></span>
+          <span class="block w-5 h-0.5 bg-white rounded-full"></span>
+        </button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="mobile-menu flex-col gap-3 px-6 py-5 absolute top-full left-4 right-4 mt-2 rounded-2xl" style="background:rgba(28,28,32,0.95); border:1px solid rgba(255,255,255,0.08); backdrop-filter:blur(20px);">
+      <a href="/google-ads" class="text-sm text-white/80 hover:text-white py-1.5">Google Ads</a>
+      <a href="/seo-aio-geo" class="text-sm text-white/80 hover:text-white py-1.5">SEO / AIO / GEO</a>
+      <a href="/paid-social" class="text-sm text-white/80 hover:text-white py-1.5">Paid Social</a>
+      <a href="/websites" class="text-sm text-white/80 hover:text-white py-1.5">Hjemmesider</a>
+      <a href="/contact" class="mt-2 inline-flex items-center justify-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-full text-white" style="background:#2860E0; box-shadow: 0 2px 10px rgba(40,96,224,0.3);">Kontakt</a>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section class="pt-36 pb-10 md:pt-48 md:pb-14 relative overflow-hidden" style="min-height:auto;">
+    <div class="hero-bg-gradient"></div>
+    <div class="elegant-shape shape-1"></div>
+    <div class="elegant-shape shape-2"></div>
+    <div class="elegant-shape shape-3"></div>
+    <div class="hero-vignette"></div>
+
+    <div class="max-w-6xl mx-auto px-6 text-center relative z-10">
+      <div class="reveal inline-flex items-center gap-2 px-4 py-2 rounded-full mb-5 text-sm" style="background:rgba(40,96,224,0.08); border:1px solid rgba(40,96,224,0.2); color:#7ba3f0;">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        Performance Garanti
+      </div>
+      <p class="reveal text-sm md:text-base mb-5 max-w-2xl mx-auto" style="color:#6ee7b7; font-weight:500; letter-spacing:0.01em;">
+        Google Ads Bureau · Certificeret Google Partner · Performance-baseret
+      </p>
+
+      <h1 class="reveal reveal-delay-1 text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-6 max-w-4xl mx-auto" style="font-weight:600; letter-spacing:-0.03em; line-height:1.1; background: linear-gradient(180deg, #FFF 0%, rgba(255,255,255,0.45) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+        Vi får kun betaling, når <span class="hero-gradient-text">du får resultater</span>
+      </h1>
+      <p class="reveal reveal-delay-2 text-base md:text-lg max-w-2xl mx-auto" style="color:#a1a1aa; line-height:1.7;">
+        McKenna Marketing er et dansk <strong class="text-white">Google Ads bureau</strong> og <strong class="text-white">certificeret Google Partner</strong>. Vi leverer performance-baseret annoncering med 100% ROAS-garanti - leverer vi ikke resultater, betaler du ikke.
+      </p>
+    </div>
+  </section>
+
+  <!-- ========== SCROLL DASHBOARD ========== -->
+  <section class="scroll-container" style="margin-top:-80px;">
+    <div class="scroll-inner">
+      <div class="scroll-card" id="scrollCard">
+        <div class="scroll-card-inner">
+          <div class="dash-header">
+            <div class="dash-logo">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18A10.96 10.96 0 001 12c0 1.77.42 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+              Google Ads Dashboard
+            </div>
+            <div class="dash-tabs">
+              <div class="dash-tab active">Overblik</div>
+              <div class="dash-tab">Kampagner</div>
+              <div class="dash-tab">Sogord</div>
+            </div>
+          </div>
+          <div class="dash-stats">
+            <div class="dash-stat">
+              <div class="dash-stat-label">Konverteringer</div>
+              <div class="dash-stat-value">847</div>
+              <div class="dash-stat-change up">+34,2% ift. sidste måned</div>
+            </div>
+            <div class="dash-stat">
+              <div class="dash-stat-label">Pris / Konv.</div>
+              <div class="dash-stat-value">42 kr.</div>
+              <div class="dash-stat-change up">-18,6% ift. sidste måned</div>
+            </div>
+            <div class="dash-stat">
+              <div class="dash-stat-label">ROAS</div>
+              <div class="dash-stat-value">14,2x</div>
+              <div class="dash-stat-change up">+22,4% ift. sidste måned</div>
+            </div>
+            <div class="dash-stat">
+              <div class="dash-stat-label">CTR</div>
+              <div class="dash-stat-value">8,7%</div>
+              <div class="dash-stat-change up">+2,1% ift. sidste måned</div>
+            </div>
+          </div>
+          <div class="dash-chart">
+            <div class="dash-chart-title">Konverteringer - Sidste 30 dage</div>
+            <div class="dash-bars">
+              <div class="dash-bar" style="height:45%"></div>
+              <div class="dash-bar" style="height:52%"></div>
+              <div class="dash-bar" style="height:48%"></div>
+              <div class="dash-bar" style="height:60%"></div>
+              <div class="dash-bar" style="height:55%"></div>
+              <div class="dash-bar" style="height:63%"></div>
+              <div class="dash-bar" style="height:58%"></div>
+              <div class="dash-bar" style="height:70%"></div>
+              <div class="dash-bar" style="height:65%"></div>
+              <div class="dash-bar" style="height:72%"></div>
+              <div class="dash-bar" style="height:68%"></div>
+              <div class="dash-bar" style="height:75%"></div>
+              <div class="dash-bar" style="height:78%"></div>
+              <div class="dash-bar" style="height:73%"></div>
+              <div class="dash-bar" style="height:80%"></div>
+              <div class="dash-bar" style="height:76%"></div>
+              <div class="dash-bar" style="height:82%"></div>
+              <div class="dash-bar" style="height:85%"></div>
+              <div class="dash-bar" style="height:79%"></div>
+              <div class="dash-bar" style="height:88%"></div>
+              <div class="dash-bar" style="height:84%"></div>
+              <div class="dash-bar" style="height:90%"></div>
+              <div class="dash-bar" style="height:86%"></div>
+              <div class="dash-bar" style="height:92%"></div>
+              <div class="dash-bar" style="height:88%"></div>
+              <div class="dash-bar" style="height:94%"></div>
+              <div class="dash-bar" style="height:90%"></div>
+              <div class="dash-bar" style="height:96%"></div>
+              <div class="dash-bar" style="height:93%"></div>
+              <div class="dash-bar" style="height:100%"></div>
+            </div>
+          </div>
+          <div class="dash-table">
+            <div class="dash-table-title">Top Kampagner</div>
+            <div class="dash-row header">
+              <span>Kampagne</span>
+              <span>Konv.</span>
+              <span>ROAS</span>
+              <span>CPA</span>
+              <span>Budget</span>
+            </div>
+            <div class="dash-row">
+              <span>Brand Search</span>
+              <span>312</span>
+              <span class="good">18,4x</span>
+              <span>28 kr.</span>
+              <span>8.700 kr.</span>
+            </div>
+            <div class="dash-row">
+              <span>Non-Brand Shopping</span>
+              <span>284</span>
+              <span class="good">12,1x</span>
+              <span>45 kr.</span>
+              <span>12.800 kr.</span>
+            </div>
+            <div class="dash-row">
+              <span>Performance Max</span>
+              <span>189</span>
+              <span class="good">11,8x</span>
+              <span>52 kr.</span>
+              <span>9.800 kr.</span>
+            </div>
+            <div class="dash-row">
+              <span>DSA Kategori</span>
+              <span>62</span>
+              <span class="good">9,6x</span>
+              <span>61 kr.</span>
+              <span>3.800 kr.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Text + CTA below tablet -->
+      <div class="text-center mt-10 pb-10 md:pb-16">
+        <p class="text-base md:text-lg max-w-2xl mx-auto mb-10" style="color:#a1a1aa; line-height:1.8;">
+          Resultatbaseret Google Ads-styring fra et certificeret Google Partner-bureau. Vi sætter vores egne penge på spil - leverer dine kampagner ikke målbart afkast, betaler du ikke.
+        </p>
+        <a href="#book-call" class="btn-cta" style="text-decoration:none; border:none;">
+          Start din vækstrejse
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TRUST BAR ========== -->
+  <section class="py-12 section-border">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="reveal grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div>
+          <div class="flex items-center justify-center mb-3">
+            <img src="Assets/google-partner.png" alt="Google Partner" style="width:44px; height:44px; border-radius:8px;" />
+          </div>
+          <p class="text-xs font-medium uppercase tracking-widest" style="color:#8b8b96;">Google Partner</p>
+        </div>
+        <div>
+          <div class="text-3xl font-bold mb-1" style="font-family:'Outfit',sans-serif; color:#fff;">9+</div>
+          <p class="text-xs font-medium uppercase tracking-widest" style="color:#8b8b96;">Ars erfaring</p>
+        </div>
+        <div>
+          <div class="text-3xl font-bold mb-1" style="font-family:'Outfit',sans-serif; color:#fff;">100+</div>
+          <p class="text-xs font-medium uppercase tracking-widest" style="color:#8b8b96;">Kunder betjent</p>
+        </div>
+        <div>
+          <div class="text-3xl font-bold mb-1" style="font-family:'Outfit',sans-serif; color:#fff;">12x</div>
+          <p class="text-xs font-medium uppercase tracking-widest" style="color:#8b8b96;">Gns. ROAS</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SERVICES (HORIZONTAL SCROLL) ========== -->
+  <section class="py-20 md:py-28 section-border" id="services">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="reveal text-center mb-14">
+        <p class="text-xs font-semibold tracking-widest text-accent uppercase mb-4">Vores ydelser</p>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl mb-4">Alt hvad du behøver for at vokse online</h2>
+        <p class="text-base max-w-2xl mx-auto" style="color:#8b8b96; line-height:1.8;">
+          Fra betalt annoncering til organisk synlighed - vi dakker hele rejsen fra klik til kunde.
+        </p>
+      </div>
+
+      <div class="services-scroll reveal">
+        <!-- Google Ads -->
+        <div class="service-card">
+          <div class="service-card-img" style="background: linear-gradient(135deg, #1a2744 0%, #0f172a 100%);">
+            <div class="absolute inset-0" style="background: radial-gradient(circle at 30% 40%, rgba(40,96,224,0.2), transparent 60%);"></div>
+            <div class="relative z-10 flex flex-col items-center">
+              <svg width="56" height="56" viewBox="0 0 24 24" fill="none" style="filter: drop-shadow(0 4px 12px rgba(40,96,224,0.4));">
+                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
+                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18A10.96 10.96 0 001 12c0 1.77.42 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+              </svg>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-lg font-semibold text-white mb-2">Google Ads</h3>
+            <p class="text-sm" style="color:#8b8b96; line-height:1.7;">
+              Search, Shopping, Display & Performance Max. Vi bygger, optimerer og skalerer kampagner der omsatter klik til betalende kunder. Daglig overvågning, ugentlig optimering.
+            </p>
+          </div>
+        </div>
+
+        <!-- SEO -->
+        <div class="service-card">
+          <div class="service-card-img" style="background: linear-gradient(135deg, #1a3320 0%, #0f1f14 100%);">
+            <div class="absolute inset-0" style="background: radial-gradient(circle at 70% 30%, rgba(52,211,153,0.15), transparent 60%);"></div>
+            <div class="relative z-10 flex flex-col items-center">
+              <svg width="56" height="56" fill="none" viewBox="0 0 24 24" style="filter: drop-shadow(0 4px 12px rgba(52,211,153,0.3));">
+                <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke="#34d399" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M10 8v4l2 2" stroke="#34d399" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-lg font-semibold text-white mb-2">SEO</h3>
+            <p class="text-sm" style="color:#8b8b96; line-height:1.7;">
+              Teknisk SEO, indholdsoptimering og linkbuilding der bringer dig til tops i Google. Organisk trafik der vokser manedefter maned - uden at betale per klik.
+            </p>
+          </div>
+        </div>
+
+        <!-- GEO (AI SEO) -->
+        <div class="service-card">
+          <div class="service-card-img" style="background: linear-gradient(135deg, #2d1a44 0%, #1a0f2e 100%);">
+            <div class="absolute inset-0" style="background: radial-gradient(circle at 50% 50%, rgba(168,85,247,0.15), transparent 60%);"></div>
+            <div class="relative z-10 flex flex-col items-center">
+              <svg width="56" height="56" fill="none" viewBox="0 0 24 24" style="filter: drop-shadow(0 4px 12px rgba(168,85,247,0.3));">
+                <path d="M12 2L2 7l10 5 10-5-10-5z" stroke="#a855f7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M2 17l10 5 10-5" stroke="#a855f7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M2 12l10 5 10-5" stroke="#a855f7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="mt-2 text-xs font-semibold px-2.5 py-0.5 rounded-full" style="background:rgba(168,85,247,0.2); color:#c084fc; border:1px solid rgba(168,85,247,0.3);">NY</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-lg font-semibold text-white mb-2">GEO - AI SEO</h3>
+            <p class="text-sm" style="color:#8b8b96; line-height:1.7;">
+              Optimer din synlighed i AI-sogeresultater. Når dine kunder sporger ChatGPT, Perplexity eller Google AI, skal dit brand vare svaret. Den nye front inden for sogning.
+            </p>
+          </div>
+        </div>
+
+        <!-- Conversion Tracking -->
+        <div class="service-card">
+          <div class="service-card-img" style="background: linear-gradient(135deg, #2a2006 0%, #1a1504 100%);">
+            <div class="absolute inset-0" style="background: radial-gradient(circle at 40% 60%, rgba(251,191,36,0.12), transparent 60%);"></div>
+            <div class="relative z-10 flex flex-col items-center">
+              <svg width="56" height="56" fill="none" viewBox="0 0 24 24" style="filter: drop-shadow(0 4px 12px rgba(251,191,36,0.3));">
+                <path d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" stroke="#fbbf24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-lg font-semibold text-white mb-2">Conversion Tracking</h3>
+            <p class="text-sm" style="color:#8b8b96; line-height:1.7;">
+              GA4, server-side tracking, attribution og dashboards. Du ved altid prascist hvor dit annoncebudget gar hen, og hvad det bringer tilbage.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SEO CROSS-LINK ========== -->
+  <section class="py-16 md:py-20 section-border">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="reveal rounded-2xl overflow-hidden relative" style="background: linear-gradient(135deg, rgba(40,96,224,0.08) 0%, rgba(40,96,224,0.03) 50%, rgba(52,211,153,0.06) 100%); border:1px solid rgba(40,96,224,0.2);">
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-10 p-6 md:p-10 items-center">
+          <div class="md:col-span-3">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-4 text-xs font-semibold uppercase tracking-wider" style="background:rgba(52,211,153,0.12); border:1px solid rgba(52,211,153,0.25); color:#34d399;">
+              <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="#34d399" stroke-width="2"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              SEO + Google Ads = Dobbelt effekt
+            </div>
+            <h3 class="text-xl sm:text-2xl md:text-3xl mb-4 text-white" style="font-weight:600; letter-spacing:-0.02em; line-height:1.2;">
+              SEO styrker dine Google Ads resultater
+            </h3>
+            <p class="text-sm md:text-base mb-6" style="color:#b8b8c4; line-height:1.7;">
+              Google Ads og SEO arbejder bedre sammen end hver for sig. Stærk organisk synlighed forbedrer din Quality Score, sænker dine klikpriser og giver dine annoncer flere impressions - samtidig med at du bygger langsigtet trafik der ikke forsvinder når annoncebudgettet stopper.
+            </p>
+            <ul class="space-y-2 mb-6 text-sm" style="color:#b8b8c4;">
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="#34d399" stroke-width="2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Lavere klikpriser gennem højere Quality Score</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="#34d399" stroke-width="2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Dobbelt visning på søgeresultater (organic + ads)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="#34d399" stroke-width="2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Gratis trafik der vokser måned for måned</span>
+              </li>
+            </ul>
+            <a href="/seo-aio-geo" class="inline-flex items-center gap-2 text-sm font-semibold px-5 py-3 rounded-full transition-all duration-200 hover:gap-3" style="background:rgba(52,211,153,0.12); border:1px solid rgba(52,211,153,0.3); color:#34d399;">
+              Se vores SEO ydelser
+              <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+          <div class="md:col-span-2 hidden md:flex items-center justify-center">
+            <div class="relative w-full max-w-sm">
+              <div class="absolute inset-0 rounded-2xl blur-3xl" style="background: radial-gradient(circle, rgba(52,211,153,0.2), transparent 70%);"></div>
+              <div class="relative rounded-2xl p-6" style="background:rgba(18,18,24,0.6); border:1px solid rgba(52,211,153,0.2);">
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background:rgba(52,211,153,0.15);">
+                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#34d399" stroke-width="2"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                  <div>
+                    <div class="text-xs" style="color:#8b8b96;">Organic + Paid CTR</div>
+                    <div class="text-xl font-bold text-white">+78%</div>
+                  </div>
+                </div>
+                <div class="h-24 flex items-end gap-1.5">
+                  <div class="flex-1 rounded-t" style="height:35%; background:linear-gradient(to top,#2860E0,#5a8ff0);"></div>
+                  <div class="flex-1 rounded-t" style="height:45%; background:linear-gradient(to top,#2860E0,#5a8ff0);"></div>
+                  <div class="flex-1 rounded-t" style="height:52%; background:linear-gradient(to top,#2860E0,#5a8ff0);"></div>
+                  <div class="flex-1 rounded-t" style="height:65%; background:linear-gradient(to top,#2860E0,#5a8ff0);"></div>
+                  <div class="flex-1 rounded-t" style="height:78%; background:linear-gradient(to top,#34d399,#6ee7b7);"></div>
+                  <div class="flex-1 rounded-t" style="height:90%; background:linear-gradient(to top,#34d399,#6ee7b7);"></div>
+                  <div class="flex-1 rounded-t" style="height:100%; background:linear-gradient(to top,#34d399,#6ee7b7);"></div>
+                </div>
+                <div class="mt-3 text-xs text-center" style="color:#8b8b96;">Måneder med kombineret SEO + Ads</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== WHY CHOOSE US ========== -->
+  <section class="py-20 md:py-28 section-border">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="reveal text-center mb-14">
+        <p class="text-xs font-semibold tracking-widest text-accent uppercase mb-4">Hvorfor McKenna</p>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl mb-4">Det der adskiller os</h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="reveal rounded-2xl p-8" style="background:#1c1c20; border:1px solid #2a2a2f;">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(40,96,224,0.1);">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="1.8"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="text-base font-semibold text-white mb-2">100% ROAS-garanti</h3>
+          <p class="text-sm" style="color:#8b8b96; line-height:1.7;">Leverer vi ikke positivt afkast, betaler du ikke vores honorar. Så simpelt er det.</p>
+        </div>
+
+        <div class="reveal reveal-delay-1 rounded-2xl p-8" style="background:#1c1c20; border:1px solid #2a2a2f;">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(40,96,224,0.1);">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="1.8"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="text-base font-semibold text-white mb-2">Daglig optimering</h3>
+          <p class="text-sm" style="color:#8b8b96; line-height:1.7;">Vi er i din konto hver eneste dag. Justerer bud, tester annoncer, skarer spild, skalerer vindere.</p>
+        </div>
+
+        <div class="reveal reveal-delay-2 rounded-2xl p-8" style="background:#1c1c20; border:1px solid #2a2a2f;">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(40,96,224,0.1);">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="1.8"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="text-base font-semibold text-white mb-2">Fuld gennemsigtighed</h3>
+          <p class="text-sm" style="color:#8b8b96; line-height:1.7;">Du ejer din konto, dine data og dine kampagner. Manedlige rapporter med klare tal, ingen sminke.</p>
+        </div>
+
+        <div class="reveal rounded-2xl p-8" style="background:#1c1c20; border:1px solid #2a2a2f;">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(40,96,224,0.1);">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="1.8"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="text-base font-semibold text-white mb-2">9+ års erfaring</h3>
+          <p class="text-sm" style="color:#8b8b96; line-height:1.7;">Over 100 kunder betjent, fra startups til brands som Lulu Copenhagen, INCO og Trollbeads.</p>
+        </div>
+
+        <div class="reveal reveal-delay-1 rounded-2xl p-8" style="background:#1c1c20; border:1px solid #2a2a2f;">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(40,96,224,0.1);">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="1.8"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="text-base font-semibold text-white mb-2">Dedikeret specialist</h3>
+          <p class="text-sm" style="color:#8b8b96; line-height:1.7;">Du får én fast Google Ads-specialist der kender din konto og din forretning. Ingen callcentre, ingen ventetid, ingen oversatte scripts - svar inden for timer, ikke dage.</p>
+        </div>
+
+        <div class="reveal reveal-delay-2 rounded-2xl p-8" style="background:#1c1c20; border:1px solid #2a2a2f;">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(40,96,224,0.1);">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="1.8"><path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="text-base font-semibold text-white mb-2">Data-drevet tilgang</h3>
+          <p class="text-sm" style="color:#8b8b96; line-height:1.7;">Server-side tracking, ProfitMetrics-certificeret. Vi maler reel profit, ikke bare klik og visninger.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CASE STUDIES ========== -->
+  <section class="py-20 md:py-28 section-border">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="reveal text-center mb-14">
+        <p class="text-xs font-semibold tracking-widest text-accent uppercase mb-4">Dokumenterede resultater</p>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl mb-4">Hvad vi har leveret</h2>
+        <p class="text-base max-w-2xl mx-auto" style="color:#8b8b96; line-height:1.8;">
+          Tal lyver ikke. Her er et udpluk af hvad vi har opnaet for vores kunder.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Nord-Smil -->
+        <div class="reveal rounded-2xl overflow-hidden" style="background:#1c1c20; border:1px solid #2a2a2f;">
+          <div class="case-study-img relative h-52 overflow-hidden">
+            <img src="Assets/casestudies/nordsmil-case-1.webp" alt="Nord-Smil case study" class="w-full h-full object-cover" />
+            <div class="absolute inset-0" style="background: linear-gradient(to top, #1c1c20 0%, transparent 60%);"></div>
+            <div class="absolute inset-0" style="background: rgba(40,96,224,0.08); mix-blend-mode: multiply;"></div>
+          </div>
+          <div class="p-6 -mt-8 relative z-10">
+            <h3 class="text-lg font-semibold text-white mb-1">Nord-Smil</h3>
+            <p class="text-xs mb-4" style="color:#8b8b96;">Tandklinik - Google Ads</p>
+            <div class="flex items-baseline gap-2">
+              <span class="text-3xl font-bold" style="font-family:'Outfit',sans-serif; color:#2860E0;">+44%</span>
+              <span class="text-sm" style="color:#8b8b96;">flere leads</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Soleplus -->
+        <div class="reveal reveal-delay-1 rounded-2xl overflow-hidden" style="background:#1c1c20; border:1px solid #2a2a2f;">
+          <div class="case-study-img relative h-52 overflow-hidden">
+            <img src="Assets/casestudies/soleplus-case.webp" alt="Soleplus case study" class="w-full h-full object-cover" />
+            <div class="absolute inset-0" style="background: linear-gradient(to top, #1c1c20 0%, transparent 60%);"></div>
+            <div class="absolute inset-0" style="background: rgba(40,96,224,0.08); mix-blend-mode: multiply;"></div>
+          </div>
+          <div class="p-6 -mt-8 relative z-10">
+            <h3 class="text-lg font-semibold text-white mb-1">Soleplus</h3>
+            <p class="text-xs mb-4" style="color:#8b8b96;">E-commerce - Google Ads</p>
+            <div class="flex items-baseline gap-2">
+              <span class="text-3xl font-bold" style="font-family:'Outfit',sans-serif; color:#2860E0;">12x+</span>
+              <span class="text-sm" style="color:#8b8b96;">ROAS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Protein -->
+        <div class="reveal reveal-delay-2 rounded-2xl overflow-hidden" style="background:#1c1c20; border:1px solid #2a2a2f;">
+          <div class="case-study-img relative h-52 overflow-hidden">
+            <img src="Assets/casestudies/protein-case-2.webp" alt="Protein case study" class="w-full h-full object-cover" />
+            <div class="absolute inset-0" style="background: linear-gradient(to top, #1c1c20 0%, transparent 60%);"></div>
+            <div class="absolute inset-0" style="background: rgba(40,96,224,0.08); mix-blend-mode: multiply;"></div>
+          </div>
+          <div class="p-6 -mt-8 relative z-10">
+            <h3 class="text-lg font-semibold text-white mb-1">Protein</h3>
+            <p class="text-xs mb-4" style="color:#8b8b96;">E-commerce - Google Ads & SEO</p>
+            <div class="flex items-baseline gap-2">
+              <span class="text-3xl font-bold" style="font-family:'Outfit',sans-serif; color:#2860E0;">+332%</span>
+              <span class="text-sm" style="color:#8b8b96;">konverteringer</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SATISFACTION GUARANTEE ========== -->
+  <section class="py-20 md:py-28 section-border" id="guarantee">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="reveal rounded-2xl p-10 md:p-14 text-center" style="background:#1c1c20; border:1px solid #2a2a2f;">
+        <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6" style="background:rgba(40,96,224,0.1); border:2px solid rgba(40,96,224,0.25);">
+          <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="1.8"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl mb-4">Performance-baseret garanti</h2>
+        <p class="text-base max-w-2xl mx-auto mb-4" style="color:#e8e8ec; line-height:1.8;">
+          <strong class="text-white">Vi får kun betaling, når du får resultater.</strong>
+        </p>
+        <p class="text-base max-w-2xl mx-auto mb-8" style="color:#8b8b96; line-height:1.8;">
+          De fleste bureauer opkræver fast honorar uanset resultater. Det gør vi ikke. Hele vores model er bygget på ét princip: din succes er vores succes. Leverer vores Google Ads-styring ikke et positivt afkast på dit annoncebudget, betaler du ikke vores honorar. Vi tager risikoen, så du ikke skal.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+          <div class="text-center">
+            <div class="text-3xl mb-1" style="font-family:'Outfit',sans-serif; color:#2860E0; font-weight:800;">100%</div>
+            <p class="text-sm" style="color:#8b8b96;">Pengene tilbage-garanti</p>
+          </div>
+          <div class="hidden sm:block w-px h-12" style="background:#2a2a2f;"></div>
+          <div class="text-center">
+            <div class="text-3xl mb-1" style="font-family:'Outfit',sans-serif; color:#2860E0; font-weight:800;">30 dage</div>
+            <p class="text-sm" style="color:#8b8b96;">Risikofri prøveperiode</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== BOOK A CALL (CALENDLY) ========== -->
+  <section class="py-20 md:py-28 section-border" id="book-call">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <div class="reveal mb-10">
+        <p class="text-xs font-semibold tracking-widest text-accent uppercase mb-4">Nul risiko</p>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl mb-4">Book et gratis 30-min. strategimøde</h2>
+        <p class="text-txt-muted max-w-xl mx-auto" style="line-height:1.7;">Vælg et tidspunkt der passer dig. Vi gennemgår dit nuværende setup, viser dig mulighederne og giver dig en plan - uanset om du vælger at arbejde med os eller ej.</p>
+      </div>
+      <!-- Calendly inline embed -->
+      <div class="reveal rounded-2xl overflow-hidden" style="background:#1c1c20; border:1px solid #2a2a2f; min-height:680px;">
+        <div class="calendly-inline-widget" data-url="https://calendly.com/sammy-mckenna/google-ads-profit-review?embed_type=Inline&embed_domain=www.mcmarketing.dk&hide_gdpr_banner=1&background_color=1c1c20&text_color=e8e8ec&primary_color=2860E0" style="min-width:320px;height:680px;"></div>
+        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FINAL CTA ========== -->
+  <section class="py-20 md:py-28 section-border" id="cta">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="reveal rounded-2xl px-8 py-14 md:px-16 md:py-16 text-center relative overflow-hidden" style="background: linear-gradient(135deg, #2860E0 0%, #1a4dbf 50%, #2860E0 100%);">
+        <div class="absolute top-0 right-0 w-64 h-64 rounded-full opacity-10" style="background:radial-gradient(circle, #fff 0%, transparent 70%); transform: translate(30%, -30%);"></div>
+        <div class="absolute bottom-0 left-0 w-48 h-48 rounded-full opacity-10" style="background:radial-gradient(circle, #fff 0%, transparent 70%); transform: translate(-30%, 30%);"></div>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl text-white mb-4 relative z-10">
+          Klar til at vokse uden risiko?
+        </h2>
+        <p class="text-white/80 max-w-xl mx-auto mb-8 relative z-10" style="line-height:1.7;">
+          Leverer vi ikke resultater, betaler du ikke. Book et gratis strategimide og lad os se hvad vi kan gore for din forretning.
+        </p>
+        <a href="#book-call" class="relative z-10 inline-flex items-center gap-3 pl-7 pr-2 py-2 rounded-full font-semibold text-sm group" style="background:#fff; color:#2860E0; box-shadow: 0 4px 14px rgba(0,0,0,0.15); transition: transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
+          Book gratis strategimide
+          <span class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-[#2860E0] text-white">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="py-16 section-border">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+        <div>
+          <a href="/" class="block mb-4">
+            <img src="Assets/Mc-Marketing-Logo.png" alt="McKenna Marketing" class="h-7" />
+          </a>
+          <p class="text-txt-muted text-sm" style="line-height:1.7;">
+            McKenna Marketing har over 9 års erfaring med online marketing. Vi specialiserer os i Google Ads, SEO og GEO (AI SEO).
+          </p>
+          <div class="flex gap-3 mt-5">
+            <a href="https://www.linkedin.com/company/mckennamarketingdk/about/" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61551233696707" target="_blank" rel="noopener" class="social-icon" aria-label="Facebook">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/stanleymckenna/" target="_blank" rel="noopener" class="social-icon" aria-label="Instagram">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+          </div>
+          <!-- ProfitMetrics Badge -->
+          <div class="mt-6">
+            <a href="Assets/certificate-profitmetrics-agency-certification-6614e53e203e00d8660021e6 (1).pdf" target="_blank" class="inline-flex items-center gap-2 text-xs px-3 py-2 rounded-lg transition-colors duration-200 hover:bg-white/5" style="background:rgba(255,255,255,0.03); border:1px solid #2a2a2f; color:#8b8b96;">
+              <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="2"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              ProfitMetrics Certificeret
+            </a>
+          </div>
+        </div>
+
+        <div>
+                    <h4 class="text-white font-semibold mb-4 text-sm">Hurtige links</h4>
+          <ul class="space-y-2 text-sm text-txt-muted">
+            <li><a href="/" class="hover:text-white transition-colors duration-200">Forside</a></li>
+            <li><a href="/google-ads" class="hover:text-white transition-colors duration-200">Google Ads</a></li>
+            <li><a href="/seo-aio-geo" class="hover:text-white transition-colors duration-200">SEO / AIO / GEO</a></li>
+            <li><a href="/paid-social" class="hover:text-white transition-colors duration-200">Paid Social</a></li>
+            <li><a href="/websites" class="hover:text-white transition-colors duration-200">Hjemmesider</a></li>
+            <li><a href="/poas" class="hover:text-white transition-colors duration-200">POAS</a></li>
+            <li><a href="/contact" class="hover:text-white transition-colors duration-200">Kontakt</a></li>
+            <li><a href="/cookie-policy" class="hover:text-white transition-colors duration-200">Cookiepolitik</a></li>
+            <li><a href="/conditions" class="hover:text-white transition-colors duration-200">Handelsbetingelser</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-white font-semibold mb-4 text-sm">Kontakt</h4>
+          <ul class="space-y-2 text-sm text-txt-muted">
+            <li><a href="mailto:mcc@mcmarketing.dk" class="hover:text-white transition-colors duration-200">mcc@mcmarketing.dk</a></li>
+            <li><a href="tel:+4528252184" class="hover:text-white transition-colors duration-200">+45 28 25 21 84</a></li>
+            <li>Paradisaeblevej 4, 2500 Valby</li>
+            <li>CVR: 44808390</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t pt-8 text-center text-xs text-txt-dim" style="border-color:#2a2a2f;">
+        &copy; McKenna Marketing. Alle rettigheder forbeholdes.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Fixed bottom-right badges -->
+  <div class="hidden md:flex" style="position:fixed; bottom:24px; right:24px; z-index:40; flex-direction:column; align-items:center; gap:10px;">
+    <a href="#guarantee" class="inline-flex items-center gap-1.5 text-xs font-medium px-3.5 py-2 rounded-full transition-transform duration-200 hover:scale-105" style="background:rgba(21,21,24,0.9); border:1px solid rgba(255,255,255,0.1); backdrop-filter:blur(12px); color:#7ba3f0; box-shadow: 0 4px 20px rgba(0,0,0,0.4);">
+      <svg width="13" height="13" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke="#2860E0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Tilfredshedsgaranti
+    </a>
+    <img src="Assets/google-partner.png" alt="Google Partner" style="width:80px; height:80px; border-radius:12px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);" />
+  </div>
+
+  <script>
+    // Scroll reveal observer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.05, rootMargin: '0px 0px 80px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    setTimeout(() => { document.querySelectorAll('.reveal:not(.visible)').forEach(el => el.classList.add('visible')); }, 3000);
+
+    // Scroll-driven 3D card animation
+    const scrollCard = document.getElementById('scrollCard');
+    if (scrollCard) {
+      const container = scrollCard.closest('.scroll-container');
+      window.addEventListener('scroll', () => {
+        const rect = container.getBoundingClientRect();
+        const vh = window.innerHeight;
+        const progress = Math.max(0, Math.min(1, (vh - rect.top) / (rect.height)));
+        const rx = 20 - (progress * 20);
+        const s = 0.9 + (progress * 0.1);
+        scrollCard.style.setProperty('--rx', rx + 'deg');
+        scrollCard.style.setProperty('--s', s);
+      }, { passive: true });
+    }
+  </script>
+
+  <!-- Sticky mobile CTA - 3 quick contact icons -->
+  <div class="mobile-cta-bar lg:hidden fixed bottom-0 left-0 right-0 z-50 px-3 py-2" style="background:rgba(21,21,24,0.92); backdrop-filter:blur(20px); border-top:1px solid rgba(255,255,255,0.08); box-shadow: 0 -4px 20px rgba(0,0,0,0.4);">
+    <div class="flex items-center justify-around gap-2 max-w-md mx-auto">
+      <a href="mailto:sammy@mcmarketing.dk" class="flex flex-col items-center gap-0.5 flex-1 py-1.5 rounded-lg transition-all duration-200 active:scale-95" style="background:rgba(40,96,224,0.12); border:1px solid rgba(40,96,224,0.25);">
+        <svg width="18" height="18" fill="none" stroke="#7ba3f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span class="text-[9px] font-medium text-white">Email</span>
+      </a>
+      <a href="tel:+4525464046" class="flex flex-col items-center gap-0.5 flex-1 py-1.5 rounded-lg transition-all duration-200 active:scale-95" style="background:rgba(40,96,224,0.12); border:1px solid rgba(40,96,224,0.25);">
+        <svg width="18" height="18" fill="none" stroke="#7ba3f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        <span class="text-[9px] font-medium text-white">Ring</span>
+      </a>
+      <a href="/contact" class="flex flex-col items-center gap-0.5 flex-1 py-1.5 rounded-lg transition-all duration-200 active:scale-95" style="background:#2860E0; border:1px solid rgba(40,96,224,0.5);">
+        <svg width="18" height="18" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span class="text-[9px] font-medium text-white">Kontakt</span>
+      </a>
+    </div>
+  </div>
+
+
+  <script>
+    // Close burger menu when clicking outside
+    document.addEventListener('click', (e) => {
+      const menu = document.getElementById('mobileMenu');
+      const burger = document.querySelector('button[aria-label="Menu"]');
+      if (!menu || !menu.classList.contains('open')) return;
+      if (menu.contains(e.target) || (burger && burger.contains(e.target))) return;
+      menu.classList.remove('open');
+    });
+    // Close burger menu when clicking on a menu link
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('mobileMenu').classList.remove('open');
+      });
+    });
+    // Close lang dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      document.querySelectorAll('.lang-dropdown.open').forEach(dd => {
+        if (!dd.contains(e.target)) dd.classList.remove('open');
+      });
+    });
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Forside", "item": "https://mckenna.vercel.app/"},
+      {"@type": "ListItem", "position": 2, "name": "Google Ads"}
+    ]
+  }
+  </script>
+</body>
+</html>

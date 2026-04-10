@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Ads & SEO Agency - McKenna Marketing</title>
+  <meta name="description" content="McKenna Marketing has over 9 years of experience in online marketing. We specialize in Google Ads, SEO and GEO (AI SEO). We have helped lulucopenhagen.dk, inco.dk and trollbeads.dk with documented results.">
+  <link rel="canonical" href="https://mckenna.vercel.app/en/google-ads">
+  <link rel="alternate" hreflang="da" href="https://mckenna.vercel.app/google-ads">
+  <link rel="alternate" hreflang="en" href="https://mckenna.vercel.app/en/google-ads">
+  <meta property="og:title" content="Google Ads & SEO Agency - McKenna Marketing">
+  <meta property="og:description" content="McKenna Marketing has over 9 years of experience in online marketing. We specialize in Google Ads, SEO and GEO (AI SEO). We have helped lulucopenhagen.dk, inco.dk and trollbeads.dk with documented results.">
+  <meta property="og:url" content="https://mckenna.vercel.app/en/google-ads">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://mckenna.vercel.app/Assets/Mc-Marketing-Logo.png">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Google Ads & SEO Agency - McKenna Marketing">
+  <meta name="twitter:description" content="McKenna Marketing has over 9 years of experience in online marketing. We specialize in Google Ads, SEO and GEO.">
+  <meta name="twitter:image" content="https://mckenna.vercel.app/Assets/Mc-Marketing-Logo.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" sizes="any">
+  <link rel="icon" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/favicon.svg">
+  <link rel="shortcut icon" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: { DEFAULT: '#151518', card: '#1c1c20', elevated: '#242428', border: '#2a2a2f' },
+            txt: { DEFAULT: '#e8e8ec', muted: '#8b8b96', dim: '#5c5c66' },
+            accent: '#2860E0',
+          },
+          fontFamily: {
+            display: ['Outfit', 'system-ui', 'sans-serif'],
+            body: ['Inter', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: #151518; color: #e8e8ec; line-height: 1.7; }
+    h1, h2, h3 { font-family: 'Outfit', system-ui, sans-serif; letter-spacing: -0.03em; line-height: 1.1; font-weight: 700; }
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1); }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .hero-gradient-text {
+      background: linear-gradient(to right, #c4b5fd, #ddb4d0, #f0c4b8, #c4b5fd);
+      background-size: 200% 100%;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      animation: gradientBloom 6s ease-in-out infinite;
+    }
+    @keyframes gradientBloom { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+    .elegant-shape {
+      position: absolute; border-radius: 9999px;
+      background: linear-gradient(135deg, rgba(40,96,224,0.12), transparent);
+      border: 2px solid rgba(255,255,255,0.06); backdrop-filter: blur(2px);
+      box-shadow: 0 8px 32px rgba(40,96,224,0.08);
+      opacity: 0; transform: translateY(-80px);
+      animation: shapeEntry 2s cubic-bezier(.23,.86,.39,.96) forwards;
+    }
+    .shape-1 { width: 450px; height: 110px; left: -5%; top: 20%; rotate: 12deg; animation-delay: 0.3s; }
+    .shape-2 { width: 350px; height: 90px; right: -2%; top: 68%; rotate: -15deg; animation-delay: 0.5s; }
+    .shape-3 { width: 200px; height: 55px; left: 10%; bottom: 10%; rotate: -8deg; animation-delay: 0.4s; }
+    @keyframes shapeEntry { 0% { opacity: 0; transform: translateY(-80px); } 100% { opacity: 1; transform: translateY(0); } }
+    .hero-bg-gradient { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(40,96,224,0.08) 0%, transparent 60%); }
+    .hero-vignette { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 50%, transparent 40%, #151518 100%); }
+    .section-border { border-top: 1px solid #2a2a2f; }
+    .mobile-menu { display: none; }
+    .mobile-menu.open { display: flex; }
+    .lang-dropdown.open .lang-menu { display: block !important; }
+    .btn-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.9rem; font-weight: 600; padding: 14px 32px; border-radius: 9999px;
+      background: #2860E0; color: #fff; text-decoration: none;
+      box-shadow: 0 4px 14px rgba(40,96,224,0.3);
+      transition: transform 0.2s cubic-bezier(.4,0,.2,1), box-shadow 0.2s ease;
+    }
+    .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(40,96,224,0.45); }
+    .btn-cta:active { transform: translateY(0); }
+    .btn-cta:focus-visible { outline: 2px solid #7ba3f0; outline-offset: 2px; }
+
+    /* Scroll animation card */
+    .scroll-container {
+      height: 140vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      position: relative;
+      padding: 0 20px;
+    }
+    .scroll-inner {
+      position: sticky;
+      top: 10vh;
+      width: 100%;
+      max-width: 1000px;
+      perspective: 1200px;
+    }
+    .scroll-card {
+      transform: rotateX(var(--rx, 20deg)) scale(var(--s, 0.9));
+      transition: transform 0.1s linear;
+      border-radius: 24px;
+      border: 3px solid #3a3a40;
+      background: #1c1c20;
+      padding: 6px;
+      box-shadow: 0 0 #0000004d, 0 9px 20px #0000004a, 0 37px 37px #00000042, 0 84px 50px #00000026;
+    }
+    .scroll-card-inner {
+      border-radius: 18px;
+      background: #0f0f12;
+      overflow: hidden;
+      padding: 24px;
+    }
+    /* Dashboard mockup styles */
+    .dash-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+    .dash-logo { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.1rem; color: #fff; display: flex; align-items: center; gap: 8px; }
+    .dash-tabs { display: flex; gap: 4px; }
+    .dash-tab { padding: 6px 14px; border-radius: 8px; font-size: 0.75rem; color: #8b8b96; cursor: default; }
+    .dash-tab.active { background: rgba(40,96,224,0.15); color: #2860E0; }
+    .dash-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
+    .dash-stat { background: #1c1c20; border-radius: 12px; padding: 16px; border: 1px solid #2a2a2f; }
+    .dash-stat-label { font-size: 0.7rem; color: #5c5c66; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .dash-stat-value { font-family: 'Outfit', sans-serif; font-size: 1.5rem; font-weight: 700; color: #fff; }
+    .dash-stat-change { font-size: 0.7rem; margin-top: 4px; }
+    .dash-stat-change.up { color: #34d399; }
+    .dash-chart { background: #1c1c20; border-radius: 12px; padding: 16px; border: 1px solid #2a2a2f; margin-bottom: 12px; }
+    .dash-chart-title { font-size: 0.8rem; color: #8b8b96; margin-bottom: 12px; }
+    .dash-bars { display: flex; align-items: flex-end; gap: 6px; height: 120px; }
+    .dash-bar { flex: 1; border-radius: 4px 4px 0 0; background: linear-gradient(to top, #2860E0, #5a8ff0); opacity: 0.85; }
+    .dash-table { background: #1c1c20; border-radius: 12px; padding: 16px; border: 1px solid #2a2a2f; }
+    .dash-table-title { font-size: 0.8rem; color: #8b8b96; margin-bottom: 12px; }
+    .dash-row { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 8px; padding: 8px 0; border-bottom: 1px solid #242428; font-size: 0.75rem; }
+    .dash-row.header { color: #5c5c66; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.65rem; }
+    .dash-row:last-child { border-bottom: none; }
+    .dash-row span { color: #e8e8ec; }
+    .dash-row .good { color: #34d399; }
+
+    /* Horizontal scroll cards */
+    .services-scroll { display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding: 8px 0 24px 0; scrollbar-width: none; }
+    .services-scroll::-webkit-scrollbar { display: none; }
+    .service-card { flex: 0 0 320px; scroll-snap-align: start; border-radius: 20px; background: #1c1c20; border: 1px solid #2a2a2f; overflow: hidden; transition: transform 0.3s cubic-bezier(.4,0,.2,1), box-shadow 0.3s ease; }
+    .service-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(40,96,224,0.15); }
+    .service-card:focus-visible { outline: 2px solid #7ba3f0; outline-offset: 2px; }
+    .service-card-img { height: 180px; width: 100%; object-fit: cover; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+
+    /* Social icon */
+    .social-icon {
+      display: flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px; border-radius: 10px;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06);
+      color: #8b8b96; transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+    }
+    .social-icon:hover { background: rgba(40,96,224,0.12); color: #7ba3f0; transform: translateY(-2px); }
+    .social-icon:focus-visible { outline: 2px solid #7ba3f0; outline-offset: 2px; }
+
+    @media (max-width: 640px) {
+      .dash-stats { grid-template-columns: repeat(2, 1fr); }
+      .dash-row { grid-template-columns: 1.5fr 1fr 1fr; }
+      .dash-row span:nth-child(4), .dash-row span:nth-child(5) { display: none; }
+      .dash-row.header span:nth-child(4), .dash-row.header span:nth-child(5) { display: none; }
+      .service-card { flex: 0 0 280px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="fixed top-0 left-0 right-0 z-50 flex justify-center pt-4 px-6">
+    <div class="flex items-center justify-between gap-8 w-full max-w-6xl px-4 py-2 rounded-full" style="backdrop-filter:blur(20px); background:rgba(21,21,24,0.85); border:1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 24px rgba(0,0,0,0.25);">
+      <a href="/" class="flex items-center pl-2">
+        <img src="../Assets/Mc-Marketing-Logo.png" alt="McKenna Marketing" class="h-6" />
+      </a>
+      <div class="hidden lg:flex items-center gap-1">
+        <div class="relative" onmouseenter="this.querySelector('.services-menu').style.display='block'" onmouseleave="this.querySelector('.services-menu').style.display='none'">
+          <button class="text-sm text-white/70 hover:text-white px-4 py-2 rounded-full hover:bg-white/5 transition-colors duration-200 inline-flex items-center gap-1.5">
+            Services
+            <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="services-menu absolute left-1/2 -translate-x-1/2 top-full pt-2 z-50" style="display:none; min-width:220px;">
+            <div class="rounded-xl py-2 px-1" style="background:rgba(28,28,32,0.95); border:1px solid rgba(255,255,255,0.08); backdrop-filter:blur(20px); box-shadow:0 12px 40px rgba(0,0,0,0.4);">
+              <a href="/google-ads" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-white/70 hover:text-white hover:bg-white/5 transition-colors duration-200">
+                <span class="flex items-center justify-center w-8 h-8 rounded-lg" style="background:rgba(40,96,224,0.1);"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="2"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                Google Ads & SEO
+              </a>
+              <a href="/websites" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-white/70 hover:text-white hover:bg-white/5 transition-colors duration-200">
+                <span class="flex items-center justify-center w-8 h-8 rounded-lg" style="background:rgba(40,96,224,0.1);"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="2"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                Websites
+              </a>
+              <a href="/paid-social" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-white/70 hover:text-white hover:bg-white/5 transition-colors duration-200">
+                <span class="flex items-center justify-center w-8 h-8 rounded-lg" style="background:rgba(40,96,224,0.1);"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="2"><path d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                Paid Social
+              </a>
+            </div>
+          </div>
+        </div>
+        <a href="/contact" class="text-sm text-white/70 hover:text-white px-4 py-2 rounded-full hover:bg-white/5 transition-colors duration-200">Contact</a>
+      </div>
+      <div class="hidden lg:flex items-center gap-2">
+        <a href="#book-call" class="inline-flex items-center gap-2 text-sm font-medium px-5 py-2.5 rounded-full text-white transition-transform duration-200 hover:scale-105" style="background:#2860E0; box-shadow: 0 2px 10px rgba(40,96,224,0.3);">
+          Book Free Meeting
+        </a>
+        <div class="relative lang-dropdown">
+          <button onclick="this.closest('.lang-dropdown').classList.toggle('open')" class="flex items-center justify-center w-9 h-9 rounded-full hover:bg-white/10 transition-colors duration-200" title="Language" style="font-size:17px;">
+            <span id="activeLangFlag">&#127468;&#127463;</span>
+          </button>
+          <div class="lang-menu absolute right-0 top-full mt-2 rounded-xl py-2 min-w-[130px] z-50" style="background:rgba(28,28,32,0.95); border:1px solid rgba(255,255,255,0.08); backdrop-filter:blur(20px); display:none;">
+            <a href="/google-ads" class="flex items-center gap-2.5 w-full px-4 py-2 text-sm text-white/60 hover:bg-white/5 transition-colors duration-200">
+              <span style="font-size:15px;">&#127465;&#127472;</span> Dansk
+            </a>
+            <a href="/en/google-ads" class="flex items-center gap-2.5 w-full px-4 py-2 text-sm text-white hover:bg-white/5 transition-colors duration-200">
+              <span style="font-size:15px;">&#127468;&#127463;</span> English
+            </a>
+          </div>
+        </div>
+      </div>
+      <button class="lg:hidden flex flex-col gap-1.5 p-2 pr-3" onclick="document.getElementById('mobileMenu').classList.toggle('open')" aria-label="Menu">
+        <span class="block w-5 h-0.5 bg-white rounded-full"></span>
+        <span class="block w-5 h-0.5 bg-white rounded-full"></span>
+        <span class="block w-5 h-0.5 bg-white rounded-full"></span>
+      </button>
+    </div>
+    <div id="mobileMenu" class="mobile-menu flex-col gap-4 px-6 py-5 absolute top-full left-4 right-4 mt-2 rounded-2xl" style="background:rgba(28,28,32,0.95); border:1px solid rgba(255,255,255,0.08); backdrop-filter:blur(20px); display:none;">
+      <a href="/google-ads" class="text-sm text-white">Google Ads & SEO</a>
+      <a href="/websites" class="text-sm" style="color:#8b8b96;">Websites</a>
+      <a href="/paid-social" class="text-sm" style="color:#8b8b96;">Paid Social</a>
+      <a href="/contact" class="text-sm" style="color:#8b8b96;">Contact</a>
+      <a href="#book-call" class="text-sm font-medium text-center mt-2 py-2.5 rounded-full" style="background:#2860E0; color:#fff;">Book Free Meeting</a>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section class="pt-36 pb-10 md:pt-48 md:pb-14 relative overflow-hidden" style="min-height:auto;">
+    <div class="hero-bg-gradient"></div>
+    <div class="elegant-shape shape-1"></div>
+    <div class="elegant-shape shape-2"></div>
+    <div class="elegant-shape shape-3"></div>
+    <div class="hero-vignette"></div>
+
+    <div class="max-w-6xl mx-auto px-6 text-center relative z-10">
+      <div class="reveal inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8 text-sm" style="background:rgba(40,96,224,0.08); border:1px solid rgba(40,96,224,0.2); color:#7ba3f0;">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke="#2860E0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Google Ads, SEO & GEO
+      </div>
+
+      <h1 class="reveal reveal-delay-1 text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-0 max-w-4xl mx-auto" style="font-weight:600; letter-spacing:-0.03em; line-height:1.1; background: linear-gradient(180deg, #FFF 0%, rgba(255,255,255,0.45) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+        We only get paid when <span class="hero-gradient-text">you get results</span>
+      </h1>
+    </div>
+  </section>
+
+  <!-- ========== SCROLL DASHBOARD ========== -->
+  <section class="scroll-container" style="margin-top:-80px;">
+    <div class="scroll-inner">
+      <div class="scroll-card" id="scrollCard">
+        <div class="scroll-card-inner">
+          <div class="dash-header">
+            <div class="dash-logo">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18A10.96 10.96 0 001 12c0 1.77.42 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+              Google Ads Dashboard
+            </div>
+            <div class="dash-tabs">
+              <div class="dash-tab active">Overview</div>
+              <div class="dash-tab">Campaigns</div>
+              <div class="dash-tab">Keywords</div>
+            </div>
+          </div>
+          <div class="dash-stats">
+            <div class="dash-stat">
+              <div class="dash-stat-label">Conversions</div>
+              <div class="dash-stat-value">847</div>
+              <div class="dash-stat-change up">+34.2% vs. last month</div>
+            </div>
+            <div class="dash-stat">
+              <div class="dash-stat-label">Cost / Conv.</div>
+              <div class="dash-stat-value">$5.20</div>
+              <div class="dash-stat-change up">-18.6% vs. last month</div>
+            </div>
+            <div class="dash-stat">
+              <div class="dash-stat-label">ROAS</div>
+              <div class="dash-stat-value">14.2x</div>
+              <div class="dash-stat-change up">+22.4% vs. last month</div>
+            </div>
+            <div class="dash-stat">
+              <div class="dash-stat-label">CTR</div>
+              <div class="dash-stat-value">8.7%</div>
+              <div class="dash-stat-change up">+2.1% vs. last month</div>
+            </div>
+          </div>
+          <div class="dash-chart">
+            <div class="dash-chart-title">Conversions - Last 30 days</div>
+            <div class="dash-bars">
+              <div class="dash-bar" style="height:45%"></div>
+              <div class="dash-bar" style="height:52%"></div>
+              <div class="dash-bar" style="height:48%"></div>
+              <div class="dash-bar" style="height:60%"></div>
+              <div class="dash-bar" style="height:55%"></div>
+              <div class="dash-bar" style="height:63%"></div>
+              <div class="dash-bar" style="height:58%"></div>
+              <div class="dash-bar" style="height:70%"></div>
+              <div class="dash-bar" style="height:65%"></div>
+              <div class="dash-bar" style="height:72%"></div>
+              <div class="dash-bar" style="height:68%"></div>
+              <div class="dash-bar" style="height:75%"></div>
+              <div class="dash-bar" style="height:78%"></div>
+              <div class="dash-bar" style="height:73%"></div>
+              <div class="dash-bar" style="height:80%"></div>
+              <div class="dash-bar" style="height:76%"></div>
+              <div class="dash-bar" style="height:82%"></div>
+              <div class="dash-bar" style="height:85%"></div>
+              <div class="dash-bar" style="height:79%"></div>
+              <div class="dash-bar" style="height:88%"></div>
+              <div class="dash-bar" style="height:84%"></div>
+              <div class="dash-bar" style="height:90%"></div>
+              <div class="dash-bar" style="height:86%"></div>
+              <div class="dash-bar" style="height:92%"></div>
+              <div class="dash-bar" style="height:88%"></div>
+              <div class="dash-bar" style="height:94%"></div>
+              <div class="dash-bar" style="height:90%"></div>
+              <div class="dash-bar" style="height:96%"></div>
+              <div class="dash-bar" style="height:93%"></div>
+              <div class="dash-bar" style="height:100%"></div>
+            </div>
+          </div>
+          <div class="dash-table">
+            <div class="dash-table-title">Top Campaigns</div>
+            <div class="dash-row header">
+              <span>Campaign</span>
+              <span>Conv.</span>
+              <span>ROAS</span>
+              <span>CPA</span>
+              <span>Budget</span>
+            </div>
+            <div class="dash-row">
+              <span>Brand Search</span>
+              <span>312</span>
+              <span class="good">18.4x</span>
+              <span>$3.50</span>
+              <span>$1,080</span>
+            </div>
+            <div class="dash-row">
+              <span>Non-Brand Shopping</span>
+              <span>284</span>
+              <span class="good">12.1x</span>
+              <span>$5.60</span>
+              <span>$1,590</span>
+            </div>
+            <div class="dash-row">
+              <span>Performance Max</span>
+              <span>189</span>
+              <span class="good">11.8x</span>
+              <span>$6.50</span>
+              <span>$1,220</span>
+            </div>
+            <div class="dash-row">
+              <span>DSA Category</span>
+              <span>62</span>
+              <span class="good">9.6x</span>
+              <span>$7.60</span>
+              <span>$470</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Text + CTA below tablet -->
+      <div class="text-center mt-10">
+        <p class="text-base md:text-lg max-w-2xl mx-auto mb-8" style="color:#a1a1aa; line-height:1.8;">
+          Performance-based Google Ads management from a certified Google Partner agency. We put our own money on the line - if your campaigns don't deliver measurable returns, you don't pay.
+        </p>
+        <a href="#book-call" class="btn-cta" style="text-decoration:none; border:none;">
+          Start your growth journey
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TRUST BAR ========== -->
+  <section class="py-12 section-border">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="reveal grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div>
+          <div class="flex items-center justify-center mb-3">
+            <img src="../Assets/google-partner.png" alt="Google Partner" style="width:44px; height:44px; border-radius:8px;" />
+          </div>
+          <p class="text-xs font-medium uppercase tracking-widest" style="color:#8b8b96;">Google Partner</p>
+        </div>
+        <div>
+          <div class="text-3xl font-bold mb-1" style="font-family:'Outfit',sans-serif; color:#fff;">9+</div>
+          <p class="text-xs font-medium uppercase tracking-widest" style="color:#8b8b96;">Years of experience</p>
+        </div>
+        <div>
+          <div class="text-3xl font-bold mb-1" style="font-family:'Outfit',sans-serif; color:#fff;">100+</div>
+          <p class="text-xs font-medium uppercase tracking-widest" style="color:#8b8b96;">Clients served</p>
+        </div>
+        <div>
+          <div class="text-3xl font-bold mb-1" style="font-family:'Outfit',sans-serif; color:#fff;">12x</div>
+          <p class="text-xs font-medium uppercase tracking-widest" style="color:#8b8b96;">Avg. ROAS</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SERVICES (HORIZONTAL SCROLL) ========== -->
+  <section class="py-20 md:py-28 section-border" id="services">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="reveal text-center mb-14">
+        <p class="text-xs font-semibold tracking-widest text-accent uppercase mb-4">Our services</p>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl mb-4">Everything you need to grow online</h2>
+        <p class="text-base max-w-2xl mx-auto" style="color:#8b8b96; line-height:1.8;">
+          From paid advertising to organic visibility - we cover the entire journey from click to customer.
+        </p>
+      </div>
+
+      <div class="services-scroll reveal">
+        <!-- Google Ads -->
+        <div class="service-card">
+          <div class="service-card-img" style="background: linear-gradient(135deg, #1a2744 0%, #0f172a 100%);">
+            <div class="absolute inset-0" style="background: radial-gradient(circle at 30% 40%, rgba(40,96,224,0.2), transparent 60%);"></div>
+            <div class="relative z-10 flex flex-col items-center">
+              <svg width="56" height="56" viewBox="0 0 24 24" fill="none" style="filter: drop-shadow(0 4px 12px rgba(40,96,224,0.4));">
+                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
+                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18A10.96 10.96 0 001 12c0 1.77.42 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+              </svg>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-lg font-semibold text-white mb-2">Google Ads</h3>
+            <p class="text-sm" style="color:#8b8b96; line-height:1.7;">
+              Search, Shopping, Display & Performance Max. We build, optimize and scale campaigns that turn clicks into paying customers. Daily monitoring, weekly optimization.
+            </p>
+          </div>
+        </div>
+
+        <!-- SEO -->
+        <div class="service-card">
+          <div class="service-card-img" style="background: linear-gradient(135deg, #1a3320 0%, #0f1f14 100%);">
+            <div class="absolute inset-0" style="background: radial-gradient(circle at 70% 30%, rgba(52,211,153,0.15), transparent 60%);"></div>
+            <div class="relative z-10 flex flex-col items-center">
+              <svg width="56" height="56" fill="none" viewBox="0 0 24 24" style="filter: drop-shadow(0 4px 12px rgba(52,211,153,0.3));">
+                <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke="#34d399" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M10 8v4l2 2" stroke="#34d399" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-lg font-semibold text-white mb-2">SEO</h3>
+            <p class="text-sm" style="color:#8b8b96; line-height:1.7;">
+              Technical SEO, content optimization and link building that brings you to the top of Google. Organic traffic that grows month after month - without paying per click.
+            </p>
+          </div>
+        </div>
+
+        <!-- GEO (AI SEO) -->
+        <div class="service-card">
+          <div class="service-card-img" style="background: linear-gradient(135deg, #2d1a44 0%, #1a0f2e 100%);">
+            <div class="absolute inset-0" style="background: radial-gradient(circle at 50% 50%, rgba(168,85,247,0.15), transparent 60%);"></div>
+            <div class="relative z-10 flex flex-col items-center">
+              <svg width="56" height="56" fill="none" viewBox="0 0 24 24" style="filter: drop-shadow(0 4px 12px rgba(168,85,247,0.3));">
+                <path d="M12 2L2 7l10 5 10-5-10-5z" stroke="#a855f7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M2 17l10 5 10-5" stroke="#a855f7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M2 12l10 5 10-5" stroke="#a855f7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="mt-2 text-xs font-semibold px-2.5 py-0.5 rounded-full" style="background:rgba(168,85,247,0.2); color:#c084fc; border:1px solid rgba(168,85,247,0.3);">NEW</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-lg font-semibold text-white mb-2">GEO - AI SEO</h3>
+            <p class="text-sm" style="color:#8b8b96; line-height:1.7;">
+              Optimize your visibility in AI search results. When your customers ask ChatGPT, Perplexity or Google AI, your brand should be the answer. The new frontier of search.
+            </p>
+          </div>
+        </div>
+
+        <!-- Conversion Tracking -->
+        <div class="service-card">
+          <div class="service-card-img" style="background: linear-gradient(135deg, #2a2006 0%, #1a1504 100%);">
+            <div class="absolute inset-0" style="background: radial-gradient(circle at 40% 60%, rgba(251,191,36,0.12), transparent 60%);"></div>
+            <div class="relative z-10 flex flex-col items-center">
+              <svg width="56" height="56" fill="none" viewBox="0 0 24 24" style="filter: drop-shadow(0 4px 12px rgba(251,191,36,0.3));">
+                <path d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" stroke="#fbbf24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-lg font-semibold text-white mb-2">Conversion Tracking</h3>
+            <p class="text-sm" style="color:#8b8b96; line-height:1.7;">
+              GA4, server-side tracking, attribution and dashboards. You always know exactly where your ad budget goes and what it brings back.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== WHY CHOOSE US ========== -->
+  <section class="py-20 md:py-28 section-border">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="reveal text-center mb-14">
+        <p class="text-xs font-semibold tracking-widest text-accent uppercase mb-4">Why McKenna</p>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl mb-4">What sets us apart</h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="reveal rounded-2xl p-8" style="background:#1c1c20; border:1px solid #2a2a2f;">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(40,96,224,0.1);">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="1.8"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="text-base font-semibold text-white mb-2">100% ROAS guarantee</h3>
+          <p class="text-sm" style="color:#8b8b96; line-height:1.7;">If we don't deliver a positive return, you don't pay our fee. It's that simple.</p>
+        </div>
+
+        <div class="reveal reveal-delay-1 rounded-2xl p-8" style="background:#1c1c20; border:1px solid #2a2a2f;">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(40,96,224,0.1);">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="1.8"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="text-base font-semibold text-white mb-2">Daily optimization</h3>
+          <p class="text-sm" style="color:#8b8b96; line-height:1.7;">We're in your account every single day. Adjusting bids, testing ads, cutting waste, scaling winners.</p>
+        </div>
+
+        <div class="reveal reveal-delay-2 rounded-2xl p-8" style="background:#1c1c20; border:1px solid #2a2a2f;">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(40,96,224,0.1);">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="1.8"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="text-base font-semibold text-white mb-2">Full transparency</h3>
+          <p class="text-sm" style="color:#8b8b96; line-height:1.7;">You own your account, your data and your campaigns. Monthly reports with clear numbers, no smoke and mirrors.</p>
+        </div>
+
+        <div class="reveal rounded-2xl p-8" style="background:#1c1c20; border:1px solid #2a2a2f;">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(40,96,224,0.1);">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="1.8"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="text-base font-semibold text-white mb-2">9+ years of experience</h3>
+          <p class="text-sm" style="color:#8b8b96; line-height:1.7;">Over 100 clients served, from startups to brands like Lulu Copenhagen, INCO and Trollbeads.</p>
+        </div>
+
+        <div class="reveal reveal-delay-1 rounded-2xl p-8" style="background:#1c1c20; border:1px solid #2a2a2f;">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(40,96,224,0.1);">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="1.8"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="text-base font-semibold text-white mb-2">Direct support</h3>
+          <p class="text-sm" style="color:#8b8b96; line-height:1.7;">Direct contact with your dedicated team. No call centers, no waiting. We respond within hours, not days.</p>
+        </div>
+
+        <div class="reveal reveal-delay-2 rounded-2xl p-8" style="background:#1c1c20; border:1px solid #2a2a2f;">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(40,96,224,0.1);">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="1.8"><path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="text-base font-semibold text-white mb-2">Data-driven approach</h3>
+          <p class="text-sm" style="color:#8b8b96; line-height:1.7;">Server-side tracking, ProfitMetrics certified. We measure real profit, not just clicks and impressions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SEO & GEO SECTION ========== -->
+  <section class="py-20 md:py-28 section-border" id="seo-geo">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="reveal text-center mb-14">
+        <p class="text-xs font-semibold tracking-widest uppercase mb-4" style="color:#a855f7;">The future of visibility</p>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl mb-4">SEO & GEO: Be found everywhere</h2>
+        <p class="text-base max-w-2xl mx-auto" style="color:#8b8b96; line-height:1.8;">
+          Traditional SEO is still the foundation. But in 2026, more and more customers are asking an AI instead of Google. We ensure you're visible in both places.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Traditional SEO -->
+        <div class="reveal rounded-2xl p-8 md:p-10" style="background:#1c1c20; border:1px solid #2a2a2f;">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(52,211,153,0.1);">
+              <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#34d399" stroke-width="1.8"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3 class="text-xl font-semibold text-white">Traditional SEO</h3>
+          </div>
+          <p class="text-sm mb-6" style="color:#8b8b96; line-height:1.8;">
+            Organic traffic is the most valuable traffic you can get. We work with technical SEO, content optimization and authority building to bring your website to the top of Google.
+          </p>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3 text-sm" style="color:#e8e8ec;">
+              <svg width="18" height="18" fill="none" viewBox="0 0 24 24" class="flex-shrink-0 mt-0.5"><path d="M5 13l4 4L19 7" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Technical SEO audit and optimization
+            </li>
+            <li class="flex items-start gap-3 text-sm" style="color:#e8e8ec;">
+              <svg width="18" height="18" fill="none" viewBox="0 0 24 24" class="flex-shrink-0 mt-0.5"><path d="M5 13l4 4L19 7" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Keyword analysis and content strategy
+            </li>
+            <li class="flex items-start gap-3 text-sm" style="color:#e8e8ec;">
+              <svg width="18" height="18" fill="none" viewBox="0 0 24 24" class="flex-shrink-0 mt-0.5"><path d="M5 13l4 4L19 7" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              On-page optimization and link building
+            </li>
+            <li class="flex items-start gap-3 text-sm" style="color:#e8e8ec;">
+              <svg width="18" height="18" fill="none" viewBox="0 0 24 24" class="flex-shrink-0 mt-0.5"><path d="M5 13l4 4L19 7" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Local SEO and Google Business Profile
+            </li>
+          </ul>
+        </div>
+
+        <!-- GEO / AI SEO -->
+        <div class="reveal reveal-delay-1 rounded-2xl p-8 md:p-10 relative overflow-hidden" style="background:#1c1c20; border:1px solid rgba(168,85,247,0.25);">
+          <div class="absolute top-0 right-0 w-48 h-48 opacity-20" style="background:radial-gradient(circle, rgba(168,85,247,0.3), transparent 70%); transform: translate(20%, -20%);"></div>
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(168,85,247,0.1);">
+              <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#a855f7" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5z" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 17l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-white">GEO - AI SEO</h3>
+              <span class="text-xs font-semibold px-2 py-0.5 rounded-full" style="background:rgba(168,85,247,0.15); color:#c084fc;">NEW SERVICE</span>
+            </div>
+          </div>
+          <p class="text-sm mb-6 relative z-10" style="color:#8b8b96; line-height:1.8;">
+            Generative Engine Optimization is the new frontier. When your customers use ChatGPT, Perplexity, Google AI Overview or Copilot to find products and services, your brand should be the answer they get.
+          </p>
+          <ul class="space-y-3 relative z-10">
+            <li class="flex items-start gap-3 text-sm" style="color:#e8e8ec;">
+              <svg width="18" height="18" fill="none" viewBox="0 0 24 24" class="flex-shrink-0 mt-0.5"><path d="M5 13l4 4L19 7" stroke="#a855f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Optimization for AI search engines
+            </li>
+            <li class="flex items-start gap-3 text-sm" style="color:#e8e8ec;">
+              <svg width="18" height="18" fill="none" viewBox="0 0 24 24" class="flex-shrink-0 mt-0.5"><path d="M5 13l4 4L19 7" stroke="#a855f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Structured data and entity optimization
+            </li>
+            <li class="flex items-start gap-3 text-sm" style="color:#e8e8ec;">
+              <svg width="18" height="18" fill="none" viewBox="0 0 24 24" class="flex-shrink-0 mt-0.5"><path d="M5 13l4 4L19 7" stroke="#a855f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Content that AI models cite and recommend
+            </li>
+            <li class="flex items-start gap-3 text-sm" style="color:#e8e8ec;">
+              <svg width="18" height="18" fill="none" viewBox="0 0 24 24" class="flex-shrink-0 mt-0.5"><path d="M5 13l4 4L19 7" stroke="#a855f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Monitoring of AI visibility and mentions
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CASE STUDIES ========== -->
+  <section class="py-20 md:py-28 section-border">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="reveal text-center mb-14">
+        <p class="text-xs font-semibold tracking-widest text-accent uppercase mb-4">Documented results</p>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl mb-4">What we have delivered</h2>
+        <p class="text-base max-w-2xl mx-auto" style="color:#8b8b96; line-height:1.8;">
+          Numbers don't lie. Here is a selection of what we have achieved for our clients.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Nord-Smil -->
+        <div class="reveal rounded-2xl overflow-hidden" style="background:#1c1c20; border:1px solid #2a2a2f;">
+          <div class="relative h-52 overflow-hidden">
+            <img src="../Assets/casestudies/nordsmil-case-1.webp" alt="Nord-Smil case study" class="w-full h-full object-cover" />
+            <div class="absolute inset-0" style="background: linear-gradient(to top, #1c1c20 0%, transparent 60%);"></div>
+            <div class="absolute inset-0" style="background: rgba(40,96,224,0.08); mix-blend-mode: multiply;"></div>
+          </div>
+          <div class="p-6 -mt-8 relative z-10">
+            <h3 class="text-lg font-semibold text-white mb-1">Nord-Smil</h3>
+            <p class="text-xs mb-4" style="color:#8b8b96;">Dental clinic - Google Ads</p>
+            <div class="flex items-baseline gap-2">
+              <span class="text-3xl font-bold" style="font-family:'Outfit',sans-serif; color:#2860E0;">+44%</span>
+              <span class="text-sm" style="color:#8b8b96;">more leads</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Soleplus -->
+        <div class="reveal reveal-delay-1 rounded-2xl overflow-hidden" style="background:#1c1c20; border:1px solid #2a2a2f;">
+          <div class="relative h-52 overflow-hidden">
+            <img src="../Assets/casestudies/soleplus-case.webp" alt="Soleplus case study" class="w-full h-full object-cover" />
+            <div class="absolute inset-0" style="background: linear-gradient(to top, #1c1c20 0%, transparent 60%);"></div>
+            <div class="absolute inset-0" style="background: rgba(40,96,224,0.08); mix-blend-mode: multiply;"></div>
+          </div>
+          <div class="p-6 -mt-8 relative z-10">
+            <h3 class="text-lg font-semibold text-white mb-1">Soleplus</h3>
+            <p class="text-xs mb-4" style="color:#8b8b96;">E-commerce - Google Ads</p>
+            <div class="flex items-baseline gap-2">
+              <span class="text-3xl font-bold" style="font-family:'Outfit',sans-serif; color:#2860E0;">12x+</span>
+              <span class="text-sm" style="color:#8b8b96;">ROAS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Protein -->
+        <div class="reveal reveal-delay-2 rounded-2xl overflow-hidden" style="background:#1c1c20; border:1px solid #2a2a2f;">
+          <div class="relative h-52 overflow-hidden">
+            <img src="../Assets/casestudies/protein-case-2.webp" alt="Protein case study" class="w-full h-full object-cover" />
+            <div class="absolute inset-0" style="background: linear-gradient(to top, #1c1c20 0%, transparent 60%);"></div>
+            <div class="absolute inset-0" style="background: rgba(40,96,224,0.08); mix-blend-mode: multiply;"></div>
+          </div>
+          <div class="p-6 -mt-8 relative z-10">
+            <h3 class="text-lg font-semibold text-white mb-1">Protein</h3>
+            <p class="text-xs mb-4" style="color:#8b8b96;">E-commerce - Google Ads & SEO</p>
+            <div class="flex items-baseline gap-2">
+              <span class="text-3xl font-bold" style="font-family:'Outfit',sans-serif; color:#2860E0;">+332%</span>
+              <span class="text-sm" style="color:#8b8b96;">conversions</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PERFORMANCE PROMISE ========== -->
+  <section class="py-20 md:py-28 section-border">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="reveal text-center mb-6">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl mb-4">Performance promise</h2>
+        <p class="text-base max-w-2xl mx-auto mb-16" style="color:#8b8b96; line-height:1.8;">
+          Most agencies charge regardless of results. We don't. Our entire model is built on one principle: your success is our success. If we can't grow your business, we don't deserve your money.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div class="reveal rounded-2xl p-8" style="background:#1c1c20; border:1px solid #2a2a2f;">
+          <div class="text-3xl mb-4" style="font-family:'Outfit',sans-serif; color:#2860E0; font-weight:800;">100%</div>
+          <h3 class="text-lg font-semibold text-white mb-3">ROAS guarantee</h3>
+          <p class="text-sm" style="color:#8b8b96; line-height:1.7;">
+            If the marketing we run doesn't generate a positive return on your ad spend, you don't pay our fee. We take the risk so you don't have to.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SATISFACTION GUARANTEE ========== -->
+  <section class="py-20 md:py-28 section-border" id="guarantee">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="reveal rounded-2xl p-10 md:p-14 text-center" style="background:#1c1c20; border:1px solid #2a2a2f;">
+        <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6" style="background:rgba(40,96,224,0.1); border:2px solid rgba(40,96,224,0.25);">
+          <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="1.8"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl mb-4">Satisfaction guarantee</h2>
+        <p class="text-base max-w-2xl mx-auto mb-8" style="color:#8b8b96; line-height:1.8;">
+          We're so confident in our Google Ads management that we offer a full satisfaction guarantee. If you're not happy with our work within the first 30 days, you get your fee back. No questions asked. We take the risk so you don't have to.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+          <div class="text-center">
+            <div class="text-3xl mb-1" style="font-family:'Outfit',sans-serif; color:#2860E0; font-weight:800;">100%</div>
+            <p class="text-sm" style="color:#8b8b96;">Money-back guarantee</p>
+          </div>
+          <div class="hidden sm:block w-px h-12" style="background:#2a2a2f;"></div>
+          <div class="text-center">
+            <div class="text-3xl mb-1" style="font-family:'Outfit',sans-serif; color:#2860E0; font-weight:800;">$0</div>
+            <p class="text-sm" style="color:#8b8b96;">If we don't deliver results</p>
+          </div>
+          <div class="hidden sm:block w-px h-12" style="background:#2a2a2f;"></div>
+          <div class="text-center">
+            <div class="text-3xl mb-1" style="font-family:'Outfit',sans-serif; color:#2860E0; font-weight:800;">30 days</div>
+            <p class="text-sm" style="color:#8b8b96;">Risk-free trial period</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== BOOK A CALL (CALENDLY) ========== -->
+  <section class="py-20 md:py-28 section-border" id="book-call">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <div class="reveal mb-10">
+        <p class="text-xs font-semibold tracking-widest text-accent uppercase mb-4">Zero risk</p>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl mb-4">Book a free 30-min. strategy meeting</h2>
+        <p class="text-txt-muted max-w-xl mx-auto" style="line-height:1.7;">Pick a time that works for you. We'll review your current setup, show you the opportunities and give you a plan - whether you choose to work with us or not.</p>
+      </div>
+      <!-- Calendly inline embed -->
+      <div class="reveal rounded-2xl overflow-hidden" style="background:#1c1c20; border:1px solid #2a2a2f; min-height:680px;">
+        <div class="calendly-inline-widget" data-url="https://calendly.com/sammy-mckenna/google-ads-profit-review?embed_type=Inline&embed_domain=www.mcmarketing.dk&hide_gdpr_banner=1&background_color=1c1c20&text_color=e8e8ec&primary_color=2860E0" style="min-width:320px;height:680px;"></div>
+        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FINAL CTA ========== -->
+  <section class="py-20 md:py-28 section-border" id="cta">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="reveal rounded-2xl px-8 py-14 md:px-16 md:py-16 text-center relative overflow-hidden" style="background: linear-gradient(135deg, #2860E0 0%, #1a4dbf 50%, #2860E0 100%);">
+        <div class="absolute top-0 right-0 w-64 h-64 rounded-full opacity-10" style="background:radial-gradient(circle, #fff 0%, transparent 70%); transform: translate(30%, -30%);"></div>
+        <div class="absolute bottom-0 left-0 w-48 h-48 rounded-full opacity-10" style="background:radial-gradient(circle, #fff 0%, transparent 70%); transform: translate(-30%, 30%);"></div>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl text-white mb-4 relative z-10">
+          Ready to grow without risk?
+        </h2>
+        <p class="text-white/80 max-w-xl mx-auto mb-8 relative z-10" style="line-height:1.7;">
+          If we don't deliver results, you don't pay. Book a free strategy meeting and let us see what we can do for your business.
+        </p>
+        <a href="#book-call" class="relative z-10 inline-flex items-center gap-3 pl-7 pr-2 py-2 rounded-full font-semibold text-sm group" style="background:#fff; color:#2860E0; box-shadow: 0 4px 14px rgba(0,0,0,0.15); transition: transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
+          Book free strategy meeting
+          <span class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-[#2860E0] text-white">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="py-16 section-border">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+        <div>
+          <a href="/" class="block mb-4">
+            <img src="../Assets/Mc-Marketing-Logo.png" alt="McKenna Marketing" class="h-7" />
+          </a>
+          <p class="text-txt-muted text-sm" style="line-height:1.7;">
+            McKenna Marketing has over 9 years of experience in online marketing. We specialize in Google Ads, SEO and GEO (AI SEO).
+          </p>
+          <div class="flex gap-3 mt-5">
+            <a href="https://www.linkedin.com/company/mckennamarketingdk/about/" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61551233696707" target="_blank" rel="noopener" class="social-icon" aria-label="Facebook">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/stanleymckenna/" target="_blank" rel="noopener" class="social-icon" aria-label="Instagram">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+          </div>
+          <!-- ProfitMetrics Badge -->
+          <div class="mt-6">
+            <a href="../Assets/certificate-profitmetrics-agency-certification-6614e53e203e00d8660021e6 (1).pdf" target="_blank" class="inline-flex items-center gap-2 text-xs px-3 py-2 rounded-lg transition-colors duration-200 hover:bg-white/5" style="background:rgba(255,255,255,0.03); border:1px solid #2a2a2f; color:#8b8b96;">
+              <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="2"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              ProfitMetrics Certified
+            </a>
+          </div>
+        </div>
+
+        <div>
+                    <h4 class="text-white font-semibold mb-4 text-sm">Quick links</h4>
+          <ul class="space-y-2 text-sm text-txt-muted">
+            <li><a href="/en/" class="hover:text-white transition-colors duration-200">Home</a></li>
+            <li><a href="/en/google-ads" class="hover:text-white transition-colors duration-200">Google Ads</a></li>
+            <li><a href="/en/seo-aio-geo" class="hover:text-white transition-colors duration-200">SEO / AIO / GEO</a></li>
+            <li><a href="/en/paid-social" class="hover:text-white transition-colors duration-200">Paid Social</a></li>
+            <li><a href="/en/websites" class="hover:text-white transition-colors duration-200">Websites</a></li>
+            <li><a href="/en/poas" class="hover:text-white transition-colors duration-200">POAS</a></li>
+            <li><a href="/en/contact" class="hover:text-white transition-colors duration-200">Contact</a></li>
+            <li><a href="/en/cookie-policy" class="hover:text-white transition-colors duration-200">Cookie Policy</a></li>
+            <li><a href="/en/conditions" class="hover:text-white transition-colors duration-200">Terms &amp; Conditions</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-white font-semibold mb-4 text-sm">Contact</h4>
+          <ul class="space-y-2 text-sm text-txt-muted">
+            <li><a href="mailto:mcc@mcmarketing.dk" class="hover:text-white transition-colors duration-200">mcc@mcmarketing.dk</a></li>
+            <li><a href="tel:+4528252184" class="hover:text-white transition-colors duration-200">+45 28 25 21 84</a></li>
+            <li>Paradisaeblevej 4, 2500 Valby</li>
+            <li>CVR: 44808390</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t pt-8 text-center text-xs text-txt-dim" style="border-color:#2a2a2f;">
+        &copy; McKenna Marketing. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Fixed bottom-right badges -->
+  <div style="position:fixed; bottom:24px; right:24px; z-index:40; display:flex; flex-direction:column; align-items:center; gap:10px;">
+    <a href="#guarantee" class="inline-flex items-center gap-1.5 text-xs font-medium px-3.5 py-2 rounded-full transition-transform duration-200 hover:scale-105" style="background:rgba(21,21,24,0.9); border:1px solid rgba(255,255,255,0.1); backdrop-filter:blur(12px); color:#7ba3f0; box-shadow: 0 4px 20px rgba(0,0,0,0.4);">
+      <svg width="13" height="13" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke="#2860E0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Satisfaction guarantee
+    </a>
+    <img src="../Assets/google-partner.png" alt="Google Partner" style="width:80px; height:80px; border-radius:12px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);" />
+  </div>
+
+  <script>
+    // Scroll reveal observer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.05, rootMargin: '0px 0px 80px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    setTimeout(() => { document.querySelectorAll('.reveal:not(.visible)').forEach(el => el.classList.add('visible')); }, 3000);
+
+    // Scroll-driven 3D card animation
+    const scrollCard = document.getElementById('scrollCard');
+    if (scrollCard) {
+      const container = scrollCard.closest('.scroll-container');
+      window.addEventListener('scroll', () => {
+        const rect = container.getBoundingClientRect();
+        const vh = window.innerHeight;
+        const progress = Math.max(0, Math.min(1, (vh - rect.top) / (rect.height)));
+        const rx = 20 - (progress * 20);
+        const s = 0.9 + (progress * 0.1);
+        scrollCard.style.setProperty('--rx', rx + 'deg');
+        scrollCard.style.setProperty('--s', s);
+      }, { passive: true });
+    }
+  </script>
+
+  <script>
+    // Close burger menu when clicking outside
+    document.addEventListener('click', (e) => {
+      const menu = document.getElementById('mobileMenu');
+      const burger = document.querySelector('button[aria-label="Menu"]');
+      if (!menu || !menu.classList.contains('open')) return;
+      if (menu.contains(e.target) || (burger && burger.contains(e.target))) return;
+      menu.classList.remove('open');
+    });
+    // Close burger menu when clicking on a menu link
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('mobileMenu').classList.remove('open');
+      });
+    });
+    // Close lang dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      document.querySelectorAll('.lang-dropdown.open').forEach(dd => {
+        if (!dd.contains(e.target)) dd.classList.remove('open');
+      });
+    });
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "McKenna Marketing",
+    "alternateName": "McKenna Marketing Google Ads Agency",
+    "description": "Google Ads agency and certified Google Partner. Performance-based Google Ads management with 100% ROAS guarantee.",
+    "url": "https://mckenna.vercel.app/en/google-ads",
+    "image": "https://mckenna.vercel.app/Assets/Mc-Marketing-Logo.png",
+    "priceRange": "$$",
+    "telephone": "+45 28 25 21 84",
+    "email": "mcc@mcmarketing.dk",
+    "address": {"@type": "PostalAddress", "streetAddress": "Paradisæblevej 4", "addressLocality": "Valby", "postalCode": "2500", "addressCountry": "DK"},
+    "areaServed": {"@type": "Country", "name": "Denmark"},
+    "serviceType": ["Google Ads Management", "Google Ads Agency", "Performance Marketing", "PPC Management"]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://mckenna.vercel.app/en/"},
+      {"@type": "ListItem", "position": 2, "name": "Google Ads"}
+    ]
+  }
+  </script>
+</body>
+</html>
