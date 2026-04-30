@@ -14,10 +14,10 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Notification to Sammy
-    await resend.emails.send({
-      from: 'onboarding@resend.dev',
-      to: 'sammy@mcmarketing.dk',
+    const notification = await resend.emails.send({
+      from: 'McKenna Marketing <onboarding@resend.dev>',
+      to: 'mcc@mcmarketing.dk',
+      reply_to: email,
       subject: `New enquiry from ${name}`,
       html: `
         <h2>New contact form submission</h2>
@@ -31,21 +31,29 @@ export default async function handler(req, res) {
       `,
     });
 
-    // Confirmation to the person
-    await resend.emails.send({
-      from: 'onboarding@resend.dev',
-      to: email,
-      subject: 'We received your message — McKenna Marketing',
-      html: `
-        <p>Hi ${name},</p>
-        <p>Thanks for reaching out! We've received your message and will get back to you shortly.</p>
-        <p>Best regards,<br/>McKenna Marketing</p>
-      `,
-    });
+    if (notification.error) {
+      console.error('Notification email failed:', notification.error);
+      return res.status(500).json({ error: 'Failed to send email', detail: notification.error });
+    }
+
+    try {
+      await resend.emails.send({
+        from: 'McKenna Marketing <onboarding@resend.dev>',
+        to: email,
+        subject: 'We received your message — McKenna Marketing',
+        html: `
+          <p>Hi ${name},</p>
+          <p>Thanks for reaching out! We've received your message and will get back to you shortly.</p>
+          <p>Best regards,<br/>McKenna Marketing</p>
+        `,
+      });
+    } catch (confirmErr) {
+      console.error('Confirmation email failed (non-blocking):', confirmErr);
+    }
 
     return res.status(200).json({ success: true });
   } catch (error) {
-    console.error(error);
+    console.error('Contact API error:', error);
     return res.status(500).json({ error: 'Failed to send email' });
   }
 }
