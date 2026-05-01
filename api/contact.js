@@ -1,59 +1,61 @@
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const NOTIFY_TO = 'sammy@mcmarketing.dk';
+const FROM_ADDRESS = 'McKenna Marketing <onboarding@resend.dev>';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { name, email, phone, business, website, message, source } = req.body;
+  if (!process.env.RESEND_API_KEY) {
+    console.error('[contact] RESEND_API_KEY env var is missing');
+    return res.status(500).json({ error: 'Server misconfigured: RESEND_API_KEY missing' });
+  }
+
+  const { name, email, phone, business, website, message, source } = req.body || {};
 
   if (!name || !email) {
     return res.status(400).json({ error: 'Name and email are required' });
   }
 
+  const resend = new Resend(process.env.RESEND_API_KEY);
+
+  const html = `
+    <h2>New contact form submission</h2>
+    <p><strong>Source:</strong> ${source || 'Website'}</p>
+    <p><strong>Name:</strong> ${name}</p>
+    <p><strong>Email:</strong> ${email}</p>
+    ${phone ? `<p><strong>Phone:</strong> ${phone}</p>` : ''}
+    ${business ? `<p><strong>Business:</strong> ${business}</p>` : ''}
+    ${website ? `<p><strong>Website:</strong> ${website}</p>` : ''}
+    ${message ? `<p><strong>Message:</strong> ${message}</p>` : ''}
+  `;
+
   try {
-    const notification = await resend.emails.send({
-      from: 'McKenna Marketing <onboarding@resend.dev>',
-      to: 'mcc@mcmarketing.dk',
+    const result = await resend.emails.send({
+      from: FROM_ADDRESS,
+      to: NOTIFY_TO,
       reply_to: email,
       subject: `New enquiry from ${name}`,
-      html: `
-        <h2>New contact form submission</h2>
-        <p><strong>Source:</strong> ${source || 'Website'}</p>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        ${phone ? `<p><strong>Phone:</strong> ${phone}</p>` : ''}
-        ${business ? `<p><strong>Business:</strong> ${business}</p>` : ''}
-        ${website ? `<p><strong>Website:</strong> ${website}</p>` : ''}
-        ${message ? `<p><strong>Message:</strong> ${message}</p>` : ''}
-      `,
+      html,
     });
 
-    if (notification.error) {
-      console.error('Notification email failed:', notification.error);
-      return res.status(500).json({ error: 'Failed to send email', detail: notification.error });
-    }
-
-    try {
-      await resend.emails.send({
-        from: 'McKenna Marketing <onboarding@resend.dev>',
-        to: email,
-        subject: 'We received your message — McKenna Marketing',
-        html: `
-          <p>Hi ${name},</p>
-          <p>Thanks for reaching out! We've received your message and will get back to you shortly.</p>
-          <p>Best regards,<br/>McKenna Marketing</p>
-        `,
+    if (result.error) {
+      console.error('[contact] Resend returned error:', JSON.stringify(result.error));
+      return res.status(502).json({
+        error: 'Email provider rejected the request',
+        detail: result.error,
       });
-    } catch (confirmErr) {
-      console.error('Confirmation email failed (non-blocking):', confirmErr);
     }
 
-    return res.status(200).json({ success: true });
+    console.log('[contact] Sent OK, id:', result.data?.id);
+    return res.status(200).json({ success: true, id: result.data?.id });
   } catch (error) {
-    console.error('Contact API error:', error);
-    return res.status(500).json({ error: 'Failed to send email' });
+    console.error('[contact] Unexpected error:', error);
+    return res.status(500).json({
+      error: 'Failed to send email',
+      detail: error?.message || String(error),
+    });
   }
 }
