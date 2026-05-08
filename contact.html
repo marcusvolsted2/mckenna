@@ -209,18 +209,7 @@
     <div class="max-w-6xl mx-auto px-6 w-full">
 
       <!-- Quick contact method cards -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12 reveal">
-        <a href="mailto:sammy@mcmarketing.dk" class="group rounded-2xl p-6 flex items-start gap-4 transition-all duration-200 hover:translate-y-[-3px]" style="background:#1c1c20; border:1px solid #2a2a2f; text-decoration:none;" onmouseover="this.style.borderColor='rgba(40,96,224,0.35)'" onmouseout="this.style.borderColor='#2a2a2f'">
-          <div class="flex-shrink-0 w-11 h-11 rounded-xl flex items-center justify-center" style="background:rgba(40,96,224,0.1); border:1px solid rgba(40,96,224,0.2);">
-            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="2"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <div class="flex-1 min-w-0">
-            <p class="text-xs font-semibold uppercase tracking-wider mb-1" style="color:#7ba3f0;">Email</p>
-            <p class="text-white text-sm font-medium break-all">sammy@mcmarketing.dk</p>
-            <p class="text-xs mt-1" style="color:#8b8b96;">Svar inden for 2 timer</p>
-          </div>
-        </a>
-
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12 reveal">
         <a href="tel:+4528252184" class="group rounded-2xl p-6 flex items-start gap-4 transition-all duration-200 hover:translate-y-[-3px]" style="background:#1c1c20; border:1px solid #2a2a2f; text-decoration:none;" onmouseover="this.style.borderColor='rgba(40,96,224,0.35)'" onmouseout="this.style.borderColor='#2a2a2f'">
           <div class="flex-shrink-0 w-11 h-11 rounded-xl flex items-center justify-center" style="background:rgba(40,96,224,0.1); border:1px solid rgba(40,96,224,0.2);">
             <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#2860E0" stroke-width="2"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -285,8 +274,21 @@
               </div>
             </div>
             <div>
+              <label for="cp-topic" class="block text-sm font-medium mb-1" style="color:#8b8b96;">Hvad drejer henvendelsen sig om?</label>
+              <select id="cp-topic" class="form-input" style="appearance:none; background-image:url(&quot;data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238b8b96' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath d='m6 9 6 6 6-6'/%3e%3c/svg%3e&quot;); background-repeat:no-repeat; background-position:right 14px center; padding-right:40px;">
+                <option value="">Vælg emne</option>
+                <option value="Google Ads">Google Ads</option>
+                <option value="SEO / AIO / GEO">SEO / AIO / GEO</option>
+                <option value="Paid Social">Paid Social (Meta, TikTok)</option>
+                <option value="Hjemmeside / Webshop">Hjemmeside eller webshop</option>
+                <option value="POAS">POAS / profit-tracking</option>
+                <option value="Strategi / sparring">Generel strategi eller sparring</option>
+                <option value="Andet">Andet</option>
+              </select>
+            </div>
+            <div>
               <label for="cp-message" class="block text-sm font-medium mb-1" style="color:#8b8b96;">Besked</label>
-              <textarea id="cp-message" rows="5" placeholder="Hvordan kan vi hjælpe?" class="form-input" style="resize:vertical; min-height:120px;"></textarea>
+              <textarea id="cp-message" rows="5" placeholder="Fortæl os kort om dit projekt eller dine spørgsmål" class="form-input" style="resize:vertical; min-height:120px;"></textarea>
             </div>
             <button id="cp-btn" type="submit" class="btn-primary w-full text-center" style="padding:14px 24px;">Send besked</button>
             <p id="cp-msg" class="text-xs text-center mt-2" style="display:none;"></p>
@@ -311,6 +313,7 @@
                     business: document.getElementById('cp-company').value,
                     email: document.getElementById('cp-email').value,
                     phone: document.getElementById('cp-dial').value + ' ' + document.getElementById('cp-phone').value,
+                    topic: document.getElementById('cp-topic').value,
                     message: document.getElementById('cp-message').value,
                     source: 'Contact page'
                   })

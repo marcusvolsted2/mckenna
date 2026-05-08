@@ -14,7 +14,7 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: 'Server misconfigured: RESEND_API_KEY missing' });
   }
 
-  const { name, email, phone, business, website, message, source } = req.body || {};
+  const { name, email, phone, business, website, topic, message, source } = req.body || {};
 
   if (!name || !email) {
     return res.status(400).json({ error: 'Name and email are required' });
@@ -30,6 +30,7 @@ export default async function handler(req, res) {
     ${phone ? `<p><strong>Phone:</strong> ${phone}</p>` : ''}
     ${business ? `<p><strong>Business:</strong> ${business}</p>` : ''}
     ${website ? `<p><strong>Website:</strong> ${website}</p>` : ''}
+    ${topic ? `<p><strong>Topic:</strong> ${topic}</p>` : ''}
     ${message ? `<p><strong>Message:</strong> ${message}</p>` : ''}
   `;
 
