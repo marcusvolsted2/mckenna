@@ -1,9 +1,13 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    { "source": "/contact", "destination": "/kontakt", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/en/google-ads", "destination": "/en/google-ads-seo.html" },
     { "source": "/en/poas", "destination": "/en/poas.html" },
+    { "source": "/en/contact", "destination": "/contact.html" },
     { "source": "/en", "destination": "/en/index.html" },
     { "source": "/google-ads", "destination": "/google-ads-seo.html" },
     { "source": "/poas", "destination": "/poas.html" },
