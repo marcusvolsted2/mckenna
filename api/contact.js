@@ -1,7 +1,8 @@
 import { Resend } from 'resend';
 
-const NOTIFY_TO = 'sami@mcmarketing.dk';
-const FROM_ADDRESS = 'McKenna Marketing <noreply@mcmarketing.dk>';
+const NOTIFY_TO = process.env.RESEND_TO_EMAIL || 'sammy@mcmarketing.dk';
+const FROM_RAW = process.env.RESEND_FROM_EMAIL || 'noreply@mcmarketing.dk';
+const FROM_ADDRESS = FROM_RAW.includes('<') ? FROM_RAW : `McKenna Marketing <${FROM_RAW}>`;
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
