@@ -1001,13 +1001,15 @@
         </div>
         <div class="reveal reveal-delay-2 card p-5 md:p-8">
           <form id="contactForm" class="space-y-4">
-            <div>
-              <label class="block text-sm font-medium text-txt-muted mb-1">Navn</label>
-              <input id="cf-name" type="text" placeholder="Dit navn" required class="w-full px-4 py-3 rounded-lg text-sm" style="background:#242428; border:1px solid #2a2a2f; color:#e8e8ec; outline:none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#2860E0'" onblur="this.style.borderColor='#2a2a2f'" />
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-txt-muted mb-1">Virksomhed</label>
-              <input id="cf-company" type="text" placeholder="Din virksomhed" class="w-full px-4 py-3 rounded-lg text-sm" style="background:#242428; border:1px solid #2a2a2f; color:#e8e8ec; outline:none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#2860E0'" onblur="this.style.borderColor='#2a2a2f'" />
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-txt-muted mb-1">Navn</label>
+                <input id="cf-name" type="text" placeholder="Dit navn" required class="w-full px-4 py-3 rounded-lg text-sm" style="background:#242428; border:1px solid #2a2a2f; color:#e8e8ec; outline:none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#2860E0'" onblur="this.style.borderColor='#2a2a2f'" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-txt-muted mb-1">Virksomhed</label>
+                <input id="cf-company" type="text" placeholder="Din virksomhed" class="w-full px-4 py-3 rounded-lg text-sm" style="background:#242428; border:1px solid #2a2a2f; color:#e8e8ec; outline:none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#2860E0'" onblur="this.style.borderColor='#2a2a2f'" />
+              </div>
             </div>
             <div>
               <label class="block text-sm font-medium text-txt-muted mb-1">Email</label>
@@ -1032,8 +1034,21 @@
               </div>
             </div>
             <div>
+              <label class="block text-sm font-medium text-txt-muted mb-1">Hvad drejer henvendelsen sig om?</label>
+              <select id="cf-topic" class="w-full px-4 py-3 rounded-lg text-sm" style="background:#242428; border:1px solid #2a2a2f; color:#e8e8ec; outline:none; transition: border-color 0.2s; appearance:none; background-image:url(&quot;data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238b8b96' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath d='m6 9 6 6 6-6'/%3e%3c/svg%3e&quot;); background-repeat:no-repeat; background-position:right 14px center; padding-right:40px;" onfocus="this.style.borderColor='#2860E0'" onblur="this.style.borderColor='#2a2a2f'">
+                <option value="">Vælg emne</option>
+                <option value="Google Ads">Google Ads</option>
+                <option value="SEO / AIO / GEO">SEO / AIO / GEO</option>
+                <option value="Paid Social">Paid Social (Meta, TikTok)</option>
+                <option value="Hjemmeside / Webshop">Hjemmeside eller webshop</option>
+                <option value="POAS">POAS / profit-tracking</option>
+                <option value="Strategi / sparring">Generel strategi eller sparring</option>
+                <option value="Andet">Andet</option>
+              </select>
+            </div>
+            <div>
               <label class="block text-sm font-medium text-txt-muted mb-1">Besked</label>
-              <textarea id="cf-message" rows="4" placeholder="Hvordan kan vi hjælpe?" class="w-full px-4 py-3 rounded-lg text-sm" style="background:#242428; border:1px solid #2a2a2f; color:#e8e8ec; outline:none; transition: border-color 0.2s; resize:vertical; min-height:100px; font-family:inherit;" onfocus="this.style.borderColor='#2860E0'" onblur="this.style.borderColor='#2a2a2f'"></textarea>
+              <textarea id="cf-message" rows="4" placeholder="Fortæl os kort om dit projekt eller dine spørgsmål" class="w-full px-4 py-3 rounded-lg text-sm" style="background:#242428; border:1px solid #2a2a2f; color:#e8e8ec; outline:none; transition: border-color 0.2s; resize:vertical; min-height:100px; font-family:inherit;" onfocus="this.style.borderColor='#2860E0'" onblur="this.style.borderColor='#2a2a2f'"></textarea>
             </div>
             <button id="cf-btn" type="submit" class="btn-primary w-full text-center" style="padding:14px 24px;">Send besked</button>
             <p class="text-xs text-txt-muted text-center mt-2">Vi vender tilbage inden for 24 timer</p>
@@ -1056,6 +1071,7 @@
                     business: document.getElementById('cf-company').value,
                     email: document.getElementById('cf-email').value,
                     phone: document.getElementById('cf-dial').value + ' ' + document.getElementById('cf-phone').value,
+                    topic: document.getElementById('cf-topic').value,
                     message: document.getElementById('cf-message').value,
                     source: 'Homepage'
                   })

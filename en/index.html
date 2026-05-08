@@ -995,13 +995,15 @@
         </div>
         <div class="reveal reveal-delay-2 card p-5 md:p-8">
           <form id="contactForm" class="space-y-4">
-            <div>
-              <label class="block text-sm font-medium text-txt-muted mb-1">Name</label>
-              <input id="cf-name" type="text" placeholder="Your name" required class="w-full px-4 py-3 rounded-lg text-sm" style="background:#242428; border:1px solid #2a2a2f; color:#e8e8ec; outline:none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#2860E0'" onblur="this.style.borderColor='#2a2a2f'" />
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-txt-muted mb-1">Company</label>
-              <input id="cf-company" type="text" placeholder="Your company" class="w-full px-4 py-3 rounded-lg text-sm" style="background:#242428; border:1px solid #2a2a2f; color:#e8e8ec; outline:none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#2860E0'" onblur="this.style.borderColor='#2a2a2f'" />
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-txt-muted mb-1">Name</label>
+                <input id="cf-name" type="text" placeholder="Your name" required class="w-full px-4 py-3 rounded-lg text-sm" style="background:#242428; border:1px solid #2a2a2f; color:#e8e8ec; outline:none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#2860E0'" onblur="this.style.borderColor='#2a2a2f'" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-txt-muted mb-1">Company</label>
+                <input id="cf-company" type="text" placeholder="Your company" class="w-full px-4 py-3 rounded-lg text-sm" style="background:#242428; border:1px solid #2a2a2f; color:#e8e8ec; outline:none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#2860E0'" onblur="this.style.borderColor='#2a2a2f'" />
+              </div>
             </div>
             <div>
               <label class="block text-sm font-medium text-txt-muted mb-1">Email</label>
@@ -1026,8 +1028,21 @@
               </div>
             </div>
             <div>
+              <label class="block text-sm font-medium text-txt-muted mb-1">What is this inquiry about?</label>
+              <select id="cf-topic" class="w-full px-4 py-3 rounded-lg text-sm" style="background:#242428; border:1px solid #2a2a2f; color:#e8e8ec; outline:none; transition: border-color 0.2s; appearance:none; background-image:url(&quot;data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238b8b96' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath d='m6 9 6 6 6-6'/%3e%3c/svg%3e&quot;); background-repeat:no-repeat; background-position:right 14px center; padding-right:40px;" onfocus="this.style.borderColor='#2860E0'" onblur="this.style.borderColor='#2a2a2f'">
+                <option value="">Choose topic</option>
+                <option value="Google Ads">Google Ads</option>
+                <option value="SEO / AIO / GEO">SEO / AIO / GEO</option>
+                <option value="Paid Social">Paid Social (Meta, TikTok)</option>
+                <option value="Website / Webshop">Website or webshop</option>
+                <option value="POAS">POAS / profit tracking</option>
+                <option value="Strategy / sparring">General strategy or sparring</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div>
               <label class="block text-sm font-medium text-txt-muted mb-1">Message</label>
-              <textarea id="cf-message" rows="4" placeholder="How can we help?" class="w-full px-4 py-3 rounded-lg text-sm" style="background:#242428; border:1px solid #2a2a2f; color:#e8e8ec; outline:none; transition: border-color 0.2s; resize:vertical; min-height:100px; font-family:inherit;" onfocus="this.style.borderColor='#2860E0'" onblur="this.style.borderColor='#2a2a2f'"></textarea>
+              <textarea id="cf-message" rows="4" placeholder="Tell us briefly about your project or questions" class="w-full px-4 py-3 rounded-lg text-sm" style="background:#242428; border:1px solid #2a2a2f; color:#e8e8ec; outline:none; transition: border-color 0.2s; resize:vertical; min-height:100px; font-family:inherit;" onfocus="this.style.borderColor='#2860E0'" onblur="this.style.borderColor='#2a2a2f'"></textarea>
             </div>
             <button id="cf-btn" type="submit" class="btn-primary w-full text-center" style="padding:14px 24px;">Send message</button>
             <p class="text-xs text-txt-muted text-center mt-2">We respond within 24 hours</p>
@@ -1050,6 +1065,7 @@
                     business: document.getElementById('cf-company').value,
                     email: document.getElementById('cf-email').value,
                     phone: document.getElementById('cf-dial').value + ' ' + document.getElementById('cf-phone').value,
+                    topic: document.getElementById('cf-topic').value,
                     message: document.getElementById('cf-message').value,
                     source: 'Homepage'
                   })
