@@ -1,7 +1,7 @@
 import { Resend } from 'resend';
 
-const NOTIFY_TO = 'sammy@mcmarketing.dk';
-const FROM_ADDRESS = 'McKenna Marketing <onboarding@resend.dev>';
+const NOTIFY_TO = 'sami@mcmarketing.dk';
+const FROM_ADDRESS = 'McKenna Marketing <noreply@mcmarketing.dk>';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
