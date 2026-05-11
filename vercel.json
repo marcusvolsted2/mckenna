@@ -3,7 +3,13 @@
   "trailingSlash": false,
   "redirects": [
     { "source": "/contact", "destination": "/kontakt", "permanent": true },
-    { "source": "/contact.html", "destination": "/kontakt", "permanent": true }
+    { "source": "/contact.html", "destination": "/kontakt", "permanent": true },
+    { "source": "/contact-us", "destination": "/kontakt", "permanent": true },
+    { "source": "/kontakt-os", "destination": "/kontakt", "permanent": true },
+    { "source": "/en/kontakt", "destination": "/en/contact", "permanent": true },
+    { "source": "/en/kontakt-os", "destination": "/en/contact", "permanent": true },
+    { "source": "/en/contact-us", "destination": "/en/contact", "permanent": true },
+    { "source": "/websites", "destination": "/hjemmesider", "permanent": true }
   ],
   "rewrites": [
     { "source": "/en/google-ads", "destination": "/en/google-ads-seo.html" },
