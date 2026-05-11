@@ -1,5 +1,9 @@
 User-agent: *
 Allow: /
 Disallow: /api/
+Disallow: /en/contact
+Disallow: /en/contact-us
+Disallow: /en/kontakt
+Disallow: /en/kontakt-os
 
 Sitemap: https://www.mcmarketing.dk/sitemap.xml

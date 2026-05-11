@@ -22,5 +22,13 @@
     { "source": "/betingelser", "destination": "/conditions.html" },
     { "source": "/cookiepolitik", "destination": "/cookie-policy.html" },
     { "source": "/paid-social", "destination": "/paid-social.html" }
+  ],
+  "headers": [
+    {
+      "source": "/en/contact",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+      ]
+    }
   ]
 }
